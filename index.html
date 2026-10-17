@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f8fc">
+<title>Lagos Web Studio — Demo Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17213b;--muted:#74809a;--line:#e5e9f3;--paper:#fff;--bg:#f6f7fb;--blue:#315ce8;--blue2:#2448cf;--pale:#edf1ff;--green:#12805c;--red:#c53c50;--shadow:0 18px 50px rgba(25,43,91,.07);--radius:24px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",sans-serif;-webkit-font-smoothing:antialiased}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #aabaff;outline-offset:2px}button:disabled{opacity:.5;cursor:not-allowed}.shell{max-width:1240px;margin:auto;padding:0 28px 100px}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:18px}.brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:inherit}.brandmark{width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,#3c64f2,#243ecb);display:grid;place-items:center;color:white;font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-1px;box-shadow:0 8px 20px #315ce82b}.brandname{font-family:Manrope,sans-serif;font-weight:800;font-size:18px;letter-spacing:-.7px}.brandcaption{font-size:12px;color:var(--muted);margin-top:2px}.top-actions{display:flex;align-items:center;gap:10px}.pill{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--muted);background:#fff;font-size:13px;font-weight:700}.avatar{height:34px;width:34px;border-radius:50%;background:var(--pale);color:var(--blue);display:grid;place-items:center;font-weight:800}.hero{margin:34px 0 24px;padding:35px 38px;border-radius:30px;color:white;background:radial-gradient(circle at 90% 10%,#5777f4 0,transparent 35%),linear-gradient(120deg,#182342,#2c4ac2);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid #ffffff20;border-radius:50%;right:-60px;bottom:-150px;box-shadow:0 0 0 28px #ffffff08,0 0 0 58px #ffffff06}.eyebrow{text-transform:uppercase;letter-spacing:2.4px;font-size:11px;font-weight:800;color:#bdcbff}.hero h1{font-family:Manrope,sans-serif;font-size:clamp(30px,4vw,46px);line-height:1.12;letter-spacing:-1.8px;margin:12px 0;max-width:680px}.hero p{margin:0;color:#d5ddff;font-size:15px;line-height:1.7;max-width:620px}.hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;position:relative;z-index:1}.hero-stat{border:1px solid #ffffff30;background:#ffffff12;border-radius:18px;padding:15px 20px;min-width:130px}.hero-stat strong{display:block;font-family:Manrope,sans-serif;font-size:28px}.hero-stat span{font-size:12px;color:#d5ddff}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:26px 0 18px}.section-title{font-family:Manrope,sans-serif;font-size:22px;letter-spacing:-.7px;margin:0}.section-sub{font-size:13px;color:var(--muted);margin-top:5px}.toolbar-actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:13px;padding:12px 16px;background:white;color:var(--ink);font-size:13px;font-weight:800;transition:transform .15s,border-color .15s,background .15s}.btn:hover{transform:translateY(-1px);border-color:#c4cff0}.btn-primary{background:var(--blue);color:white;border-color:var(--blue);box-shadow:0 7px 18px #315ce82a}.btn-primary:hover{background:var(--blue2)}.btn-danger{color:var(--red)}.filters{display:grid;grid-template-columns:minmax(220px,1fr) 190px 170px;gap:10px;margin-bottom:20px}.field{display:flex;flex-direction:column;gap:7px}.field label{font-size:12px;font-weight:800;color:#4f5c78}.input,.select,.textarea{width:100%;border:1px solid #dfe4f0;background:white;border-radius:13px;padding:13px 14px;color:var(--ink);min-height:46px;outline:none}.input::placeholder,.textarea::placeholder{color:#a0a9bc}.input:focus,.select:focus,.textarea:focus{border-color:#8da4ff;box-shadow:0 0 0 4px #315ce812}.searchwrap{position:relative}.searchwrap .input{padding-left:42px}.search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#8a94ab}.demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.demo-card{background:white;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 4px 14px #17213b04;display:flex;flex-direction:column;min-width:0;transition:transform .18s,box-shadow .18s,border-color .18s}.demo-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d3dcfa}.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.project-icon{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;background:var(--pale);color:var(--blue);font-family:Manrope,sans-serif;font-weight:800;font-size:16px;flex-shrink:0}.status{border-radius:999px;padding:6px 9px;font-size:10px;font-weight:800;letter-spacing:.3px;white-space:nowrap;background:#eef1f7;color:#68738a}.status.live{background:#e4f7ef;color:#10764f}.status.building{background:#fff3df;color:#9a6414}.status.paused{background:#f0edff;color:#6b56bd}.card-title{font-family:Manrope,sans-serif;font-size:19px;letter-spacing:-.5px;margin:17px 0 7px;overflow-wrap:anywhere}.card-desc{font-size:13px;color:var(--muted);line-height:1.65;margin:0;min-height:43px;overflow-wrap:anywhere}.tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 19px}.tag{background:#f4f6fb;color:#64708a;border-radius:7px;padding:5px 8px;font-size:10px;font-weight:700}.card-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;color:#8b95a9;font-size:11px;margin-top:auto;padding-top:14px;border-top:1px solid #f0f2f8}.card-actions{display:flex;gap:8px;margin-top:14px}.card-actions .btn{flex:1;text-align:center;padding:10px 11px}.icon-btn{width:38px;min-width:38px;padding:0;display:grid;place-items:center;font-size:18px}.empty{grid-column:1/-1;text-align:center;padding:55px 20px;background:white;border:1px dashed #d7deed;border-radius:22px}.empty-icon{width:54px;height:54px;border-radius:18px;background:var(--pale);display:grid;place-items:center;margin:0 auto 15px;color:var(--blue);font-size:23px}.empty h3{font-family:Manrope,sans-serif;margin:0 0 8px}.empty p{color:var(--muted);font-size:13px;line-height:1.6;max-width:360px;margin:0 auto 17px}.footer{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-top:28px;padding:18px 0;border-top:1px solid var(--line);color:#929bb0;font-size:11px}.footer strong{color:#68738b}.modal-backdrop{position:fixed;inset:0;z-index:50;background:#111a31a8;backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;padding:18px;overflow:auto}.modal-backdrop.open{display:flex}.modal{width:min(560px,100%);max-height:min(90dvh,850px);overflow:auto;background:white;border-radius:24px;box-shadow:0 30px 100px #101a3540;padding:25px}.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:20px}.modal h2{font-family:Manrope,sans-serif;font-size:23px;letter-spacing:-.7px;margin:0}.modal-head p{font-size:13px;color:var(--muted);margin:6px 0 0;line-height:1.5}.close{width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:white;font-size:22px;color:var(--muted)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field.full{grid-column:1/-1}.textarea{min-height:85px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:22px}.notice{background:#fff7e7;border:1px solid #f5e3b9;color:#78551d;border-radius:13px;padding:12px 14px;font-size:12px;line-height:1.6;margin-top:16px}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#17213b;color:white;padding:12px 17px;border-radius:12px;font-size:13px;z-index:100;box-shadow:var(--shadow);transition:.2s;max-width:calc(100% - 30px)}.toast.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
+.login-wrap{min-height:100dvh;display:grid;place-items:center;padding:22px;background:radial-gradient(circle at 15% 10%,#e9edff,transparent 34%),var(--bg)}.login-card{width:min(430px,100%);padding:32px;background:white;border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}.login-card .brand{margin-bottom:32px}.login-card h1{font:800 28px/1.2 Manrope,sans-serif;letter-spacing:-1px;margin:0 0 10px}.login-card>p{color:var(--muted);font-size:14px;line-height:1.7;margin:0 0 24px}.login-card .field{margin-bottom:15px}.login-card .btn{width:100%;margin-top:6px}.login-error{color:var(--red);font-size:12px;margin-top:12px}.login-note{font-size:11px;color:#9aa3b5;line-height:1.6;margin-top:20px}
+@media(max-width:900px){.demo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.filters .searchwrap{grid-column:1/-1}.hero-row{align-items:flex-start}.hero-stat{min-width:110px}}
+@media(max-width:600px){.shell{padding:0 16px 45px}.topbar{height:72px}.brandmark{width:42px;height:42px;border-radius:14px}.brandname{font-size:16px}.brandcaption{font-size:11px}.pill{padding:8px 10px;font-size:11px}.hero{margin-top:22px;padding:25px 23px;border-radius:23px}.hero-row{display:block}.hero h1{font-size:31px;letter-spacing:-1.2px}.hero p{font-size:13px}.hero-stat{display:inline-block;margin-top:20px;padding:10px 14px}.hero-stat strong{font-size:22px}.toolbar{align-items:flex-start;flex-direction:column}.toolbar-actions{width:100%}.toolbar-actions .btn{flex:1}.filters{grid-template-columns:1fr 1fr;gap:9px}.filters .searchwrap{grid-column:1/-1}.filters .select{font-size:16px}.demo-grid{grid-template-columns:1fr;gap:12px}.demo-card{padding:18px;border-radius:19px}.card-desc{min-height:0}.footer{align-items:flex-start;flex-direction:column}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.modal{padding:20px;border-radius:21px}.login-card{padding:25px}.top-actions .pill .hide-mobile{display:none}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="loginView" class="login-wrap">
+  <section class="login-card">
+    <a class="brand" href="#" aria-label="Lagos Web Studio">
+      <span class="brandmark">LW</span><span><span class="brandname">Lagos Web Studio</span><span class="brandcaption" style="display:block">Personal demo library</span></span>
+    </a>
+    <div class="eyebrow" style="color:var(--blue)">PRIVATE WORKSPACE</div>
+    <h1 style="margin-top:10px">Your demos, organised.</h1>
+    <p>Keep your demo links, notes, categories and statuses together in one simple workspace.</p>
+    <form id="loginForm">
+      <div class="field"><label for="workspacePassword">Workspace password</label><input class="input" id="workspacePassword" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
+      <button class="btn btn-primary" type="submit">Unlock workspace</button>
+      <div id="loginError" class="login-error hidden">That password doesn't match. Try again.</div>
+    </form>
+    <div class="notice"><strong>Local demo gate:</strong> this password screen is a convenience gate, not secure authentication. GitHub Pages files are public, so do not store secrets here.</div>
+    <div class="login-note">Your demo list is saved in this browser. Use Export backup before changing devices or clearing browser data.</div>
+  </section>
+</div>
+<div id="appView" class="hidden">
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Lagos Web Studio home"><span class="brandmark">LW</span><span><span class="brandname">Lagos Web Studio</span><span class="brandcaption" style="display:block">Demo manager</span></span></a>
+      <div class="top-actions"><span class="pill"><span class="avatar">D</span><span class="hide-mobile">Private demo library</span></span><button class="btn" id="lockBtn" type="button">Lock</button></div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-row"><div><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><h1>Every demo. One clear view.</h1><p>A simple place to organise your demo links, open projects quickly, and keep track of what is live, in progress or paused.</p></div><div class="hero-stat"><strong id="totalCount">1</strong><span>Saved demos</span></div></div>
+      </section>
+      <section class="toolbar">
+        <div><h2 class="section-title">Demo library</h2><div class="section-sub">Manage your demos without editing this page's code.</div></div>
+        <div class="toolbar-actions"><button class="btn" id="exportBtn" type="button">Export backup</button><button class="btn" id="importBtn" type="button">Import backup</button><button class="btn btn-primary" id="addBtn" type="button">＋ Add demo</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div>
+      </section>
+      <section class="filters" aria-label="Demo filters">
+        <div class="searchwrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="searchInput" class="input" type="search" placeholder="Search demos, notes or technologies…" aria-label="Search demos"></div>
+        <select id="categoryFilter" class="select" aria-label="Filter by category"><option value="">All categories</option></select>
+        <select id="statusFilter" class="select" aria-label="Filter by status"><option value="">All statuses</option><option>Live</option><option>In progress</option><option>Paused</option><option>Archived</option></select>
+      </section>
+      <section id="demoGrid" class="demo-grid" aria-live="polite"></section>
+      <footer class="footer"><span><strong>Lagos Web Studio</strong> · Personal demo manager</span><span id="savedLabel">Saved in this browser</span></footer>
+    </main>
+  </div>
+</div>
+<div class="modal-backdrop" id="demoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <form class="modal" id="demoForm">
+    <div class="modal-head"><div><h2 id="modalTitle">Add a demo</h2><p>Save the links and details you want to remember.</p></div><button type="button" class="close" id="closeModal" aria-label="Close dialog">×</button></div>
+    <input id="demoId" type="hidden">
+    <div class="form-grid">
+      <div class="field full"><label for="demoName">Demo name *</label><input id="demoName" class="input" maxlength="80" placeholder="e.g. LF Studio" required></div>
+      <div class="field full"><label for="demoDescription">Short description</label><textarea id="demoDescription" class="textarea" maxlength="400" placeholder="What does this demo do?"></textarea></div>
+      <div class="field full"><label for="demoUrl">Live demo URL *</label><input id="demoUrl" class="input" type="url" placeholder="https://example.github.io/demo" required></div>
+      <div class="field full"><label for="demoSource">Source repository URL (optional)</label><input id="demoSource" class="input" type="url" placeholder="https://github.com/username/repository"></div>
+      <div class="field"><label for="demoCategory">Category</label><input id="demoCategory" class="input" maxlength="40" placeholder="Web app, tool…"></div>
+      <div class="field"><label for="demoStatus">Status</label><select id="demoStatus" class="select"><option>Live</option><option>In progress</option><option>Paused</option><option>Archived</option></select></div>
+      <div class="field full"><label for="demoTech">Technologies (comma-separated)</label><input id="demoTech" class="input" maxlength="180" placeholder="HTML, CSS, JavaScript"></div>
+      <div class="field full"><label for="demoNotes">Private notes for this browser</label><textarea id="demoNotes" class="textarea" maxlength="1000" placeholder="Next task, known issues, test notes…"></textarea></div>
+    </div>
+    <div class="modal-actions"><button class="btn" id="cancelModal" type="button">Cancel</button><button class="btn btn-primary" type="submit">Save demo</button></div>
+  </form>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function(){
+'use strict';
+const STORE='lws_demo_manager_v1';
+const PASSKEY='lws_demo_manager_password_v1';
+const SESSION='lws_demo_manager_unlocked_v1';
+const defaultDemos=[{
+ id:'lf-studio',name:'LF Studio',description:'Lead intelligence and business prospecting workspace for finding and organising promising business leads.',url:'https://lagoswebstudio.github.io/lf-studio',source:'https://github.com/lagoswebstudio/lagoswebstudio.github.io',category:'Business tools',status:'Live',tech:['HTML','CSS','JavaScript','Apify'],notes:'Existing standalone demo. Confirm the live URL if your repository path differs.',updated:new Date().toISOString()
+}];
+let demos=[];
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const statusClass=status=>status==='Live'?'live':status==='In progress'?'building':status==='Paused'?'paused':'';
+function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}}
+function readDemos(){try{const saved=localStorage.getItem(STORE);if(saved){const parsed=JSON.parse(saved);if(Array.isArray(parsed))return parsed}}catch{}return defaultDemos.map(d=>({...d,tech:[...d.tech]}))}
+function save(){localStorage.setItem(STORE,JSON.stringify(demos));$('savedLabel').textContent='Saved in this browser · '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});render()}
+function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2600)}
+function openApp(){ $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');render(); }
+function lockApp(){sessionStorage.removeItem(SESSION);$('appView').classList.add('hidden');$('loginView').classList.remove('hidden');$('workspacePassword').value='';}
+function setupPassword(){
+ let pass=localStorage.getItem(PASSKEY);
+ if(!pass){pass=prompt('Create a workspace password for this browser. This is a convenience gate only, not secure authentication.');if(pass&&pass.trim()){localStorage.setItem(PASSKEY,pass);return pass}return ''}
+ return pass;
+}
+function renderCategoryFilter(){
+ const current=$('categoryFilter').value;
+ const categories=[...new Set(demos.map(d=>d.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
+ $('categoryFilter').innerHTML='<option value="">All categories</option>'+categories.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');
+ if(categories.includes(current))$('categoryFilter').value=current;
+}
+function render(){
+ const query=$('searchInput').value.trim().toLowerCase(),category=$('categoryFilter').value,status=$('statusFilter').value;
+ const filtered=demos.filter(d=>{
+ const hay=[d.name,d.description,d.category,d.status,d.notes,...(d.tech||[])].join(' ').toLowerCase();
+ return (!query||hay.includes(query))&&(!category||d.category===category)&&(!status||d.status===status);
+ });
+ $('totalCount').textContent=String(demos.length);
+ renderCategoryFilter();
+ const grid=$('demoGrid');
+ if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">⌕</div><h3>No demos found</h3><p>Try another search or filter, or add a demo to your library.</p><button class="btn btn-primary" data-action="add">Add a demo</button></div>';return}
+ grid.innerHTML=filtered.map(d=>{
+ const initial=(d.name||'D').trim().split(/\s+/).slice(0,2).map(s=>s[0]||'').join('').toUpperCase();
+ const tech=(d.tech||[]).slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
+ const url=safeUrl(d.url),source=safeUrl(d.source);
+ return '<article class="demo-card"><div class="card-top"><div class="project-icon">'+esc(initial)+'</div><span class="status '+statusClass(d.status)+'">'+esc(d.status||'Live')+'</span></div><h3 class="card-title">'+esc(d.name)+'</h3><p class="card-desc">'+esc(d.description||'No description added yet.')+'</p><div class="tags">'+(d.category?'<span class="tag">'+esc(d.category)+'</span>':'')+tech+'</div><div class="card-meta"><span>Updated '+esc(new Date(d.updated||Date.now()).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}))+'</span><span>'+(d.notes?'Notes added':'')+'</span></div><div class="card-actions"><a class="btn btn-primary" href="'+esc(url||'#')+'" target="_blank" rel="noopener noreferrer" '+(!url?'aria-disabled="true" onclick="return false"':'')+'>Open demo ↗</a><button class="btn icon-btn" type="button" data-action="edit" data-id="'+esc(d.id)+'" aria-label="Edit '+esc(d.name)+'" title="Edit demo">···</button></div>'+(source?'<div style="margin-top:10px"><a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer" style="font-size:12px;font-weight:700;color:var(--muted);text-decoration:none">View source repository ↗</a></div>':'')+'</article>';
+ }).join('');
+}
+function openModal(d){
+ $('demoForm').reset();$('demoId').value=d?.id||'';$('modalTitle').textContent=d?'Edit demo':'Add a demo';
+ $('demoName').value=d?.name||'';$('demoDescription').value=d?.description||'';$('demoUrl').value=d?.url||'';$('demoSource').value=d?.source||'';
+ $('demoCategory').value=d?.category||'';$('demoStatus').value=d?.status||'Live';$('demoTech').value=(d?.tech||[]).join(', ');$('demoNotes').value=d?.notes||'';
+ $('demoModal').classList.add('open');setTimeout(()=>$('demoName').focus({preventScroll:true}),60);
+}
+function closeModal(){$('demoModal').classList.remove('open')}
+function download(filename,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('loginForm').addEventListener('submit',e=>{
+ e.preventDefault();let stored=localStorage.getItem(PASSKEY);
+ if(!stored){const chosen=$('workspacePassword').value;if(chosen.length<4){$('loginError').textContent='Choose a password with at least 4 characters.';$('loginError').classList.remove('hidden');return}localStorage.setItem(PASSKEY,chosen);stored=chosen}
+ if($('workspacePassword').value===stored){sessionStorage.setItem(SESSION,'yes');$('loginError').classList.add('hidden');openApp()}else{$('loginError').classList.remove('hidden')}
+});
+$('lockBtn').addEventListener('click',lockApp);
+$('addBtn').addEventListener('click',()=>openModal(null));
+$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);
+$('demoModal').addEventListener('click',e=>{if(e.target===$('demoModal'))closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+$('demoForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const name=$('demoName').value.trim(),url=safeUrl($('demoUrl').value.trim()),sourceInput=$('demoSource').value.trim(),source=sourceInput?safeUrl(sourceInput):'';
+ if(!name){toast('Add a demo name first.');return}if(!url){toast('Enter a valid http or https demo URL.');return}if(sourceInput&&!source){toast('Enter a valid source repository URL.');return}
+ const id=$('demoId').value||('demo-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7));
+ const existing=demos.find(d=>d.id===id);
+ const demo={id,name,description:$('demoDescription').value.trim(),url,source,category:$('demoCategory').value.trim()||'Uncategorised',status:$('demoStatus').value,tech:$('demoTech').value.split(',').map(s=>s.trim()).filter(Boolean).slice(0,12),notes:$('demoNotes').value.trim(),updated:new Date().toISOString(),created:existing?.created||new Date().toISOString()};
+ if(existing)demos=demos.map(d=>d.id===id?demo:d);else demos.unshift(demo);
+ save();closeModal();toast(existing?'Demo updated.':'Demo added.');
+});
+$('demoGrid').addEventListener('click',e=>{
+ const button=e.target.closest('[data-action]');if(!button)return;
+ if(button.dataset.action==='add'){openModal(null);return}
+ if(button.dataset.action==='edit'){
+  const d=demos.find(item=>item.id===button.dataset.id);if(!d)return;
+  const choice=prompt('Type EDIT to edit this demo, DELETE to remove it, or CANCEL to close.', 'EDIT');
+  if(!choice)return;
+  if(choice.trim().toUpperCase()==='EDIT')openModal(d);
+  else if(choice.trim().toUpperCase()==='DELETE'&&confirm('Delete "'+d.name+'" from this browser’s demo library?')){demos=demos.filter(item=>item.id!==d.id);save();toast('Demo removed.')}
+ }
+});
+$('searchInput').addEventListener('input',render);$('categoryFilter').addEventListener('change',render);$('statusFilter').addEventListener('change',render);
+$('exportBtn').addEventListener('click',()=>download('lagos-web-studio-demos-backup.json',JSON.stringify({version:1,exportedAt:new Date().toISOString(),demos},null,2),'application/json'));
+$('importBtn').addEventListener('click',()=>$('importFile').click());
+$('importFile').addEventListener('change',async e=>{
+ const file=e.target.files?.[0];if(!file)return;
+ try{const parsed=JSON.parse(await file.text()),items=Array.isArray(parsed)?parsed:parsed.demos;if(!Array.isArray(items))throw new Error('Invalid format');
+ const clean=items.filter(d=>d&&typeof d.name==='string'&&safeUrl(d.url)).map(d=>({...d,id:String(d.id||'demo-'+Math.random().toString(36).slice(2)),name:d.name.slice(0,80),url:safeUrl(d.url),source:safeUrl(d.source||''),tech:Array.isArray(d.tech)?d.tech.filter(t=>typeof t==='string').slice(0,12):[],status:['Live','In progress','Paused','Archived'].includes(d.status)?d.status:'Live',category:String(d.category||'Uncategorised'),description:String(d.description||''),notes:String(d.notes||''),updated:d.updated||new Date().toISOString()}));
+ if(!confirm('Import '+clean.length+' demos? This replaces the current demo list in this browser.'))return;
+ demos=clean;save();toast('Backup imported.');
+ }catch(err){toast('Could not import that JSON backup.')}
+ finally{e.target.value=''}
+});
+demos=readDemos();
+if(sessionStorage.getItem(SESSION)==='yes')openApp();
+})();
+</script>
+</body>
+</html>
