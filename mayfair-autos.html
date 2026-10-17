@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MayFair Autos | Steer yourself to savings</title>
+<meta name="description" content="Quality new and pre-owned cars at honest prices on the Lekki–Epe Expressway, Lagos. Financing and registration handled for you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EEF1F5; --surface:#FFFFFF; --ink:#0E1B33; --muted:#56627A; --line:#D5DBE5;
+  --navy:#0E1B33; --on-navy:#EEF1F5; --tag:#F2A900; --tag-ink:#0E1B33; --slate:#3D5A80;
+  --shadow:0 24px 50px -28px rgba(14,27,51,.45);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0A1426; --surface:#111F38; --ink:#E9EDF3; --muted:#9AA6BC; --line:#22345A;
+    --navy:#14264A; --on-navy:#E9EDF3; --tag:#F5B82A; --tag-ink:#0A1426; --slate:#8FB0DA;
+    --shadow:0 24px 50px -28px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 16.5px/1.6 "Plus Jakarta Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--tag);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+h1,h2,h3{font-family:"Bricolage Grotesque",sans-serif;letter-spacing:-.025em;line-height:1}
+h2{font-size:clamp(34px,5.2vw,60px);font-weight:800;max-width:15ch}
+.lede{color:var(--muted);max-width:54ch;font-size:17.5px}
+.img{background:linear-gradient(135deg,#2a3c5e,#0e1b33);overflow:hidden}
+.img img{width:100%;height:100%;object-fit:cover;color:transparent;font-size:0}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px;padding:15px 24px;border-radius:14px;border:1.5px solid currentColor;cursor:pointer;background:none;transition:transform .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.tag{background:var(–tag);border-color:var(–tag);color:var(–tag-ink)}
+.btn.navy{background:var(–ink);border-color:var(–ink);color:var(–bg)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(–bg) 90%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(–line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{display:flex;align-items:baseline;gap:2px;font:800 24px “Bricolage Grotesque”;letter-spacing:-.03em}
+.logo i{font-style:normal;color:var(–tag)}
+.logo small{font:600 12px “Plus Jakarta Sans”;color:var(–muted);margin-left:10px;letter-spacing:0}
+.links{display:flex;gap:28px;align-items:center;font-weight:600;font-size:15px}
+.links .btn{padding:10px 18px;font-size:14px}
+.menu{display:none;background:none;border:0;cursor:pointer;padding:8px}
+@media(max-width:860px){
+.links{position:absolute;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(–bg);border-bottom:1px solid var(–line);padding:6px 20px 20px;display:none}
+.links.open{display:flex}
+.links a{padding:14px 0;border-bottom:1px solid var(–line);font-size:17px}
+.links .btn{margin-top:14px;border-bottom:0}
+.menu{display:block}
+.logo small{display:none}
+}
+
+/* hero */
+.hero{padding:clamp(28px,5vw,56px) 0 clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,56px);align-items:stretch}
+.hero h1{font-size:clamp(52px,8.6vw,118px);font-weight:800;line-height:.9;letter-spacing:-.045em}
+.hero h1 .u{display:inline-block;position:relative}
+.hero h1 .u::after{content:””;position:absolute;left:0;right:0;bottom:.06em;height:.12em;background:var(–tag);border-radius:4px;transform-origin:left;animation:line 1.1s .4s cubic-bezier(.2,.7,.2,1) both;z-index:-1}
+@keyframes line{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.hero-copy{display:flex;flex-direction:column;gap:26px;justify-content:center}
+.rating{display:flex;align-items:center;gap:14px;font-weight:600}
+.rating b{font:800 34px “Bricolage Grotesque”}
+.rating span{color:var(–muted);font-size:14.5px;line-height:1.35}
+.rating .s{color:var(–tag);letter-spacing:2px}
+.hero-visual{position:relative;border-radius:26px;min-height:520px;box-shadow:var(–shadow)}
+.hero-visual .img{position:absolute;inset:0;border-radius:26px}
+.hero-visual::after{content:””;position:absolute;inset:0;border-radius:26px;background:linear-gradient(180deg,transparent 30%,rgba(10,20,38,.75))}
+
+/* budget dial: the signature */
+.dial{position:absolute;left:18px;right:18px;bottom:18px;z-index:2;background:var(–surface);border-radius:20px;padding:22px;box-shadow:var(–shadow)}
+.dial label{font-weight:700;font-size:14.5px;color:var(–muted)}
+.dial .amt{font:800 clamp(34px,5vw,46px) “Bricolage Grotesque”;letter-spacing:-.03em;margin:4px 0 12px}
+input[type=range]{width:100%;appearance:none;height:8px;border-radius:99px;background:linear-gradient(90deg,var(–tag) var(–p,40%),var(–line) var(–p,40%));outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{appearance:none;width:28px;height:28px;border-radius:50%;background:var(–ink);border:4px solid var(–tag);cursor:grab}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(–ink);border:4px solid var(–tag);cursor:grab}
+.dial-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+.dial-foot p{font-weight:600}
+.dial-foot p b{color:var(–slate)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-visual{min-height:480px}}
+
+/* showroom */
+section{padding:clamp(64px,9vw,120px) 0}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:22px;margin-bottom:34px}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:10px 16px;border-radius:12px;border:1.5px solid var(–line);background:var(–surface);font-weight:600;font-size:14.5px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(–ink);color:var(–bg);border-color:var(–ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.car{background:var(–surface);border-radius:22px;box-shadow:var(–shadow);display:flex;flex-direction:column;position:relative;transition:opacity .3s ease}
+.car .img{aspect-ratio:4/3;border-radius:22px 22px 0 0}
+.car .img img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.car:hover .img img{transform:scale(1.05)}
+.pricetag{position:absolute;top:18px;right:-8px;background:var(–tag);color:var(–tag-ink);font:800 19px “Bricolage Grotesque”;padding:10px 18px 10px 30px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);transform:rotate(3deg);box-shadow:0 10px 20px -10px rgba(0,0,0,.5)}
+.pricetag::before{content:””;position:absolute;left:12px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(–surface)}
+.car-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.car h3{font-size:25px;font-weight:800}
+.car .yr{font-weight:700;color:var(–slate);font-size:14px}
+.specs{display:flex;flex-wrap:wrap;gap:6px}
+.specs span{font-size:13px;font-weight:600;padding:5px 11px;border-radius:8px;background:var(–bg);color:var(–muted)}
+.car .acts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:6px}
+.car .acts .btn{padding:12px 10px;font-size:14px}
+.over{opacity:.38}
+.over .pricetag{background:var(–line);color:var(–muted)}
+.empty{grid-column:1/-1;background:var(–surface);border-radius:22px;padding:32px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.note{font-size:13.5px;color:var(–muted);margin-top:22px}
+
+/* process */
+.process{background:var(–navy);color:var(–on-navy);border-radius:30px;padding:clamp(32px,6vw,76px)}
+.process h2{color:var(–on-navy)}
+.process .lede{color:color-mix(in srgb,var(–on-navy) 75%,transparent);margin-top:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;counter-reset:s}
+.step{border-top:2px solid var(–tag);padding-top:22px}
+.step::before{counter-increment:s;content:counter(s);font:800 54px/1 “Bricolage Grotesque”;color:var(–tag);display:block;margin-bottom:14px}
+.step h3{font-size:24px;font-weight:800;margin-bottom:8px}
+.step p{color:color-mix(in srgb,var(–on-navy) 75%,transparent)}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* trust */
+.trust{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.trust .img{border-radius:26px;aspect-ratio:5/4;box-shadow:var(–shadow)}
+.big{font:800 clamp(96px,14vw,170px)/.85 “Bricolage Grotesque”;letter-spacing:-.05em}
+.big small{font-size:.3em;color:var(–muted);letter-spacing:-.01em}
+.trust p{margin-top:16px}
+@media(max-width:860px){.trust{grid-template-columns:1fr}}
+
+/* visit */
+.visit{display:grid;grid-template-columns:1.1fr 1fr;background:var(–surface);border-radius:30px;overflow:hidden;box-shadow:var(–shadow)}
+.visit .img{min-height:420px}
+.visit-in{padding:clamp(28px,5vw,60px);display:flex;flex-direction:column;gap:22px;justify-content:center}
+.hours{display:grid;gap:6px}
+.hours div{display:flex;justify-content:space-between;border-bottom:1px solid var(–line);padding:8px 0}
+.hours div span:last-child{font-weight:700}
+@media(max-width:860px){.visit{grid-template-columns:1fr}.visit .img{min-height:260px}}
+
+footer{padding:36px 0 120px;color:var(–muted);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;border-top:1px solid var(–line);padding-top:24px}
+@media(min-width:861px){footer{padding-bottom:36px}}
+
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;display:flex;gap:10px;padding:10px;border-radius:18px;background:var(–surface);border:1px solid var(–line);box-shadow:var(–shadow)}
+.bar .btn{flex:1;padding:13px}
+@media(min-width:861px){.bar{display:none}}
+</style>
+
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">MayFair<i>.</i><small>Autos, Lekki</small></a>
+    <button class="menu" id="menu" aria-label="Open menu" aria-expanded="false"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h16M4 16h16"/></svg></button>
+    <div class="links" id="links">
+      <a href="#cars">Cars</a>
+      <a href="#how">How it works</a>
+      <a href="#visit">Visit</a>
+      <a class="btn tag wa" data-msg="Hello MayFair Autos, I'd like to ask about a car.">WhatsApp us</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>Steer yourself to <span class="u">savings.</span></h1>
+      <p class="lede">Quality new and pre-owned cars at prices that make sense. We help you choose, sort the financing, and handle the registration, so you just drive.</p>
+      <div class="rating"><b>4.9</b><span><span class="s">★★★★★</span><br>from 58 Google reviews</span></div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn navy" href="#cars">Browse cars</a>
+        <a class="btn wa" data-msg="Hello MayFair Autos, what's available this week?">Ask what's new</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="img"><img src="https://images.unsplash.com/photo-1650530579355-7ad9d4766043?auto=format&fit=crop&w=1600&q=70" alt="Black Toyota Land Cruiser" fetchpriority="high" onerror="this.remove()"></div>
+      <div class="dial">
+        <label for="budget">Set your budget</label>
+        <div class="amt" id="amt">₦45m</div>
+        <input type="range" id="budget" min="10" max="300" step="5" value="45" aria-describedby="fit">
+        <div class="dial-foot">
+          <p id="fit"><b>2 cars</b> on the lot fit this budget</p>
+          <a class="btn tag" href="#cars" style="padding:11px 16px;font-size:14px">Show me</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="cars" style="padding-top:0">
+  <div class="wrap">
+    <div class="head">
+      <div><h2>On the lot</h2><p class="lede" style="margin-top:14px">Cars above your budget fade out. Tap any car to get photos, the full history, or a test drive.</p></div>
+      <div class="filters" role="group" aria-label="Filter by type">
+        <button class="chip" aria-pressed="true" data-f="all">All</button>
+        <button class="chip" aria-pressed="false" data-f="suv">SUVs</button>
+        <button class="chip" aria-pressed="false" data-f="sedan">Sedans</button>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="note">Preview listings and sample prices. Your real stock and prices go here.</p>
+  </div>
+</section>
+
+<section id="how" style="padding-top:0">
+  <div class="wrap">
+    <div class="process">
+      <h2>Buying a car, minus the stress</h2>
+      <p class="lede">From the first question to the day you collect your keys, one team handles everything.</p>
+      <div class="steps">
+        <div class="step"><h3>Choose the right car</h3><p>Tell us your budget and how you drive. We'll show you options that actually fit, with no pressure to stretch.</p></div>
+        <div class="step"><h3>Sort the financing</h3><p>Paying in full or spreading it out? We'll guide you through the options and the paperwork.</p></div>
+        <div class="step"><h3>Registered and ready</h3><p>We handle the registration and papers, so the car you drive home is fully yours and road-ready.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap trust">
+    <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1581862142388-23e1c52ca091?auto=format&fit=crop&w=1400&q=70" alt="Toyota steering wheel and dashboard" onerror="this.remove()"></div>
+    <div>
+      <div class="big">4.9<small> / 5</small></div>
+      <h2 style="margin-top:18px">Rated by 58 Lagos drivers</h2>
+      <p class="lede">Our customers keep coming back and sending their friends. Read what they say on Google, then come see why.</p>
+      <a class="btn navy" style="margin-top:24px" href="https://www.google.com/maps/search/?api=1&query=MayFair+Autos+Lekki+Epe+Expressway+Lagos" target="_blank" rel="noopener">Read our Google reviews</a>
+    </div>
+  </div>
+</section>
+
+<section id="visit" style="padding-top:0">
+  <div class="wrap">
+    <div class="visit">
+      <div class="img"><img loading="lazy" src="https://images.unsplash.com/photo-1626072557464-90403d788e8d?auto=format&fit=crop&w=1400&q=70" alt="Black Mercedes-Benz parked by green trees" onerror="this.remove()"></div>
+      <div class="visit-in">
+        <h2>Come for a test drive</h2>
+        <p class="lede">Lekki–Epe Expressway, Lekki Peninsula II, Lagos</p>
+        <div class="hours">
+          <div><span>Monday to Saturday</span><span>7am – 6:30pm</span></div>
+          <div><span>Sunday</span><span>Closed</span></div>
+          <div><span>Phone</span><span><a href="tel:+2348147200260">+234 814 720 0260</a></span></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn tag wa" data-msg="Hello MayFair Autos, I'd like to book a test drive.">Book a test drive</a>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&query=MayFair+Autos+Lekki+Epe+Expressway+Lagos" target="_blank" rel="noopener">Directions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 MayFair Autos, Lagos</span><span>Website concept preview</span></div></footer>
+
+<div class="bar"><a class="btn" href="tel:+2348147200260">Call</a><a class="btn tag wa" data-msg="Hello MayFair Autos, I'm interested in a car.">WhatsApp</a></div>
+
+<script>
+const WA="2348147200260",wa=m=>`https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+const U=id=>`https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=1000&q=70`;
+const cars=[
+ {y:"2018",n:"Toyota Land Cruiser",t:"suv",p:85,img:"1650530579355-7ad9d4766043",s:["Foreign used","Automatic","V8"]},
+ {y:"2017",n:"Lexus RX 350",t:"suv",p:38,img:"1657180220872-3cb760683349",s:["Foreign used","Automatic","Clean title"]},
+ {y:"2017",n:"Mercedes-Benz C 300",t:"sedan",p:29,img:"1592309905620-e5b59f6dcb98",s:["Foreign used","Automatic","Low mileage"]},
+ {y:"2017",n:"Nissan Pathfinder",t:"suv",p:24,img:"1617469767053-d3b523a0b982",s:["Nigerian used","Automatic","7 seats"]},
+ {y:"2020",n:"Mercedes-Benz G 63",t:"suv",p:240,img:"1621993202323-f438eec934ff",s:["Foreign used","AMG","Full option"]}
+];
+const grid=document.getElementById('grid'),range=document.getElementById('budget'),amt=document.getElementById('amt'),fit=document.getElementById('fit');
+let type='all';
+const fmt=v=>v>=300?'₦300m+':`₦${v}m`;
+function render(){
+  const b=+range.value, list=cars.filter(c=>type==='all'||c.t===type).sort((a,c)=>a.p-c.p);
+  const n=cars.filter(c=>c.p<=b).length;
+  amt.textContent=fmt(b);
+  fit.innerHTML=`<b>${n} car${n===1?'':'s'}</b> on the lot fit this budget`;
+  range.style.setProperty('--p',((b-10)/290*100)+'%');
+  grid.innerHTML=list.map(c=>`
+  <article class="car ${c.p>b?'over':''}">
+    <div class="img"><img loading="lazy" src="${U(c.img)}" alt="${c.y} ${c.n}" onerror="this.remove()"></div>
+    <div class="pricetag">₦${c.p}m</div>
+    <div class="car-body">
+      <span class="yr">${c.y}</span><h3>${c.n}</h3>
+      <div class="specs">${c.s.map(x=>`<span>${x}</span>`).join('')}</div>
+      <div class="acts">
+        <a class="btn tag" target="_blank" rel="noopener" href="${wa(`Hello, is the ${c.y} ${c.n} (₦${c.p}m) still available? Please send more photos.`)}">Ask price</a>
+        <a class="btn" target="_blank" rel="noopener" href="${wa(`Hello, I'd like to test drive the ${c.y} ${c.n}.`)}">Test drive</a>
+      </div>
+    </div>
+  </article>`).join('') + (list.every(c=>c.p>b)?`<div class="empty"><p><b>Nothing in this range on the lot today.</b> Tell us your budget and we'll find one for you.</p><a class="btn tag" target="_blank" rel="noopener" href="${wa(`Hello MayFair Autos, my budget is around ${fmt(b)}. What can you find for me?`)}">Find me a car</a></div>`:'');
+}
+range.addEventListener('input',render);
+document.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true');type=c.dataset.f;render()});
+document.querySelectorAll('.wa').forEach(a=>{a.href=wa(a.dataset.msg);a.target='_blank';a.rel='noopener'});
+const menu=document.getElementById('menu'),links=document.getElementById('links');
+menu.onclick=()=>menu.setAttribute('aria-expanded',links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+render();
+</script>
+
+</body>
+</html>
