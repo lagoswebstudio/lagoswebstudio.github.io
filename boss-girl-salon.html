@@ -49,7 +49,7 @@ h2 em,h1 em{font-style:italic;color:#B8894A}
 .burger{display:none;width:46px;height:46px;border-radius:50%;border:1.5px solid #EAD7D2;background:#FFFFFF;align-items:center;justify-content:center;cursor:pointer}
 @media(max-width:880px){.navlinks{display:none}.burger{display:flex}}
 .menu{position:fixed;top:0;right:0;bottom:0;left:0;z-index:60;background:#2B0F1E;color:#FBF4F1;display:flex;flex-direction:column;padding:18px 6% 30px;display:none;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.menu.open{display:flex;animation:menuIn .35s ease both}
+.menu:target,.menu.open{display:flex;animation:menuIn .35s ease both}
 @keyframes menuIn{from{opacity:0;-webkit-transform:translateY(-12px);transform:translateY(-12px)}to{opacity:1;-webkit-transform:none;transform:none}}
 .menu .top{display:flex;justify-content:space-between;align-items:center;height:50px}
 .menu .x{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(251,244,241,.3);background:#3D1A2D;color:#FBF4F1;display:flex;align-items:center;justify-content:center;cursor:pointer}
@@ -196,7 +196,7 @@ html,html body{background:#FBF4F1!important;color:#1E0B15!important}
     <a href="#services">Services</a><a href="#headspa">Head spa</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
     <a class="btn plum" href="#book">Book a visit</a>
   </div>
-  <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E0B15" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M8 16h12"/></svg></button>
+  <a href="#menu" class="burger" id="burger" role="button" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E0B15" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M8 16h12"/></svg></a>
 </div></header>
 
 <main>
@@ -340,12 +340,21 @@ html,html body{background:#FBF4F1!important;color:#1E0B15!important}
 </div>
 <div class="menu" id="menu" aria-hidden="true">
   <div class="top"><span class="logo"><b style="color:#FBF4F1">Boss Girl<i>.</i></b></span>
-    <button class="x" id="closeMenu" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <a href="#_" class="x" id="closeMenu" role="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
   <nav><a href="#services">Services</a><a href="#headspa">The head spa</a><a href="#book">Book a visit</a><a href="#reviews">Reviews</a><a href="#visit">Find us</a></nav>
   <div class="foot"><p>21 Ayinde Akinmade St, off Admiralty Way, Lekki Phase 1</p>
     <a class="btn gold wa" data-msg="Hello Boss Girl, I'd like to book an appointment.">Book on WhatsApp</a>
     <a class="btn light" href="tel:+2347039889845">Call 0703 988 9845</a></div>
 </div>
+<script>
+(function(){var m=document.getElementById("menu"),b=document.getElementById("burger"),x=document.getElementById("closeMenu");if(!m||!b)return;
+function open(e){if(e)e.preventDefault();m.classList.add("open");m.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true");document.body.classList.add("lock");}
+function close(e){if(e)e.preventDefault();m.classList.remove("open");m.setAttribute("aria-hidden","true");b.setAttribute("aria-expanded","false");document.body.classList.remove("lock");if(location.hash==="#menu"&&history.replaceState)history.replaceState(null,"",location.pathname+location.search);}
+b.addEventListener("click",open);if(x)x.addEventListener("click",close);
+var links=m.querySelectorAll("nav a, .foot a");for(var i=0;i<links.length;i++)links[i].addEventListener("click",function(){close();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});window.closeMenuFn=close;})();
+</script>
+
 <script>
 var WA="2347039889845";
 function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
@@ -353,55 +362,51 @@ document.querySelectorAll(".wa").forEach(function(a){a.href=wa(a.getAttribute("d
 
 /* hours: Mon-Sat 9am-9pm, Sun 1pm-9pm (Lagos) */
 var H={0:[13,21],1:[9,21],2:[9,21],3:[9,21],4:[9,21],5:[9,21],6:[9,21]};
-var DN=[“Sunday”,“Monday”,“Tuesday”,“Wednesday”,“Thursday”,“Friday”,“Saturday”];
+var DN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 function lagosNow(){var n=new Date();return new Date(n.getTime()+n.getTimezoneOffset()*60000+3600000);}
-function f12(h){return (h%12||12)+(h<12?“am”:“pm”);}
+function f12(h){return (h%12||12)+(h<12?"am":"pm");}
 (function(){
-var l=lagosNow(),d=l.getDay(),hr=l.getHours()+l.getMinutes()/60,el=document.getElementById(“openNow”),on=hr>=H[d][0]&&hr<H[d][1];
-el.className=“opennow”+(on?” on”:””);el.lastChild.textContent=on?“Open now until 9pm”:“Closed now, opens “+(hr<H[d][0]?f12(H[d][0])+” today”:f12(H[(d+1)%7][0])+” tomorrow”);
-var html=””;[1,2,3,4,5,6,0].forEach(function(i){html+=’<div class=”’+(i===d?“today”:””)+’”><span>’+DN[i]+’</span><span>’+f12(H[i][0])+” – “+f12(H[i][1])+’</span></div>’;});
-document.getElementById(“hours”).innerHTML=html;
+  var l=lagosNow(),d=l.getDay(),hr=l.getHours()+l.getMinutes()/60,el=document.getElementById("openNow"),on=hr>=H[d][0]&&hr<H[d][1];
+  el.className="opennow"+(on?" on":"");el.lastChild.textContent=on?"Open now until 9pm":"Closed now, opens "+(hr<H[d][0]?f12(H[d][0])+" today":f12(H[(d+1)%7][0])+" tomorrow");
+  var html="";[1,2,3,4,5,6,0].forEach(function(i){html+='<div class="'+(i===d?"today":"")+'"><span>'+DN[i]+'</span><span>'+f12(H[i][0])+" – "+f12(H[i][1])+'</span></div>';});
+  document.getElementById("hours").innerHTML=html;
 })();
 
 /* booking builder */
-var S={svc:null,day:null,time:null},services=[“Head spa ritual”,“Braids & styling”,“Wig install & care”,“Wash & blow-dry”,“Nails, makeup or massage”];
-var svcOpts=document.getElementById(“svcOpts”),daysEl=document.getElementById(“days”),slotsEl=document.getElementById(“slots”),sum=document.getElementById(“summary”),send=document.getElementById(“send”);
-services.forEach(function(s){var b=document.createElement(“button”);b.className=“opt”;b.textContent=s;b.setAttribute(“aria-pressed”,“false”);b.onclick=function(){pickSvc(s);};svcOpts.appendChild(b);});
-function pickSvc(s){S.svc=s;svcOpts.querySelectorAll(”.opt”).forEach(function(b){b.setAttribute(“aria-pressed”,b.textContent===s?“true”:“false”);});update();}
+var S={svc:null,day:null,time:null},services=["Head spa ritual","Braids & styling","Wig install & care","Wash & blow-dry","Nails, makeup or massage"];
+var svcOpts=document.getElementById("svcOpts"),daysEl=document.getElementById("days"),slotsEl=document.getElementById("slots"),sum=document.getElementById("summary"),send=document.getElementById("send");
+services.forEach(function(s){var b=document.createElement("button");b.className="opt";b.textContent=s;b.setAttribute("aria-pressed","false");b.onclick=function(){pickSvc(s);};svcOpts.appendChild(b);});
+function pickSvc(s){S.svc=s;svcOpts.querySelectorAll(".opt").forEach(function(b){b.setAttribute("aria-pressed",b.textContent===s?"true":"false");});update();}
 var base=lagosNow(),dayList=[];
 for(var i=0;i<10;i++){var dd=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i);dayList.push(dd);}
-dayList.forEach(function(dd,i){var b=document.createElement(“button”);b.className=“day”;b.setAttribute(“aria-pressed”,“false”);
-b.innerHTML=”<small>”+(i===0?“Today”:i===1?“Tmrw”:DN[dd.getDay()].slice(0,3))+”</small><b>”+dd.getDate()+”</b>”;
-b.onclick=function(){S.day=dd;S.time=null;daysEl.querySelectorAll(”.day”).forEach(function(x){x.setAttribute(“aria-pressed”,“false”);});b.setAttribute(“aria-pressed”,“true”);renderSlots();update();};daysEl.appendChild(b);});
+dayList.forEach(function(dd,i){var b=document.createElement("button");b.className="day";b.setAttribute("aria-pressed","false");
+  b.innerHTML="<small>"+(i===0?"Today":i===1?"Tmrw":DN[dd.getDay()].slice(0,3))+"</small><b>"+dd.getDate()+"</b>";
+  b.onclick=function(){S.day=dd;S.time=null;daysEl.querySelectorAll(".day").forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");renderSlots();update();};daysEl.appendChild(b);});
 function renderSlots(){
-slotsEl.innerHTML=””;if(!S.day){slotsEl.innerHTML=’<p style="grid-column:1/-1;color:#7A5A68;font-size:14px">Pick a day to see times.</p>’;return;}
-var h=H[S.day.getDay()],now=lagosNow(),isToday=S.day.toDateString()===new Date(now.getFullYear(),now.getMonth(),now.getDate()).toDateString(),count=0;
-for(var t=h[0];t<=h[1]-2;t++){
-if(isToday&&t<=now.getHours())continue;count++;
-(function(t){var b=document.createElement(“button”);b.className=“slot”;b.textContent=f12(t);b.setAttribute(“aria-pressed”,“false”);
-b.onclick=function(){S.time=f12(t);slotsEl.querySelectorAll(”.slot”).forEach(function(x){x.setAttribute(“aria-pressed”,“false”);});b.setAttribute(“aria-pressed”,“true”);update();};slotsEl.appendChild(b);})(t);
-}
-if(!count)slotsEl.innerHTML=’<p style="grid-column:1/-1;color:#7A5A68;font-size:14px">No more times today. Pick another day.</p>’;
+  slotsEl.innerHTML="";if(!S.day){slotsEl.innerHTML='<p style="grid-column:1/-1;color:#7A5A68;font-size:14px">Pick a day to see times.</p>';return;}
+  var h=H[S.day.getDay()],now=lagosNow(),isToday=S.day.toDateString()===new Date(now.getFullYear(),now.getMonth(),now.getDate()).toDateString(),count=0;
+  for(var t=h[0];t<=h[1]-2;t++){
+    if(isToday&&t<=now.getHours())continue;count++;
+    (function(t){var b=document.createElement("button");b.className="slot";b.textContent=f12(t);b.setAttribute("aria-pressed","false");
+      b.onclick=function(){S.time=f12(t);slotsEl.querySelectorAll(".slot").forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");update();};slotsEl.appendChild(b);})(t);
+  }
+  if(!count)slotsEl.innerHTML='<p style="grid-column:1/-1;color:#7A5A68;font-size:14px">No more times today. Pick another day.</p>';
 }
 function update(){
-if(S.svc&&S.day&&S.time){sum.innerHTML=”<b>”+S.svc+”</b>, “+DN[S.day.getDay()]+” “+S.day.getDate()+” at <b>”+S.time+”</b>”;}
-else sum.textContent=!S.svc?“Choose a service, day and time.”:!S.day?“Now pick a day.”:“Now pick a time.”;
+  if(S.svc&&S.day&&S.time){sum.innerHTML="<b>"+S.svc+"</b>, "+DN[S.day.getDay()]+" "+S.day.getDate()+" at <b>"+S.time+"</b>";}
+  else sum.textContent=!S.svc?"Choose a service, day and time.":!S.day?"Now pick a day.":"Now pick a time.";
 }
-send.addEventListener(“click”,function(e){
-if(!(S.svc&&S.day&&S.time)){e.preventDefault();sum.innerHTML=’<b style="color:#5C1F3D">Please pick a service, day and time first.</b>’;return;}
-var n=document.getElementById(“name”).value.trim();
-send.href=wa(“Hello Boss Girl”+(n?”, this is “+n:””)+”. I’d like to book: “+S.svc+” on “+DN[S.day.getDay()]+” “+S.day.getDate()+” at “+S.time+”. Is that available?”);
-send.target=”_blank”;
+send.addEventListener("click",function(e){
+  if(!(S.svc&&S.day&&S.time)){e.preventDefault();sum.innerHTML='<b style="color:#5C1F3D">Please pick a service, day and time first.</b>';return;}
+  var n=document.getElementById("name").value.trim();
+  send.href=wa("Hello Boss Girl"+(n?", this is "+n:"")+". I'd like to book: "+S.svc+" on "+DN[S.day.getDay()]+" "+S.day.getDate()+" at "+S.time+". Is that available?");
+  send.target="_blank";
 });
-document.querySelectorAll(”[data-pick]”).forEach(function(a){a.addEventListener(“click”,function(){pickSvc(a.getAttribute(“data-pick”));});});
+document.querySelectorAll("[data-pick]").forEach(function(a){a.addEventListener("click",function(){pickSvc(a.getAttribute("data-pick"));});});
 renderSlots();
 
-/* menu + bar */
-var menu=document.getElementById(“menu”),burger=document.getElementById(“burger”);
-function om(){menu.classList.add(“open”);menu.setAttribute(“aria-hidden”,“false”);burger.setAttribute(“aria-expanded”,“true”);document.body.classList.add(“lock”);}
-function cm(){menu.classList.remove(“open”);menu.setAttribute(“aria-hidden”,“true”);burger.setAttribute(“aria-expanded”,“false”);document.body.classList.remove(“lock”);}
-burger.onclick=om;document.getElementById(“closeMenu”).onclick=cm;menu.querySelectorAll(“a”).forEach(function(a){a.addEventListener(“click”,cm);});
-var bar=document.getElementById(“bar”);window.addEventListener(“scroll”,function(){bar.classList.toggle(“show”,window.scrollY>window.innerHeight*.7);},{passive:true});
+
+var bar=document.getElementById("bar");window.addEventListener("scroll",function(){bar.classList.toggle("show",window.scrollY>window.innerHeight*.7);},{passive:true});
 </script>
 
 </body>
