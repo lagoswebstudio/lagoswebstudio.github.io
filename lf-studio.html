@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -45,19 +44,19 @@ h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;lette
 .tabbar button.on{color:#2952FF;background:#EAEFFF}
 .dot{position:absolute;top:2px;right:calc(50% - 20px);min-width:18px;height:18px;border-radius:9px;background:#D93636;color:#FFFFFF;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 5px}
 @media(min-width:960px){
-.shell{display:flex;min-height:100vh}
-.side{display:flex;flex-direction:column;width:250px;flex:none;background:#FFFFFF;border-right:1px solid #E6E8EE;padding:22px 16px;position:sticky;top:0;height:100vh}
-.side nav{display:grid;gap:4px;margin-top:28px}
-.side nav button{display:flex;align-items:center;gap:12px;border:0;background:transparent;padding:11px 12px;border-radius:12px;font-weight:600;color:#4B5563;text-align:left;position:relative}
-.side nav button svg{width:20px;height:20px}
-.side nav button.on{background:#EAEFFF;color:#2952FF}
-.side nav .dot{position:static;margin-left:auto}
-.side .credit{margin-top:auto;justify-content:space-between}
-.side .credit i{width:90px}
-.content{flex:1;min-width:0}
-.topbar{display:none}
-.tabbar{display:none}
-.main{padding:32px 32px 60px}
+  .shell{display:flex;min-height:100vh}
+  .side{display:flex;flex-direction:column;width:250px;flex:none;background:#FFFFFF;border-right:1px solid #E6E8EE;padding:22px 16px;position:sticky;top:0;height:100vh}
+  .side nav{display:grid;gap:4px;margin-top:28px}
+  .side nav button{display:flex;align-items:center;gap:12px;border:0;background:transparent;padding:11px 12px;border-radius:12px;font-weight:600;color:#4B5563;text-align:left;position:relative}
+  .side nav button svg{width:20px;height:20px}
+  .side nav button.on{background:#EAEFFF;color:#2952FF}
+  .side nav .dot{position:static;margin-left:auto}
+  .side .credit{margin-top:auto;justify-content:space-between}
+  .side .credit i{width:90px}
+  .content{flex:1;min-width:0}
+  .topbar{display:none}
+  .tabbar{display:none}
+  .main{padding:32px 32px 60px}
 }
 
 /* COMMON */
@@ -68,7 +67,7 @@ h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;lette
 .stack{display:grid;gap:12px}
 .label{display:block;font-size:12.5px;font-weight:700;color:#4B5563;margin-bottom:6px}
 .inp,.sel,.txt{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #E6E8EE;background:#F6F7F9;font-size:16px;-webkit-appearance:none;appearance:none}
-.sel{background-image:url(“data:image/svg+xml,%3Csvg xmlns=‘http://www.w3.org/2000/svg’ width=‘12’ height=‘8’ viewBox=‘0 0 12 8’%3E%3Cpath d=‘M1 1l5 5 5-5’ stroke=’%234B5563’ stroke-width=‘2’ fill=‘none’/%3E%3C/svg%3E”);background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B5563' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .txt{min-height:90px;resize:vertical}
 .inp:focus,.sel:focus,.txt:focus{border-color:#2952FF;background:#FFFFFF;outline:none}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -92,7 +91,7 @@ h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;lette
 .between{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .switch{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:14px}
 .tog{width:46px;height:28px;border-radius:999px;background:#E6E8EE;border:0;position:relative;flex:none;transition:background .2s ease}
-.tog:after{content:””;position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s ease}
+.tog:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s ease}
 .tog.on{background:#2952FF}
 .tog.on:after{left:21px}
 
@@ -190,7 +189,6 @@ h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;lette
 .alert.err{background:#FDECEC;color:#8E1B1B;border:1px solid #F6C8C8}
 .alert.ok{background:#E3F7EE;color:#0B5E3A;border:1px solid #BDE9D3}
 </style>
-
 </head>
 <body>
 <div id="app">
@@ -207,103 +205,100 @@ h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;lette
     </header>
     <main class="main">
 
-```
-  <!-- FIND -->
-  <section id="v-find">
-    <div class="h"><div><h1>Find leads</h1><p>Businesses on Google Maps with no website, ready to pitch.</p></div></div>
-    <div id="setupBox" class="setup hide">
-      <h2>Connect your free Apify account</h2>
-      <p>One-time setup, about 3 minutes. No card needed.</p>
-      <div class="steps">
-        <div class="step"><b>1</b><span>Open <a href="https://console.apify.com/sign-up" target="_blank" rel="noopener">apify.com sign-up</a> and choose <strong>Continue with Google</strong>.</span></div>
-        <div class="step"><b>2</b><span>Pick the <strong>Free</strong> plan and skip any upgrade offers.</span></div>
-        <div class="step"><b>3</b><span>Open <a href="https://console.apify.com/settings/integrations" target="_blank" rel="noopener">Settings → API &amp; Integrations</a> and copy your <strong>Personal API token</strong>.</span></div>
-        <div class="step"><b>4</b><span>Paste it below and tap <strong>Connect</strong>.</span></div>
-      </div>
-      <div class="stack">
-        <input class="inp" id="setupToken" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
-        <button class="btn pri block" id="setupConnect" type="button">Connect</button>
-        <div id="setupMsg"></div>
-      </div>
-    </div>
-
-    <div id="findBox" class="stack">
-      <div class="card stack">
-        <div><span class="label">Business type</span><input class="inp" id="q" placeholder="e.g. barbershop, car dealer" value="barbershop"></div>
-        <div class="chips" id="nicheChips"></div>
-        <div><span class="label">Area</span><input class="inp" id="area" placeholder="e.g. Lekki Phase 1, Lagos" value="Lekki Phase 1, Lagos"></div>
-        <div class="chips" id="areaChips"></div>
-        <div class="row2">
-          <div><span class="label">Min rating</span><select class="sel" id="minR"><option value="0">Any</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div>
-          <div><span class="label">Min reviews</span><select class="sel" id="minN"><option value="0">Any</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div>
+      <!-- FIND -->
+      <section id="v-find">
+        <div class="h"><div><h1>Find leads</h1><p>Businesses on Google Maps with no website, ready to pitch.</p></div></div>
+        <div id="setupBox" class="setup hide">
+          <h2>Connect your free Apify account</h2>
+          <p>One-time setup, about 3 minutes. No card needed.</p>
+          <div class="steps">
+            <div class="step"><b>1</b><span>Open <a href="https://console.apify.com/sign-up" target="_blank" rel="noopener">apify.com sign-up</a> and choose <strong>Continue with Google</strong>.</span></div>
+            <div class="step"><b>2</b><span>Pick the <strong>Free</strong> plan and skip any upgrade offers.</span></div>
+            <div class="step"><b>3</b><span>Open <a href="https://console.apify.com/settings/integrations" target="_blank" rel="noopener">Settings → API &amp; Integrations</a> and copy your <strong>Personal API token</strong>.</span></div>
+            <div class="step"><b>4</b><span>Paste it below and tap <strong>Connect</strong>.</span></div>
+          </div>
+          <div class="stack">
+            <input class="inp" id="setupToken" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            <button class="btn pri block" id="setupConnect" type="button">Connect</button>
+            <div id="setupMsg"></div>
+          </div>
         </div>
-        <div>
-          <div class="between"><span class="label" style="margin:0">Businesses to scan</span><b id="sizeVal">40</b></div>
-          <input class="range" id="size" type="range" min="10" max="80" step="10" value="40" style="margin-top:10px">
-          <p class="muted" id="costNote" style="margin-top:6px"></p>
+
+        <div id="findBox" class="stack">
+          <div class="card stack">
+            <div><span class="label">Business type</span><input class="inp" id="q" placeholder="e.g. barbershop, car dealer" value="barbershop"></div>
+            <div class="chips" id="nicheChips"></div>
+            <div><span class="label">Area</span><input class="inp" id="area" placeholder="e.g. Lekki Phase 1, Lagos" value="Lekki Phase 1, Lagos"></div>
+            <div class="chips" id="areaChips"></div>
+            <div class="row2">
+              <div><span class="label">Min rating</span><select class="sel" id="minR"><option value="0">Any</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div>
+              <div><span class="label">Min reviews</span><select class="sel" id="minN"><option value="0">Any</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div>
+            </div>
+            <div>
+              <div class="between"><span class="label" style="margin:0">Businesses to scan</span><b id="sizeVal">40</b></div>
+              <input class="range" id="size" type="range" min="10" max="80" step="10" value="40" style="margin-top:10px">
+              <p class="muted" id="costNote" style="margin-top:6px"></p>
+            </div>
+            <div class="switch"><span>Include Instagram/Facebook-only listings</span><button class="tog on" id="incSocial" type="button" aria-pressed="true" aria-label="Include social-only listings"></button></div>
+            <button class="btn pri block" id="go" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Find businesses with no website</button>
+          </div>
+          <div id="progBox" class="prog hide">
+            <div class="between"><b id="progTitle">Scanning Google Maps</b><span class="muted" id="progTime">0s</span></div>
+            <div class="bar"><span></span></div>
+            <div class="plist" id="progList"></div>
+            <button class="btn block" id="cancel" type="button" style="margin-top:12px">Cancel search</button>
+          </div>
+          <div id="findMsg"></div>
+          <div id="lastResult"></div>
         </div>
-        <div class="switch"><span>Include Instagram/Facebook-only listings</span><button class="tog on" id="incSocial" type="button" aria-pressed="true" aria-label="Include social-only listings"></button></div>
-        <button class="btn pri block" id="go" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Find businesses with no website</button>
-      </div>
-      <div id="progBox" class="prog hide">
-        <div class="between"><b id="progTitle">Scanning Google Maps</b><span class="muted" id="progTime">0s</span></div>
-        <div class="bar"><span></span></div>
-        <div class="plist" id="progList"></div>
-        <button class="btn block" id="cancel" type="button" style="margin-top:12px">Cancel search</button>
-      </div>
-      <div id="findMsg"></div>
-      <div id="lastResult"></div>
-    </div>
-  </section>
+      </section>
 
-  <!-- LEADS -->
-  <section id="v-leads" class="hide">
-    <div class="h"><div><h1>Leads</h1><p id="leadsSub">Tap a lead for details, notes and status.</p></div></div>
-    <div class="chips" id="statusChips" style="margin-bottom:10px"></div>
-    <div class="toolbar">
-      <input class="inp" id="filterText" placeholder="Search name, area, type">
-      <select class="sel" id="sortBy" style="width:auto"><option value="score">Best first</option><option value="reviews">Most reviews</option><option value="rating">Top rated</option><option value="recent">Newest</option><option value="name">A–Z</option></select>
-    </div>
-    <div class="list" id="leadList"></div>
-  </section>
+      <!-- LEADS -->
+      <section id="v-leads" class="hide">
+        <div class="h"><div><h1>Leads</h1><p id="leadsSub">Tap a lead for details, notes and status.</p></div></div>
+        <div class="chips" id="statusChips" style="margin-bottom:10px"></div>
+        <div class="toolbar">
+          <input class="inp" id="filterText" placeholder="Search name, area, type">
+          <select class="sel" id="sortBy" style="width:auto"><option value="score">Best first</option><option value="reviews">Most reviews</option><option value="rating">Top rated</option><option value="recent">Newest</option><option value="name">A–Z</option></select>
+        </div>
+        <div class="list" id="leadList"></div>
+      </section>
 
-  <!-- STATS -->
-  <section id="v-stats" class="hide">
-    <div class="h"><div><h1>Progress</h1><p>Your outreach at a glance.</p></div></div>
-    <div class="stack">
-      <div class="kpis" id="kpis"></div>
-      <div class="card"><h3 style="font-size:16px;margin-bottom:12px">Pipeline</h3><div class="funnel" id="funnel"></div></div>
-      <div class="card"><div class="between" style="margin-bottom:6px"><h3 style="font-size:16px">Recent searches</h3><span class="muted">Tap to run again</span></div><div class="hist" id="hist"></div></div>
-    </div>
-  </section>
+      <!-- STATS -->
+      <section id="v-stats" class="hide">
+        <div class="h"><div><h1>Progress</h1><p>Your outreach at a glance.</p></div></div>
+        <div class="stack">
+          <div class="kpis" id="kpis"></div>
+          <div class="card"><h3 style="font-size:16px;margin-bottom:12px">Pipeline</h3><div class="funnel" id="funnel"></div></div>
+          <div class="card"><div class="between" style="margin-bottom:6px"><h3 style="font-size:16px">Recent searches</h3><span class="muted">Tap to run again</span></div><div class="hist" id="hist"></div></div>
+        </div>
+      </section>
 
-  <!-- SETTINGS -->
-  <section id="v-settings" class="hide">
-    <div class="h"><div><h1>Settings</h1><p>Your Apify connection and data.</p></div></div>
-    <div class="stack">
-      <div class="card stack">
-        <h3 style="font-size:16px">Apify connection</h3>
-        <div id="acctInfo" class="muted">Not connected.</div>
-        <input class="inp" id="tokenIn" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
-        <div class="row2"><button class="btn dark" id="saveToken" type="button">Save &amp; test</button><button class="btn" id="removeToken" type="button">Disconnect</button></div>
-        <div id="tokenMsg"></div>
-      </div>
-      <div class="card stack">
-        <h3 style="font-size:16px">Follow-ups</h3>
-        <div><span class="label">Remind me to follow up after</span><select class="sel" id="fuDays"><option value="2">2 days</option><option value="3" selected>3 days</option><option value="5">5 days</option><option value="7">7 days</option></select></div>
-      </div>
-      <div class="card stack">
-        <h3 style="font-size:16px">Your data</h3>
-        <p class="muted">Leads are stored on this phone only. Back up before clearing your browser or switching phones.</p>
-        <div class="row2"><button class="btn" id="exportCsv" type="button">Export CSV</button><button class="btn" id="backup" type="button">Backup file</button></div>
-        <label class="btn" style="position:relative;overflow:hidden">Restore backup<input type="file" id="restore" accept=".json,application/json" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0"></label>
-        <button class="btn" id="wipe" type="button" style="color:#B42323">Delete all leads</button>
-      </div>
-    </div>
-  </section>
-</main>
-```
-
+      <!-- SETTINGS -->
+      <section id="v-settings" class="hide">
+        <div class="h"><div><h1>Settings</h1><p>Your Apify connection and data.</p></div></div>
+        <div class="stack">
+          <div class="card stack">
+            <h3 style="font-size:16px">Apify connection</h3>
+            <div id="acctInfo" class="muted">Not connected.</div>
+            <input class="inp" id="tokenIn" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
+            <div class="row2"><button class="btn dark" id="saveToken" type="button">Save &amp; test</button><button class="btn" id="removeToken" type="button">Disconnect</button></div>
+            <div id="tokenMsg"></div>
+          </div>
+          <div class="card stack">
+            <h3 style="font-size:16px">Follow-ups</h3>
+            <div><span class="label">Remind me to follow up after</span><select class="sel" id="fuDays"><option value="2">2 days</option><option value="3" selected>3 days</option><option value="5">5 days</option><option value="7">7 days</option></select></div>
+          </div>
+          <div class="card stack">
+            <h3 style="font-size:16px">Your data</h3>
+            <p class="muted">Leads are stored on this phone only. Back up before clearing your browser or switching phones.</p>
+            <div class="row2"><button class="btn" id="exportCsv" type="button">Export CSV</button><button class="btn" id="backup" type="button">Backup file</button></div>
+            <label class="btn" style="position:relative;overflow:hidden">Restore backup<input type="file" id="restore" accept=".json,application/json" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0"></label>
+            <button class="btn" id="wipe" type="button" style="color:#B42323">Delete all leads</button>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
 </div>
 
@@ -478,47 +473,45 @@ function openLead(id){var l=S.leads[id];if(!l)return;
   '<span class="label">Status</span><div class="status-grid" id="stGrid">'+STATUS.map(function(s){return '<button type="button" data-set="'+s[0]+'" class="'+(l.status===s[0]?"on":"")+'">'+s[1]+'</button>';}).join("")+'</div>'+
   '<div id="wonBox" class="'+(l.status==="won"?"":"hide")+'" style="margin-bottom:12px"><span class="label">Deal value (₦)</span><input class="inp" id="dealVal" inputmode="numeric" placeholder="e.g. 200000" value="'+(l.value||"")+'"></div>'+
   '<span class="label">Notes</span><textarea class="txt" id="noteIn" placeholder="e.g. Owner is Mrs Ade, asked for price, follow up Monday">'+esc(l.notes||"")+'</textarea>'+
-
-‘<div class="acts3" style="margin-top:12px"><a class="btn wa" href="https://wa.me/'+l.wa+'" target="_blank" rel="noopener" data-wa="'+esc(l.id)+'">WhatsApp</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a>’+
-‘<button class="btn dark" type="button" data-copy="'+esc(l.id)+'">Copy for Claude</button>’+(l.maps?’<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps</a>’:’<span></span>’)+’</div>’+
-‘<button class="btn block" type="button" id="delLead" style="margin-top:10px;color:#B42323">Remove lead</button>’);
-$(“stGrid”).addEventListener(“click”,function(e){var b=e.target.closest(”[data-set]”);if(!b)return;setStatus(l,b.getAttribute(“data-set”));this.querySelectorAll(“button”).forEach(function(x){x.classList.toggle(“on”,x===b);});$(“wonBox”).classList.toggle(“hide”,l.status!==“won”);toast(“Status: “+statusName(l.status));});
-$(“noteIn”).addEventListener(“input”,function(){l.notes=this.value;save();});
-$(“dealVal”).addEventListener(“input”,function(){l.value=+digits(this.value)||0;save();});
-$(“delLead”).addEventListener(“click”,function(){if(confirm(“Remove “+l.name+”?”)){delete S.leads[l.id];save();closeSheet();toast(“Lead removed”);}});
+  '<div class="acts3" style="margin-top:12px"><a class="btn wa" href="https://wa.me/'+l.wa+'" target="_blank" rel="noopener" data-wa="'+esc(l.id)+'">WhatsApp</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a>'+
+  '<button class="btn dark" type="button" data-copy="'+esc(l.id)+'">Copy for Claude</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps</a>':'<span></span>')+'</div>'+
+  '<button class="btn block" type="button" id="delLead" style="margin-top:10px;color:#B42323">Remove lead</button>');
+  $("stGrid").addEventListener("click",function(e){var b=e.target.closest("[data-set]");if(!b)return;setStatus(l,b.getAttribute("data-set"));this.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});$("wonBox").classList.toggle("hide",l.status!=="won");toast("Status: "+statusName(l.status));});
+  $("noteIn").addEventListener("input",function(){l.notes=this.value;save();});
+  $("dealVal").addEventListener("input",function(){l.value=+digits(this.value)||0;save();});
+  $("delLead").addEventListener("click",function(){if(confirm("Remove "+l.name+"?")){delete S.leads[l.id];save();closeSheet();toast("Lead removed");}});
 }
 
 /* STATS */
-function naira(n){return “₦”+Math.round(n).toLocaleString(“en-NG”);}
+function naira(n){return "₦"+Math.round(n).toLocaleString("en-NG");}
 function renderStats(){var all=Object.keys(S.leads).map(function(k){return S.leads[k];});
-var c={};STATUS.forEach(function(s){c[s[0]]=all.filter(function(l){return l.status===s[0];}).length;});
-var reached=all.length-c[“new”],replied=c.replied+c.demo+c.won,rev=all.reduce(function(a,l){return a+(l.status===“won”?(l.value||0):0);},0);
-$(“kpis”).innerHTML=’<div class="kpi hero"><p>Revenue won</p><div class="num">’+naira(rev)+’</div><p>’+c.won+’ client’+(c.won===1?””:“s”)+’</p></div>’+
-‘<div class="kpi"><p>Leads saved</p><div class="num">’+all.length+’</div></div><div class="kpi"><p>Reply rate</p><div class="num">’+(reached?Math.round(replied/reached*100):0)+’%</div></div>’;
-var rows=[[“Found”,all.length],[“Contacted”,reached],[“Replied”,replied],[“Demo sent”,c.demo+c.won],[“Won”,c.won]],max=Math.max(1,all.length);
-$(“funnel”).innerHTML=rows.map(function(r){return ‘<div class="fr"><span>’+r[0]+’</span><i><span style="width:'+(r[1]/max*100)+'%"></span></i><b>’+r[1]+’</b></div>’;}).join(””);
-$(“hist”).innerHTML=S.searches.length?S.searches.slice(0,10).map(function(h,i){return ‘<button type="button" class="hrow" data-rerun="'+i+'" style="width:100%;border-left:0;border-right:0;border-top:0;background:transparent;text-align:left"><span><b>’+esc(h.q)+’</b><small>’+esc(h.area||“Any area”)+’ · ‘+ago(h.at)+’</small></span><span class="tag g">’+h.found+’ leads</span></button>’;}).join(””):’<p class="muted">No searches yet.</p>’;}
-$(“hist”).addEventListener(“click”,function(e){var b=e.target.closest(”[data-rerun]”);if(!b)return;var h=S.searches[+b.getAttribute(“data-rerun”)];$(“q”).value=h.q;$(“area”).value=h.area;go(“find”);toast(“Ready. Tap Find to run it again”);});
+  var c={};STATUS.forEach(function(s){c[s[0]]=all.filter(function(l){return l.status===s[0];}).length;});
+  var reached=all.length-c["new"],replied=c.replied+c.demo+c.won,rev=all.reduce(function(a,l){return a+(l.status==="won"?(l.value||0):0);},0);
+  $("kpis").innerHTML='<div class="kpi hero"><p>Revenue won</p><div class="num">'+naira(rev)+'</div><p>'+c.won+' client'+(c.won===1?"":"s")+'</p></div>'+
+    '<div class="kpi"><p>Leads saved</p><div class="num">'+all.length+'</div></div><div class="kpi"><p>Reply rate</p><div class="num">'+(reached?Math.round(replied/reached*100):0)+'%</div></div>';
+  var rows=[["Found",all.length],["Contacted",reached],["Replied",replied],["Demo sent",c.demo+c.won],["Won",c.won]],max=Math.max(1,all.length);
+  $("funnel").innerHTML=rows.map(function(r){return '<div class="fr"><span>'+r[0]+'</span><i><span style="width:'+(r[1]/max*100)+'%"></span></i><b>'+r[1]+'</b></div>';}).join("");
+  $("hist").innerHTML=S.searches.length?S.searches.slice(0,10).map(function(h,i){return '<button type="button" class="hrow" data-rerun="'+i+'" style="width:100%;border-left:0;border-right:0;border-top:0;background:transparent;text-align:left"><span><b>'+esc(h.q)+'</b><small>'+esc(h.area||"Any area")+' · '+ago(h.at)+'</small></span><span class="tag g">'+h.found+' leads</span></button>';}).join(""):'<p class="muted">No searches yet.</p>';}
+$("hist").addEventListener("click",function(e){var b=e.target.closest("[data-rerun]");if(!b)return;var h=S.searches[+b.getAttribute("data-rerun")];$("q").value=h.q;$("area").value=h.area;go("find");toast("Ready. Tap Find to run it again");});
 
 /* SETTINGS */
-function renderSettings(){var a=S.acct;$(“acctInfo”).innerHTML=S.token?(‘Connected’+(a?’ as <b style="color:#111827">’+esc(a.user)+’</b>’+(a.limit!=null?’ · $’+Math.max(0,a.limit-a.used).toFixed(2)+’ of $’+a.limit.toFixed(2)+’ left this month’:’’):’’)):“Not connected.”;
-$(“tokenIn”).value=S.token?S.token.slice(0,14)+”••••••••”:””;$(“fuDays”).value=String(S.fuDays);}
-$(“saveToken”).addEventListener(“click”,function(){var v=$(“tokenIn”).value.trim();if(v.indexOf(”•”)>-1){refreshAccount().then(function(){renderSettings();$(“tokenMsg”).innerHTML=’<div class="alert ok">Connection is working.</div>’;}).catch(function(e){$(“tokenMsg”).innerHTML=’<div class="alert err">’+esc(e.message)+’</div>’;});return;}connect(v,“tokenMsg”,this);});
-$(“removeToken”).addEventListener(“click”,function(){S.token=””;S.acct=null;DB.set(“token”,””);DB.set(“acct”,null);renderSettings();renderFind();renderCredit();toast(“Disconnected”);});
-$(“fuDays”).addEventListener(“change”,function(){S.fuDays=+this.value;DB.set(“fuDays”,S.fuDays);renderNav();});
-function download(name,data,type){var blob=new Blob([data],{type:type}),url=URL.createObjectURL(blob),a=document.createElement(“a”);a.href=url;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(url);a.remove();},500);}
-$(“exportCsv”).addEventListener(“click”,function(){var rows=[[“Name”,“Type”,“Rating”,“Reviews”,“Score”,“Phone”,“WhatsApp”,“Address”,“Link”,“Status”,“Contacted”,“Notes”,“Deal value”,“Google Maps”]];
-Object.keys(S.leads).forEach(function(k){var l=S.leads[k];rows.push([l.name,l.type,l.rating,l.count,l.score,l.phone,“https://wa.me/”+l.wa,l.addr,l.url,statusName(l.status),l.contactedAt?new Date(l.contactedAt).toLocaleDateString():””,l.notes,l.value||””,l.maps]);});
-download(“leads.csv”,rows.map(function(r){return r.map(function(v){return ‘”’+String(v==null?””:v).replace(/”/g,’””’)+’”’;}).join(”,”);}).join(”\n”),“text/csv”);toast(“CSV downloaded”);});
-$(“backup”).addEventListener(“click”,function(){download(“lead-finder-backup.json”,JSON.stringify({v:2,leads:S.leads,searches:S.searches}),“application/json”);toast(“Backup downloaded”);});
-$(“restore”).addEventListener(“change”,function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d.leads)throw 0;Object.keys(d.leads).forEach(function(k){S.leads[k]=d.leads[k];});S.searches=(d.searches||[]).concat(S.searches).slice(0,30);save();DB.set(“searches”,S.searches);toast(“Backup restored”);renderNav();}catch(e){toast(“That file isn’t a Lead Finder backup”);}};r.readAsText(f);this.value=””;});
-$(“wipe”).addEventListener(“click”,function(){if(confirm(“Delete all saved leads? Export a backup first if you want to keep them.”)){S.leads={};S.searches=[];save();DB.set(“searches”,[]);toast(“All leads deleted”);renderNav();}});
+function renderSettings(){var a=S.acct;$("acctInfo").innerHTML=S.token?('Connected'+(a?' as <b style="color:#111827">'+esc(a.user)+'</b>'+(a.limit!=null?' · $'+Math.max(0,a.limit-a.used).toFixed(2)+' of $'+a.limit.toFixed(2)+' left this month':''):'')):"Not connected.";
+  $("tokenIn").value=S.token?S.token.slice(0,14)+"••••••••":"";$("fuDays").value=String(S.fuDays);}
+$("saveToken").addEventListener("click",function(){var v=$("tokenIn").value.trim();if(v.indexOf("•")>-1){refreshAccount().then(function(){renderSettings();$("tokenMsg").innerHTML='<div class="alert ok">Connection is working.</div>';}).catch(function(e){$("tokenMsg").innerHTML='<div class="alert err">'+esc(e.message)+'</div>';});return;}connect(v,"tokenMsg",this);});
+$("removeToken").addEventListener("click",function(){S.token="";S.acct=null;DB.set("token","");DB.set("acct",null);renderSettings();renderFind();renderCredit();toast("Disconnected");});
+$("fuDays").addEventListener("change",function(){S.fuDays=+this.value;DB.set("fuDays",S.fuDays);renderNav();});
+function download(name,data,type){var blob=new Blob([data],{type:type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(url);a.remove();},500);}
+$("exportCsv").addEventListener("click",function(){var rows=[["Name","Type","Rating","Reviews","Score","Phone","WhatsApp","Address","Link","Status","Contacted","Notes","Deal value","Google Maps"]];
+  Object.keys(S.leads).forEach(function(k){var l=S.leads[k];rows.push([l.name,l.type,l.rating,l.count,l.score,l.phone,"https://wa.me/"+l.wa,l.addr,l.url,statusName(l.status),l.contactedAt?new Date(l.contactedAt).toLocaleDateString():"",l.notes,l.value||"",l.maps]);});
+  download("leads.csv",rows.map(function(r){return r.map(function(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"';}).join(",");}).join("\n"),"text/csv");toast("CSV downloaded");});
+$("backup").addEventListener("click",function(){download("lead-finder-backup.json",JSON.stringify({v:2,leads:S.leads,searches:S.searches}),"application/json");toast("Backup downloaded");});
+$("restore").addEventListener("change",function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d.leads)throw 0;Object.keys(d.leads).forEach(function(k){S.leads[k]=d.leads[k];});S.searches=(d.searches||[]).concat(S.searches).slice(0,30);save();DB.set("searches",S.searches);toast("Backup restored");renderNav();}catch(e){toast("That file isn't a Lead Finder backup");}};r.readAsText(f);this.value="";});
+$("wipe").addEventListener("click",function(){if(confirm("Delete all saved leads? Export a backup first if you want to keep them.")){S.leads={};S.searches=[];save();DB.set("searches",[]);toast("All leads deleted");renderNav();}});
 
 /* INIT */
 renderNav();renderFind();renderCredit();
 if(S.token)refreshAccount().catch(function(){});
 })();
 </script>
-
 </body>
 </html>
