@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f1e8">
+<meta name="description" content="Explore StrongTower Event Hall on Alfred Rewane Road, Ikoyi, Lagos. Enquire about your next celebration, wedding or corporate gathering.">
+<title>StrongTower — Make It A Moment</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f5f1e8;
+  --white: #fffdf8;
+  --ink: #252822;
+  --green: #405443;
+  --lime: #d8df9d;
+  --muted: #77796e;
+  --line: #dfded3;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 82px;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button, input, select { font: inherit; }
+
+.container {
+  width: min(1280px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.announcement {
+  padding: 10px 18px;
+  background: var(--green);
+  color: white;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.announcement span { color: var(--lime); }
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #f5f1e8f5;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  min-height: 78px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: var(--serif);
+  font-size: 23px;
+}
+
+.brand-name {
+  font-family: var(--serif);
+  font-size: 21px;
+}
+
+.brand-sub {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-links a {
+  font-size: 11px;
+  color: #53564c;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.button {
+  min-height: 47px;
+  padding: 0 21px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px solid var(--green);
+  background: var(--green);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover {
+  background: #2f4133;
+  transform: translateY(-2px);
+}
+
+.button-outline {
+  background: transparent;
+  color: var(--green);
+}
+
+.button-outline:hover {
+  background: var(--green);
+  color: white;
+}
+
+.arrow { font-size: 16px; }
+
+/* Distinctive split-screen opening */
+
+.hero {
+  padding: 36px 0 60px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: .93fr 1.07fr;
+  min-height: 565px;
+  background: var(--white);
+}
+
+.hero-content {
+  padding: 55px 45px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--green);
+}
+
+.hero h1 {
+  margin: 26px 0 21px;
+  font-family: var(--serif);
+  font-size: clamp(50px, 5.3vw, 72px);
+  line-height: 1.03;
+  font-weight: 400;
+  letter-spacing: -2.7px;
+}
+
+.hero h1 em {
+  color: var(--green);
+  font-weight: 400;
+}
+
+.hero-copy {
+  max-width: 390px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 11px;
+  margin-top: 27px;
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 35px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  width: 100%;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.rating {
+  color: #6b7949;
+  letter-spacing: 2px;
+}
+
+.hero-photo {
+  position: relative;
+  min-height: 565px;
+  overflow: hidden;
+  background: #c9c0b1;
+}
+
+.hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .7s;
+}
+
+.hero-photo:hover img { transform: scale(1.035); }
+
+.photo-caption {
+  position: absolute;
+  left: 22px;
+  right: 22px;
+  bottom: 22px;
+  padding: 19px 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 15px;
+  background: #252822e8;
+  color: white;
+}
+
+.photo-caption small {
+  display: block;
+  color: var(--lime);
+  font-size: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.photo-caption strong {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.photo-caption .caption-number {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* Compact proof bar */
+
+.proof-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1px solid var(--line);
+}
+
+.proof {
+  padding: 22px 25px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  border-right: 1px solid var(--line);
+}
+
+.proof:first-child { border-left: 1px solid var(--line); }
+
+.proof-symbol {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid #b9c2ad;
+  color: var(--green);
+  font-size: 15px;
+}
+
+.proof strong {
+  display: block;
+  font-size: 11px;
+}
+
+.proof small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+/* Event selection */
+
+.planner {
+  padding: 100px 0;
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: .72fr 1.28fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.planner-intro h2 {
+  margin: 22px 0;
+  font-family: var(--serif);
+  font-size: clamp(40px, 4.5vw, 58px);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: -1.7px;
+}
+
+.planner-intro h2 em { color: var(--green); }
+
+.planner-intro p {
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.planner-note {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.9;
+}
+
+.event-selector {
+  padding: 30px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.form-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.form-heading h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.step-label {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+}
+
+.event-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.event-option {
+  min-height: 83px;
+  padding: 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background .2s, border .2s;
+}
+
+.event-option:hover,
+.event-option.active {
+  border-color: var(--green);
+  background: #edf0e6;
+}
+
+.event-option .option-icon {
+  color: var(--green);
+  font-size: 18px;
+}
+
+.event-option strong {
+  display: block;
+  font-size: 11px;
+}
+
+.event-option small {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.form-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
+  margin-top: 25px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #66695e;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--cream);
+  color: var(--ink);
+  font-size: 11px;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: 1px solid var(--green);
+  border-color: var(--green);
+}
+
+.form-submit {
+  width: 100%;
+  margin-top: 22px;
+}
+
+.form-hint {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.8;
+}
+
+/* Venue guide: practical rather than generic service cards */
+
+.venue-guide {
+  padding: 85px 0;
+  background: var(--green);
+  color: white;
+}
+
+.guide-grid {
+  display: grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.guide-photo {
+  height: 430px;
+  overflow: hidden;
+  background: #6b7566;
+}
+
+.guide-photo img {
+  height: 100%;
+  transition: transform .7s;
+}
+
+.guide-photo:hover img { transform: scale(1.03); }
+
+.venue-guide .eyebrow { color: var(--lime); }
+.venue-guide .eyebrow::before { background: var(--lime); }
+
+.guide-copy h2 {
+  margin: 22px 0;
+  font-family: var(--serif);
+  font-size: clamp(39px, 4.4vw, 57px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -1.7px;
+}
+
+.guide-copy h2 em { color: var(--lime); }
+
+.guide-copy > p {
+  color: #d6ddd3;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.guide-list {
+  margin: 28px 0;
+  border-top: 1px solid #718273;
+}
+
+.guide-row {
+  padding: 17px 0;
+  display: grid;
+  grid-template-columns: 30px 1fr;
+  gap: 12px;
+  border-bottom: 1px solid #718273;
+}
+
+.guide-row > span {
+  color: var(--lime);
+  font-size: 10px;
+}
+
+.guide-row strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.guide-row small {
+  display: block;
+  margin-top: 6px;
+  color: #d6ddd3;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.venue-guide .button {
+  background: var(--lime);
+  border-color: var(--lime);
+  color: var(--ink);
+}
+
+.venue-guide .button:hover { background: white; }
+
+/* Location and reputation */
+
+.location-section {
+  padding: 90px 0;
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.location-section h2 {
+  margin: 22px 0;
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.location-section h2 em { color: var(--green); }
+
+.location-copy {
+  max-width: 400px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.location-card {
+  padding: 28px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.location-card h3 {
+  margin: 0 0 20px;
+  font-family: var(--serif);
+  font-size: 27px;
+  font-weight: 400;
+}
+
+.location-row {
+  display: flex;
+  gap: 13px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.location-icon {
+  width: 33px;
+  height: 33px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  color: var(--green);
+}
+
+.location-row small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.location-row p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.location-row a { color: var(--green); }
+.location-row a:hover { text-decoration: underline; }
+
+.review-strip {
+  padding: 34px 0;
+  background: #e8e8dc;
+}
+
+.review-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+}
+
+.review-score {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.review-stars {
+  color: #657844;
+  font-size: 17px;
+  letter-spacing: 2px;
+}
+
+.review-score strong {
+  font-family: var(--serif);
+  font-size: 31px;
+  font-weight: 400;
+}
+
+.review-score small {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.review-link {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+footer {
+  padding: 30px 0 100px;
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.8;
+  text-align: right;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  margin-top: 25px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.mobile-cta { display: none; }
+
+@media(max-width: 900px) {
+  .container { width: calc(100% - 44px); }
+  .nav-links { gap: 14px; }
+  .nav-links a { font-size: 10px; }
+  .nav-cta { display: none; }
+
+  .hero-content { padding: 35px; }
+  .hero h1 { font-size: clamp(48px, 6vw, 65px); }
+  .hero-photo, .hero-grid { min-height: 510px; }
+
+  .planner-grid, .guide-grid, .location-grid {
+    gap: 35px;
+  }
+
+  .guide-photo { height: 380px; }
+}
+
+@media(max-width: 640px) {
+  html { scroll-padding-top: 70px; }
+  .container { width: calc(100% - 36px); }
+
+  .announcement {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+
+  .nav { min-height: 70px; }
+  .brand-icon { width: 34px; height: 34px; font-size: 20px; }
+  .brand-name { font-size: 18px; }
+  .brand-sub { font-size: 7px; letter-spacing: 1.2px; }
+
+  .nav-links { gap: 13px; }
+  .nav-links a { font-size: 9px; }
+  .nav-links a:nth-child(2) { display: none; }
+
+  .hero { padding: 18px 0 40px; }
+  .hero-grid { grid-template-columns: 1fr; }
+
+  .hero-content {
+    padding: 32px 23px 30px;
+    order: 1;
+  }
+
+  .hero-photo {
+    min-height: 340px;
+    height: 340px;
+    order: 0;
+  }
+
+  .hero h1 {
+    margin: 22px 0 18px;
+    font-size: clamp(48px, 11.5vw, 65px);
+    letter-spacing: -2px;
+  }
+
+  .hero-copy { font-size: 12px; }
+  .hero-actions .button { flex: 1; padding: 0 12px; }
+  .hero-meta { margin-top: 24px; }
+
+  .photo-caption { left: 12px; right: 12px; bottom: 12px; padding: 14px; }
+  .photo-caption strong { font-size: 18px; }
+
+  .proof-bar { grid-template-columns: 1fr; }
+  .proof {
+    padding: 17px;
+    border-bottom: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+
+  .planner { padding: 70px 0; }
+  .planner-grid { grid-template-columns: 1fr; gap: 28px; }
+  .planner-intro h2 { font-size: 45px; }
+
+  .event-selector { padding: 21px; }
+  .form-heading h3 { font-size: 24px; }
+  .event-options { gap: 8px; }
+
+  .event-option {
+    min-height: 87px;
+    padding: 12px 10px;
+    gap: 8px;
+  }
+
+  .event-option strong { font-size: 10px; }
+  .event-option small { font-size: 8px; }
+  .event-option .option-icon { font-size: 15px; }
+
+  .form-fields { grid-template-columns: 1fr; gap: 14px; }
+
+  .venue-guide { padding: 70px 0; }
+  .guide-grid { grid-template-columns: 1fr; gap: 32px; }
+  .guide-photo { height: 320px; }
+  .guide-copy h2 { font-size: 45px; }
+
+  .location-section { padding: 70px 0; }
+  .location-grid { grid-template-columns: 1fr; gap: 30px; }
+  .location-section h2 { font-size: 49px; }
+  .location-card { padding: 23px; }
+
+  .review-inner { align-items: flex-start; flex-direction: column; }
+  .review-score strong { font-size: 27px; }
+
+  .footer-main { align-items: flex-start; }
+  .footer-note { max-width: 140px; font-size: 9px; }
+  .footer-bottom { font-size: 8px; }
+
+  footer { padding-bottom: 95px; }
+
+  .mobile-cta {
+    position: fixed;
+    z-index: 100;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    min-height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 5px 24px #0002;
+  }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  StrongTower Event Hall <span>·</span> Alfred Rewane Road, Ikoyi
+</div>
+
+<header>
+  <nav class="container nav" aria-label="Main navigation">
+    <a class="brand" href="#home">
+      <span class="brand-icon">S.</span>
+      <span>
+        <span class="brand-name">StrongTower</span>
+        <span class="brand-sub">Event Hall · Ikoyi, Lagos</span>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#planner">Plan an event</a>
+      <a href="#venue-guide">Venue guide</a>
+      <a href="#location">Find us</a>
+    </div>
+
+    <a class="button nav-cta" href="#planner">
+      Check availability <span class="arrow">↗</span>
+    </a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">Your occasion starts here</div>
+
+        <h1>Make room<br>for <em>moments.</em></h1>
+
+        <p class="hero-copy">
+          Bring your people together in a setting made for meaningful
+          gatherings. Start planning your next celebration, wedding
+          or corporate event at StrongTower Event Hall.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button" href="#planner">
+            Plan your event <span class="arrow">↗</span>
+          </a>
+
+          <a class="button button-outline" href="#venue-guide">
+            Venue details <span class="arrow">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="rating">★★★★★</span>
+          <span><strong>4.5/5</strong> · 87 Google reviews</span>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <img
+          src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=85"
+          alt="An elegant event space prepared for a special occasion"
+          fetchpriority="high"
+        >
+
+        <div class="photo-caption">
+          <div>
+            <small>StrongTower Event Hall</small>
+            <strong>Your next chapter begins with a gathering.</strong>
+          </div>
+          <span class="caption-number">01 / 03</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container proof-bar">
+  <div class="proof">
+    <span class="proof-symbol">↗</span>
+    <div>
+      <strong>Ikoyi, Lagos</strong>
+      <small>A central city location</small>
+    </div>
+  </div>
+
+  <div class="proof">
+    <span class="proof-symbol">◇</span>
+    <div>
+      <strong>Different occasions</strong>
+      <small>Start with your event type</small>
+    </div>
+  </div>
+
+  <div class="proof">
+    <span class="proof-symbol">W</span>
+    <div>
+      <strong>Direct enquiries</strong>
+      <small>Send your requirements to the venue</small>
+    </div>
+  </div>
+</div>
+
+<section class="planner" id="planner">
+  <div class="container planner-grid">
+    <div class="planner-intro">
+      <div class="eyebrow">Let's get the details right</div>
+
+      <h2>What are we<br>getting <em>together for?</em></h2>
+
+      <p>
+        Every event begins with an idea. Tell the StrongTower team
+        a little about yours so they can respond with relevant
+        venue information and availability.
+      </p>
+
+      <div class="planner-note">
+        This is an enquiry form, not a confirmed booking.
+        The venue team will need to confirm dates, prices,
+        capacity and availability directly.
+      </div>
+    </div>
+
+    <form class="event-selector" id="eventForm">
+      <div class="form-heading">
+        <h3>Plan your occasion</h3>
+        <span class="step-label">YOUR ENQUIRY</span>
+      </div>
+
+      <div class="event-options" role="group" aria-label="Choose event type">
+        <button class="event-option active" type="button" data-event="Wedding or engagement" aria-pressed="true">
+          <span class="option-icon">◇</span>
+          <span>
+            <strong>Wedding</strong>
+            <small>Engagements & celebrations</small>
+          </span>
+        </button>
+
+        <button class="event-option" type="button" data-event="Corporate event" aria-pressed="false">
+          <span class="option-icon">▦</span>
+          <span>
+            <strong>Corporate</strong>
+            <small>Meetings & company events</small>
+          </span>
+        </button>
+
+        <button class="event-option" type="button" data-event="Birthday or private celebration" aria-pressed="false">
+          <span class="option-icon">✳</span>
+          <span>
+            <strong>Celebration</strong>
+            <small>Birthdays & special moments</small>
+          </span>
+        </button>
+
+        <button class="event-option" type="button" data-event="Other event" aria-pressed="false">
+          <span class="option-icon">＋</span>
+          <span>
+            <strong>Something else</strong>
+            <small>Tell us what you're planning</small>
+          </span>
+        </button>
+      </div>
+
+      <div class="form-fields">
+        <div class="field">
+          <label for="eventDate">Preferred event date</label>
+          <input id="eventDate" type="date">
+        </div>
+
+        <div class="field">
+          <label for="guestCount">Estimated guests</label>
+          <select id="guestCount">
+            <option value="">Select guest count</option>
+            <option>Under 50</option>
+            <option>50–100</option>
+            <option>101–200</option>
+            <option>201–300</option>
+            <option>301–500</option>
+            <option>More than 500</option>
+            <option>Not decided yet</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="contactName">Your name (optional)</label>
+          <input id="contactName" type="text" placeholder="How should they address you?">
+        </div>
+
+        <div class="field">
+          <label for="extraDetails">Anything else? (optional)</label>
+          <input id="extraDetails" type="text" placeholder="e.g. decoration, event duration">
+        </div>
+      </div>
+
+      <button class="button form-submit" type="submit">
+        Prepare my venue enquiry <span class="arrow">↗</span>
+      </button>
+
+      <p class="form-hint">
+        Your enquiry opens WhatsApp with these details filled in.
+        Review and send the message to contact the venue.
+      </p>
+    </form>
+  </div>
+</section>
+
+<section class="venue-guide" id="venue-guide">
+  <div class="container guide-grid">
+    <div class="guide-photo">
+      <img
+        src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=85"
+        alt="Guests gathered for a formal event"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="guide-copy">
+      <div class="eyebrow">Before you make a decision</div>
+
+      <h2>The right venue is about more than <em>four walls.</em></h2>
+
+      <p>
+        Getting the details early makes planning easier.
+        Ask about available layouts, guest capacity, setup
+        requirements and the practical details of your event.
+      </p>
+
+      <div class="guide-list">
+        <div class="guide-row">
+          <span>01</span>
+          <div>
+            <strong>Capacity and layout</strong>
+            <small>Ask which arrangements and guest capacities are available for your occasion.</small>
+          </div>
+        </div>
+
+        <div class="guide-row">
+          <span>02</span>
+          <div>
+            <strong>Facilities and setup</strong>
+            <small>Confirm included amenities, decoration policies, equipment and setup times.</small>
+          </div>
+        </div>
+
+        <div class="guide-row">
+          <span>03</span>
+          <div>
+            <strong>Dates and pricing</strong>
+            <small>Request available dates, package options, deposits and payment terms.</small>
+          </div>
+        </div>
+      </div>
+
+      <a
+        class="button"
+        href="https://wa.me/2349130242424?text=Good%20day%2C%20I%27m%20interested%20in%20StrongTower%20Event%20Hall.%20Please%20share%20your%20venue%20capacity%2C%20facilities%2C%20available%20dates%20and%20pricing."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Ask about the venue <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="review-strip">
+  <div class="container review-inner">
+    <div class="review-score">
+      <div>
+        <div class="review-stars">★★★★★</div>
+        <small>Google rating</small>
+      </div>
+      <div>
+        <strong>4.5 / 5</strong>
+        <small>87 reviews listed</small>
+      </div>
+    </div>
+
+    <a
+      class="review-link"
+      href="https://www.google.com/maps/search/?api=1&query=StrongTower%20Event%20Hall&query_place_id=ChIJM3RLPmj1OxARp-jYNCgBb38"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View the Google listing ↗
+    </a>
+  </div>
+</section>
+
+<section class="location-section" id="location">
+  <div class="container location-grid">
+    <div>
+      <div class="eyebrow">Find your way here</div>
+
+      <h2>Meet us in<br><em>Ikoyi, Lagos.</em></h2>
+
+      <p class="location-copy">
+        StrongTower Event Hall is listed at the NTEL Building
+        on Alfred Rewane Road. Contact the venue to confirm
+        directions, access arrangements and parking before your visit.
+      </p>
+
+      <a
+        class="button"
+        href="https://www.google.com/maps/search/?api=1&query=StrongTower%20Event%20Hall&query_place_id=ChIJM3RLPmj1OxARp-jYNCgBb38"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Open Google Maps <span class="arrow">↗</span>
+      </a>
+    </div>
+
+    <div class="location-card">
+      <h3>Venue information</h3>
+
+      <div class="location-row">
+        <span class="location-icon">↗</span>
+        <div>
+          <small>Address</small>
+          <p>NTEL Building,<br>40 Alfred Rewane Road,<br>Ikoyi, Lagos 106104, Nigeria</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=StrongTower%20Event%20Hall&query_place_id=ChIJM3RLPmj1OxARp-jYNCgBb38"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Get directions ↗</a>
+        </div>
+      </div>
+
+      <div class="location-row">
+        <span class="location-icon">W</span>
+        <div>
+          <small>Enquiry contact</small>
+          <p>+234 913 024 2424</p>
+          <a
+            href="https://wa.me/2349130242424?text=Good%20day%2C%20I%27d%20like%20to%20enquire%20about%20StrongTower%20Event%20Hall."
+            target="_blank"
+            rel="noopener noreferrer"
+          >Try WhatsApp enquiry ↗</a>
+        </div>
+      </div>
+
+      <div class="location-row">
+        <span class="location-icon">i</span>
+        <div>
+          <small>Planning tip</small>
+          <p>Confirm current pricing, availability, guest capacity and facilities directly with the venue.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-main">
+      <a class="brand" href="#home">
+        <span class="brand-icon">S.</span>
+        <span>
+          <span class="brand-name">StrongTower</span>
+          <span class="brand-sub">Event Hall · Ikoyi, Lagos</span>
+        </span>
+      </a>
+
+      <div class="footer-note">
+        Every gathering starts somewhere.<br>
+        Alfred Rewane Road, Ikoyi.
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> StrongTower Event Hall</span>
+      <a href="#planner">Plan your event ↗</a>
+    </div>
+  </div>
+</footer>
+
+<a
+  class="mobile-cta"
+  href="#planner"
+>
+  Plan your event <span class="arrow">↗</span>
+</a>
+
+<script>
+const eventButtons = document.querySelectorAll(".event-option");
+let selectedEvent = "Wedding or engagement";
+
+eventButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    eventButtons.forEach(item => {
+      item.classList.remove("active");
+      item.setAttribute("aria-pressed", "false");
+    });
+
+    button.classList.add("active");
+    button.setAttribute("aria-pressed", "true");
+    selectedEvent = button.dataset.event;
+  });
+});
+
+document.getElementById("eventDate").min =
+  new Date().toLocaleDateString("en-CA");
+
+document.getElementById("eventForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const date = document.getElementById("eventDate").value;
+  const guests = document.getElementById("guestCount").value;
+  const name = document.getElementById("contactName").value.trim();
+  const details = document.getElementById("extraDetails").value.trim();
+
+  let message = "Good day, StrongTower Event Hall. I'd like to enquire about hosting an event.";
+
+  message += "\n\nEvent type: " + selectedEvent;
+  message += "\nPreferred date: " + (date || "Flexible / not decided");
+  message += "\nEstimated guests: " + (guests || "Not decided yet");
+
+  if (name) message += "\nName: " + name;
+  if (details) message += "\nAdditional details: " + details;
+
+  message += "\n\nPlease share your venue availability, capacity, packages and pricing.";
+
+  const url = "https://wa.me/2349130242424?text=" + encodeURIComponent(message);
+
+  window.open(url, "_blank", "noopener,noreferrer");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
