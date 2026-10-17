@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#1E1410">
+<title>The Braiding Vault Signature | Braids in Ikoyi, Lagos</title>
+<meta name="description" content="Knotless, box braids, boho, cornrows and twists at 7/12 Rumens Rd, Ikoyi. Rated 4.7 from 108 Google reviews. Build your style and book on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Fixed palette: cocoa #1E1410 | espresso #2B1D17 | line-dark #3D2B22 | bone #F3ECE2 | sand #E8DDD0 | honey #E2A64B | ink #1E1410 | taupe #6E5D52 | mist #BBA99B | line-light #E0D3C4 */
+*{box-sizing:border-box;margin:0;padding:0}
+html,html body{background:#1E1410!important;color:#F3ECE2!important}
+html{-webkit-text-size-adjust:100%;color-scheme:only light;scroll-behavior:smooth}
+body{font:400 16.5px/1.6 Figtree,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+#app{background:#1E1410;color:#F3ECE2;min-height:100vh;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid #E2A64B;outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.wrap{width:90%;max-width:1160px;margin:0 auto}
+h1,h2,h3,.disp{font-family:Unbounded,-apple-system,BlinkMacSystemFont,sans-serif;font-weight:700;letter-spacing:-.03em;line-height:1.02}
+h2{font-size:clamp(30px,5vw,56px);max-width:16ch}
+.ph{background:#2B1D17;overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;color:transparent;font-size:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:14px;padding:15px 22px;font-weight:700;font-size:15.5px;border:1.5px solid #F3ECE2;background:transparent;color:#F3ECE2;transition:transform .15s ease}
+.btn:active{transform:scale(.97)}
+.btn.honey{background:#E2A64B;border-color:#E2A64B;color:#1E1410}
+.btn.ink{background:#1E1410;border-color:#1E1410;color:#F3ECE2}
+.btn.line-ink{border-color:#1E1410;color:#1E1410}
+section{padding:clamp(64px,9vw,120px) 0}
+.light{background:#F3ECE2;color:#1E1410}
+.light .muted{color:#6E5D52}
+.muted{color:#BBA99B}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:#E2A64B;margin-bottom:16px}
+.kicker i{display:block;width:26px;height:2px;background:#E2A64B}
+.light .kicker{color:#9A5F12}.light .kicker i{background:#9A5F12}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:40;background:#1E1410;border-bottom:1px solid #3D2B22}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo b{display:block;font:800 17px/1 Unbounded,sans-serif;letter-spacing:-.03em}
+.logo small{font-size:12px;color:#E2A64B;font-weight:600}
+.nl{display:flex;gap:26px;align-items:center;font-weight:600;font-size:15px}
+.nl a:not(.btn):hover{color:#E2A64B}
+.nl .btn{padding:10px 18px;font-size:14px}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1.5px solid #3D2B22;align-items:center;justify-content:center;color:#F3ECE2}
+@media(max-width:900px){.nl{display:none}.burger{display:flex}}
+.menu{display:none;position:fixed;top:0;right:0;bottom:0;left:0;z-index:90;background:#1E1410;color:#F3ECE2;flex-direction:column;padding:18px 6% 30px;height:100%;overflow-y:auto}
+.menu:target,.menu.open{display:flex;animation:mIn .3s ease both}
+@keyframes mIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.menu .top{display:flex;justify-content:space-between;align-items:center;height:50px}
+.menu .x{width:46px;height:46px;border-radius:12px;border:1.5px solid #3D2B22;display:flex;align-items:center;justify-content:center}
+.menu nav{display:flex;flex-direction:column;margin-top:30px}
+.menu nav a{font:700 28px/1.15 Unbounded,sans-serif;letter-spacing:-.03em;padding:16px 0;border-bottom:1px solid #3D2B22;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.menu nav a span{font:600 13px Figtree,sans-serif;color:#E2A64B;white-space:nowrap;flex:none}
+@media(max-width:420px){.menu nav a span{display:none}}
+.menu .foot{margin-top:auto;display:grid;gap:10px;padding-top:24px}
+
+/* HERO */
+.hero{padding:clamp(28px,5vw,64px) 0 clamp(56px,8vw,96px)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(40px,6.6vw,84px);line-height:.98}
+.hero h1 em{font-style:normal;color:#E2A64B}
+.hero p.lead{font-size:18px;color:#D9CBBE;margin:22px 0 28px;max-width:44ch}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.proof{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 24px;margin-top:34px}
+.proof div{font-size:13.5px;color:#BBA99B;line-height:1.3}
+.proof b{display:block;font:700 clamp(16px,4.4vw,22px) Unbounded,sans-serif;color:#F3ECE2;margin-bottom:4px;letter-spacing:-.03em}
+.strands{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;height:clamp(420px,52vw,600px)}
+.strands .ph{border-radius:999px;height:100%}
+.strands .ph:nth-child(1){margin-top:18%;margin-bottom:-4%}
+.strands .ph:nth-child(2){margin-bottom:14%}
+.strands .ph:nth-child(3){margin-top:30%}
+.strands img{animation:rise 1.4s cubic-bezier(.2,.7,.2,1) both}
+.strands .ph:nth-child(2) img{animation-delay:.12s}.strands .ph:nth-child(3) img{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(8%) scale(1.08);opacity:.2}to{transform:none;opacity:1}}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.strands{height:380px}}
+
+/* SWATCH RIBBON */
+.ribbon{border-top:1px solid #3D2B22;border-bottom:1px solid #3D2B22;padding:18px 0}
+.ribbon .wrap{display:flex;gap:18px;align-items:center;overflow-x:auto;scrollbar-width:none}
+.ribbon .wrap::-webkit-scrollbar{display:none}
+.rib{flex:none;display:flex;align-items:center;gap:10px;font-weight:600;font-size:14px;color:#D9CBBE;white-space:nowrap}
+.rib i{width:22px;height:22px;border-radius:50%;border:2px solid #3D2B22}
+
+/* EXPERIENCE */
+.exp{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.exp div{background:#2B1D17;border:1px solid #3D2B22;border-radius:22px;padding:26px}
+.exp .n{font:800 15px Unbounded,sans-serif;color:#E2A64B;margin-bottom:22px;display:block}
+.exp h3{font-size:20px;margin-bottom:10px}
+.exp p{color:#BBA99B;font-size:15.5px}
+@media(max-width:900px){.exp{grid-template-columns:1fr}}
+
+/* BUILDER */
+.builder{display:grid;grid-template-columns:1.25fr .9fr;gap:clamp(20px,3vw,40px);margin-top:36px;align-items:start}
+.builder>*{min-width:0}
+.q{margin-bottom:26px}
+.q h3{font-size:15px;letter-spacing:-.01em;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.q h3 b{width:26px;height:26px;border-radius:50%;background:#1E1410;color:#F3ECE2;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:none}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{border:1.5px solid #E0D3C4;background:#FFFFFF;color:#1E1410;border-radius:12px;padding:11px 14px;font-weight:600;font-size:14.5px;text-align:left;line-height:1.25}
+.opt small{display:block;font-weight:500;font-size:12px;color:#6E5D52}
+.opt[aria-pressed=true]{background:#1E1410;border-color:#1E1410;color:#F3ECE2}
+.opt[aria-pressed=true] small{color:#E2A64B}
+.sw{display:flex;align-items:center;gap:8px}
+.sw i{width:20px;height:20px;border-radius:50%;border:2px solid #E0D3C4;flex:none}
+.opt[aria-pressed=true] .sw i{border-color:#F3ECE2}
+.ticket{position:sticky;top:90px;background:#1E1410;color:#F3ECE2;border-radius:26px;padding:24px;box-shadow:0 30px 60px -30px rgba(30,20,16,.6)}
+.ticket .cap{font-size:13px;color:#BBA99B;font-weight:600}
+.ticket .time{font:800 clamp(34px,5vw,46px)/1 Unbounded,sans-serif;letter-spacing:-.04em;margin:6px 0 4px;color:#E2A64B}
+.ticket ul{list-style:none;margin:18px 0;border-top:1px solid #3D2B22}
+.ticket li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #3D2B22;font-size:14.5px}
+.ticket li span:first-child{color:#BBA99B}
+.ticket li span:last-child{font-weight:600;text-align:right}
+.days{display:grid;grid-auto-flow:column;grid-auto-columns:64px;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.day{border:1.5px solid #3D2B22;background:#2B1D17;border-radius:14px;padding:8px 0;text-align:center;line-height:1.2;color:#F3ECE2}
+.day small{display:block;font-size:11.5px;color:#BBA99B;font-weight:600}
+.day b{font:700 20px Unbounded,sans-serif}
+.day[aria-pressed=true]{background:#E2A64B;border-color:#E2A64B;color:#1E1410}
+.day[aria-pressed=true] small{color:#1E1410}
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+.slot{border:1.5px solid #3D2B22;background:#2B1D17;border-radius:10px;padding:9px 0;font-weight:700;font-size:13.5px;color:#F3ECE2}
+.slot[aria-pressed=true]{background:#F3ECE2;border-color:#F3ECE2;color:#1E1410}
+.tlabel{font-size:13px;font-weight:700;color:#BBA99B;margin:16px 0 8px}
+.field{width:100%;padding:14px;border-radius:12px;border:1.5px solid #3D2B22;background:#2B1D17;color:#F3ECE2;font-size:16px;margin:14px 0 10px}
+.field::placeholder{color:#8F7E72}
+.note{font-size:12.5px;color:#BBA99B;margin-top:10px}
+.warn{font-size:13.5px;color:#E2A64B;min-height:20px;margin-bottom:8px}
+@media(max-width:900px){.builder{grid-template-columns:1fr}.ticket{position:static}}
+
+/* STYLES */
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,28%);gap:14px;overflow-x:auto;margin-top:34px;padding-bottom:10px;scroll-snap-type:x mandatory;scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.st{scroll-snap-align:start;background:#2B1D17;border:1px solid #3D2B22;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+.st .ph{aspect-ratio:3/4}
+.st div.in{padding:16px;display:grid;gap:6px}
+.st h3{font-size:17px}
+.st p{font-size:14px;color:#BBA99B}
+.st button{margin-top:8px;padding:11px;font-size:14px}
+@media(max-width:700px){.rail{grid-auto-columns:76%}}
+
+/* REVIEWS */
+.revs{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px;margin-top:36px}
+.rv{background:#FFFFFF;border:1px solid #E0D3C4;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:16px}
+.rv:first-child{background:#1E1410;color:#F3ECE2;border-color:#1E1410}
+.rv blockquote{font:600 19px/1.4 Figtree,sans-serif}
+.rv:first-child blockquote{font:700 22px/1.3 Unbounded,sans-serif;letter-spacing:-.02em}
+.rv .stars{color:#C27C14;letter-spacing:2px}
+.rv:first-child .stars{color:#E2A64B}
+.rv cite{font-style:normal;font-size:13px;color:#6E5D52;margin-top:auto}
+.rv:first-child cite{color:#BBA99B}
+.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.score b{font:800 clamp(64px,10vw,110px)/.9 Unbounded,sans-serif;letter-spacing:-.05em}
+@media(max-width:900px){.revs{grid-template-columns:1fr}}
+
+/* AWAY */
+.away{position:relative;border-radius:28px;overflow:hidden;min-height:440px;display:flex;align-items:flex-end}
+.away .ph{position:absolute;top:0;left:0;width:100%;height:100%}
+.away .shade{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(90deg,rgba(30,20,16,.94) 0%,rgba(30,20,16,.6) 60%,rgba(30,20,16,.25) 100%)}
+.away .in{position:relative;padding:clamp(28px,5vw,64px);max-width:600px}
+.away p{color:#D9CBBE;margin:14px 0 24px}
+
+/* VISIT */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.visit>*{min-width:0}
+.addr{font:700 clamp(24px,3.4vw,34px)/1.15 Unbounded,sans-serif;letter-spacing:-.03em;margin:12px 0 22px}
+.opennow{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border:1px solid #3D2B22;border-radius:999px;padding:7px 13px}
+.opennow i{width:9px;height:9px;border-radius:50%;background:#8F7E72}
+.opennow.on i{background:#4CC38A;box-shadow:0 0 0 4px rgba(76,195,138,.2)}
+.hours{background:#2B1D17;border:1px solid #3D2B22;border-radius:22px;padding:8px 22px}
+.hours div{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid #3D2B22;gap:12px}
+.hours div:last-child{border-bottom:0}
+.hours .today{color:#E2A64B;font-weight:700}
+@media(max-width:900px){.visit{grid-template-columns:1fr}}
+footer{border-top:1px solid #3D2B22;padding:34px 0 120px;color:#BBA99B;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+@media(min-width:901px){footer{padding-bottom:34px}}
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;padding:10px;border-radius:18px;background:#2B1D17;border:1px solid #3D2B22;box-shadow:0 20px 40px -14px rgba(0,0,0,.6);transform:translateY(150%);transition:transform .35s ease;margin-bottom:env(safe-area-inset-bottom)}
+.bar.show{transform:none}
+.bar .btn{flex:1;padding:13px}
+@media(min-width:901px){.bar{display:none}}
+</style>
+</head>
+<body>
+<div id="app">
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#top"><b>The Braiding Vault</b><small>Signature, Ikoyi</small></a>
+  <div class="nl"><a href="#experience">Experience</a><a href="#build">Build your braids</a><a href="#styles">Styles</a><a href="#visit">Visit</a><a class="btn honey" href="#build">Book</a></div>
+  <a href="#menu" class="burger" id="burger" role="button" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M4 16h16"/></svg></a>
+</div></header>
+
+<main>
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker"><i></i>Appointment braiding studio, Ikoyi</span>
+      <h1>Braids done right, and done <em>on time.</em></h1>
+      <p class="lead">Knotless, box braids, boho, cornrows and twists in a cosy Rumens Road studio. Tell us your style, we tell you how long it takes, and we keep to it.</p>
+      <div class="ctas"><a class="btn honey" href="#build">Build your braids</a><a class="btn" href="#styles">See styles</a></div>
+      <div class="proof"><div><b>4.7 ★</b>108 Google reviews</div><div><b>On the clock</b>finish time agreed upfront</div><div><b>On us</b>drink and snack while you sit</div></div>
+    </div>
+    <div class="strands" aria-hidden="true">
+      <div class="ph"><img src="https://images.unsplash.com/photo-1648010035195-6b0a56e14667?auto=format&fit=crop&w=700&q=72" alt="" fetchpriority="high" onerror="this.remove()"></div>
+      <div class="ph"><img src="https://images.unsplash.com/photo-1616166183781-0fdd2ef83374?auto=format&fit=crop&w=700&q=72" alt="" onerror="this.remove()"></div>
+      <div class="ph"><img src="https://images.unsplash.com/photo-1673470907547-1c0c6a996095?auto=format&fit=crop&w=700&q=72" alt="" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true"><div class="wrap">
+  <span class="rib"><i style="background:#1A1110"></i>1B Natural black</span>
+  <span class="rib"><i style="background:#3B2219"></i>2 Dark brown</span>
+  <span class="rib"><i style="background:#5A3523"></i>4 Chocolate</span>
+  <span class="rib"><i style="background:#B9782F"></i>27 Honey blonde</span>
+  <span class="rib"><i style="background:#8A3E1E"></i>30 Auburn</span>
+  <span class="rib"><i style="background:#E7CF9E"></i>613 Blonde</span>
+</div></div>
+
+<section id="experience">
+  <div class="wrap">
+    <span class="kicker"><i></i>The Signature experience</span>
+    <h2>Your braider is ready when you walk in</h2>
+    <div class="exp">
+      <div><span class="n">01</span><h3>Booked, not queued</h3><p>We work by appointment, so your chair and your braider are ready at your time. No waiting around in the salon.</p></div>
+      <div><span class="n">02</span><h3>A finish time you can plan around</h3><p>Before we start, we agree how long your style takes. Clients tell us we finish exactly when we said.</p></div>
+      <div><span class="n">03</span><h3>Looked after the whole way</h3><p>A complimentary drink and snack, and braiders who check in with you so your hair is done the way you asked.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="light" id="build">
+  <div class="wrap">
+    <span class="kicker"><i></i>Build your braids</span>
+    <h2>Pick your style. See your chair time.</h2>
+    <p class="muted" style="margin-top:14px;max-width:56ch">Choose what you want and we'll estimate how long you'll be in the chair, then book a start time that finishes before we close.</p>
+    <div class="builder">
+      <div>
+        <div class="q"><h3><b>1</b>Style</h3><div class="opts" data-k="style"></div></div>
+        <div class="q"><h3><b>2</b>Size</h3><div class="opts" data-k="size"></div></div>
+        <div class="q"><h3><b>3</b>Length</h3><div class="opts" data-k="length"></div></div>
+        <div class="q"><h3><b>4</b>Colour</h3><div class="opts" data-k="colour"></div></div>
+        <div class="q" style="margin-bottom:0"><h3><b>5</b>Add-ons <span class="muted" style="font:500 13px Figtree,sans-serif">(optional)</span></h3><div class="opts" data-k="extras"></div></div>
+      </div>
+      <aside class="ticket" aria-live="polite">
+        <p class="cap">Estimated chair time</p>
+        <div class="time" id="tTime">–</div>
+        <p class="note" style="margin-top:0">Your braider confirms the exact time before starting.</p>
+        <ul id="tList"></ul>
+        <p class="tlabel">Day</p>
+        <div class="days" id="days"></div>
+        <p class="tlabel">Start time <span style="font-weight:500">(finishes before closing)</span></p>
+        <div class="slots" id="slots"></div>
+        <input class="field" id="name" placeholder="Your name" autocomplete="name" aria-label="Your name">
+        <p class="warn" id="warn"></p>
+        <a class="btn honey" id="send" style="width:100%">Request this appointment</a>
+        <p class="note">Opens WhatsApp with your request filled in. We reply to confirm.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section id="styles">
+  <div class="wrap">
+    <span class="kicker"><i></i>Styles we braid</span>
+    <h2>From sleek knotless to full boho</h2>
+    <div class="rail" id="rail"></div>
+  </div>
+</section>
+
+<section class="light" id="reviews">
+  <div class="wrap">
+    <div class="score"><b>4.7</b><span class="muted">from 108 Google reviews</span></div>
+    <div class="revs">
+      <figure class="rv"><span class="stars">★★★★★</span><blockquote>"I got medium waist length braids, and I was done in 4 hours like they said."</blockquote><cite>Google review</cite></figure>
+      <figure class="rv"><span class="stars">★★★★★</span><blockquote>"They listened to what I wanted and kept checking in to make sure I was okay throughout the entire process."</blockquote><cite>Google review</cite></figure>
+      <figure class="rv"><span class="stars">★★★★★</span><blockquote>"Premium experience. Cosy salon. I will visit again, definitely worth the hype."</blockquote><cite>Google review</cite></figure>
+    </div>
+  </div>
+</section>
+
+<section style="padding-bottom:0">
+  <div class="wrap">
+    <div class="away">
+      <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1606415918835-88d0614e75ad?auto=format&fit=crop&w=1600&q=72" alt="Woman with braids in a yellow shirt" onerror="this.remove()"></div>
+      <div class="shade"></div>
+      <div class="in">
+        <h2 style="font-size:clamp(28px,4.4vw,48px)">Flying into Lagos?</h2>
+        <p>Book your braids before you land. Send your arrival date and style, and your appointment is waiting when you get to Ikoyi.</p>
+        <a class="btn honey wa" data-msg="Hello Braiding Vault Signature, I'm travelling to Lagos and would like to book braids for when I arrive.">Book before you land</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap visit">
+    <div>
+      <span class="opennow" id="openNow"><i></i><span>Checking hours</span></span>
+      <p class="addr">7/12 Rumens Road, Ikoyi, Lagos</p>
+      <div class="ctas"><a class="btn honey wa" data-msg="Hello Braiding Vault Signature, I'd like to book an appointment.">WhatsApp us</a><a class="btn" href="https://www.google.com/maps/search/?api=1&query=The%20Braiding%20Vault%20Signature&query_place_id=ChIJxWjh5wj1OxARFuLlp4xvbDk" target="_blank" rel="noopener">Get directions</a></div>
+    </div>
+    <div class="hours" id="hours"></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>The Braiding Vault Signature · 7/12 Rumens Rd, Ikoyi · <a href="tel:+2348169788625">0816 978 8625</a></span><span>Website concept preview</span></div></footer>
+<div class="bar" id="bar"><a class="btn" href="tel:+2348169788625">Call</a><a class="btn honey" href="#build">Book</a></div>
+</div>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="top"><span class="logo"><b>The Braiding Vault</b><small>Signature, Ikoyi</small></span>
+    <a href="#_" class="x" id="closeMenu" role="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
+  <nav><a href="#experience">Experience</a><a href="#build">Build your braids <span>Chair time</span></a><a href="#styles">Styles</a><a href="#reviews">Reviews</a><a href="#visit">Visit <span>Rumens Rd</span></a></nav>
+  <div class="foot"><a class="btn honey wa" data-msg="Hello Braiding Vault Signature, I'd like to book an appointment.">Book on WhatsApp</a><a class="btn" href="tel:+2348169788625">Call 0816 978 8625</a></div>
+</div>
+<script>
+(function(){var m=document.getElementById("menu"),b=document.getElementById("burger"),x=document.getElementById("closeMenu");if(!m||!b)return;
+function o(e){if(e)e.preventDefault();m.classList.add("open");m.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true");document.body.classList.add("lock");}
+function c(e){if(e)e.preventDefault();m.classList.remove("open");m.setAttribute("aria-hidden","true");b.setAttribute("aria-expanded","false");document.body.classList.remove("lock");if(location.hash==="#menu"&&history.replaceState)history.replaceState(null,"",location.pathname+location.search);}
+b.addEventListener("click",o);x.addEventListener("click",c);var l=m.querySelectorAll("nav a, .foot a");for(var i=0;i<l.length;i++)l[i].addEventListener("click",function(){c();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")c();});})();
+</script>
+
+<script>
+(function(){
+var WA="2348169788625";
+function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
+var $=function(id){return document.getElementById(id);};
+document.querySelectorAll(".wa").forEach(function(a){a.href=wa(a.getAttribute("data-msg"));a.target="_blank";a.rel="noopener";});
+
+/* Hours: Mon-Sat 10am-8pm, Sun 1pm-6pm (Lagos) */
+var H={0:[13,18],1:[10,20],2:[10,20],3:[10,20],4:[10,20],5:[10,20],6:[10,20]};
+var DN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+function lagos(){var n=new Date();return new Date(n.getTime()+n.getTimezoneOffset()*60000+3600000);}
+function f12(h){var hh=Math.floor(h),mm=Math.round((h-hh)*60);return (hh%12||12)+(mm?":"+(mm<10?"0":"")+mm:"")+(hh<12?"am":"pm");}
+(function(){var l=lagos(),d=l.getDay(),hr=l.getHours()+l.getMinutes()/60,on=hr>=H[d][0]&&hr<H[d][1],el=$("openNow");
+  el.className="opennow"+(on?" on":"");el.lastChild.textContent=on?"Open now until "+f12(H[d][1]):"Closed now, opens "+(hr<H[d][0]?f12(H[d][0])+" today":f12(H[(d+1)%7][0])+" "+(d===6?"Sunday":"tomorrow"));
+  var h="";[1,2,3,4,5,6,0].forEach(function(i){h+='<div class="'+(i===d?"today":"")+'"><span>'+DN[i]+'</span><span>'+f12(H[i][0])+" – "+f12(H[i][1])+'</span></div>';});$("hours").innerHTML=h;})();
+
+/* Builder data: base hours for medium, mid-back */
+var OPT={
+ style:[["Knotless braids",3.5,"Flat, light roots"],["Box braids",3,"Classic and sturdy"],["Boho knotless",4.5,"Curly pieces throughout"],["Cornrows / stitch",2,"Neat lines, quick install"],["Twists",3,"Senegalese or passion"],["Fulani braids",3,"Centre braid and beads"]],
+ size:[["Small",1.5,"Longest wear"],["Medium",1,"Most popular"],["Large",0.7,"Quicker install"]],
+ length:[["Shoulder",0.8],["Mid-back",1],["Waist",1.25],["Bum length",1.45]],
+ colour:[["1B",0,"#1A1110"],["2",0,"#3B2219"],["4",0,"#5A3523"],["27",0,"#B9782F"],["30",0,"#8A3E1E"],["613",0,"#E7CF9E"]],
+ extras:[["Hair treatment",0.75],["Wash & blow-dry first",0.5],["Beads & cuffs",0.25]]
+};
+var IMG={"Knotless braids":"1648010035195-6b0a56e14667","Box braids":"1709672262851-367d7eba09c6","Boho knotless":"1636302925868-52075f44d810","Cornrows / stitch":"1673470907547-1c0c6a996095","Twists":"1709342548703-a675702f19ef","Fulani braids":"1616166183781-0fdd2ef83374"};
+var S={style:"Knotless braids",size:"Medium",length:"Waist",colour:"1B",extras:[],day:null,time:null};
+function opt(k,name){for(var i=0;i<OPT[k].length;i++)if(OPT[k][i][0]===name)return OPT[k][i];}
+document.querySelectorAll(".opts").forEach(function(box){var k=box.getAttribute("data-k");
+  box.innerHTML=OPT[k].map(function(o){
+    var inner=k==="colour"?'<span class="sw"><i style="background:'+o[2]+'"></i>'+o[0]+'</span>':o[0]+(o[2]?'<small>'+o[2]+'</small>':(k==="extras"?'<small>+'+(o[1]*60)+' min</small>':""));
+    return '<button type="button" class="opt" data-v="'+o[0]+'" aria-pressed="false">'+inner+'</button>';}).join("");
+  box.addEventListener("click",function(e){var b=e.target.closest(".opt");if(!b)return;var v=b.getAttribute("data-v");
+    if(k==="extras"){var i=S.extras.indexOf(v);if(i>-1)S.extras.splice(i,1);else S.extras.push(v);}else S[k]=v;update();});});
+function hours(){var h=opt("style",S.style)[1]*opt("size",S.size)[1]*opt("length",S.length)[1];S.extras.forEach(function(x){h+=opt("extras",x)[1];});return h;}
+function fmtDur(h){var lo=Math.max(1,Math.round(h*0.9*2)/2),hi=Math.round(h*1.15*2)/2;if(hi<=lo)hi=lo+0.5;return lo+"–"+hi+" hrs";}
+function sync(){document.querySelectorAll(".opts").forEach(function(box){var k=box.getAttribute("data-k");box.querySelectorAll(".opt").forEach(function(b){var v=b.getAttribute("data-v");b.setAttribute("aria-pressed",(k==="extras"?S.extras.indexOf(v)>-1:S[k]===v)?"true":"false");});});}
+function update(){sync();var h=hours();$("tTime").textContent=fmtDur(h);
+  $("tList").innerHTML=[["Style",S.style],["Size",S.size],["Length",S.length],["Colour",S.colour],["Add-ons",S.extras.length?S.extras.join(", "):"None"]].map(function(r){return "<li><span>"+r[0]+"</span><span>"+r[1]+"</span></li>";}).join("");
+  renderSlots();}
+/* days */
+var base=lagos(),dayEls=[];
+for(var i=0;i<10;i++)(function(i){var d=new Date(base.getFullYear(),base.getMonth(),base.getDate()+i),b=document.createElement("button");b.type="button";b.className="day";b.setAttribute("aria-pressed","false");
+  b.innerHTML="<small>"+(i===0?"Today":i===1?"Tmrw":DN[d.getDay()].slice(0,3))+"</small><b>"+d.getDate()+"</b>";
+  b.addEventListener("click",function(){S.day=d;S.time=null;dayEls.forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");renderSlots();});
+  $("days").appendChild(b);dayEls.push(b);})(i);
+function renderSlots(){var box=$("slots");box.innerHTML="";
+  if(!S.day){box.innerHTML='<p class="note" style="grid-column:1/-1;margin:0">Pick a day to see start times.</p>';return;}
+  var h=H[S.day.getDay()],need=Math.round(hours()*1.15*2)/2,now=lagos(),today=S.day.toDateString()===new Date(now.getFullYear(),now.getMonth(),now.getDate()).toDateString(),n=0;
+  for(var t=h[0];t+need<=h[1];t+=0.5){if(today&&t<=now.getHours()+now.getMinutes()/60+0.5)continue;n++;
+    (function(t){var b=document.createElement("button");b.type="button";b.className="slot";b.textContent=f12(t);b.setAttribute("aria-pressed",S.time===f12(t)?"true":"false");
+      b.addEventListener("click",function(){S.time=f12(t);box.querySelectorAll(".slot").forEach(function(x){x.setAttribute("aria-pressed","false");});b.setAttribute("aria-pressed","true");$("warn").textContent="";});box.appendChild(b);})(t);}
+  if(!n){S.time=null;box.innerHTML='<p class="note" style="grid-column:1/-1;margin:0">This style needs about '+need+' hrs, which doesn\'t fit before closing on this day. Pick another day.</p>';}
+  else if(S.time&&!Array.prototype.some.call(box.children,function(c){return c.textContent===S.time;}))S.time=null;}
+$("send").addEventListener("click",function(e){
+  if(!S.day||!S.time){e.preventDefault();$("warn").textContent="Pick a day and a start time first.";return;}
+  var n=$("name").value.trim();
+  this.href=wa("Hello Braiding Vault Signature"+(n?", this is "+n:"")+". I'd like to book:\n• "+S.size+" "+S.style.toLowerCase()+", "+S.length.toLowerCase()+" length, colour "+S.colour+(S.extras.length?"\n• Add-ons: "+S.extras.join(", "):"")+"\n• "+DN[S.day.getDay()]+" "+S.day.getDate()+" at "+S.time+" (about "+fmtDur(hours())+")\nIs that available?");
+  this.target="_blank";this.rel="noopener";});
+
+/* styles rail */
+$("rail").innerHTML=OPT.style.map(function(o){return '<article class="st"><div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-'+IMG[o[0]]+'?auto=format&fit=crop&w=600&q=72" alt="'+o[0]+'" onerror="this.remove()"></div><div class="in"><h3>'+o[0]+'</h3><p>'+o[2]+' · from about '+fmtDur(o[1]*0.8).split("–")[0]+' hrs</p><button type="button" class="btn honey" data-pick="'+o[0]+'">Build this style</button></div></article>';}).join("");
+$("rail").addEventListener("click",function(e){var b=e.target.closest("[data-pick]");if(!b)return;S.style=b.getAttribute("data-pick");update();document.getElementById("build").scrollIntoView({behavior:"smooth"});});
+
+var bar=$("bar");window.addEventListener("scroll",function(){bar.classList.toggle("show",window.scrollY>window.innerHeight*.7);},{passive:true});
+update();
+})();
+</script>
+</body>
+</html>
