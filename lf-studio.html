@@ -1,521 +1,137 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="only light">
-<meta name="robots" content="noindex,nofollow">
-<meta name="theme-color" content="#FFFFFF">
-<title>Lead Finder · Lagos Web Studio</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f7fb">
+<title>LF Studio — Lead Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Fixed palette (no CSS variables): ink #111827 | slate #4B5563 | mute #8A93A3 | line #E6E8EE | paper #F6F7F9 | white #FFFFFF
-   cobalt #2952FF | cobalt-soft #EAEFFF | green #0F9D62 | green-soft #E3F7EE | amber #B76E00 | amber-soft #FFF3DC | red #D93636 | red-soft #FDECEC */
-*{box-sizing:border-box;margin:0;padding:0}
-html,html body{background:#F6F7F9!important;color:#111827!important}
-html{-webkit-text-size-adjust:100%;color-scheme:only light}
-body{font:400 15px/1.5 "DM Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-body.lock{overflow:hidden}
-#app{background:#F6F7F9;color:#111827;min-height:100vh}
-button,input,select,textarea{font:inherit;color:inherit}
-button{cursor:pointer;-webkit-tap-highlight-color:transparent}
-a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid #2952FF;outline-offset:2px;border-radius:8px}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-h1,h2,h3,.num{font-family:Sora,-apple-system,BlinkMacSystemFont,sans-serif;letter-spacing:-.02em}
-.hide{display:none!important}
+:root{--ink:#172238;--muted:#718096;--line:#e3e9f2;--bg:#f5f7fb;--blue:#315cf5;--bluebg:#eaf0ff;--green:#137e5a;--greenbg:#e4f7ef;--amber:#98600c;--amberbg:#fff3d9;--red:#b83232;--redbg:#fdeaea}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Manrope",sans-serif}button,input,select,textarea{font:inherit;color:inherit}button,a{cursor:pointer}a{color:inherit;text-decoration:none}.hide{display:none!important}.layout{min-height:100vh}.side{display:none}.main{min-width:0;flex:1}.top{position:sticky;top:0;z-index:10;background:#fffffff2;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 15px;padding-top:calc(12px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px}.logo{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#4775ff,#2646d9);color:#fff;display:grid;place-items:center;font:700 13px "Plus Jakarta Sans"}.brand strong{display:block;font:700 15px "Plus Jakarta Sans"}.brand small{color:var(--muted);font-size:11px}.page{max-width:1200px;margin:auto;padding:22px 14px 105px}.hero{background:linear-gradient(120deg,#18243a,#233c71);border-radius:22px;padding:22px;color:#fff;margin-bottom:15px;overflow:hidden}.eyebrow{color:var(--blue);font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.hero .eyebrow{color:#b5c8ff}.hero h1{font:700 27px/1.15 "Plus Jakarta Sans";letter-spacing:-1px;margin:8px 0}.hero p{font-size:12px;line-height:1.8;color:#d6def0;max-width:580px;margin:0}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:0 10px 30px #1c2d5008}.stack{display:grid;gap:13px}.search-layout{display:grid;gap:13px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.field label,.label{display:block;font-size:12px;font-weight:800;color:#46536a;margin-bottom:6px}.input,.select,.textarea{width:100%;border:1px solid #dce3ed;background:#fafbfd;border-radius:11px;padding:12px;min-height:44px;font-size:15px}.textarea{min-height:85px;resize:vertical}.btn{border:1px solid var(--line);background:#fff;border-radius:11px;min-height:40px;padding:9px 12px;font-size:12px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:7px}.btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}.btn.green{background:var(--green);color:#fff;border-color:var(--green)}.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}.btn.danger{color:var(--red)}.btn.full{width:100%}.btn:disabled{opacity:.55}.row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.sub{color:var(--muted);font-size:12px;margin:0}.note{color:var(--muted);font-size:11px;line-height:1.6}.presets,.chips{display:flex;gap:6px;overflow:auto;padding:2px 0 5px}.preset,.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:700;white-space:nowrap}.chip.active{background:var(--ink);color:#fff;border-color:var(--ink)}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:14px}.stat{border:1px solid var(--line);border-radius:15px;background:#fff;padding:12px}.stat strong{font:700 24px "Plus Jakarta Sans";letter-spacing:-1px;display:block}.stat small{color:var(--muted);font-size:11px;font-weight:700}.stat.feature{background:var(--blue);color:#fff;border-color:var(--blue)}.stat.feature small{color:#e1e8ff}.switchrow{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;font-weight:700}.toggle{border:0;width:44px;height:26px;border-radius:99px;background:#cbd3e0;position:relative;flex:none}.toggle:after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:white;transition:.15s}.toggle.on{background:var(--blue)}.toggle.on:after{left:21px}.tag{background:#f0f3f8;color:#526078;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800}.tag.green{background:var(--greenbg);color:#126445}.tag.blue{background:var(--bluebg);color:#2647be}.tag.amber{background:var(--amberbg);color:#80540b}.tag.red{background:var(--redbg);color:#9e2c2c}.account{border:1px solid var(--line);border-radius:13px;padding:12px;margin-bottom:9px;background:#fff}.account.active{border-color:#9fb5ff;box-shadow:0 0 0 3px #315cf50c}.account strong{font-size:13px}.account small{display:block;color:var(--muted);font-size:11px;margin:4px 0 9px}.account-actions{display:flex;gap:5px;flex-wrap:wrap}.account-actions .btn{flex:1;min-height:33px;font-size:10px;padding:6px}.leadgrid{display:grid;gap:10px}.lead{background:#fff;border:1px solid var(--line);border-radius:16px;padding:13px;display:grid;gap:10px}.leadtop{display:flex;align-items:flex-start;gap:10px}.avatar{width:42px;height:42px;flex:none;border-radius:12px;background:var(--bluebg);color:var(--blue);display:grid;place-items:center;font:700 13px "Plus Jakarta Sans"}.leadname{font:700 14px "Plus Jakarta Sans";line-height:1.3;overflow-wrap:anywhere}.meta{font-size:11px;color:var(--muted);margin-top:4px}.score{margin-left:auto;text-align:right;font:700 20px "Plus Jakarta Sans"}.score small{display:block;font:800 9px "Manrope";letter-spacing:1px;color:var(--muted)}.leadactions{display:grid;grid-template-columns:1fr 1fr;gap:6px}.leadactions .btn{font-size:10px;padding:8px}.empty{padding:26px 15px;text-align:center;border:1px dashed #cbd5e2;border-radius:15px;color:var(--muted);background:#fff}.empty strong{display:block;color:var(--ink);font:700 15px "Plus Jakarta Sans";margin-bottom:5px}.progress{background:#eff3ff;border:1px solid #ccd8ff;border-radius:15px;padding:14px;margin-top:12px}.bar{height:6px;background:#d9e2ff;border-radius:99px;margin:12px 0;overflow:hidden}.bar span{display:block;width:35%;height:100%;background:var(--blue);animation:move 1.4s infinite}@keyframes move{from{transform:translateX(-100%)}to{transform:translateX(400%)}}.tabs{position:fixed;bottom:0;left:0;right:0;z-index:20;display:flex;background:#fff;border-top:1px solid var(--line);padding:6px 5px calc(6px + env(safe-area-inset-bottom))}.tabs button{flex:1;border:0;background:transparent;border-radius:11px;padding:8px 2px;color:#7b899d;font-size:10px;font-weight:800}.tabs button.active{background:var(--bluebg);color:var(--blue)}.side nav{display:grid;gap:5px;margin-top:25px}.side nav button{text-align:left;padding:12px;border:0;border-radius:11px;background:white;color:#68758b;font-weight:800}.side nav button.active{background:var(--bluebg);color:var(--blue)}.sidebottom{margin-top:auto}.sheet{display:none;position:fixed;inset:0;background:#11182780;z-index:50;align-items:flex-end;justify-content:center}.sheet.open{display:flex}.panel{background:#fff;width:100%;max-width:620px;max-height:92vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px 16px calc(20px + env(safe-area-inset-bottom))}.panelhead{display:flex;align-items:center;gap:10px}.panelhead .close{margin-left:auto}.close{width:35px;height:35px;border:1px solid var(--line);border-radius:50%;background:white;font-size:20px}.detailgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.detail{background:var(--bg);border-radius:10px;padding:10px;font-size:11px;color:var(--muted);overflow-wrap:anywhere}.detail b{display:block;color:var(--ink);font-size:12px;margin-top:3px}.statuses{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0 13px}.statuses button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:7px 9px;font-size:10px;font-weight:800}.statuses button.active{background:var(--ink);color:white}.toast{position:fixed;bottom:calc(80px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--ink);color:white;padding:10px 14px;border-radius:99px;font-size:12px;z-index:80;opacity:0;pointer-events:none;transition:.2s;max-width:90vw}.toast.show{opacity:1}
+@media(min-width:700px){.page{padding:30px 28px 55px}.hero{padding:28px}.hero h1{font-size:32px}.stats{grid-template-columns:repeat(4,1fr)}.search-layout{grid-template-columns:1.1fr .85fr;align-items:start}.leadgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.sheet{align-items:center}.panel{border-radius:20px;max-height:85vh}.toast{bottom:24px}}
+@media(min-width:1000px){.layout{display:flex}.side{display:flex;flex-direction:column;width:245px;flex:none;position:sticky;top:0;height:100vh;background:white;border-right:1px solid var(--line);padding:22px 14px}.top{display:none}.page{padding:32px 35px 55px}.tabs{display:none}}
 
-/* SHELL */
-.shell{display:block}
-.side{display:none}
-.topbar{position:sticky;top:0;z-index:30;background:#FFFFFF;border-bottom:1px solid #E6E8EE;padding:12px 16px;padding-top:calc(12px + env(safe-area-inset-top));display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{display:flex;align-items:center;gap:10px}
-.mark{width:34px;height:34px;border-radius:10px;background:#2952FF;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font:800 15px Sora,sans-serif}
-.brand b{font:700 16px Sora,sans-serif;display:block;line-height:1.1}
-.brand small{font-size:12px;color:#8A93A3}
-.credit{display:flex;align-items:center;gap:8px;background:#F6F7F9;border:1px solid #E6E8EE;border-radius:999px;padding:6px 10px 6px 8px;font-size:12.5px;font-weight:600;white-space:nowrap}
-.credit i{display:block;width:44px;height:6px;border-radius:9px;background:#E6E8EE;overflow:hidden}
-.credit i span{display:block;height:100%;background:#2952FF;width:0}
-.main{padding:16px 16px 110px;max-width:900px;margin:0 auto}
-.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#FFFFFF;border-top:1px solid #E6E8EE;display:flex;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
-.tabbar button{flex:1;border:0;background:transparent;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;font-size:11.5px;font-weight:600;color:#8A93A3;border-radius:12px;position:relative}
-.tabbar button svg{width:22px;height:22px}
-.tabbar button.on{color:#2952FF;background:#EAEFFF}
-.dot{position:absolute;top:2px;right:calc(50% - 20px);min-width:18px;height:18px;border-radius:9px;background:#D93636;color:#FFFFFF;font-size:10.5px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 5px}
-@media(min-width:960px){
-  .shell{display:flex;min-height:100vh}
-  .side{display:flex;flex-direction:column;width:250px;flex:none;background:#FFFFFF;border-right:1px solid #E6E8EE;padding:22px 16px;position:sticky;top:0;height:100vh}
-  .side nav{display:grid;gap:4px;margin-top:28px}
-  .side nav button{display:flex;align-items:center;gap:12px;border:0;background:transparent;padding:11px 12px;border-radius:12px;font-weight:600;color:#4B5563;text-align:left;position:relative}
-  .side nav button svg{width:20px;height:20px}
-  .side nav button.on{background:#EAEFFF;color:#2952FF}
-  .side nav .dot{position:static;margin-left:auto}
-  .side .credit{margin-top:auto;justify-content:space-between}
-  .side .credit i{width:90px}
-  .content{flex:1;min-width:0}
-  .topbar{display:none}
-  .tabbar{display:none}
-  .main{padding:32px 32px 60px}
-}
+/* LF Studio visual refresh: editorial typography, richer workspace surfaces, preserved mobile dock */
+:root{--ink:#17213a;--muted:#747e94;--line:#e5e8f1;--bg:#f7f7fb;--blue:#3457f1;--bluebg:#edf0ff;--green:#147a5b;--greenbg:#e4f7ee;--amber:#94610c;--amberbg:#fff3d8;--red:#b83342;--redbg:#ffedf0;--violet:#6e59dc}
+body{font-family:"Manrope",sans-serif;letter-spacing:-.01em;background:radial-gradient(ellipse at 92% 0%,#eef1ff 0,transparent 35%),var(--bg)}
+h1,h2,h3,.brand strong,.logo,.hero h1,.stat strong,.leadname,.avatar,.score,.empty strong{font-family:"Plus Jakarta Sans",sans-serif;letter-spacing:-.035em}
+h1{font-size:clamp(26px,4vw,34px);line-height:1.12;margin:7px 0 8px}h2{font-size:19px;line-height:1.25;margin:0}h3{font-size:15px;margin:0}
+.logo{border-radius:14px;background:#263cda;box-shadow:0 7px 16px #2948d633;font-weight:700;letter-spacing:-.08em}
+.brand small{letter-spacing:.02em}.top{background:#ffffffed;border-bottom-color:#e8eaf2}
+.hero{position:relative;background:linear-gradient(115deg,#17213a 0%,#243b78 66%,#354fd3 100%);border-radius:25px;padding:25px 23px;box-shadow:0 17px 42px #17213a17}
+.hero:after{content:"LF";position:absolute;right:14px;bottom:-40px;font:700 150px/1 "Plus Jakarta Sans",sans-serif;letter-spacing:-.12em;color:#ffffff0a;pointer-events:none}.hero h1{max-width:540px;font-size:clamp(28px,4vw,39px);letter-spacing:-.055em}.hero p{font-size:13px;max-width:520px}
+.eyebrow{font-size:10px;letter-spacing:1.65px}.card,.stat,.lead{border-color:#e6e9f2;box-shadow:0 5px 20px #19284a06}.card{border-radius:20px;padding:18px}.stat{border-radius:17px;padding:14px}.stat.feature{background:linear-gradient(140deg,#3457f1,#263bc5);box-shadow:0 10px 22px #3457f12b}.input,.select,.textarea{border-color:#dfe4ef;background:#fbfcff;border-radius:12px;transition:border-color .15s,box-shadow .15s}.input:focus,.select:focus,.textarea:focus{outline:0;border-color:#7186ff;box-shadow:0 0 0 3px #3457f118;background:#fff}.btn{border-radius:12px;transition:transform .15s,box-shadow .15s,border-color .15s}.btn:active{transform:scale(.985)}.btn.primary{background:linear-gradient(135deg,#3e60f5,#2d47dc);box-shadow:0 6px 14px #3457f125}.preset,.chip{border-color:#e1e6f0}.chip.active{background:#202c49;border-color:#202c49}.lead{border-radius:18px;padding:15px}.avatar{border-radius:14px;background:linear-gradient(145deg,#edf0ff,#e2e8ff)}
+.tabs{left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));padding:7px;background:#fff;border:1px solid #e4e7f0;border-radius:20px;box-shadow:0 12px 38px #1c2c5218;gap:4px;max-width:560px;margin:0 auto;backdrop-filter:blur(18px)}
+.tabs button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:52px;padding:5px 3px;border-radius:14px;color:#7d879a;font-size:10px;font-weight:700;letter-spacing:.01em}
+.tabs button .navicon{width:20px;height:20px;display:grid;place-items:center}.tabs button svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}.tabs button.active{background:#edf0ff;color:#2f4ce0}.tabs button.active:before{content:"";position:absolute;top:0;width:17px;height:3px;border-radius:0 0 5px 5px;background:#3457f1}
+.side{background:#fff;border-right-color:#e8eaf2;padding:25px 16px}.side .brand{padding:0 7px}.side nav{gap:7px;margin-top:32px}.side nav button{display:flex;align-items:center;gap:12px;padding:12px 13px;border-radius:13px;background:transparent;color:#7a8499;font-size:13px;transition:.15s}.side nav button .navicon{display:grid;place-items:center;width:21px}.side nav button svg{width:19px;height:19px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}.side nav button.active{background:#edf0ff;color:#2f4ce0;box-shadow:inset 3px 0 #3457f1}.sidebottom{border-top:1px solid #edf0f5;padding-top:14px}.account{border-radius:15px}.tag{letter-spacing:.015em}.progress{background:#f0f2ff;border-color:#d9dfff}
+.page{max-width:1280px}.search-layout>.stack>.card{height:max-content}.empty{border-radius:18px}
+@media(min-width:700px){.page{padding-top:32px}.hero{padding:31px 30px}.hero h1{font-size:38px}.tabs{display:none}}
+@media(max-width:699px){.page{padding:18px 13px calc(105px + env(safe-area-inset-bottom))}.hero{padding:23px 19px;border-radius:22px}.hero:after{font-size:112px;right:8px;bottom:-25px}.card{padding:15px}.stats{gap:8px}.stat strong{font-size:23px}.grid2{gap:8px}.tabs{left:12px;right:12px}}
+@media(min-width:1000px){.side{width:252px}.page{padding:34px 38px 60px}.side nav button.active{background:linear-gradient(90deg,#edf0ff,#f7f8ff)}}
 
-/* COMMON */
-.h{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:14px;flex-wrap:wrap}
-.h h1{font-size:26px;font-weight:800;line-height:1.1}
-.h p{color:#4B5563;font-size:14px;margin-top:4px}
-.card{background:#FFFFFF;border:1px solid #E6E8EE;border-radius:18px;padding:16px}
-.stack{display:grid;gap:12px}
-.label{display:block;font-size:12.5px;font-weight:700;color:#4B5563;margin-bottom:6px}
-.inp,.sel,.txt{width:100%;padding:13px 14px;border-radius:12px;border:1px solid #E6E8EE;background:#F6F7F9;font-size:16px;-webkit-appearance:none;appearance:none}
-.sel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234B5563' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
-.txt{min-height:90px;resize:vertical}
-.inp:focus,.sel:focus,.txt:focus{border-color:#2952FF;background:#FFFFFF;outline:none}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 0 4px;-webkit-overflow-scrolling:touch}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;border:1px solid #E6E8EE;background:#FFFFFF;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:#4B5563;white-space:nowrap}
-.chip.on{background:#111827;border-color:#111827;color:#FFFFFF}
-.chip .c{display:inline-block;margin-left:6px;font-size:11.5px;opacity:.75}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #E6E8EE;background:#FFFFFF;border-radius:12px;padding:12px 16px;font-weight:700;font-size:14.5px;transition:transform .15s ease}
-.btn:active{transform:scale(.97)}
-.btn.pri{background:#2952FF;border-color:#2952FF;color:#FFFFFF}
-.btn.dark{background:#111827;border-color:#111827;color:#FFFFFF}
-.btn.wa{background:#0F9D62;border-color:#0F9D62;color:#FFFFFF}
-.btn.block{width:100%}
-.btn:disabled{opacity:.55}
-.btn svg{width:18px;height:18px;flex:none}
-.muted{color:#8A93A3;font-size:13px}
-.range{width:100%;-webkit-appearance:none;appearance:none;height:8px;border-radius:9px;background:#E6E8EE;outline-offset:6px}
-.range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;background:#2952FF;border:4px solid #FFFFFF;box-shadow:0 2px 8px rgba(17,24,39,.3)}
-.range::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#2952FF;border:4px solid #FFFFFF}
-.between{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:600;font-size:14px}
-.tog{width:46px;height:28px;border-radius:999px;background:#E6E8EE;border:0;position:relative;flex:none;transition:background .2s ease}
-.tog:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:left .2s ease}
-.tog.on{background:#2952FF}
-.tog.on:after{left:21px}
-
-/* SETUP */
-.setup{background:#111827;color:#FFFFFF;border-radius:20px;padding:20px}
-.setup h2{font-size:21px;margin-bottom:6px}
-.setup p{color:#C9CED8;font-size:14px}
-.steps{display:grid;gap:10px;margin:16px 0}
-.step{display:flex;gap:12px;align-items:flex-start;background:#1C2433;border-radius:14px;padding:12px}
-.step b{width:26px;height:26px;border-radius:50%;background:#2952FF;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}
-.step span{font-size:14px;color:#E4E7EE}
-.step a{color:#9DB3FF;text-decoration:underline}
-.setup .inp{background:#1C2433;border-color:#2B3548;color:#FFFFFF}
-.setup .inp::placeholder{color:#7D889C}
-
-/* PROGRESS */
-.prog{border:1px solid #CBD6FF;background:#EAEFFF;border-radius:18px;padding:16px}
-.bar{height:8px;border-radius:9px;background:#D5DEFF;overflow:hidden;margin:12px 0 8px}
-.bar span{display:block;height:100%;width:30%;background:#2952FF;border-radius:9px;animation:slide 1.4s ease-in-out infinite}
-@keyframes slide{0%{margin-left:-30%}100%{margin-left:100%}}
-.plist{display:grid;gap:6px;margin-top:6px;font-size:13.5px;color:#4B5563}
-.plist div{display:flex;gap:8px;align-items:center}
-.plist i{width:16px;height:16px;border-radius:50%;border:2px solid #A9B9FF;flex:none}
-.plist .done i{background:#2952FF;border-color:#2952FF}
-.plist .now i{border-color:#2952FF;border-top-color:transparent;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* LEADS */
-.toolbar{display:grid;grid-template-columns:1fr auto;gap:8px;margin-bottom:10px}
-.list{display:grid;gap:10px}
-@media(min-width:700px){.list{grid-template-columns:1fr 1fr}}
-.lead{background:#FFFFFF;border:1px solid #E6E8EE;border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:10px;text-align:left;width:100%}
-.lead-top{display:flex;gap:12px;align-items:flex-start}
-.av{width:46px;height:46px;border-radius:12px;background:#EAEFFF;color:#2952FF;display:flex;align-items:center;justify-content:center;font:800 16px Sora,sans-serif;flex:none;overflow:hidden}
-.av{position:relative}
-.av img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:1}
-.lead h3{font-size:15.5px;font-weight:700;line-height:1.25}
-.lead .sub{font-size:12.5px;color:#8A93A3;margin-top:2px;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-.score{margin-left:auto;text-align:center;flex:none}
-.score b{display:block;font:800 18px Sora,sans-serif;line-height:1}
-.score small{font-size:10.5px;color:#8A93A3;font-weight:700}
-.tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;background:#F6F7F9;color:#4B5563}
-.tag.g{background:#E3F7EE;color:#0B7A4B}
-.tag.a{background:#FFF3DC;color:#8A5300}
-.tag.b{background:#EAEFFF;color:#2140D6}
-.tag.r{background:#FDECEC;color:#B42323}
-.tag.k{background:#111827;color:#FFFFFF}
-.lead-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.lead-acts .btn{padding:10px;font-size:13.5px}
-.empty{text-align:center;padding:36px 18px;color:#8A93A3;background:#FFFFFF;border:1px dashed #D5D9E2;border-radius:18px}
-.empty b{display:block;color:#111827;font-size:16px;margin-bottom:4px}
-
-/* STATS */
-.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-@media(min-width:700px){.kpis{grid-template-columns:repeat(4,1fr)}}
-.kpi{background:#FFFFFF;border:1px solid #E6E8EE;border-radius:18px;padding:14px}
-.kpi .num{font-size:26px;font-weight:800;line-height:1.1}
-.kpi p{font-size:12.5px;color:#8A93A3;font-weight:600}
-.kpi.hero{background:#111827;color:#FFFFFF;border-color:#111827;grid-column:span 2}
-.kpi.hero p{color:#A7AFBE}
-.funnel{display:grid;gap:10px}
-.fr{display:grid;grid-template-columns:96px 1fr 34px;gap:10px;align-items:center;font-size:13.5px;font-weight:600}
-.fr i{display:block;height:10px;border-radius:9px;background:#F1F2F5;overflow:hidden}
-.fr i span{display:block;height:100%;background:#2952FF;border-radius:9px}
-.fr b{text-align:right}
-.hist{display:grid;gap:8px}
-.hrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #F1F2F5}
-.hrow:last-child{border-bottom:0}
-.hrow b{font-size:14px;display:block}
-.hrow small{color:#8A93A3;font-size:12.5px}
-
-/* SHEET */
-.sheet{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:80;background:rgba(17,24,39,.55);align-items:flex-end;justify-content:center}
-.sheet.open{display:flex;animation:fade .2s ease}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-.panel{background:#FFFFFF;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;-webkit-overflow-scrolling:touch;border-radius:22px 22px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom));animation:up .28s cubic-bezier(.2,.8,.2,1)}
-@keyframes up{from{transform:translateY(40px)}to{transform:none}}
-@media(min-width:700px){.sheet{align-items:center}.panel{border-radius:22px;max-height:86vh}}
-.grab{width:42px;height:5px;border-radius:9px;background:#E6E8EE;margin:0 auto 14px}
-.ph{display:flex;gap:12px;align-items:center;margin-bottom:12px}
-.ph h2{font-size:20px;line-height:1.2}
-.x{margin-left:auto;width:38px;height:38px;border-radius:50%;border:1px solid #E6E8EE;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex:none}
-.kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.kv div{background:#F6F7F9;border-radius:12px;padding:10px 12px;font-size:12px;color:#8A93A3;font-weight:600}
-.kv b{display:block;color:#111827;font-size:15px;font-weight:700;margin-top:2px;word-break:break-word}
-.kv .wide{grid-column:span 2}
-.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:6px 0 14px}
-.status-grid button{border:1px solid #E6E8EE;background:#FFFFFF;border-radius:10px;padding:9px 4px;font-size:12.5px;font-weight:700;color:#4B5563}
-.status-grid button.on{background:#111827;border-color:#111827;color:#FFFFFF}
-.acts3{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#111827;color:#FFFFFF;padding:10px 16px;border-radius:999px;font-size:13.5px;font-weight:600;opacity:0;transition:opacity .2s ease;pointer-events:none;z-index:99;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
-.toast.show{opacity:1}
-@media(min-width:960px){.toast{bottom:28px}}
-.alert{border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.45}
-.alert.err{background:#FDECEC;color:#8E1B1B;border:1px solid #F6C8C8}
-.alert.ok{background:#E3F7EE;color:#0B5E3A;border:1px solid #BDE9D3}
-</style>
-</head>
-<body>
-<div id="app">
-<div class="shell">
-  <aside class="side">
-    <div class="brand"><span class="mark">LF</span><span><b>Lead Finder</b><small>Lagos Web Studio</small></span></div>
-    <nav id="sideNav"></nav>
-    <div class="credit" id="creditSide"><span>Credit</span><i><span></span></i><em style="font-style:normal">–</em></div>
-  </aside>
-  <div class="content">
-    <header class="topbar">
-      <div class="brand"><span class="mark">LF</span><span><b>Lead Finder</b><small>Lagos Web Studio</small></span></div>
-      <div class="credit" id="creditTop"><i><span></span></i><em style="font-style:normal">–</em></div>
-    </header>
-    <main class="main">
-
-      <!-- FIND -->
-      <section id="v-find">
-        <div class="h"><div><h1>Find leads</h1><p>Businesses on Google Maps with no website, ready to pitch.</p></div></div>
-        <div id="setupBox" class="setup hide">
-          <h2>Connect your free Apify account</h2>
-          <p>One-time setup, about 3 minutes. No card needed.</p>
-          <div class="steps">
-            <div class="step"><b>1</b><span>Open <a href="https://console.apify.com/sign-up" target="_blank" rel="noopener">apify.com sign-up</a> and choose <strong>Continue with Google</strong>.</span></div>
-            <div class="step"><b>2</b><span>Pick the <strong>Free</strong> plan and skip any upgrade offers.</span></div>
-            <div class="step"><b>3</b><span>Open <a href="https://console.apify.com/settings/integrations" target="_blank" rel="noopener">Settings → API &amp; Integrations</a> and copy your <strong>Personal API token</strong>.</span></div>
-            <div class="step"><b>4</b><span>Paste it below and tap <strong>Connect</strong>.</span></div>
-          </div>
-          <div class="stack">
-            <input class="inp" id="setupToken" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
-            <button class="btn pri block" id="setupConnect" type="button">Connect</button>
-            <div id="setupMsg"></div>
-          </div>
-        </div>
-
-        <div id="findBox" class="stack">
-          <div class="card stack">
-            <div><span class="label">Business type</span><input class="inp" id="q" placeholder="e.g. barbershop, car dealer" value="barbershop"></div>
-            <div class="chips" id="nicheChips"></div>
-            <div><span class="label">Area</span><input class="inp" id="area" placeholder="e.g. Lekki Phase 1, Lagos" value="Lekki Phase 1, Lagos"></div>
-            <div class="chips" id="areaChips"></div>
-            <div class="row2">
-              <div><span class="label">Min rating</span><select class="sel" id="minR"><option value="0">Any</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div>
-              <div><span class="label">Min reviews</span><select class="sel" id="minN"><option value="0">Any</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div>
-            </div>
-            <div>
-              <div class="between"><span class="label" style="margin:0">Businesses to scan</span><b id="sizeVal">40</b></div>
-              <input class="range" id="size" type="range" min="10" max="80" step="10" value="40" style="margin-top:10px">
-              <p class="muted" id="costNote" style="margin-top:6px"></p>
-            </div>
-            <div class="switch"><span>Include Instagram/Facebook-only listings</span><button class="tog on" id="incSocial" type="button" aria-pressed="true" aria-label="Include social-only listings"></button></div>
-            <button class="btn pri block" id="go" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Find businesses with no website</button>
-          </div>
-          <div id="progBox" class="prog hide">
-            <div class="between"><b id="progTitle">Scanning Google Maps</b><span class="muted" id="progTime">0s</span></div>
-            <div class="bar"><span></span></div>
-            <div class="plist" id="progList"></div>
-            <button class="btn block" id="cancel" type="button" style="margin-top:12px">Cancel search</button>
-          </div>
-          <div id="findMsg"></div>
-          <div id="lastResult"></div>
-        </div>
-      </section>
-
-      <!-- LEADS -->
-      <section id="v-leads" class="hide">
-        <div class="h"><div><h1>Leads</h1><p id="leadsSub">Tap a lead for details, notes and status.</p></div></div>
-        <div class="chips" id="statusChips" style="margin-bottom:10px"></div>
-        <div class="toolbar">
-          <input class="inp" id="filterText" placeholder="Search name, area, type">
-          <select class="sel" id="sortBy" style="width:auto"><option value="score">Best first</option><option value="reviews">Most reviews</option><option value="rating">Top rated</option><option value="recent">Newest</option><option value="name">A–Z</option></select>
-        </div>
-        <div class="list" id="leadList"></div>
-      </section>
-
-      <!-- STATS -->
-      <section id="v-stats" class="hide">
-        <div class="h"><div><h1>Progress</h1><p>Your outreach at a glance.</p></div></div>
-        <div class="stack">
-          <div class="kpis" id="kpis"></div>
-          <div class="card"><h3 style="font-size:16px;margin-bottom:12px">Pipeline</h3><div class="funnel" id="funnel"></div></div>
-          <div class="card"><div class="between" style="margin-bottom:6px"><h3 style="font-size:16px">Recent searches</h3><span class="muted">Tap to run again</span></div><div class="hist" id="hist"></div></div>
-        </div>
-      </section>
-
-      <!-- SETTINGS -->
-      <section id="v-settings" class="hide">
-        <div class="h"><div><h1>Settings</h1><p>Your Apify connection and data.</p></div></div>
-        <div class="stack">
-          <div class="card stack">
-            <h3 style="font-size:16px">Apify connection</h3>
-            <div id="acctInfo" class="muted">Not connected.</div>
-            <input class="inp" id="tokenIn" placeholder="apify_api_..." autocomplete="off" autocapitalize="off" spellcheck="false">
-            <div class="row2"><button class="btn dark" id="saveToken" type="button">Save &amp; test</button><button class="btn" id="removeToken" type="button">Disconnect</button></div>
-            <div id="tokenMsg"></div>
-          </div>
-          <div class="card stack">
-            <h3 style="font-size:16px">Follow-ups</h3>
-            <div><span class="label">Remind me to follow up after</span><select class="sel" id="fuDays"><option value="2">2 days</option><option value="3" selected>3 days</option><option value="5">5 days</option><option value="7">7 days</option></select></div>
-          </div>
-          <div class="card stack">
-            <h3 style="font-size:16px">Your data</h3>
-            <p class="muted">Leads are stored on this phone only. Back up before clearing your browser or switching phones.</p>
-            <div class="row2"><button class="btn" id="exportCsv" type="button">Export CSV</button><button class="btn" id="backup" type="button">Backup file</button></div>
-            <label class="btn" style="position:relative;overflow:hidden">Restore backup<input type="file" id="restore" accept=".json,application/json" style="position:absolute;top:0;left:0;width:100%;height:100%;opacity:0"></label>
-            <button class="btn" id="wipe" type="button" style="color:#B42323">Delete all leads</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
-</div>
-
-<nav class="tabbar" id="tabbar"></nav>
-</div>
-
-<div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="panel" id="panel"></div></div>
-<div class="toast" id="toast"></div>
-
+.combo-wrap{position:relative}.combo-input{padding-right:48px!important;background-image:none!important;cursor:text}.combo-arrow{position:absolute;right:7px;top:7px;width:34px;height:34px;border:1px solid #e0e5f4;border-radius:10px;background:linear-gradient(180deg,#fff 0%,#f2f4ff 100%);color:#3d55d9;display:grid;place-items:center;cursor:pointer;z-index:2;box-shadow:0 2px 5px #243b790d;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s}.combo-arrow svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s}.combo-arrow:hover,.combo-arrow:focus-visible{background:#e9edff;border-color:#aab8ff;box-shadow:0 0 0 3px #3457f114;outline:none}.combo-arrow[aria-expanded="true"] svg{transform:rotate(180deg)}.combo-arrow:active{transform:scale(.96)}.combo-menu{display:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:40;max-height:250px;overflow:auto;background:#fff;border:1px solid #dce3ed;border-radius:13px;box-shadow:0 16px 36px #18243a20;padding:5px}.combo-menu.open{display:block}.combo-option{display:block;width:100%;text-align:left;border:0;background:#fff;border-radius:8px;padding:10px 11px;font-size:13px;cursor:pointer}.combo-option:hover,.combo-option:focus{background:#edf0ff;color:#2949d9;outline:0}.combo-option small{display:block;color:#8a93a6;font-size:10px}.combo-empty{padding:12px;color:#747e94;font-size:12px}.combo-menu .combo-custom{border-top:1px solid #edf0f5;margin-top:4px;padding-top:10px;color:#3457f1;font-weight:800}
+</style></head>
+<body><div class="layout">
+<aside class="side"><div class="brand"><div class="logo">LF</div><div><strong>LF Studio</strong><small>Lead intelligence</small></div></div><nav id="desktopNav"></nav><div class="sidebottom"><div id="sideAccount"></div><button class="btn full" data-view="settings">Manage Apify accounts</button></div></aside>
+<div class="main"><header class="top"><div class="brand"><div class="logo">LF</div><div><strong>LF Studio</strong><small>Lead intelligence</small></div></div><button class="btn" data-view="settings" id="topAccount">No account</button></header>
+<main class="page">
+<section id="view-find"><div class="hero"><div class="eyebrow">Lagos Web Studio · Prospecting</div><h1>Find businesses that need a website.</h1><p>Search Google Maps, exclude known official websites, and organise promising prospects and outreach.</p></div><div class="stats" id="findStats"></div>
+<div class="search-layout"><div class="card stack"><div><div class="eyebrow">01 / Search criteria</div><h2>Build a search</h2><p class="sub">Choose a business niche and neighbourhood from the lists, then tune the quality filters.</p></div><div class="field"><label for="query">Business type</label><div class="combo-wrap"><input class="input combo-input" id="query" value="barbershop" placeholder="Choose or type a business type…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="queryMenu"><button class="combo-arrow" type="button" aria-label="Show business types" data-open-combo="query"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="queryMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="nichePresets"></div><div class="field"><label for="area">Location / neighbourhood</label><div class="combo-wrap"><input class="input combo-input" id="area" value="Lekki Phase 1, Lagos" placeholder="Choose or type a city or neighbourhood…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="areaMenu"><button class="combo-arrow" type="button" aria-label="Show locations" data-open-combo="area"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="areaMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="areaPresets"></div><div class="grid2"><div class="field"><label for="minRating">Minimum rating</label><select class="select" id="minRating"><option value="0">Any rating</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div><div class="field"><label for="minReviews">Minimum reviews</label><select class="select" id="minReviews"><option value="0">Any reviews</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div></div><div><div class="row"><label class="label" for="maxPlaces">Businesses to scan</label><b id="placesValue">40</b></div><input class="input" style="padding:0;min-height:auto" type="range" id="maxPlaces" min="10" max="80" step="10" value="40"><p class="note">Actor charges vary by account and pricing. Check Apify usage after each run; no fixed cost is guaranteed.</p></div><div class="switchrow"><span>Include social-only listings</span><button class="toggle on" id="includeSocial" type="button" aria-pressed="true"></button></div><button class="btn primary full" id="searchBtn">Find eligible prospects ↗</button><p class="note">Known official websites are excluded. An empty website field is not proof a business has no website; verify before building a demo.</p></div>
+<div class="stack"><div class="card stack"><div><div class="eyebrow">02 / Active account</div><h2>Apify connection</h2><p class="sub">Switch manually between saved API keys.</p></div><div id="activeAccount"></div><button class="btn full" data-view="settings">Manage API keys</button><div id="accountNotice"></div></div><div class="card stack"><div class="eyebrow">03 / Eligibility</div><h2>Website filtering</h2><div class="row"><span class="sub">Official website returned</span><span class="tag red">Exclude</span></div><div class="row"><span class="sub">Social / booking profile only</span><span class="tag blue">Optional</span></div><div class="row"><span class="sub">No URL returned</span><span class="tag green">Reviewable</span></div><p class="note">Google Maps data can be incomplete. Results are candidates, not proof that no website exists.</p></div></div></div>
+<div id="progressBox" class="progress hide"><div class="row"><b id="progressTitle">Searching…</b><span class="note" id="progressTime">0s</span></div><div class="bar"><span></span></div><p class="note" id="progressText">Starting Apify actor…</p><button class="btn full" id="cancelSearch">Cancel search</button></div><div id="searchMessage" style="margin-top:12px"></div><div id="results"></div></section>
+<section id="view-leads" class="hide"><div class="row" style="margin-bottom:16px"><div><div class="eyebrow">Prospect database</div><h1>Saved leads</h1><p class="sub" id="leadSummary"></p></div><button class="btn" id="exportCsv">Export CSV ↓</button></div><div class="chips" id="statusFilters"></div><div class="grid2" style="margin:10px 0"><input class="input" id="leadSearch" placeholder="Search leads"><select class="select" id="sortLeads"><option value="score">Best score</option><option value="reviews">Most reviews</option><option value="rating">Highest rating</option><option value="recent">Newest</option><option value="name">A–Z</option></select></div><div class="leadgrid" id="leadGrid"></div></section>
+<section id="view-progress" class="hide"><div class="row" style="margin-bottom:16px"><div><div class="eyebrow">Performance</div><h1>Outreach progress</h1><p class="sub">Track prospects from discovery to clients.</p></div><button class="btn" id="backupData">Back up data ↓</button></div><div class="stats" id="progressStats"></div><div class="card stack"><h2>Pipeline</h2><div id="pipeline"></div></div><div class="card stack" style="margin-top:12px"><h2>Recent searches</h2><div id="searchHistory"></div></div></section>
+<section id="view-settings" class="hide"><div class="eyebrow">Workspace configuration</div><h1>Settings</h1><p class="sub" style="margin-bottom:16px">Manage multiple Apify tokens, follow-ups and backups.</p><div class="stack"><div class="card stack"><h2>Apify API accounts</h2><p class="sub">Add and verify multiple tokens. Switching is manual; the app never silently switches accounts.</p><div id="accountList"></div><div style="height:1px;background:var(--line)"></div><h3 id="formTitle">Add an account</h3><input type="hidden" id="editId"><div class="field"><label for="accountLabel">Account label</label><input class="input" id="accountLabel" placeholder="e.g. Main account"></div><div class="field"><label for="accountToken">Apify API token</label><input class="input" id="accountToken" type="password" autocomplete="new-password" autocapitalize="off" placeholder="apify_api_..."></div><div class="grid2"><button class="btn primary" id="saveAccount">Save account</button><button class="btn" id="testToken">Test token</button></div><div id="accountMessage"></div><p class="note">Tokens are stored in this browser's local storage, not in a secure server vault. Anyone who can inspect this browser profile may access them.</p></div><div class="card stack"><h2>Follow-up settings</h2><div class="field"><label for="followDays">Follow up after</label><select class="select" id="followDays"><option value="2">2 days</option><option value="3" selected>3 days</option><option value="5">5 days</option><option value="7">7 days</option></select></div></div><div class="card stack"><h2>Your data</h2><p class="sub">Leads are saved in this browser. Back up before clearing browser data.</p><div class="grid2"><button class="btn" id="backupData2">Download backup</button><label class="btn" style="position:relative;overflow:hidden">Restore backup<input id="restoreData" type="file" accept=".json,application/json" style="position:absolute;inset:0;opacity:0;width:100%;height:100%"></label></div><button class="btn danger full" id="deleteLeads">Delete all saved leads</button></div></div></section>
+</main></div></div><nav class="tabs" id="mobileNav"></nav><div class="sheet" id="sheet" role="dialog" aria-modal="true"><div class="panel" id="panel"></div></div><div class="toast" id="toast"></div>
 <script>
 (function(){
 "use strict";
-var ACTOR="compass~crawler-google-places", API="https://api.apify.com/v2", COST_PER_PLACE=0.005;
-var SOCIAL=["instagram.com","facebook.com","fb.com","fb.me","fresha.com","linktr.ee","linktree","wa.me","whatsapp.com","tiktok.com","x.com/","twitter.com","booksy.com","calendly.com","beacons.ai","bit.ly","linkin.bio","snapchat.com","youtube.com","jiji.ng","business.site","g.page","sites.google.com","bumpa","selar.co","paystack.shop","flutterwave.com/store"];
+var API="https://api.apify.com/v2",ACTOR="compass~crawler-google-places";
+var SOCIAL=["instagram.com","facebook.com","fb.com","tiktok.com","x.com","twitter.com","youtube.com","linktr.ee","linktree","wa.me","whatsapp.com","fresha.com","booksy.com","calendly.com","beacons.ai","bumpa","selar.co","paystack.shop","flutterwave.com/store","jiji.ng","g.page","sites.google.com","business.site","bit.ly","snapchat.com"];
 var NICHES=["barbershop","hair salon","spa","car dealer","real estate agency","restaurant","lounge","dental clinic","gym","event centre","bakery","fashion designer","photography studio","car rental","interior designer","cleaning service","logistics company","pharmacy"];
 var AREAS=["Lekki Phase 1, Lagos","Victoria Island, Lagos","Ikoyi, Lagos","Ikeja GRA, Lagos","Ajah, Lagos","Yaba, Lagos","Surulere, Lagos","Magodo, Lagos","Gbagada, Lagos","Wuse 2, Abuja","Maitama, Abuja","GRA, Port Harcourt","Bodija, Ibadan"];
-var STATUS=[["new","New"],["contacted","Contacted"],["replied","Replied"],["demo","Demo sent"],["won","Won"],["lost","Lost"]];
-var STATUS_TAG={new:"b",contacted:"",replied:"a",demo:"b",won:"g",lost:"r"};
-var TABS=[["find","Find",'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>'],
-  ["leads","Leads",'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>'],
-  ["stats","Progress",'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 20V10M12 20V4M19 20v-7"/></svg>'],
-  ["settings","Settings",'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>']];
-
+var STATUSES=[["new","New"],["contacted","Contacted"],["replied","Replied"],["demo","Demo sent"],["won","Won"],["lost","Lost"]];
+var TABS=[["find","Find",`<path d="m3 10 9-7 9 7"/><path d="M5 9v11h14V9M9 20v-6h6v6"/>`],["leads","Leads",`<rect x="4" y="4" width="16" height="16" rx="3"/><path d="M8 9h8M8 13h8M8 17h4"/>`],["progress","Progress",`<path d="M4 19V5M4 19h16"/><path d="m7 15 4-4 3 2 5-7"/>`],["settings","Settings",`<circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.4 2.4-1.7-.7a8 8 0 0 1-1.8 1l-.3 1.8h-2.8l-.3-1.8a8 8 0 0 1-1.8-1l-1.7.7-1.4-2.4L7.1 15a7 7 0 0 1 0-2l-1.4-1.1 1.4-2.4 1.7.7a8 8 0 0 1 1.8-1l.3-1.8h2.8l.3 1.8a8 8 0 0 1 1.8 1l1.7-.7 1.4 2.4-1.4 1.1a7 7 0 0 1-.1 2Z"/>`]];
 var $=function(id){return document.getElementById(id);};
-function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
-var DB={get:function(k,d){try{var v=localStorage.getItem("lf2_"+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set:function(k,v){try{localStorage.setItem("lf2_"+k,JSON.stringify(v));}catch(e){toast("Storage full, export a backup");}}};
-var S={token:DB.get("token",""),leads:DB.get("leads",{}),searches:DB.get("searches",[]),fuDays:DB.get("fuDays",3),view:"find",status:"all",lastIds:[],run:null,acct:DB.get("acct",null)};
-
-/* migrate old version data */
-(function(){try{var old=JSON.parse(localStorage.getItem("lf_leads")||"null"),sent=JSON.parse(localStorage.getItem("lf_sent")||"{}");
-  if(old&&!Object.keys(S.leads).length){Object.keys(old).forEach(function(k){var l=old[k];l.status=sent[k]?"contacted":"new";l.contactedAt=sent[k]||null;l.notes="";S.leads[k]=l;});DB.set("leads",S.leads);}
-  if(!S.token){var t=JSON.parse(localStorage.getItem("lf_key")||'""');if(t&&t.indexOf("apify_api_")===0){S.token=t;DB.set("token",t);}}}catch(e){}})();
-
-function toast(t){var el=$("toast");el.textContent=t;el.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove("show");},2000);}
-function digits(p){return String(p||"").replace(/[^0-9]/g,"");}
-function waNum(p){var d=digits(p);if(d.indexOf("0")===0&&d.length===11)d="234"+d.slice(1);return d;}
-function classify(url){if(!url)return"none";var u=url.toLowerCase();for(var i=0;i<SOCIAL.length;i++)if(u.indexOf(SOCIAL[i])>-1)return"social";return"site";}
-function scoreOf(l){var r=Math.min(l.count||0,300)/300*55,q=Math.max(0,Math.min(1,((l.rating||0)-3.5)/1.5))*35,k=l.kind==="none"?10:6;return Math.round(r+q+k);}
-function initials(n){return String(n||"?").replace(/[^A-Za-z0-9 ]/g,"").split(" ").filter(Boolean).slice(0,2).map(function(w){return w[0];}).join("").toUpperCase()||"?";}
-function ago(t){if(!t)return"";var d=(Date.now()-t)/864e5;if(d<1/24)return"just now";if(d<1)return Math.round(d*24)+"h ago";return Math.round(d)+"d ago";}
-function isDue(l){return l.status==="contacted"&&l.contactedAt&&(Date.now()-l.contactedAt)>S.fuDays*864e5;}
-function save(){DB.set("leads",S.leads);}
-
-/* NAV */
-function navHtml(side){return TABS.map(function(t){return '<button type="button" data-tab="'+t[0]+'" class="'+(S.view===t[0]?"on":"")+'">'+t[2]+'<span>'+t[1]+'</span>'+(t[0]==="leads"?'<em class="dot hide" data-due></em>':"")+'</button>';}).join("");}
-function renderNav(){$("sideNav").innerHTML=navHtml(true);$("tabbar").innerHTML=navHtml(false);
-  var due=Object.keys(S.leads).filter(function(k){return isDue(S.leads[k]);}).length;
-  document.querySelectorAll("[data-due]").forEach(function(e){e.textContent=due;e.classList.toggle("hide",!due);});}
-function go(v){S.view=v;["find","leads","stats","settings"].forEach(function(x){$("v-"+x).classList.toggle("hide",x!==v);});renderNav();
-  if(v==="leads")renderLeads();if(v==="stats")renderStats();if(v==="settings")renderSettings();window.scrollTo(0,0);}
-document.addEventListener("click",function(e){var t=e.target.closest("[data-tab]");if(t)go(t.getAttribute("data-tab"));});
-
-/* CREDIT */
-function renderCredit(){var a=S.acct;["creditTop","creditSide"].forEach(function(id){var el=$(id);if(!el)return;var bar=el.querySelector("i span"),txt=el.querySelector("em");
-  if(!a||a.limit==null){bar.style.width="0";txt.textContent=S.token?"Connected":"Not connected";return;}
-  var left=Math.max(0,a.limit-a.used);bar.style.width=Math.min(100,a.used/a.limit*100)+"%";txt.textContent="$"+left.toFixed(2)+" left";});}
-function api(path,opt){opt=opt||{};var sep=path.indexOf("?")>-1?"&":"?";
-  return fetch(API+path+sep+"token="+encodeURIComponent(S.token),opt).then(function(r){return r.text().then(function(t){var j=null;try{j=JSON.parse(t);}catch(e){}
-    if(!r.ok){var m=(j&&j.error&&j.error.message)||("Request failed ("+r.status+")");var err=new Error(m);err.status=r.status;throw err;}return j;});});}
-function refreshAccount(){if(!S.token)return Promise.resolve(null);
-  return api("/users/me").then(function(me){var a={user:me.data.username||me.data.email||"Apify user",plan:(me.data.plan&&me.data.plan.id)||"FREE"};
-    return api("/users/me/limits").then(function(l){var d=l.data||{};a.limit=d.limits&&d.limits.maxMonthlyUsageUsd;a.used=d.current&&d.current.monthlyUsageUsd;if(a.limit==null||a.used==null){a.limit=null;}return a;},function(){return a;});})
-  .then(function(a){S.acct=a;DB.set("acct",a);renderCredit();return a;});}
-
-/* FIND */
-function chipRow(box,arr,target){var el=$(box);el.innerHTML=arr.map(function(v){return '<button type="button" class="chip" data-fill="'+target+'">'+esc(v)+'</button>';}).join("");}
-chipRow("nicheChips",NICHES,"q");chipRow("areaChips",AREAS,"area");
-document.addEventListener("click",function(e){var c=e.target.closest("[data-fill]");if(c){$(c.getAttribute("data-fill")).value=c.textContent;}});
-function costNote(){var n=+$("size").value;$("sizeVal").textContent=n;$("costNote").textContent="Uses about $"+(n*COST_PER_PLACE).toFixed(2)+" of your free $5 monthly credit (about "+Math.floor(5/(n*COST_PER_PLACE))+" searches a month at this size).";}
-$("size").addEventListener("input",costNote);costNote();
-$("incSocial").addEventListener("click",function(){var on=!this.classList.contains("on");this.classList.toggle("on",on);this.setAttribute("aria-pressed",on?"true":"false");});
-function renderFind(){$("setupBox").classList.toggle("hide",!!S.token);$("findBox").classList.toggle("hide",!S.token);}
-$("setupConnect").addEventListener("click",function(){connect($("setupToken").value,"setupMsg",this);});
-function connect(tok,msgId,btn){tok=String(tok||"").trim();var m=$(msgId);
-  if(!tok){m.innerHTML='<div class="alert err">Paste your Apify token first.</div>';return;}
-  S.token=tok;btn.disabled=true;var old=btn.textContent;btn.textContent="Checking…";
-  refreshAccount().then(function(a){DB.set("token",tok);m.innerHTML='<div class="alert ok">Connected as <b>'+esc(a.user)+'</b>.</div>';toast("Apify connected");renderFind();renderSettings();})
-  .catch(function(e){S.token=DB.get("token","");m.innerHTML='<div class="alert err">'+esc(e.status===401?"That token wasn't accepted. Copy it again from Settings → API & Integrations.":e.message)+'</div>';})
-  .then(function(){btn.disabled=false;btn.textContent=old;});}
-
-var PSTEPS=["Starting the scan","Reading Google Maps listings","Checking websites and filtering","Saving your leads"];
-function setProg(i,title){$("progTitle").textContent=title||PSTEPS[i];$("progList").innerHTML=PSTEPS.map(function(s,k){return '<div class="'+(k<i?"done":k===i?"now":"")+'"><i></i>'+s+'</div>';}).join("");}
-function search(){
-  if(S.run)return;
-  var q=$("q").value.trim(),area=$("area").value.trim(),n=+$("size").value,minR=+$("minR").value,minN=+$("minN").value,inc=$("incSocial").classList.contains("on");
-  if(!q){toast("Type a business type");return;}
-  $("findMsg").innerHTML="";$("lastResult").innerHTML="";$("go").disabled=true;$("progBox").classList.remove("hide");setProg(0);
-  var t0=Date.now(),timer=setInterval(function(){var s=Math.round((Date.now()-t0)/1000);$("progTime").textContent=(s>59?Math.floor(s/60)+"m ":"")+(s%60)+"s";},1000);
-  var run={cancelled:false,timer:timer};S.run=run;
-  var input={searchStringsArray:[q+(area?" in "+area:" in Lagos, Nigeria")],maxCrawledPlacesPerSearch:n,language:"en",countryCode:"ng",skipClosedPlaces:true,scrapePlaceDetailPage:false,scrapeContacts:false,maxImages:0,maxReviews:0};
-  api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)})
-  .then(function(r){run.id=r.data.id;run.ds=r.data.defaultDatasetId;setProg(1);return poll(run,0);})
-  .then(function(){setProg(2);return api("/datasets/"+run.ds+"/items?clean=true&format=json");})
-  .then(function(items){items=items||[];if(items.length)return items;
-    return api("/actor-runs/"+run.id).then(function(r){run.msg=r.data.statusMessage||"";return fetch(API+"/actor-runs/"+run.id+"/log?token="+encodeURIComponent(S.token)).then(function(x){return x.text();}).catch(function(){return "";});})
-    .then(function(log){run.log=String(log||"").split("\n").filter(function(l){return /error|warn|not found|limit|charge|failed|no place/i.test(l);}).slice(-4).join("\n");return items;});})
-  .then(function(items){setProg(3);var res=process(items,{q:q,area:area,minR:minR,minN:minN,inc:inc});res.run=run;return res;})
-  .then(function(res){finish();showResult(res);refreshAccount().catch(function(){});})
-  .catch(function(e){finish();if(run.cancelled){$("findMsg").innerHTML='<div class="alert err">Search cancelled.</div>';return;}
-    var m=e.message||String(e);
-    if(e.status===401)m="Your Apify token isn't working. Reconnect it in Settings.";
-    else if(e.status===402||/usage|credit|limit|exceed/i.test(m))m="Your free Apify credit for this month is used up. It resets next month, and nothing is charged.";
-    else if(/Failed to fetch|NetworkError|Load failed/i.test(m))m="No internet connection, or the request was blocked. Check your data and try again.";
-    $("findMsg").innerHTML='<div class="alert err">'+esc(m)+'</div>';});
-  function finish(){clearInterval(timer);S.run=null;$("go").disabled=false;$("progBox").classList.add("hide");}
-}
-function poll(run,tries){if(run.cancelled)return Promise.reject(new Error("cancelled"));
-  return new Promise(function(res){setTimeout(res,tries?4000:2500);}).then(function(){if(run.cancelled)throw new Error("cancelled");return api("/actor-runs/"+run.id);})
-  .then(function(r){var st=r.data.status;if(st==="SUCCEEDED")return;if(st==="FAILED"||st==="ABORTED"||st==="TIMED-OUT"||st==="TIMED_OUT")throw new Error("The scan "+st.toLowerCase().replace("_","-")+". Try a smaller area or fewer businesses.");
-    if(tries>110)throw new Error("The scan is taking too long. Try again with fewer businesses.");return poll(run,tries+1);});}
-$("cancel").addEventListener("click",function(){var r=S.run;if(!r)return;r.cancelled=true;if(r.id)api("/actor-runs/"+r.id+"/abort",{method:"POST"}).catch(function(){});});
-$("go").addEventListener("click",search);
-
-function process(items,o){var found=[],fresh=0,scanned=items.length,stats={site:0,closed:0,low:0,nophone:0};
-  items.forEach(function(p){
-    if(p.permanentlyClosed||p.temporarilyClosed){stats.closed++;return;}
-    var kind=classify(p.website);if(kind==="site"){stats.site++;return;}if(kind==="social"&&!o.inc){stats.site++;return;}
-    var rating=+p.totalScore||0,count=+p.reviewsCount||0;if(rating<o.minR||count<o.minN){stats.low++;return;}
-    var phone=p.phone||p.phoneUnformatted||"";if(!phone){stats.nophone++;return;}
-    var id=String(p.placeId||p.cid||(p.title+"|"+p.address));var ex=S.leads[id];
-    var l={id:id,name:p.title||"Unnamed",type:p.categoryName||o.q,addr:p.address||"",hood:p.neighborhood||"",phone:phone,wa:waNum(p.phoneUnformatted||phone),rating:rating,count:count,url:p.website||"",kind:kind,maps:p.url||"",img:p.imageUrl||"",query:o.q,area:o.area,
-      found:ex?ex.found:Date.now(),status:ex?ex.status:"new",statusAt:ex?ex.statusAt:Date.now(),contactedAt:ex?ex.contactedAt:null,notes:ex?ex.notes:"",value:ex?ex.value:0};
-    l.score=scoreOf(l);if(!ex)fresh++;S.leads[id]=l;found.push(id);});
-  save();S.lastIds=found;
-  var rec={q:o.q,area:o.area,at:Date.now(),scanned:scanned,found:found.length,fresh:fresh};S.searches.unshift(rec);S.searches=S.searches.slice(0,30);DB.set("searches",S.searches);
-  return {found:found,fresh:fresh,scanned:scanned,stats:stats};}
-function showResult(r){
-  var top=r.found.map(function(i){return S.leads[i];}).sort(function(a,b){return b.score-a.score;}).slice(0,4);
-  $("lastResult").innerHTML='<div class="card stack"><div class="between"><div><h3 style="font-size:17px">'+r.found.length+' leads found</h3><p class="muted">Scanned '+r.scanned+' · '+r.fresh+' new · skipped '+r.stats.site+' with websites</p></div><span class="tag g">Done</span></div>'+
-    (top.length?'<div class="list">'+top.map(leadCard).join("")+'</div><button class="btn dark block" type="button" data-tab="leads">See all leads</button>':(r.scanned?'<div class="empty"><b>No leads in this search</b>Every business here has a website, or didn\'t meet your rating filters. Try another area or lower the minimum reviews.</div>':'<div class="alert err"><b>Google Maps returned no businesses for this search.</b><br>'+(r.run&&r.run.msg?esc(r.run.msg)+'<br>':'')+(r.run&&r.run.log?'<span style="font-size:12.5px;white-space:pre-wrap">'+esc(r.run.log)+'</span><br>':'')+'Try a simpler area like <b>Lekki, Lagos</b>, or send Claude a screenshot of this box.'+(r.run&&r.run.id?'<br><a style="text-decoration:underline" target="_blank" rel="noopener" href="https://console.apify.com/actors/runs/'+esc(r.run.id)+'">Open this run in Apify</a>':'')+'</div>'))+'</div>';
-  renderNav();}
-
-/* LEADS */
-function leadCard(l){var due=isDue(l);
-  return '<article class="lead" data-open="'+esc(l.id)+'"><div class="lead-top"><div class="av">'+(l.img?'<img src="'+esc(l.img)+'" alt="" loading="lazy" onerror="this.remove()">':"")+'<span>'+esc(initials(l.name))+'</span></div>'+
-  '<div style="min-width:0"><h3>'+esc(l.name)+'</h3><p class="sub">'+esc(l.type)+(l.hood?" · "+esc(l.hood):"")+'</p></div><div class="score"><b>'+l.score+'</b><small>SCORE</small></div></div>'+
-  '<div class="tags"><span class="tag k">'+(l.rating?l.rating.toFixed(1):"–")+' ★ · '+l.count+'</span><span class="tag '+(l.kind==="none"?"g":"a")+'">'+(l.kind==="none"?"No website":"Social only")+'</span><span class="tag '+STATUS_TAG[l.status]+'">'+statusName(l.status)+'</span>'+(due?'<span class="tag r">Follow up</span>':"")+'</div>'+
-  '<div class="lead-acts"><a class="btn wa" href="https://wa.me/'+l.wa+'" target="_blank" rel="noopener" data-wa="'+esc(l.id)+'">WhatsApp</a><button class="btn" type="button" data-copy="'+esc(l.id)+'">Copy for Claude</button></div></article>';}
-function statusName(s){for(var i=0;i<STATUS.length;i++)if(STATUS[i][0]===s)return STATUS[i][1];return s;}
-function renderLeads(){
-  var all=Object.keys(S.leads).map(function(k){return S.leads[k];});
-  var counts={all:all.length,due:all.filter(isDue).length};STATUS.forEach(function(s){counts[s[0]]=all.filter(function(l){return l.status===s[0];}).length;});
-  var chips=[["all","All"],["due","Follow up"]].concat(STATUS);
-  $("statusChips").innerHTML=chips.map(function(c){return '<button type="button" class="chip'+(S.status===c[0]?" on":"")+'" data-st="'+c[0]+'">'+c[1]+'<span class="c">'+(counts[c[0]]||0)+'</span></button>';}).join("");
-  var f=$("filterText").value.trim().toLowerCase(),sort=$("sortBy").value;
-  var list=all.filter(function(l){if(S.status==="due")return isDue(l);return S.status==="all"||l.status===S.status;})
-    .filter(function(l){return !f||(l.name+" "+l.type+" "+l.addr+" "+l.area).toLowerCase().indexOf(f)>-1;});
-  list.sort(function(a,b){if(sort==="reviews")return b.count-a.count;if(sort==="rating")return b.rating-a.rating||b.count-a.count;if(sort==="recent")return b.found-a.found;if(sort==="name")return a.name.localeCompare(b.name);return b.score-a.score;});
-  $("leadsSub").textContent=all.length?all.length+" saved · "+counts.due+" due for follow-up":"Tap a lead for details, notes and status.";
-  $("leadList").innerHTML=list.length?list.map(leadCard).join(""):'<div class="empty" style="grid-column:1/-1"><b>'+(all.length?"Nothing here":"No leads yet")+'</b>'+(all.length?"Try another filter.":"Run your first search in Find.")+'</div>';}
-$("statusChips").addEventListener("click",function(e){var c=e.target.closest("[data-st]");if(c){S.status=c.getAttribute("data-st");renderLeads();}});
-$("filterText").addEventListener("input",renderLeads);$("sortBy").addEventListener("change",renderLeads);
-
-function brief(l){return "Build a demo for this lead:\n"+l.name+"\n"+l.type+"\nRating: "+(l.rating||"–")+" ("+l.count+" Google reviews)\nPhone: "+l.phone+"\nAddress: "+l.addr+(l.url?"\nCurrent link: "+l.url:"\nWebsite: none")+"\nGoogle Maps: "+l.maps+(l.notes?"\nMy notes: "+l.notes:"");}
-function copy(t){function fb(){var a=document.createElement("textarea");a.value=t;a.setAttribute("readonly","");a.style.position="fixed";a.style.top="0";a.style.opacity="0";document.body.appendChild(a);a.select();a.setSelectionRange(0,99999);var ok=false;try{ok=document.execCommand("copy");}catch(e){}a.remove();toast(ok?"Copied. Paste it to Claude":"Copy failed, long-press to copy");}
-  if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(t).then(function(){toast("Copied. Paste it to Claude");},fb);else fb();}
-function setStatus(l,s){l.status=s;l.statusAt=Date.now();if(s==="contacted"&&!l.contactedAt)l.contactedAt=Date.now();save();}
-
-document.addEventListener("click",function(e){
-  var c=e.target.closest("[data-copy]");if(c){e.stopPropagation();copy(brief(S.leads[c.getAttribute("data-copy")]));return;}
-  var w=e.target.closest("[data-wa]");if(w){var l=S.leads[w.getAttribute("data-wa")];if(l&&l.status==="new"){setStatus(l,"contacted");setTimeout(function(){if(S.view==="leads")renderLeads();renderNav();},300);toast("Marked as contacted");}return;}
-  if(e.target.closest("a,button,input,select,textarea"))return;
-  var o=e.target.closest("[data-open]");if(o)openLead(o.getAttribute("data-open"));
-});
-
-/* SHEET */
-function openSheet(html){$("panel").innerHTML='<div class="grab"></div>'+html;$("sheet").classList.add("open");document.body.classList.add("lock");}
-function closeSheet(){$("sheet").classList.remove("open");document.body.classList.remove("lock");if(S.view==="leads")renderLeads();if(S.view==="stats")renderStats();renderNav();}
-$("sheet").addEventListener("click",function(e){if(e.target===this)closeSheet();if(e.target.closest("[data-close]"))closeSheet();});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
-function openLead(id){var l=S.leads[id];if(!l)return;
-  openSheet('<div class="ph"><div class="av">'+(l.img?'<img src="'+esc(l.img)+'" alt="" onerror="this.remove()">':"")+'<span>'+esc(initials(l.name))+'</span></div><div style="min-width:0"><h2>'+esc(l.name)+'</h2><p class="muted">'+esc(l.type)+'</p></div><button class="x" type="button" data-close aria-label="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111827" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'+
-  '<div class="tags"><span class="tag k">Score '+l.score+'</span><span class="tag '+(l.kind==="none"?"g":"a")+'">'+(l.kind==="none"?"No website":"Social link only")+'</span>'+(isDue(l)?'<span class="tag r">Follow-up due</span>':"")+'</div>'+
-  '<div class="kv"><div>Rating<b>'+(l.rating?l.rating.toFixed(1)+" ★":"–")+'</b></div><div>Reviews<b>'+l.count+'</b></div><div class="wide">Phone<b>'+esc(l.phone)+'</b></div><div class="wide">Address<b>'+esc(l.addr||"–")+'</b></div>'+(l.url?'<div class="wide">Current link<b>'+esc(l.url)+'</b></div>':"")+'<div>Found<b>'+ago(l.found)+'</b></div><div>Contacted<b>'+(l.contactedAt?ago(l.contactedAt):"Not yet")+'</b></div></div>'+
-  '<span class="label">Status</span><div class="status-grid" id="stGrid">'+STATUS.map(function(s){return '<button type="button" data-set="'+s[0]+'" class="'+(l.status===s[0]?"on":"")+'">'+s[1]+'</button>';}).join("")+'</div>'+
-  '<div id="wonBox" class="'+(l.status==="won"?"":"hide")+'" style="margin-bottom:12px"><span class="label">Deal value (₦)</span><input class="inp" id="dealVal" inputmode="numeric" placeholder="e.g. 200000" value="'+(l.value||"")+'"></div>'+
-  '<span class="label">Notes</span><textarea class="txt" id="noteIn" placeholder="e.g. Owner is Mrs Ade, asked for price, follow up Monday">'+esc(l.notes||"")+'</textarea>'+
-  '<div class="acts3" style="margin-top:12px"><a class="btn wa" href="https://wa.me/'+l.wa+'" target="_blank" rel="noopener" data-wa="'+esc(l.id)+'">WhatsApp</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a>'+
-  '<button class="btn dark" type="button" data-copy="'+esc(l.id)+'">Copy for Claude</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps</a>':'<span></span>')+'</div>'+
-  '<button class="btn block" type="button" id="delLead" style="margin-top:10px;color:#B42323">Remove lead</button>');
-  $("stGrid").addEventListener("click",function(e){var b=e.target.closest("[data-set]");if(!b)return;setStatus(l,b.getAttribute("data-set"));this.querySelectorAll("button").forEach(function(x){x.classList.toggle("on",x===b);});$("wonBox").classList.toggle("hide",l.status!=="won");toast("Status: "+statusName(l.status));});
-  $("noteIn").addEventListener("input",function(){l.notes=this.value;save();});
-  $("dealVal").addEventListener("input",function(){l.value=+digits(this.value)||0;save();});
-  $("delLead").addEventListener("click",function(){if(confirm("Remove "+l.name+"?")){delete S.leads[l.id];save();closeSheet();toast("Lead removed");}});
-}
-
-/* STATS */
-function naira(n){return "₦"+Math.round(n).toLocaleString("en-NG");}
-function renderStats(){var all=Object.keys(S.leads).map(function(k){return S.leads[k];});
-  var c={};STATUS.forEach(function(s){c[s[0]]=all.filter(function(l){return l.status===s[0];}).length;});
-  var reached=all.length-c["new"],replied=c.replied+c.demo+c.won,rev=all.reduce(function(a,l){return a+(l.status==="won"?(l.value||0):0);},0);
-  $("kpis").innerHTML='<div class="kpi hero"><p>Revenue won</p><div class="num">'+naira(rev)+'</div><p>'+c.won+' client'+(c.won===1?"":"s")+'</p></div>'+
-    '<div class="kpi"><p>Leads saved</p><div class="num">'+all.length+'</div></div><div class="kpi"><p>Reply rate</p><div class="num">'+(reached?Math.round(replied/reached*100):0)+'%</div></div>';
-  var rows=[["Found",all.length],["Contacted",reached],["Replied",replied],["Demo sent",c.demo+c.won],["Won",c.won]],max=Math.max(1,all.length);
-  $("funnel").innerHTML=rows.map(function(r){return '<div class="fr"><span>'+r[0]+'</span><i><span style="width:'+(r[1]/max*100)+'%"></span></i><b>'+r[1]+'</b></div>';}).join("");
-  $("hist").innerHTML=S.searches.length?S.searches.slice(0,10).map(function(h,i){return '<button type="button" class="hrow" data-rerun="'+i+'" style="width:100%;border-left:0;border-right:0;border-top:0;background:transparent;text-align:left"><span><b>'+esc(h.q)+'</b><small>'+esc(h.area||"Any area")+' · '+ago(h.at)+'</small></span><span class="tag g">'+h.found+' leads</span></button>';}).join(""):'<p class="muted">No searches yet.</p>';}
-$("hist").addEventListener("click",function(e){var b=e.target.closest("[data-rerun]");if(!b)return;var h=S.searches[+b.getAttribute("data-rerun")];$("q").value=h.q;$("area").value=h.area;go("find");toast("Ready. Tap Find to run it again");});
-
-/* SETTINGS */
-function renderSettings(){var a=S.acct;$("acctInfo").innerHTML=S.token?('Connected'+(a?' as <b style="color:#111827">'+esc(a.user)+'</b>'+(a.limit!=null?' · $'+Math.max(0,a.limit-a.used).toFixed(2)+' of $'+a.limit.toFixed(2)+' left this month':''):'')):"Not connected.";
-  $("tokenIn").value=S.token?S.token.slice(0,14)+"••••••••":"";$("fuDays").value=String(S.fuDays);}
-$("saveToken").addEventListener("click",function(){var v=$("tokenIn").value.trim();if(v.indexOf("•")>-1){refreshAccount().then(function(){renderSettings();$("tokenMsg").innerHTML='<div class="alert ok">Connection is working.</div>';}).catch(function(e){$("tokenMsg").innerHTML='<div class="alert err">'+esc(e.message)+'</div>';});return;}connect(v,"tokenMsg",this);});
-$("removeToken").addEventListener("click",function(){S.token="";S.acct=null;DB.set("token","");DB.set("acct",null);renderSettings();renderFind();renderCredit();toast("Disconnected");});
-$("fuDays").addEventListener("change",function(){S.fuDays=+this.value;DB.set("fuDays",S.fuDays);renderNav();});
-function download(name,data,type){var blob=new Blob([data],{type:type}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(url);a.remove();},500);}
-$("exportCsv").addEventListener("click",function(){var rows=[["Name","Type","Rating","Reviews","Score","Phone","WhatsApp","Address","Link","Status","Contacted","Notes","Deal value","Google Maps"]];
-  Object.keys(S.leads).forEach(function(k){var l=S.leads[k];rows.push([l.name,l.type,l.rating,l.count,l.score,l.phone,"https://wa.me/"+l.wa,l.addr,l.url,statusName(l.status),l.contactedAt?new Date(l.contactedAt).toLocaleDateString():"",l.notes,l.value||"",l.maps]);});
-  download("leads.csv",rows.map(function(r){return r.map(function(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"';}).join(",");}).join("\n"),"text/csv");toast("CSV downloaded");});
-$("backup").addEventListener("click",function(){download("lead-finder-backup.json",JSON.stringify({v:2,leads:S.leads,searches:S.searches}),"application/json");toast("Backup downloaded");});
-$("restore").addEventListener("change",function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d.leads)throw 0;Object.keys(d.leads).forEach(function(k){S.leads[k]=d.leads[k];});S.searches=(d.searches||[]).concat(S.searches).slice(0,30);save();DB.set("searches",S.searches);toast("Backup restored");renderNav();}catch(e){toast("That file isn't a Lead Finder backup");}};r.readAsText(f);this.value="";});
-$("wipe").addEventListener("click",function(){if(confirm("Delete all saved leads? Export a backup first if you want to keep them.")){S.leads={};S.searches=[];save();DB.set("searches",[]);toast("All leads deleted");renderNav();}});
-
-/* INIT */
-renderNav();renderFind();renderCredit();
-if(S.token)refreshAccount().catch(function(){});
+function esc(v){return String(v==null?"":v).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+function get(k,d){try{var x=localStorage.getItem("lf2_"+k);return x===null?d:JSON.parse(x);}catch(e){return d;}}
+function put(k,v){try{localStorage.setItem("lf2_"+k,JSON.stringify(v));}catch(e){notify("Storage full. Download a backup.");}}
+var oldToken=get("token",""),oldAcct=get("acct",null);
+var S={accounts:get("accounts",[]),activeId:get("activeAccountId",""),leads:get("leads",{}),searches:get("searches",[]),followDays:get("fuDays",3),view:"find",status:"all",run:null};
+/* One-time migration from the older LF Studio storage keys. */
+if(!Object.keys(S.leads||{}).length){try{var legacyLeads=JSON.parse(localStorage.getItem("lf_leads")||"null");if(legacyLeads){S.leads=Array.isArray(legacyLeads)?legacyLeads.reduce(function(o,l){if(l&&l.id)o[l.id]=l;return o;},{}):legacyLeads;put("leads",S.leads);}}catch(e){}}
+if(!S.searches.length){try{var legacySent=JSON.parse(localStorage.getItem("lf_sent")||"null");if(Array.isArray(legacySent)){S.searches=legacySent;put("searches",S.searches);}}catch(e){}}
+if(!oldToken){try{var legacyToken=localStorage.getItem("lf_key");if(legacyToken){oldToken=legacyToken;put("token",legacyToken);}}catch(e){}}
+function active(){return S.accounts.find(function(a){return a.id===S.activeId;})||null;}
+function saveAccounts(){put("accounts",S.accounts);put("activeAccountId",S.activeId);var a=active();put("token",a?a.token:"");put("acct",a?a.usage||null:null);}
+if(!S.accounts.length&&oldToken){S.accounts=[{id:"legacy-"+Date.now(),label:oldAcct&&oldAcct.user||"Existing Apify account",token:oldToken,usage:oldAcct||null}];S.activeId=S.accounts[0].id;saveAccounts();}
+if(!S.activeId&&S.accounts.length)S.activeId=S.accounts[0].id;
+function saveLeads(){put("leads",S.leads);}
+function notify(m){var t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(notify.timer);notify.timer=setTimeout(function(){t.classList.remove("show");},2400);}
+function digits(v){return String(v||"").replace(/\D/g,"");}
+function wa(v){var d=digits(v);if(d.indexOf("0")===0&&d.length===11)d="234"+d.slice(1);return d;}
+function isSocial(u){var s=String(u||"").toLowerCase();return !!s&&SOCIAL.some(function(x){return s.indexOf(x)>-1;});}
+function score(l){return Math.round(Math.min(l.reviews||0,300)/300*55+Math.max(0,Math.min(1,((l.rating||0)-3.5)/1.5))*35+10);}
+function initials(s){return String(s||"?").replace(/[^a-z0-9 ]/ig,"").split(/\s+/).filter(Boolean).slice(0,2).map(function(x){return x[0];}).join("").toUpperCase()||"?";}
+function ago(ts){if(!ts)return"—";var d=(Date.now()-ts)/86400000;return d<1/24?"Just now":d<1?Math.round(d*24)+"h ago":Math.round(d)+"d ago";}
+function due(l){return l.status==="contacted"&&l.contactedAt&&Date.now()-l.contactedAt>S.followDays*86400000;}
+function statusName(s){var x=STATUSES.find(function(a){return a[0]===s;});return x?x[1]:s;}
+function api(path,opt,token){opt=opt||{};return fetch(API+path+(path.indexOf("?")>-1?"&":"?")+"token="+encodeURIComponent(token||((active()||{}).token||"")),opt).then(function(r){return r.text().then(function(t){var j;try{j=JSON.parse(t);}catch(e){j=null;}if(!r.ok){var er=new Error(j&&j.error&&j.error.message||"Apify request failed ("+r.status+")");er.status=r.status;throw er;}return j;});});}
+function testApify(token){return api("/users/me",{},token).then(function(r){var d=r.data||{},info={user:d.username||d.email||"Apify account",plan:d.plan&&d.plan.id||"Apify",limit:null,used:null};return api("/users/me/limits",{},token).then(function(l){var x=l.data||{};info.limit=x.limits&&x.limits.maxMonthlyUsageUsd;info.used=x.current&&x.current.monthlyUsageUsd;return info;},function(){return info;});});}
+function usageText(a){var u=a&&a.usage;if(!u)return"Usage not checked";if(u.limit==null||u.used==null)return"Usage details unavailable";return "$"+Math.max(0,u.limit-u.used).toFixed(2)+" remaining of $"+u.limit.toFixed(2);}
+function renderAccounts(){var a=active();$("topAccount").textContent=a?a.label:"No Apify account";$("sideAccount").innerHTML=a?'<div class="account active"><span class="tag green">ACTIVE</span><strong style="display:block;margin-top:8px">'+esc(a.label)+'</strong><small>'+esc(usageText(a))+'</small></div>':'<div class="account"><strong>No account connected</strong><small>Add an Apify token in Settings.</small></div>';$("activeAccount").innerHTML=a?'<div class="account active"><span class="tag green">ACTIVE ACCOUNT</span><strong style="display:block;margin-top:8px">'+esc(a.label)+'</strong><small>'+esc(usageText(a))+' · token ••••'+esc(a.token.slice(-4))+'</small></div>':'<div class="empty"><strong>No Apify account</strong>Add a token in Settings to search.</div>';$("accountNotice").innerHTML=a&&a.usage&&a.usage.limit!=null&&a.usage.used!=null&&a.usage.used>=a.usage.limit?'<div class="note" style="color:var(--amber)">This account appears to have reached its usage limit. Switch manually if another account has allowance remaining.</div>':"";var list=$("accountList");if(list)list.innerHTML=S.accounts.length?S.accounts.map(function(x){var on=x.id===S.activeId;return '<div class="account '+(on?"active":"")+'"><div class="row"><strong>'+esc(x.label)+'</strong><span class="tag '+(on?"green":"")+'">'+(on?"ACTIVE":"SAVED")+'</span></div><small>'+esc(usageText(x))+' · token ••••'+esc(x.token.slice(-4))+'</small><div class="account-actions">'+(!on?'<button class="btn primary" data-use="'+esc(x.id)+'">Use account</button>':'<button class="btn" data-refresh="'+esc(x.id)+'">Refresh usage</button>')+'<button class="btn" data-edit="'+esc(x.id)+'">Edit</button><button class="btn danger" data-remove="'+esc(x.id)+'">Remove</button></div></div>';}).join(""):'<div class="empty"><strong>No accounts saved</strong>Add an Apify API token below.</div>';}
+function renderNav(){var m=TABS.map(function(t){return '<button type="button" aria-label="'+t[1]+'" class="'+(S.view===t[0]?"active":"")+'" data-view="'+t[0]+'"><span class="navicon"><svg viewBox="0 0 24 24" aria-hidden="true">'+t[2]+'</svg></span><span class="navlabel">'+t[1]+'</span></button>';}).join("");$("mobileNav").innerHTML=m;$("desktopNav").innerHTML=m;}
+function view(v){S.view=v;TABS.forEach(function(t){$("view-"+t[0]).classList.toggle("hide",t[0]!==v);});renderNav();if(v==="leads")renderLeads();if(v==="progress")renderProgress();if(v==="settings")renderAccounts();window.scrollTo(0,0);}
+document.addEventListener("click",function(e){var b=e.target.closest("[data-view]");if(b)view(b.getAttribute("data-view"));});
+function renderStats(){var all=Object.values(S.leads);$("findStats").innerHTML='<div class="stat feature"><small>Saved prospects</small><strong>'+all.length+'</strong></div><div class="stat"><small>Website-free candidates</small><strong>'+all.filter(function(l){return l.websiteStatus==="none";}).length+'</strong></div><div class="stat"><small>Follow-ups due</small><strong>'+all.filter(due).length+'</strong></div><div class="stat"><small>Searches</small><strong>'+S.searches.length+'</strong></div>';}
+function presets(id,arr,target){$(id).innerHTML=arr.map(function(v){return '<button type="button" class="preset" data-preset="'+target+'" data-value="'+esc(v)+'">'+esc(v)+'</button>';}).join("");}
+presets("nichePresets",NICHES.slice(0,8),"query");presets("areaPresets",AREAS.slice(0,6),"area");
+/* Custom dropdowns work consistently on mobile Safari and desktop; native datalist is not reliable in every iOS preview. */
+var COMBO_OPTIONS={query:["barbershop","hair salon","spa","car dealer","real estate agency","restaurant","lounge","dental clinic","gym","event centre","bakery","fashion designer","photography studio","car rental","interior designer","cleaning service","logistics company","pharmacy","hotel","guest house","private school","daycare","law firm","accounting firm","supermarket","furniture store","electronics store","phone repair shop","laundry service","printing shop","fitness centre","beauty clinic","travel agency","event planner","construction company","plumbing service","electrician","mechanic","auto repair shop","pet shop","optician","medical clinic","diagnostic centre","church","coworking space","catering service","wedding vendor","marketing agency","IT company","dentist","accountant","tailor","boutique","car wash","photocopier shop","building materials store","solar installer","security company","software company","digital marketing agency"],area:["Lekki Phase 1, Lagos","Victoria Island, Lagos","Ikoyi, Lagos","Ikeja GRA, Lagos","Ikeja, Lagos","Ajah, Lagos","Yaba, Lagos","Surulere, Lagos","Magodo, Lagos","Gbagada, Lagos","Maryland, Lagos","Ogba, Lagos","Agege, Lagos","Festac, Lagos","Apapa, Lagos","Epe, Lagos","Badagry, Lagos","Lagos Island, Lagos","Ikorodu, Lagos","Chevron Drive, Lekki, Lagos","Sangotedo, Lagos","Wuse 2, Abuja","Maitama, Abuja","Garki, Abuja","Jabi, Abuja","GRA, Port Harcourt","Trans Amadi, Port Harcourt","Bodija, Ibadan","Oluyole, Ibadan","Ile-Ife, Osun","Offa, Kwara","Ilorin, Kwara","Kano, Kano","Enugu, Enugu","Benin City, Edo","Abeokuta, Ogun","Akure, Ondo","Uyo, Akwa Ibom","Calabar, Cross River"]};
+function closeCombos(except){["query","area"].forEach(function(id){if(id===except)return;var menu=$(id+"Menu"),input=$(id);if(menu)menu.classList.remove("open");if(input)input.setAttribute("aria-expanded","false");var arrow=document.querySelector('[data-open-combo="'+id+'" ]');if(arrow)arrow.setAttribute("aria-expanded","false");});}
+function renderCombo(id,showAll){var input=$(id),menu=$(id+"Menu"),term=input.value.trim().toLowerCase(),all=COMBO_OPTIONS[id],matches=all.filter(function(v){return showAll||!term||v.toLowerCase().indexOf(term)>-1;}).slice(0,70);var exact=all.some(function(v){return v.toLowerCase()===term;});menu.innerHTML=matches.map(function(v){return '<button type="button" class="combo-option" role="option" data-combo-value="'+esc(v)+'" data-combo-id="'+id+'">'+esc(v)+'</button>';}).join("")+(term&&!exact?'<button type="button" class="combo-option combo-custom" role="option" data-combo-value="'+esc(input.value.trim())+'" data-combo-id="'+id+'">Use custom: “'+esc(input.value.trim())+'”</button>':"")+(matches.length||term&&!exact?"":'<div class="combo-empty">No matches. Keep typing to use your own value.</div>');menu.classList.add("open");input.setAttribute("aria-expanded","true");var arrow=document.querySelector('[data-open-combo="'+id+'" ]');if(arrow)arrow.setAttribute("aria-expanded","true");}
+["query","area"].forEach(function(id){var input=$(id),menu=$(id+"Menu");input.addEventListener("focus",function(){closeCombos(id);renderCombo(id,true);});input.addEventListener("input",function(){renderCombo(id,false);});input.addEventListener("keydown",function(e){if(e.key==="Escape"){menu.classList.remove("open");input.setAttribute("aria-expanded","false");}if(e.key==="ArrowDown"){e.preventDefault();if(!menu.classList.contains("open"))renderCombo(id,true);var first=menu.querySelector(".combo-option");if(first)first.focus();}});menu.addEventListener("click",function(e){var option=e.target.closest("[data-combo-value]");if(!option)return;input.value=option.dataset.comboValue;menu.classList.remove("open");input.setAttribute("aria-expanded","false");var arrow=document.querySelector('[data-open-combo="'+id+'" ]');if(arrow)arrow.setAttribute("aria-expanded","false");});});
+document.addEventListener("click",function(e){var opener=e.target.closest("[data-open-combo]");if(opener){var id=opener.dataset.openCombo,input=$(id),menu=$(id+"Menu");if(menu.classList.contains("open")){menu.classList.remove("open");input.setAttribute("aria-expanded","false");opener.setAttribute("aria-expanded","false");}else{closeCombos(id);input.focus();renderCombo(id,true);}return;}if(!e.target.closest(".combo-wrap"))closeCombos();});
+document.addEventListener("click",function(e){var p=e.target.closest("[data-preset]");if(p)$(p.dataset.preset).value=p.dataset.value;});
+$("maxPlaces").addEventListener("input",function(){$("placesValue").textContent=this.value;});
+$("includeSocial").addEventListener("click",function(){var on=!this.classList.contains("on");this.classList.toggle("on",on);this.setAttribute("aria-pressed",String(on));});
+function refreshUsage(a){return testApify(a.token).then(function(info){a.usage=info;saveAccounts();renderAccounts();});}
+function processItems(items,o){var ids=[],fresh=0,stats={websites:0,social:0,low:0,closed:0,nophone:0};items.forEach(function(p){if(p.permanentlyClosed||p.temporarilyClosed){stats.closed++;return;}var url=String(p.website||p.websiteUrl||p.webSite||"").trim(),onlySocial=isSocial(url);if(url&&!onlySocial){stats.websites++;return;}if(onlySocial&&!o.includeSocial){stats.social++;return;}var rating=+(p.totalScore||p.rating||0),reviews=+(p.reviewsCount||p.reviews||0);if(rating<o.minRating||reviews<o.minReviews){stats.low++;return;}var phone=p.phone||p.phoneUnformatted||"";if(!phone){stats.nophone++;return;}var name=p.title||p.name||"Unnamed business",id=String(p.placeId||p.place_id||p.cid||(name+"|"+(p.address||"")).toLowerCase()),prior=S.leads[id];var l={id:id,name:name,type:p.categoryName||p.category||o.query,address:p.address||"",neighborhood:p.neighborhood||"",phone:phone,wa:wa(p.phoneUnformatted||phone),rating:rating,reviews:reviews,url:url,maps:p.url||p.googleMapsUrl||"",query:o.query,area:o.area,websiteStatus:onlySocial?"social-only":"none",verification:"Apify Google Places website field only; not independently verified",found:prior?prior.found:Date.now(),status:prior?prior.status:"new",contactedAt:prior?prior.contactedAt:null,notes:prior?prior.notes:"",value:prior?prior.value:0};l.score=score(l);S.leads[id]=l;ids.push(id);if(!prior)fresh++;});saveLeads();S.searches.unshift({query:o.query,area:o.area,at:Date.now(),scanned:items.length,found:ids.length,fresh:fresh,accountId:o.accountId});S.searches=S.searches.slice(0,30);put("searches",S.searches);renderStats();return {ids:ids,fresh:fresh,scanned:items.length,stats:stats};}
+var steps=["Starting the Google Maps scan","Collecting business details","Filtering websites and ratings","Saving eligible prospects"];
+function setProgress(n){$("progressTitle").textContent=steps[n]||"Working";$("progressText").textContent=steps[n]||"Working";}
+function poll(run,count){if(run.cancelled)return Promise.reject(new Error("Search cancelled"));return new Promise(function(resolve){setTimeout(resolve,2500);}).then(function(){if(run.cancelled)throw new Error("Search cancelled");return api("/actor-runs/"+run.id,{},run.token);}).then(function(r){var st=r.data.status;if(st==="SUCCEEDED")return;if(["FAILED","ABORTED","TIMED-OUT","TIMED_OUT"].indexOf(st)>-1)throw new Error("Apify run "+st.toLowerCase()+". Open the run in Apify Console for details.");if(count>100)throw new Error("Search took too long. Try fewer businesses.");return poll(run,count+1);});}
+function search(){if(S.run)return;var a=active();if(!a){view("settings");$("accountMessage").innerHTML='<p class="note">Add an Apify token first.</p>';return;}var query=$("query").value.trim(),area=$("area").value.trim();if(!query){notify("Enter a business type");return;}var run={cancelled:false,token:a.token,accountId:a.id};S.run=run;$("searchBtn").disabled=true;$("progressBox").classList.remove("hide");$("results").innerHTML="";$("searchMessage").innerHTML="";setProgress(0);var started=Date.now(),timer=setInterval(function(){$("progressTime").textContent=Math.round((Date.now()-started)/1000)+"s";},1000);
+var input={searchStringsArray:[query+(area?" in "+area:" in Lagos, Nigeria")],maxCrawledPlacesPerSearch:+$("maxPlaces").value,language:"en",countryCode:"ng",skipClosedPlaces:true,scrapePlaceDetailPage:true,scrapeContacts:false,maxImages:0,maxReviews:0};
+api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)},run.token).then(function(r){run.id=r.data.id;run.dataset=r.data.defaultDatasetId;setProgress(1);return poll(run,0);}).then(function(){setProgress(2);return api("/datasets/"+run.dataset+"/items?clean=true&format=json",{},run.token);}).then(function(items){if(run.cancelled)throw new Error("Search cancelled");setProgress(3);return processItems(items||[],{query:query,area:area,minRating:+$("minRating").value,minReviews:+$("minReviews").value,includeSocial:$("includeSocial").classList.contains("on"),accountId:a.id});}).then(function(r){finish();showResults(r);refreshUsage(S.accounts.find(function(x){return x.id===a.id;})).catch(function(){});}).catch(function(err){finish();if(run.cancelled){$("searchMessage").innerHTML='<div class="note">Search cancelled.</div>';return;}var msg=err.message||"Search failed.";if(err.status===401)msg="Apify rejected this token. Edit the account and check the token.";if(err.status===402||/usage|credit|limit|exceed/i.test(msg))msg="This account may have reached a usage limit. Switch to another saved account if it has allowance.";if(/Failed to fetch|NetworkError|Load failed/i.test(msg))msg="Network request failed. Check your connection and try again.";var out='<div class="card"><p style="color:var(--red);margin:0">'+esc(msg)+'</p>'+(run.id?'<p class="note"><a target="_blank" rel="noopener" href="https://console.apify.com/actors/runs/'+encodeURIComponent(run.id)+'"><u>Open run in Apify Console</u></a></p>':'')+'</div>';$("searchMessage").innerHTML=out;});
+function finish(){clearInterval(timer);S.run=null;$("searchBtn").disabled=false;$("progressBox").classList.add("hide");}}
+$("searchBtn").addEventListener("click",search);$("cancelSearch").addEventListener("click",function(){if(!S.run)return;S.run.cancelled=true;if(S.run.id)api("/actor-runs/"+S.run.id+"/abort",{method:"POST"},S.run.token).catch(function(){});});
+function card(l){return '<article class="lead"><div class="leadtop"><div class="avatar">'+esc(initials(l.name))+'</div><div style="min-width:0;flex:1"><div class="leadname">'+esc(l.name)+'</div><div class="meta">'+esc(l.type)+(l.neighborhood?" · "+esc(l.neighborhood):"")+'</div></div><div class="score">'+l.score+'<small>SCORE</small></div></div><div class="row"><span class="tag">'+(l.rating?l.rating.toFixed(1):"—")+' ★ · '+l.reviews+' reviews</span><span class="tag '+(l.websiteStatus==="social-only"?"blue":"green")+'">'+(l.websiteStatus==="social-only"?"Social only":"No URL returned")+'</span><span class="tag">'+esc(statusName(l.status))+'</span></div><div class="meta">'+esc(l.address)+'</div><div class="leadactions"><a class="btn green" href="https://wa.me/'+esc(l.wa)+'" target="_blank" rel="noopener" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><button class="btn" data-open="'+esc(l.id)+'">Details / status</button><button class="btn" data-copy="'+esc(l.id)+'">Copy lead brief</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps ↗</a>':'')+'</div></article>';}
+function showResults(r){var h='<div class="row" style="margin:20px 0 10px"><div><h2>'+r.ids.length+' eligible records</h2><p class="sub">Scanned '+r.scanned+' listings · '+r.fresh+' new</p></div><span class="tag green">Complete</span></div><div class="grid2" style="margin-bottom:10px"><div class="card"><div class="note">Excluded: official website URL</div><h2>'+r.stats.websites+'</h2></div><div class="card"><div class="note">Skipped: closed / filters / no phone</div><h2>'+(r.stats.closed+r.stats.low+r.stats.nophone)+'</h2></div></div>';h+=r.ids.length?'<div class="leadgrid">'+r.ids.slice(0,8).map(function(id){return card(S.leads[id]);}).join("")+'</div><button class="btn dark full" data-view="leads" style="margin-top:12px">Open saved leads</button>':'<div class="empty"><strong>No eligible prospects found</strong>Try a nearby area or a different business type. Check potential leads independently before spending time building a demo.</div>';$("results").innerHTML=h;}
+function brief(l){return "Prospect: "+l.name+"\nCategory: "+l.type+"\nRating: "+(l.rating||"—")+" ("+l.reviews+" reviews)\nPhone: "+l.phone+"\nAddress: "+l.address+"\nWebsite field: "+(l.url||"empty; independently verify before assuming there is no website")+"\nGoogle Maps: "+l.maps;}
+function copyText(s){if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(s).then(function(){notify("Copied");},function(){fallback(s);});else fallback(s);}
+function fallback(s){var t=document.createElement("textarea");t.value=s;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}t.remove();notify(ok?"Copied":"Copy failed; select text manually");}
+function setStatus(l,s){l.status=s;if(s==="contacted"&&!l.contactedAt)l.contactedAt=Date.now();put("leads",S.leads);renderStats();}
+function openLead(id){var l=S.leads[id];if(!l)return;var statuses=STATUSES.map(function(s){return '<button data-status="'+s[0]+'" class="'+(l.status===s[0]?"active":"")+'">'+s[1]+'</button>';}).join("");$("panel").innerHTML='<div class="panelhead"><div class="avatar">'+esc(initials(l.name))+'</div><div><h2 style="margin:0">'+esc(l.name)+'</h2><p class="sub">'+esc(l.type)+'</p></div><button class="close" data-close>×</button></div><div class="detailgrid"><div class="detail">Rating<b>'+(l.rating?l.rating.toFixed(1)+" ★":"—")+'</b></div><div class="detail">Reviews<b>'+l.reviews+'</b></div><div class="detail">Phone<b>'+esc(l.phone)+'</b></div><div class="detail">Found<b>'+esc(ago(l.found))+'</b></div><div class="detail" style="grid-column:span 2">Address<b>'+esc(l.address||"—")+'</b></div><div class="detail" style="grid-column:span 2">Website check<b>Apify Google Places data only; not independently verified</b></div></div><div class="label">Outreach status</div><div class="statuses">'+statuses+'</div><div class="field"><label for="notes">Notes</label><textarea class="textarea" id="notes" placeholder="Owner response, budget, follow-up...">'+esc(l.notes||"")+'</textarea></div><div class="field"><label for="value">Deal value (₦)</label><input class="input" id="value" inputmode="numeric" value="'+(l.value||"")+'" placeholder="e.g. 250000"></div><div class="grid2"><a class="btn green" target="_blank" rel="noopener" href="https://wa.me/'+esc(l.wa)+'" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a></div><button class="btn full" style="margin-top:8px" data-copy="'+esc(l.id)+'">Copy lead brief</button><button class="btn danger full" style="margin-top:8px" id="removeLead">Remove lead</button>';$("sheet").classList.add("open");$("notes").addEventListener("input",function(){l.notes=this.value;saveLeads();});$("value").addEventListener("input",function(){l.value=+digits(this.value)||0;saveLeads();});$("removeLead").addEventListener("click",function(){if(confirm("Remove this lead?")){delete S.leads[id];saveLeads();closeSheet();renderLeads();renderStats();notify("Lead removed");}});}
+function closeSheet(){$("sheet").classList.remove("open");}
+$("sheet").addEventListener("click",function(e){if(e.target===$("sheet")||e.target.closest("[data-close]"))closeSheet();});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
+document.addEventListener("click",function(e){var b=e.target.closest("[data-open]");if(b){openLead(b.dataset.open);return;}var c=e.target.closest("[data-copy]");if(c){copyText(brief(S.leads[c.dataset.copy]));return;}var ct=e.target.closest("[data-contact]");if(ct){var l=S.leads[ct.dataset.contact];if(l&&l.status==="new"){setStatus(l,"contacted");notify("Marked as contacted");}return;}var st=e.target.closest("[data-status]");if(st){var cp=$("panel").querySelector("[data-copy]");if(cp){var lead=S.leads[cp.dataset.copy];setStatus(lead,st.dataset.status);$("panel").querySelectorAll("[data-status]").forEach(function(x){x.classList.toggle("active",x===st);});}return;}var use=e.target.closest("[data-use]");if(use){S.activeId=use.dataset.use;saveAccounts();renderAccounts();notify("Active account switched");return;}var rem=e.target.closest("[data-remove]");if(rem){var id=rem.dataset.remove,a=S.accounts.find(function(x){return x.id===id;});if(a&&confirm("Remove account '"+a.label+"'?")){S.accounts=S.accounts.filter(function(x){return x.id!==id;});if(S.activeId===id)S.activeId=S.accounts.length?S.accounts[0].id:"";saveAccounts();renderAccounts();notify("Account removed");}return;}var ed=e.target.closest("[data-edit]");if(ed){var ac=S.accounts.find(function(x){return x.id===ed.dataset.edit;});$("editId").value=ac.id;$("accountLabel").value=ac.label;$("accountToken").value=ac.token;$("accountToken").type="text";$("formTitle").textContent="Edit account";$("saveAccount").textContent="Update account";return;}var rf=e.target.closest("[data-refresh]");if(rf){var ar=S.accounts.find(function(x){return x.id===rf.dataset.refresh;});rf.disabled=true;refreshUsage(ar).then(function(){notify("Usage refreshed");}).catch(function(er){notify(er.message);}).then(renderAccounts);return;}});
+$("saveAccount").addEventListener("click",function(){var label=$("accountLabel").value.trim(),token=$("accountToken").value.trim(),edit=$("editId").value;if(!label||!token){$("accountMessage").innerHTML='<p class="note">Enter both a label and token.</p>';return;}if(!/^apify_api_/i.test(token)){$("accountMessage").innerHTML='<p class="note" style="color:var(--red)">Token format looks unusual. Check it before saving.</p>';return;}var existing=edit&&S.accounts.find(function(x){return x.id===edit;}),dup=S.accounts.find(function(x){return x.token===token&&x.id!==(existing&&existing.id);});if(dup){$("accountMessage").innerHTML='<p class="note">This token is already saved as '+esc(dup.label)+'.</p>';return;}var btn=this;btn.disabled=true;btn.textContent="Verifying…";testApify(token).then(function(info){var a=existing||{id:"acct-"+Date.now()+"-"+Math.random().toString(36).slice(2,7)};a.label=label;a.token=token;a.usage=info;if(!existing)S.accounts.push(a);S.activeId=a.id;saveAccounts();renderAccounts();$("accountMessage").innerHTML='<p class="note" style="color:var(--green)">Token verified and saved. This is now the active account.</p>';$("editId").value="";$("accountLabel").value="";$("accountToken").value="";$("accountToken").type="password";$("formTitle").textContent="Add an account";}).catch(function(er){$("accountMessage").innerHTML='<p class="note" style="color:var(--red)">Token test failed: '+esc(er.message)+'</p>';}).then(function(){btn.disabled=false;btn.textContent=$("editId").value?"Update account":"Save account";});});
+$("testToken").addEventListener("click",function(){var token=$("accountToken").value.trim();if(!token){$("accountMessage").innerHTML='<p class="note">Enter a token first.</p>';return;}var b=this;b.disabled=true;b.textContent="Testing…";testApify(token).then(function(i){$("accountMessage").innerHTML='<p class="note" style="color:var(--green)">Token valid · '+esc(i.user)+' · '+esc(usageText({usage:i}))+'</p>';}).catch(function(e){$("accountMessage").innerHTML='<p class="note" style="color:var(--red)">'+esc(e.message)+'</p>';}).then(function(){b.disabled=false;b.textContent="Test token";});});
+function renderLeads(){var all=Object.keys(S.leads).map(function(k){return S.leads[k];}),counts={all:all.length,due:all.filter(due).length};STATUSES.forEach(function(s){counts[s[0]]=all.filter(function(l){return l.status===s[0];}).length;});$("statusFilters").innerHTML=[["all","All"],["due","Follow up"]].concat(STATUSES).map(function(f){return '<button class="chip '+(S.status===f[0]?"active":"")+'" data-filter="'+f[0]+'">'+f[1]+' · '+(counts[f[0]]||0)+'</button>';}).join("");var term=$("leadSearch").value.toLowerCase().trim(),sort=$("sortLeads").value,list=all.filter(function(l){return S.status==="due"?due(l):(S.status==="all"||l.status===S.status);}).filter(function(l){return !term||(l.name+" "+l.type+" "+l.address+" "+l.area).toLowerCase().indexOf(term)>-1;});list.sort(function(a,b){if(sort==="reviews")return b.reviews-a.reviews;if(sort==="rating")return b.rating-a.rating;if(sort==="recent")return b.found-a.found;if(sort==="name")return a.name.localeCompare(b.name);return b.score-a.score;});$("leadSummary").textContent=all.length+" saved leads · "+counts.due+" follow-ups due";$("leadGrid").innerHTML=list.length?list.map(card).join(""):'<div class="empty" style="grid-column:1/-1"><strong>'+(all.length?"No matching leads":"No leads saved yet")+'</strong>'+(all.length?"Try another filter.":"Run a search to start your prospect list.")+'</div>';renderStats();}
+$("statusFilters").addEventListener("click",function(e){var b=e.target.closest("[data-filter]");if(b){S.status=b.dataset.filter;renderLeads();}});$("leadSearch").addEventListener("input",renderLeads);$("sortLeads").addEventListener("change",renderLeads);
+function renderProgress(){var all=Object.values(S.leads),won=all.filter(function(l){return l.status==="won";}),reached=all.filter(function(l){return l.status!=="new";}).length,replied=all.filter(function(l){return ["replied","demo","won"].indexOf(l.status)>-1;}).length,revenue=won.reduce(function(n,l){return n+(l.value||0);},0);$("progressStats").innerHTML='<div class="stat feature"><small>Revenue won</small><strong>₦'+Math.round(revenue).toLocaleString("en-NG")+'</strong></div><div class="stat"><small>Leads saved</small><strong>'+all.length+'</strong></div><div class="stat"><small>Reply rate</small><strong>'+(reached?Math.round(replied/reached*100):0)+'%</strong></div><div class="stat"><small>Clients won</small><strong>'+won.length+'</strong></div>';var rows=[["Saved",all.length],["Contacted",reached],["Replied",replied],["Demo sent",all.filter(function(l){return l.status==="demo"||l.status==="won";}).length],["Won",won.length]],max=Math.max(1,all.length);$("pipeline").innerHTML=rows.map(function(r){return '<div style="display:grid;grid-template-columns:80px 1fr 30px;gap:9px;align-items:center;margin:10px 0;font-size:12px"><span>'+r[0]+'</span><div style="height:7px;background:#edf1f7;border-radius:99px;overflow:hidden"><div style="width:'+(r[1]/max*100)+'%;height:100%;background:var(--blue)"></div></div><b style="text-align:right">'+r[1]+'</b></div>';}).join("");$("searchHistory").innerHTML=S.searches.length?S.searches.slice(0,12).map(function(h,i){return '<button class="row" data-reuse="'+i+'" style="width:100%;border:0;border-bottom:1px solid var(--line);background:white;padding:12px 0;text-align:left"><span><b>'+esc(h.query||h.q)+'</b><span class="note" style="display:block">'+esc(h.area)+' · '+esc(ago(h.at))+'</span></span><span class="tag">'+h.found+' leads</span></button>';}).join(""):'<p class="note">Search history appears here.</p>';}
+$("searchHistory").addEventListener("click",function(e){var b=e.target.closest("[data-reuse]");if(!b)return;var h=S.searches[+b.dataset.reuse];$("query").value=h.query||h.q;$("area").value=h.area;view("find");notify("Criteria restored. Tap Find to run.");});
+function download(name,data,type){var u=URL.createObjectURL(new Blob([data],{type:type})),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove();},500);}
+$("exportCsv").addEventListener("click",function(){var rows=[["Business","Category","Rating","Reviews","Score","Phone","Address","Website URL","Website status","Status","Notes","Deal value","Google Maps"]];Object.values(S.leads).forEach(function(l){rows.push([l.name,l.type,l.rating,l.reviews,l.score,l.phone,l.address,l.url,l.websiteStatus,statusName(l.status),l.notes,l.value||"",l.maps]);});download("lf-studio-leads.csv",rows.map(function(r){return r.map(function(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"';}).join(",");}).join("\r\n"),"text/csv");notify("CSV exported");});
+function backup(){download("lf-studio-backup.json",JSON.stringify({version:3,leads:S.leads,searches:S.searches,followDays:S.followDays},null,2),"application/json");}
+$("backupData").addEventListener("click",backup);$("backupData2").addEventListener("click",backup);
+$("restoreData").addEventListener("change",function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(!d.leads)throw Error();Object.keys(d.leads).forEach(function(k){S.leads[k]=d.leads[k];});S.searches=(d.searches||[]).concat(S.searches).slice(0,30);if(d.followDays)S.followDays=d.followDays;saveLeads();put("searches",S.searches);put("fuDays",S.followDays);renderStats();renderLeads();notify("Backup restored");}catch(e){notify("Invalid backup file");}};r.readAsText(f);this.value="";});
+$("deleteLeads").addEventListener("click",function(){if(confirm("Delete all saved leads and search history?")){S.leads={};S.searches=[];saveLeads();put("searches",[]);renderStats();renderLeads();renderProgress();notify("Saved leads deleted");}});
+$("followDays").addEventListener("change",function(){S.followDays=+this.value;put("fuDays",S.followDays);renderStats();});
+function refreshUsage(a){return testApify(a.token).then(function(i){a.usage=i;saveAccounts();renderAccounts();});}
+function init(){renderNav();renderAccounts();renderStats();renderLeads();renderProgress();$("followDays").value=String(S.followDays||3);if(active())refreshUsage(active()).catch(function(){});}
+init();
 })();
-</script>
-</body>
-</html>
+</script></body></html>
