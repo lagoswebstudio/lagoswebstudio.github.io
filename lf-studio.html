@@ -388,11 +388,14 @@ function search(){
   $("findMsg").innerHTML="";$("lastResult").innerHTML="";$("go").disabled=true;$("progBox").classList.remove("hide");setProg(0);
   var t0=Date.now(),timer=setInterval(function(){var s=Math.round((Date.now()-t0)/1000);$("progTime").textContent=(s>59?Math.floor(s/60)+"m ":"")+(s%60)+"s";},1000);
   var run={cancelled:false,timer:timer};S.run=run;
-  var input={searchStringsArray:[q],locationQuery:area||"Lagos, Nigeria",maxCrawledPlacesPerSearch:n,language:"en",skipClosedPlaces:true,scrapePlaceDetailPage:false,scrapeContacts:false,maxImages:0,maxReviews:0};
+  var input={searchStringsArray:[q+(area?" in "+area:" in Lagos, Nigeria")],maxCrawledPlacesPerSearch:n,language:"en",countryCode:"ng",skipClosedPlaces:true,scrapePlaceDetailPage:false,scrapeContacts:false,maxImages:0,maxReviews:0};
   api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)})
   .then(function(r){run.id=r.data.id;run.ds=r.data.defaultDatasetId;setProg(1);return poll(run,0);})
   .then(function(){setProg(2);return api("/datasets/"+run.ds+"/items?clean=true&format=json");})
-  .then(function(items){setProg(3);return process(items||[],{q:q,area:area,minR:minR,minN:minN,inc:inc});})
+  .then(function(items){items=items||[];if(items.length)return items;
+    return api("/actor-runs/"+run.id).then(function(r){run.msg=r.data.statusMessage||"";return fetch(API+"/actor-runs/"+run.id+"/log?token="+encodeURIComponent(S.token)).then(function(x){return x.text();}).catch(function(){return "";});})
+    .then(function(log){run.log=String(log||"").split("\n").filter(function(l){return /error|warn|not found|limit|charge|failed|no place/i.test(l);}).slice(-4).join("\n");return items;});})
+  .then(function(items){setProg(3);var res=process(items,{q:q,area:area,minR:minR,minN:minN,inc:inc});res.run=run;return res;})
   .then(function(res){finish();showResult(res);refreshAccount().catch(function(){});})
   .catch(function(e){finish();if(run.cancelled){$("findMsg").innerHTML='<div class="alert err">Search cancelled.</div>';return;}
     var m=e.message||String(e);
@@ -425,7 +428,7 @@ function process(items,o){var found=[],fresh=0,scanned=items.length,stats={site:
 function showResult(r){
   var top=r.found.map(function(i){return S.leads[i];}).sort(function(a,b){return b.score-a.score;}).slice(0,4);
   $("lastResult").innerHTML='<div class="card stack"><div class="between"><div><h3 style="font-size:17px">'+r.found.length+' leads found</h3><p class="muted">Scanned '+r.scanned+' · '+r.fresh+' new · skipped '+r.stats.site+' with websites</p></div><span class="tag g">Done</span></div>'+
-    (top.length?'<div class="list">'+top.map(leadCard).join("")+'</div><button class="btn dark block" type="button" data-tab="leads">See all leads</button>':'<div class="empty"><b>No leads in this search</b>Every business here has a website, or didn\'t meet your rating filters. Try another area or lower the minimum reviews.</div>')+'</div>';
+    (top.length?'<div class="list">'+top.map(leadCard).join("")+'</div><button class="btn dark block" type="button" data-tab="leads">See all leads</button>':(r.scanned?'<div class="empty"><b>No leads in this search</b>Every business here has a website, or didn\'t meet your rating filters. Try another area or lower the minimum reviews.</div>':'<div class="alert err"><b>Google Maps returned no businesses for this search.</b><br>'+(r.run&&r.run.msg?esc(r.run.msg)+'<br>':'')+(r.run&&r.run.log?'<span style="font-size:12.5px;white-space:pre-wrap">'+esc(r.run.log)+'</span><br>':'')+'Try a simpler area like <b>Lekki, Lagos</b>, or send Claude a screenshot of this box.'+(r.run&&r.run.id?'<br><a style="text-decoration:underline" target="_blank" rel="noopener" href="https://console.apify.com/actors/runs/'+esc(r.run.id)+'">Open this run in Apify</a>':'')+'</div>'))+'</div>';
   renderNav();}
 
 /* LEADS */
