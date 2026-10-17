@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="robots" content="noindex,nofollow">
+<title>Lead Finder · Lagos Web Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Fixed palette: graphite #14161A | panel #FFFFFF | paper #F2F3F5 | lime #C6F432 | ink #14161A | muted #6B7280 | line #E3E5E9 | red #E5484D */
+*{box-sizing:border-box;margin:0;padding:0}
+html,html body{background:#F2F3F5!important;color:#14161A!important}
+html{-webkit-text-size-adjust:100%;color-scheme:only light}
+body{font:400 15.5px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+#app{background:#F2F3F5;color:#14161A;min-height:100vh;padding-bottom:40px}
+button,input,select{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid #14161A;outline-offset:2px;border-radius:8px}
+.wrap{width:94%;max-width:820px;margin:0 auto}
+header{background:#14161A;color:#FFFFFF;padding:18px 0 22px}
+header .row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+h1{font:700 22px "Space Grotesk",sans-serif;letter-spacing:-.02em}
+h1 span{color:#C6F432}
+.keybtn{background:#24272E;border:1px solid #33373F;color:#FFFFFF;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.search{margin-top:16px;display:grid;gap:10px}
+.search input,.search select{width:100%;padding:14px;border-radius:12px;border:1px solid #33373F;background:#1E2127;color:#FFFFFF;font-size:16px;-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:#8B919C}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;background:#24272E;border:1px solid #33373F;color:#D6D9DE;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.go{background:#C6F432;color:#14161A;border:0;border-radius:12px;padding:15px;font-weight:700;font-size:16px;cursor:pointer}
+.go:disabled{opacity:.6}
+.label{font-size:12px;color:#8B919C;font-weight:600;margin-bottom:4px}
+.status{margin:16px 0 10px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.status p{font-size:14px;color:#6B7280}
+.status b{color:#14161A}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+.tbtn{background:#FFFFFF;border:1px solid #E3E5E9;border-radius:10px;padding:8px 12px;font-size:13px;font-weight:600;cursor:pointer}
+.tabs{display:flex;gap:6px;margin-bottom:12px}
+.tab{flex:1;background:#FFFFFF;border:1px solid #E3E5E9;border-radius:10px;padding:9px;font-size:13.5px;font-weight:700;cursor:pointer}
+.tab[aria-pressed=true]{background:#14161A;color:#FFFFFF;border-color:#14161A}
+.list{display:grid;gap:10px}
+.card{background:#FFFFFF;border:1px solid #E3E5E9;border-radius:16px;padding:16px}
+.card.sent{opacity:.55}
+.top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.card h3{font:700 17px/1.25 "Space Grotesk",sans-serif}
+.type{font-size:12.5px;color:#6B7280;margin-top:2px}
+.score{text-align:right;flex:none}
+.score b{font:700 18px "Space Grotesk",sans-serif}
+.score small{display:block;font-size:12px;color:#6B7280}
+.badge{display:inline-block;font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;margin-top:8px}
+.badge.none{background:#EEFBC9;color:#3B5200}
+.badge.social{background:#FFF1D6;color:#7A4B00}
+.addr{font-size:13px;color:#6B7280;margin-top:8px}
+.acts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px}
+.acts a,.acts button{display:flex;align-items:center;justify-content:center;border-radius:10px;padding:10px 6px;font-size:13px;font-weight:700;border:1px solid #E3E5E9;background:#F2F3F5;cursor:pointer;text-align:center}
+.acts .wa{background:#14161A;color:#FFFFFF;border-color:#14161A}
+.acts .on{background:#C6F432;border-color:#C6F432}
+.empty{background:#FFFFFF;border:1px dashed #D4D7DC;border-radius:16px;padding:28px;text-align:center;color:#6B7280}
+.err{background:#FFF0F0;border:1px solid #F5C2C3;color:#8A1C1F;border-radius:12px;padding:12px 14px;font-size:14px;margin-top:12px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#14161A;color:#FFFFFF;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:600;opacity:0;transition:opacity .25s ease;pointer-events:none;z-index:9}
+.toast.show{opacity:1}
+dialog{border:0;border-radius:18px;padding:22px;width:min(92vw,440px);margin:auto}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+dialog h2{font:700 20px "Space Grotesk",sans-serif;margin-bottom:8px}
+dialog p{font-size:14px;color:#6B7280;margin-bottom:12px}
+dialog input{width:100%;padding:13px;border-radius:10px;border:1px solid #E3E5E9;font-size:16px;margin-bottom:12px;background:#F2F3F5}
+dialog .row2{display:flex;gap:8px}
+dialog button{flex:1;padding:12px;border-radius:10px;border:1px solid #E3E5E9;background:#F2F3F5;font-weight:700;cursor:pointer}
+dialog button.pri{background:#14161A;color:#FFFFFF;border-color:#14161A}
+</style>
+</head>
+<body>
+<div id="app">
+<header>
+  <div class="wrap">
+    <div class="row"><h1>Lead<span>Finder</span></h1><button class="keybtn" id="keyBtn" type="button">API key</button></div>
+    <div class="search">
+      <div><p class="label">Business type</p><input id="q" placeholder="e.g. barbershop, car dealer, restaurant" value="barbershop"></div>
+      <div class="chips" id="nicheChips"></div>
+      <div><p class="label">Area</p><input id="area" placeholder="e.g. Lekki Phase 1, Lagos" value="Lekki Phase 1, Lagos"></div>
+      <div class="chips" id="areaChips"></div>
+      <div class="two">
+        <div><p class="label">Min rating</p><select id="minR"><option value="0">Any</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div>
+        <div><p class="label">Min reviews</p><select id="minN"><option value="0">Any</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div>
+      </div>
+      <button class="go" id="go" type="button">Find businesses with no website</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div id="errBox"></div>
+  <div class="status"><p id="stat">Search a niche and area to start.</p>
+    <div class="tools"><button class="tbtn" id="csv" type="button">Export CSV</button></div></div>
+  <div class="tabs"><button class="tab" aria-pressed="true" data-v="new" type="button">To contact</button><button class="tab" aria-pressed="false" data-v="sent" type="button">Contacted</button></div>
+  <div class="list" id="list"><div class="empty">Results show here, with businesses that already have a real website filtered out.</div></div>
+</main>
+</div>
+
+<dialog id="keyDlg">
+  <h2>Your Google API key</h2>
+  <p>Saved only in this browser on this phone. It is never put in the page code, so it stays private even though the page is public.</p>
+  <input id="keyIn" placeholder="AIza..." autocomplete="off" spellcheck="false">
+  <div class="row2"><button type="button" id="keyCancel">Cancel</button><button type="button" class="pri" id="keySave">Save key</button></div>
+</dialog>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+var SOCIAL=["instagram.com","facebook.com","fb.com","fresha.com","linktr.ee","linktree","wa.me","whatsapp.com","tiktok.com","x.com","twitter.com","booksy.com","calendly.com","beacons.ai","bit.ly","linkin.bio","snapchat.com","youtube.com","jiji.ng","business.site","g.page"];
+var NICHES=["barbershop","hair salon","car dealer","real estate agency","restaurant","spa","dental clinic","gym","event centre","bakery","fashion designer","photography studio","car rental","interior designer"];
+var AREAS=["Lekki Phase 1, Lagos","Victoria Island, Lagos","Ikoyi, Lagos","Ikeja GRA, Lagos","Ajah, Lagos","Yaba, Lagos","Surulere, Lagos","Magodo, Lagos","Abuja","Port Harcourt"];
+var $=function(id){return document.getElementById(id);};
+var store={get:function(k,d){try{var v=localStorage.getItem(k);return v===null?d:JSON.parse(v);}catch(e){return d;}},set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
+var leads=store.get("lf_leads",{}),sent=store.get("lf_sent",{}),view="new",lastIds=[];
+
+function toast(t){var el=$("toast");el.textContent=t;el.classList.add("show");setTimeout(function(){el.classList.remove("show");},1800);}
+function chipRow(id,arr,target){var box=$(id);arr.forEach(function(v){var b=document.createElement("button");b.type="button";b.className="chip";b.textContent=v;b.onclick=function(){$(target).value=v;};box.appendChild(b);});}
+chipRow("nicheChips",NICHES,"q");chipRow("areaChips",AREAS,"area");
+
+/* key dialog */
+var dlg=$("keyDlg");
+function openKey(){$("keyIn").value=store.get("lf_key","");if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");}
+function closeKey(){if(dlg.close)dlg.close();else dlg.removeAttribute("open");}
+$("keyBtn").onclick=openKey;$("keyCancel").onclick=closeKey;
+$("keySave").onclick=function(){var k=$("keyIn").value.trim();store.set("lf_key",k);closeKey();toast(k?"Key saved":"Key removed");};
+
+function classify(url){
+  if(!url)return"none";
+  var u=url.toLowerCase();
+  for(var i=0;i<SOCIAL.length;i++)if(u.indexOf(SOCIAL[i])>-1)return"social";
+  return"site";
+}
+function digits(p){return (p||"").replace(/[^0-9]/g,"");}
+function showErr(m){$("errBox").innerHTML=m?'<div class="err">'+m+'</div>':"";}
+
+function search(){
+  var key=store.get("lf_key","");
+  if(!key){openKey();return;}
+  var q=$("q").value.trim(),area=$("area").value.trim();
+  if(!q){toast("Type a business type");return;}
+  var text=q+(area?" in "+area:""),minR=+$("minR").value,minN=+$("minN").value;
+  var btn=$("go");btn.disabled=true;btn.textContent="Searching…";showErr("");
+  var found=[],scanned=0,page=0;
+  function fetchPage(token){
+    var body={textQuery:text,pageSize:20};if(token)body.pageToken=token;
+    fetch("https://places.googleapis.com/v1/places:searchText",{method:"POST",headers:{"Content-Type":"application/json","X-Goog-Api-Key":key,
+      "X-Goog-FieldMask":"places.id,places.displayName,places.formattedAddress,places.internationalPhoneNumber,places.nationalPhoneNumber,places.rating,places.userRatingCount,places.websiteUri,places.googleMapsUri,places.primaryTypeDisplayName,places.businessStatus,nextPageToken"},
+      body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+    .then(function(res){
+      if(!res.ok){throw new Error((res.j&&res.j.error&&res.j.error.message)||"Request failed");}
+      var ps=res.j.places||[];scanned+=ps.length;page++;
+      ps.forEach(function(p){
+        if(p.businessStatus&&p.businessStatus!=="OPERATIONAL")return;
+        var kind=classify(p.websiteUri);if(kind==="site")return;
+        if((p.rating||0)<minR||(p.userRatingCount||0)<minN)return;
+        var phone=p.internationalPhoneNumber||p.nationalPhoneNumber||"";if(!phone)return;
+        var lead={id:p.id,name:p.displayName&&p.displayName.text||"Unnamed",type:p.primaryTypeDisplayName&&p.primaryTypeDisplayName.text||q,addr:p.formattedAddress||"",
+          phone:phone,wa:digits(p.internationalPhoneNumber||""),rating:p.rating||0,count:p.userRatingCount||0,url:p.websiteUri||"",kind:kind,maps:p.googleMapsUri||"",query:text,found:Date.now()};
+        leads[p.id]=lead;found.push(p.id);
+      });
+      $("stat").innerHTML="Checked <b>"+scanned+"</b> businesses…";
+      if(res.j.nextPageToken&&page<3){setTimeout(function(){fetchPage(res.j.nextPageToken);},400);}
+      else done();
+    })
+    .catch(function(e){
+      var m=String(e.message||e);
+      if(/API key|PERMISSION|referer|not authorized|billing/i.test(m))m+="<br><br>Check: Places API (New) is enabled, billing is on, and the key allows this website.";
+      showErr(m);done();
+    });
+  }
+  function done(){
+    store.set("lf_leads",leads);lastIds=found;btn.disabled=false;btn.textContent="Find businesses with no website";
+    var fresh=found.filter(function(id){return !sent[id];}).length;
+    $("stat").innerHTML="Checked <b>"+scanned+"</b> · <b>"+found.length+"</b> with no website · <b>"+fresh+"</b> not yet contacted";
+    view="new";setTab();render();
+  }
+  fetchPage(null);
+}
+$("go").onclick=search;
+
+function setTab(){document.querySelectorAll(".tab").forEach(function(t){t.setAttribute("aria-pressed",t.getAttribute("data-v")===view?"true":"false");});}
+document.querySelectorAll(".tab").forEach(function(t){t.onclick=function(){view=t.getAttribute("data-v");setTab();render();};});
+
+function brief(l){return "Build a demo for this lead:\n"+l.name+"\n"+l.type+"\nRating: "+l.rating+" ("+l.count+" Google reviews)\nPhone: "+l.phone+"\nAddress: "+l.addr+(l.url?"\nCurrent link: "+l.url:"\nWebsite: none")+"\nGoogle Maps: "+l.maps;}
+function copy(t){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast("Copied, paste it to Claude");},function(){fallback(t);});else fallback(t);}
+function fallback(t){var a=document.createElement("textarea");a.value=t;document.body.appendChild(a);a.select();try{document.execCommand("copy");toast("Copied, paste it to Claude");}catch(e){toast("Copy failed");}a.remove();}
+
+function render(){
+  var all=Object.keys(leads).map(function(k){return leads[k];});
+  var ids=view==="sent"?all.filter(function(l){return sent[l.id];}):(lastIds.length?lastIds.map(function(i){return leads[i];}):all).filter(function(l){return l&&!sent[l.id];});
+  ids.sort(function(a,b){return b.count-a.count;});
+  var box=$("list");
+  if(!ids.length){box.innerHTML='<div class="empty">'+(view==="sent"?"Leads you mark as contacted appear here.":"No uncontacted leads here yet. Run a search.")+'</div>';return;}
+  box.innerHTML=ids.map(function(l){
+    return '<article class="card'+(sent[l.id]?" sent":"")+'"><div class="top"><div><h3>'+esc(l.name)+'</h3><p class="type">'+esc(l.type)+'</p></div>'+
+      '<div class="score"><b>'+(l.rating?l.rating.toFixed(1):"–")+' ★</b><small>'+l.count+' reviews</small></div></div>'+
+      '<span class="badge '+l.kind+'">'+(l.kind==="none"?"No website":"Social link only")+'</span>'+
+      '<p class="addr">'+esc(l.addr)+'<br>'+esc(l.phone)+(sent[l.id]?" · contacted "+new Date(sent[l.id]).toLocaleDateString():"")+'</p>'+
+      '<div class="acts">'+(l.wa?'<a class="wa" href="https://wa.me/'+l.wa+'" target="_blank" rel="noopener">WhatsApp</a>':'<a class="wa" href="tel:'+digits(l.phone)+'">Call</a>')+
+      '<button type="button" data-copy="'+l.id+'">Copy for Claude</button>'+
+      '<button type="button" class="'+(sent[l.id]?"on":"")+'" data-sent="'+l.id+'">'+(sent[l.id]?"Contacted ✓":"Mark contacted")+'</button></div>'+
+      (l.maps?'<p class="addr"><a href="'+l.maps+'" target="_blank" rel="noopener" style="text-decoration:underline">Open in Google Maps</a></p>':"")+'</article>';
+  }).join("");
+}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+$("list").addEventListener("click",function(e){
+  var c=e.target.closest("[data-copy]"),s=e.target.closest("[data-sent]");
+  if(c)copy(brief(leads[c.getAttribute("data-copy")]));
+  if(s){var id=s.getAttribute("data-sent");if(sent[id])delete sent[id];else sent[id]=Date.now();store.set("lf_sent",sent);render();toast(sent[id]?"Marked contacted":"Moved back");}
+});
+$("csv").onclick=function(){
+  var rows=[["Name","Type","Rating","Reviews","Phone","Address","Link","Contacted","Maps"]];
+  Object.keys(leads).forEach(function(k){var l=leads[k];rows.push([l.name,l.type,l.rating,l.count,l.phone,l.addr,l.url,sent[l.id]?"yes":"no",l.maps]);});
+  var csv=rows.map(function(r){return r.map(function(v){return '"'+String(v).replace(/"/g,'""')+'"';}).join(",");}).join("\n");
+  var a=document.createElement("a");a.href="data:text/csv;charset=utf-8,"+encodeURIComponent(csv);a.download="leads.csv";document.body.appendChild(a);a.click();a.remove();
+};
+render();
+})();
+</script>
+
+</body>
+</html>
