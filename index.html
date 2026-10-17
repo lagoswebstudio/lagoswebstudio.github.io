@@ -27,12 +27,12 @@
     <h1 style="margin-top:10px">Your demos, organised.</h1>
     <p>Keep your demo links, notes, categories and statuses together in one simple workspace.</p>
     <form id="loginForm">
-      <div class="field"><label for="workspacePassword">Workspace password</label><input class="input" id="workspacePassword" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
-      <button class="btn btn-primary" type="submit">Unlock workspace</button>
+      <div class="field"><label for="workspaceEmail">Email address</label><input class="input" id="workspaceEmail" type="email" autocomplete="username" placeholder="you@example.com" required><label for="workspacePassword" style="display:block;margin:12px 0 7px;font-size:12px;font-weight:800;color:#4f5c78">Password</label><input class="input" id="workspacePassword" type="password" autocomplete="current-password" placeholder="Your account password" required></div>
+      <button class="btn btn-primary" type="submit">Sign in securely</button>
       <div id="loginError" class="login-error hidden">That password doesn't match. Try again.</div>
     </form>
-    <div class="notice"><strong>Local demo gate:</strong> this password screen is a convenience gate, not secure authentication. GitHub Pages files are public, so do not store secrets here.</div>
-    <div class="login-note">Your demo list is saved in this browser. Use Export backup before changing devices or clearing browser data.</div>
+    <div class="notice"><strong>Access note:</strong> Sign-in is handled by Supabase. Publicly hosted demo files remain accessible to anyone with their URLs.</div>
+    <div class="login-note">Sign in with your authorised account. Your private demo management settings are stored in Supabase.</div>
   </section>
 </div>
 <div id="appView" class="hidden">
@@ -46,8 +46,8 @@
         <div class="hero-row"><div><div class="eyebrow">YOUR PERSONAL WORKSPACE</div><h1>Every demo. One clear view.</h1><p>A simple place to organise your demo links, open projects quickly, and keep track of what is live, in progress or paused.</p></div><div class="hero-stat"><strong id="totalCount">1</strong><span>Saved demos</span></div></div>
       </section>
       <section class="toolbar">
-        <div><h2 class="section-title">Demo library</h2><div class="section-sub">Manage your demos without editing this page's code.</div></div>
-        <div class="toolbar-actions"><button class="btn" id="exportBtn" type="button">Export backup</button><button class="btn" id="importBtn" type="button">Import backup</button><button class="btn btn-primary" id="addBtn" type="button">＋ Add demo</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div>
+        <div><h2 class="section-title">Demo library</h2><div class="section-sub">HTML demos in this GitHub repository are discovered automatically.</div></div>
+        <div class="toolbar-actions"><button class="btn" id="refreshBtn" type="button">↻ Sync repository</button><button class="btn" id="exportBtn" type="button">Export backup</button><button class="btn" id="importBtn" type="button">Import backup</button><button class="btn btn-primary" id="addBtn" type="button">＋ Add demo</button><input type="file" id="importFile" accept="application/json,.json" class="hidden"></div>
       </section>
       <section class="filters" aria-label="Demo filters">
         <div class="searchwrap"><span class="search-icon" aria-hidden="true">⌕</span><input id="searchInput" class="input" type="search" placeholder="Search demos, notes or technologies…" aria-label="Search demos"></div>
@@ -77,106 +77,99 @@
   </form>
 </div>
 <div class="toast" id="toast" role="status"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 (function(){
 'use strict';
-const STORE='lws_demo_manager_v1';
-const PASSKEY='lws_demo_manager_password_v1';
-const SESSION='lws_demo_manager_unlocked_v1';
-const defaultDemos=[{
- id:'lf-studio',name:'LF Studio',description:'Lead intelligence and business prospecting workspace for finding and organising promising business leads.',url:'https://lagoswebstudio.github.io/lf-studio',source:'https://github.com/lagoswebstudio/lagoswebstudio.github.io',category:'Business tools',status:'Live',tech:['HTML','CSS','JavaScript','Apify'],notes:'Existing standalone demo. Confirm the live URL if your repository path differs.',updated:new Date().toISOString()
-}];
-let demos=[];
+const SUPABASE_URL='https://shrfhpfufdwvfzwlwqjd.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_sz7eEyhCvmArbzOlQbcoOQ_RI87Y89A';
+const supabaseClient=window.supabase?.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+const STORE='lws_demo_manager_v2';
+const REPO_OWNER='lagoswebstudio',REPO_NAME='lagoswebstudio.github.io';
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const statusClass=status=>status==='Live'?'live':status==='In progress'?'building':status==='Paused'?'paused':'';
 function safeUrl(value){try{const u=new URL(value);return ['http:','https:'].includes(u.protocol)?u.href:''}catch{return ''}}
-function readDemos(){try{const saved=localStorage.getItem(STORE);if(saved){const parsed=JSON.parse(saved);if(Array.isArray(parsed))return parsed}}catch{}return defaultDemos.map(d=>({...d,tech:[...d.tech]}))}
-function save(){localStorage.setItem(STORE,JSON.stringify(demos));$('savedLabel').textContent='Saved in this browser · '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});render()}
-function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2600)}
-function openApp(){ $('loginView').classList.add('hidden');$('appView').classList.remove('hidden');render(); }
-function lockApp(){sessionStorage.removeItem(SESSION);$('appView').classList.add('hidden');$('loginView').classList.remove('hidden');$('workspacePassword').value='';}
-function setupPassword(){
- let pass=localStorage.getItem(PASSKEY);
- if(!pass){pass=prompt('Create a workspace password for this browser. This is a convenience gate only, not secure authentication.');if(pass&&pass.trim()){localStorage.setItem(PASSKEY,pass);return pass}return ''}
- return pass;
+function readLocal(){try{const x=JSON.parse(localStorage.getItem(STORE)||'[]');return Array.isArray(x)?x:[]}catch{return []}}
+function writeLocal(){localStorage.setItem(STORE,JSON.stringify(demos.filter(d=>!d.repoDiscovered||d.userEdited||d.customEntry).map(d=>({...d,repoDiscovered:false}))))}
+let demos=[],repoDemos=[],dbRows=[],lastRepoSync=null,currentUser=null;
+function mergeAll(){
+ const savedByPath=new Map(dbRows.map(r=>[r.demo_path,r]));
+ const localByUrl=new Map(readLocal().map(d=>[safeUrl(d.url),d]));
+ const discovered=repoDemos.map(r=>{
+   const local=localByUrl.get(r.url), db=savedByPath.get(r.path)||savedByPath.get(r.url);
+   return {...r,...(local||{}),...(db?{category:db.category,status:db.status,notes:db.notes,favorite:db.favorite}:{}),id:r.id,repoDiscovered:true,path:r.path,userEdited:!!local||!!db};
+ });
+ const known=new Set(discovered.map(d=>safeUrl(d.url)));
+ const manualLocal=readLocal().filter(d=>!known.has(safeUrl(d.url)));
+ const manualDb=dbRows.filter(r=>!known.has(safeUrl(r.demo_path))&&!known.has(safeUrl('https://'+REPO_OWNER+'.github.io/'+r.demo_path))).map(r=>{
+   const url=safeUrl(r.demo_path)||safeUrl('https://'+REPO_OWNER+'.github.io/'+r.demo_path);
+   const old=manualLocal.find(d=>safeUrl(d.url)===url);
+   const name=old?.name||decodeURIComponent((new URL(url)).pathname.split('/').filter(Boolean).pop()||'Demo').replace(/\.html?$/i,'').replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+   return {...old,id:old?.id||'manual-'+btoa(url).replace(/[^a-z0-9]/gi,'').slice(0,18),name,url,source:old?.source||'',description:old?.description||'Manually saved demo.',tech:old?.tech||['HTML'],category:r.category,status:r.status,notes:r.notes,favorite:r.favorite,customEntry:true};
+ });
+ const manualUrls=new Set(manualDb.map(d=>safeUrl(d.url)));
+ demos=[...discovered,...manualLocal.filter(d=>!manualUrls.has(safeUrl(d.url))),...manualDb];
+ if(!demos.length)demos=[];
 }
-function renderCategoryFilter(){
- const current=$('categoryFilter').value;
- const categories=[...new Set(demos.map(d=>d.category).filter(Boolean))].sort((a,b)=>a.localeCompare(b));
- $('categoryFilter').innerHTML='<option value="">All categories</option>'+categories.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');
- if(categories.includes(current))$('categoryFilter').value=current;
-}
+function toast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),3200)}
 function render(){
  const query=$('searchInput').value.trim().toLowerCase(),category=$('categoryFilter').value,status=$('statusFilter').value;
- const filtered=demos.filter(d=>{
- const hay=[d.name,d.description,d.category,d.status,d.notes,...(d.tech||[])].join(' ').toLowerCase();
- return (!query||hay.includes(query))&&(!category||d.category===category)&&(!status||d.status===status);
- });
+ const categories=[...new Set(demos.map(d=>d.category||'Uncategorised'))].sort((a,b)=>a.localeCompare(b));
+ const select=$('categoryFilter'),old=select.value;select.innerHTML='<option value="">All categories</option>'+categories.map(c=>'<option value="'+esc(c)+'">'+esc(c)+'</option>').join('');select.value=categories.includes(old)?old:'';
+ const filtered=demos.filter(d=>{const hay=[d.name,d.description,d.url,d.category,d.status,d.notes,...(d.tech||[])].join(' ').toLowerCase();return (!query||hay.includes(query))&&(!category||d.category===category)&&(!status||d.status===status)});
  $('totalCount').textContent=String(demos.length);
- renderCategoryFilter();
- const grid=$('demoGrid');
- if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">⌕</div><h3>No demos found</h3><p>Try another search or filter, or add a demo to your library.</p><button class="btn btn-primary" data-action="add">Add a demo</button></div>';return}
- grid.innerHTML=filtered.map(d=>{
- const initial=(d.name||'D').trim().split(/\s+/).slice(0,2).map(s=>s[0]||'').join('').toUpperCase();
- const tech=(d.tech||[]).slice(0,4).map(t=>'<span class="tag">'+esc(t)+'</span>').join('');
- const url=safeUrl(d.url),source=safeUrl(d.source);
- return '<article class="demo-card"><div class="card-top"><div class="project-icon">'+esc(initial)+'</div><span class="status '+statusClass(d.status)+'">'+esc(d.status||'Live')+'</span></div><h3 class="card-title">'+esc(d.name)+'</h3><p class="card-desc">'+esc(d.description||'No description added yet.')+'</p><div class="tags">'+(d.category?'<span class="tag">'+esc(d.category)+'</span>':'')+tech+'</div><div class="card-meta"><span>Updated '+esc(new Date(d.updated||Date.now()).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}))+'</span><span>'+(d.notes?'Notes added':'')+'</span></div><div class="card-actions"><a class="btn btn-primary" href="'+esc(url||'#')+'" target="_blank" rel="noopener noreferrer" '+(!url?'aria-disabled="true" onclick="return false"':'')+'>Open demo ↗</a><button class="btn icon-btn" type="button" data-action="edit" data-id="'+esc(d.id)+'" aria-label="Edit '+esc(d.name)+'" title="Edit demo">···</button></div>'+(source?'<div style="margin-top:10px"><a href="'+esc(source)+'" target="_blank" rel="noopener noreferrer" style="font-size:12px;font-weight:700;color:var(--muted);text-decoration:none">View source repository ↗</a></div>':'')+'</article>';
- }).join('');
+ $('demoGrid').innerHTML=filtered.length?filtered.map(d=>{
+  const initials=(d.name||'D').split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase();
+  return '<article class="demo-card"><div class="card-top"><div class="project-icon">'+esc(initials)+'</div><span class="status '+statusClass(d.status)+'">'+esc(d.status||'Live')+'</span></div><h3 class="card-title">'+esc(d.name)+'</h3><p class="card-desc">'+esc(d.description||'HTML demo from your repository.')+'</p><div class="tags"><span class="tag">'+esc(d.category||'Uncategorised')+'</span>'+((d.tech||[]).slice(0,3).map(t=>'<span class="tag">'+esc(t)+'</span>').join(''))+'</div>'+(d.notes?'<p class="card-desc"><strong>Note:</strong> '+esc(d.notes)+'</p>':'')+'<div class="card-meta"><span>'+(d.repoDiscovered?'GitHub repository':'Saved demo')+'</span><span>'+(d.favorite?'Favourite':'')+'</span></div><div class="card-actions"><a class="btn btn-primary" href="'+esc(d.url)+'" target="_blank" rel="noopener noreferrer">Open demo</a><a class="btn" href="'+esc(d.source||('https://github.com/'+REPO_OWNER+'/'+REPO_NAME))+'" target="_blank" rel="noopener noreferrer">Source</a><button class="btn icon-btn" type="button" data-action="edit" data-id="'+esc(d.id)+'" aria-label="Edit '+esc(d.name)+'">···</button></div></article>';
+ }).join(''):'<div class="empty"><div class="empty-icon">⌕</div><h3>No demos found</h3><p>'+(demos.length?'Try changing your search or filters.':'Sync your GitHub repository to discover your HTML demos, or add a demo manually.')+'</p><button class="btn btn-primary" data-action="add" type="button">Add a demo</button></div>';
 }
-function openModal(d){
- $('demoForm').reset();$('demoId').value=d?.id||'';$('modalTitle').textContent=d?'Edit demo':'Add a demo';
- $('demoName').value=d?.name||'';$('demoDescription').value=d?.description||'';$('demoUrl').value=d?.url||'';$('demoSource').value=d?.source||'';
- $('demoCategory').value=d?.category||'';$('demoStatus').value=d?.status||'Live';$('demoTech').value=(d?.tech||[]).join(', ');$('demoNotes').value=d?.notes||'';
- $('demoModal').classList.add('open');setTimeout(()=>$('demoName').focus({preventScroll:true}),60);
+async function loadPrivateSettings(){
+ if(!supabaseClient||!currentUser)return;
+ const {data,error}=await supabaseClient.from('demo_manager_entries').select('demo_path,category,status,notes,favorite').eq('owner_id',currentUser.id);
+ if(error)throw error;dbRows=data||[];mergeAll();render();
 }
+async function persistPrivateSetting(d){
+ if(!supabaseClient||!currentUser)throw new Error('You are signed out. Sign in again before saving.');
+ const demoPath=d.path||d.url;
+ const row={owner_id:currentUser.id,demo_path:demoPath,category:d.category||'HTML demos',status:['Live','In progress','Paused','Archived'].includes(d.status)?d.status:'Live',notes:d.notes||'',favorite:!!d.favorite,updated_at:new Date().toISOString()};
+ const {error}=await supabaseClient.from('demo_manager_entries').upsert(row,{onConflict:'owner_id,demo_path'});
+ if(error)throw error;
+ const idx=dbRows.findIndex(x=>x.demo_path===demoPath);if(idx>=0)dbRows[idx]={...dbRows[idx],...row};else dbRows.push(row);
+}
+async function save(){
+ writeLocal();
+ try{for(const d of demos.filter(x=>x.userEdited||x.customEntry))await persistPrivateSetting(d);$('savedLabel').textContent='Saved privately · '+new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});mergeAll();render();}
+ catch(err){$('savedLabel').textContent='Browser copy saved; private sync failed';toast('Save error: '+(err.message||'Could not save to Supabase.'));}
+}
+async function syncRepository(){
+ const btn=$('refreshBtn');if(btn){btn.disabled=true;btn.textContent='Syncing…'}
+ try{
+  const base='https://api.github.com/repos/'+REPO_OWNER+'/'+REPO_NAME;
+  const mr=await fetch(base,{headers:{Accept:'application/vnd.github+json'}});if(!mr.ok)throw new Error('GitHub repository details unavailable (HTTP '+mr.status+').');const meta=await mr.json();
+  const tr=await fetch(base+'/git/trees/'+encodeURIComponent(meta.default_branch)+'?recursive=1',{headers:{Accept:'application/vnd.github+json'}});if(!tr.ok)throw new Error('GitHub file list unavailable (HTTP '+tr.status+').');const tree=await tr.json();if(tree.truncated)throw new Error('GitHub returned a partial file list. Try again later.');
+  const files=(tree.tree||[]).filter(item=>item.type==='blob'&&/\.html?$/i.test(item.path)&&item.path.toLowerCase()!=='index.html'&&!item.path.split('/').some(part=>part.startsWith('.')));
+  repoDemos=files.map(item=>{const parts=item.path.split('/'),filename=parts.at(-1),stem=filename.replace(/\.html?$/i,'');const name=stem.replace(/[-_]+/g,' ').replace(/\b\w/g,c=>c.toUpperCase());const encoded=item.path.split('/').map(encodeURIComponent).join('/');return {id:'repo-'+item.path,name,description:'Automatically discovered HTML demo from this GitHub repository.',url:'https://'+REPO_OWNER+'.github.io/'+encoded,source:'https://github.com/'+REPO_OWNER+'/'+REPO_NAME+'/blob/'+meta.default_branch+'/'+encoded,category:'HTML demos',status:'Live',tech:['HTML'],notes:'Repository file: '+item.path,updated:new Date().toISOString(),repoDiscovered:true,path:item.path};});
+  mergeAll();if(currentUser)await loadPrivateSettings();else render();lastRepoSync=new Date();$('savedLabel').textContent='Repository synced · '+lastRepoSync.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});toast('Found '+repoDemos.length+' HTML demo file'+(repoDemos.length===1?'':'s')+'.');
+ }catch(err){toast('Repository sync failed: '+err.message);$('savedLabel').textContent='Could not sync repository';}
+ finally{if(btn){btn.disabled=false;btn.textContent='↻ Sync repository'}}
+}
+function openModal(d){$('demoForm').reset();$('demoId').value=d?.id||'';$('modalTitle').textContent=d?'Edit demo':'Add a demo';$('demoName').value=d?.name||'';$('demoDescription').value=d?.description||'';$('demoUrl').value=d?.url||'';$('demoSource').value=d?.source||'';$('demoCategory').value=d?.category||'HTML demos';$('demoStatus').value=d?.status||'Live';$('demoTech').value=(d?.tech||['HTML','CSS','JavaScript']).join(', ');$('demoNotes').value=d?.notes||'';$('demoModal').classList.add('open');setTimeout(()=>$('demoName').focus(),50)}
 function closeModal(){$('demoModal').classList.remove('open')}
-function download(filename,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-$('loginForm').addEventListener('submit',e=>{
- e.preventDefault();let stored=localStorage.getItem(PASSKEY);
- if(!stored){const chosen=$('workspacePassword').value;if(chosen.length<4){$('loginError').textContent='Choose a password with at least 4 characters.';$('loginError').classList.remove('hidden');return}localStorage.setItem(PASSKEY,chosen);stored=chosen}
- if($('workspacePassword').value===stored){sessionStorage.setItem(SESSION,'yes');$('loginError').classList.add('hidden');openApp()}else{$('loginError').classList.remove('hidden')}
-});
-$('lockBtn').addEventListener('click',lockApp);
-$('addBtn').addEventListener('click',()=>openModal(null));
-$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);
-$('demoModal').addEventListener('click',e=>{if(e.target===$('demoModal'))closeModal()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-$('demoForm').addEventListener('submit',e=>{
- e.preventDefault();
- const name=$('demoName').value.trim(),url=safeUrl($('demoUrl').value.trim()),sourceInput=$('demoSource').value.trim(),source=sourceInput?safeUrl(sourceInput):'';
- if(!name){toast('Add a demo name first.');return}if(!url){toast('Enter a valid http or https demo URL.');return}if(sourceInput&&!source){toast('Enter a valid source repository URL.');return}
- const id=$('demoId').value||('demo-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7));
- const existing=demos.find(d=>d.id===id);
- const demo={id,name,description:$('demoDescription').value.trim(),url,source,category:$('demoCategory').value.trim()||'Uncategorised',status:$('demoStatus').value,tech:$('demoTech').value.split(',').map(s=>s.trim()).filter(Boolean).slice(0,12),notes:$('demoNotes').value.trim(),updated:new Date().toISOString(),created:existing?.created||new Date().toISOString()};
- if(existing)demos=demos.map(d=>d.id===id?demo:d);else demos.unshift(demo);
- save();closeModal();toast(existing?'Demo updated.':'Demo added.');
-});
-$('demoGrid').addEventListener('click',e=>{
- const button=e.target.closest('[data-action]');if(!button)return;
- if(button.dataset.action==='add'){openModal(null);return}
- if(button.dataset.action==='edit'){
-  const d=demos.find(item=>item.id===button.dataset.id);if(!d)return;
-  const choice=prompt('Type EDIT to edit this demo, DELETE to remove it, or CANCEL to close.', 'EDIT');
-  if(!choice)return;
-  if(choice.trim().toUpperCase()==='EDIT')openModal(d);
-  else if(choice.trim().toUpperCase()==='DELETE'&&confirm('Delete "'+d.name+'" from this browser’s demo library?')){demos=demos.filter(item=>item.id!==d.id);save();toast('Demo removed.')}
- }
-});
-$('searchInput').addEventListener('input',render);$('categoryFilter').addEventListener('change',render);$('statusFilter').addEventListener('change',render);
-$('exportBtn').addEventListener('click',()=>download('lagos-web-studio-demos-backup.json',JSON.stringify({version:1,exportedAt:new Date().toISOString(),demos},null,2),'application/json'));
-$('importBtn').addEventListener('click',()=>$('importFile').click());
-$('importFile').addEventListener('change',async e=>{
- const file=e.target.files?.[0];if(!file)return;
- try{const parsed=JSON.parse(await file.text()),items=Array.isArray(parsed)?parsed:parsed.demos;if(!Array.isArray(items))throw new Error('Invalid format');
- const clean=items.filter(d=>d&&typeof d.name==='string'&&safeUrl(d.url)).map(d=>({...d,id:String(d.id||'demo-'+Math.random().toString(36).slice(2)),name:d.name.slice(0,80),url:safeUrl(d.url),source:safeUrl(d.source||''),tech:Array.isArray(d.tech)?d.tech.filter(t=>typeof t==='string').slice(0,12):[],status:['Live','In progress','Paused','Archived'].includes(d.status)?d.status:'Live',category:String(d.category||'Uncategorised'),description:String(d.description||''),notes:String(d.notes||''),updated:d.updated||new Date().toISOString()}));
- if(!confirm('Import '+clean.length+' demos? This replaces the current demo list in this browser.'))return;
- demos=clean;save();toast('Backup imported.');
- }catch(err){toast('Could not import that JSON backup.')}
- finally{e.target.value=''}
-});
-demos=readDemos();
-if(sessionStorage.getItem(SESSION)==='yes')openApp();
+function download(name,content,type){const blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+function showLogin(message=''){ $('appView').classList.add('hidden');$('loginView').classList.remove('hidden');if(message){$('loginError').textContent=message;$('loginError').classList.remove('hidden')} }
+async function openApp(session){if(!session?.user)return showLogin();currentUser=session.user;$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');mergeAll();render();try{await loadPrivateSettings()}catch(err){toast('Could not load private settings: '+err.message)}await syncRepository()}
+async function lockApp(){if(supabaseClient)await supabaseClient.auth.signOut();currentUser=null;showLogin();}
+$('loginForm').addEventListener('submit',async e=>{e.preventDefault();const submit=$('loginForm').querySelector('button[type="submit"]');submit.disabled=true;$('loginError').classList.add('hidden');try{if(!supabaseClient)throw new Error('Supabase client did not load. Check your internet connection and reload.');const {data,error}=await supabaseClient.auth.signInWithPassword({email:$('workspaceEmail').value.trim(),password:$('workspacePassword').value});if(error)throw error;await openApp(data.session)}catch(err){showLogin(err.message||'Sign-in failed. Check your email and password.')}finally{submit.disabled=false}});
+if(supabaseClient)supabaseClient.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_OUT'){currentUser=null;showLogin()}else if(session?.user){currentUser=session.user;$('loginView').classList.add('hidden');$('appView').classList.remove('hidden');}});
+$('lockBtn').addEventListener('click',lockApp);$('addBtn').addEventListener('click',()=>openModal(null));$('closeModal').addEventListener('click',closeModal);$('cancelModal').addEventListener('click',closeModal);$('demoModal').addEventListener('click',e=>{if(e.target===$('demoModal'))closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+$('demoForm').addEventListener('submit',async e=>{e.preventDefault();const name=$('demoName').value.trim(),url=safeUrl($('demoUrl').value.trim()),sourceInput=$('demoSource').value.trim(),source=sourceInput?safeUrl(sourceInput):'';if(!name||!url||(sourceInput&&!source)){toast('Check the name and valid http/https URLs.');return}const id=$('demoId').value||'manual-'+Date.now().toString(36),existing=demos.find(d=>d.id===id);const demo={...existing,id,name,description:$('demoDescription').value.trim(),url,source,category:$('demoCategory').value.trim()||'Uncategorised',status:$('demoStatus').value,tech:$('demoTech').value.split(',').map(x=>x.trim()).filter(Boolean).slice(0,12),notes:$('demoNotes').value.trim(),updated:new Date().toISOString(),repoDiscovered:existing?.repoDiscovered||false,userEdited:true,customEntry:existing?.customEntry||!existing,path:existing?.path};if(existing)demos=demos.map(d=>d.id===id?demo:d);else demos.unshift(demo);closeModal();await save();toast('Demo saved.');});
+$('demoGrid').addEventListener('click',e=>{const b=e.target.closest('[data-action]');if(!b)return;if(b.dataset.action==='add'){openModal(null);return}if(b.dataset.action==='edit'){const d=demos.find(x=>x.id===b.dataset.id);if(d)openModal(d)}});
+$('searchInput').addEventListener('input',render);$('categoryFilter').addEventListener('change',render);$('statusFilter').addEventListener('change',render);$('refreshBtn').addEventListener('click',syncRepository);
+$('exportBtn').addEventListener('click',()=>download('lagos-web-studio-demos-backup.json',JSON.stringify({version:2,exportedAt:new Date().toISOString(),demos},null,2),'application/json'));
+$('importBtn').addEventListener('click',()=>$('importFile').click());$('importFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const parsed=JSON.parse(await file.text()),items=Array.isArray(parsed)?parsed:parsed.demos;if(!Array.isArray(items))throw new Error('Invalid format');const clean=items.filter(d=>d&&typeof d.name==='string'&&safeUrl(d.url)).map(d=>({...d,id:String(d.id||'manual-'+Math.random().toString(36).slice(2)),url:safeUrl(d.url),source:safeUrl(d.source||''),tech:Array.isArray(d.tech)?d.tech.filter(t=>typeof t==='string').slice(0,12):[],status:['Live','In progress','Paused','Archived'].includes(d.status)?d.status:'Live',category:String(d.category||'Uncategorised'),description:String(d.description||''),notes:String(d.notes||''),userEdited:true,customEntry:true}));if(!confirm('Import '+clean.length+' demos? This replaces locally saved demo details.'))return;demos=[...repoDemos,...clean];await save();toast('Backup imported.')}catch(err){toast('Could not import that JSON backup.')}finally{e.target.value=''}});
+mergeAll();render();
+(async()=>{if(!supabaseClient){showLogin('Supabase client failed to load. Check your internet connection.');return}const {data,error}=await supabaseClient.auth.getSession();if(error){showLogin(error.message);return}if(data.session)await openApp(data.session);else showLogin()})();
 })();
 </script>
 </body>
