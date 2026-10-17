@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -40,8 +39,8 @@ h2{font-size:clamp(34px,5.2vw,60px);font-weight:800;max-width:15ch}
 .nav{position:sticky;top:0;z-index:40;background:#FFFFFF;border-bottom:1px solid #DFE3EA}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
 .logo{display:flex;align-items:center;gap:10px}
-.logo .mark{width:36px;height:36px;border-radius:10px;background:#0B1A33;color:#F2A900;display:flex;align-items:center;justify-content:center;font:800 17px “Bricolage Grotesque”,sans-serif}
-.logo b{font:800 21px “Bricolage Grotesque”,sans-serif;letter-spacing:-.03em;display:block;line-height:1}
+.logo .mark{width:36px;height:36px;border-radius:10px;background:#0B1A33;color:#F2A900;display:flex;align-items:center;justify-content:center;font:800 17px "Bricolage Grotesque",sans-serif}
+.logo b{font:800 21px "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;display:block;line-height:1}
 .logo small{font-size:12px;color:#5A6782;font-weight:600}
 .navlinks{display:flex;align-items:center;gap:28px;font-weight:600;font-size:15px}
 .navlinks a:not(.btn):hover{color:#5A6782}
@@ -50,13 +49,14 @@ h2{font-size:clamp(34px,5.2vw,60px);font-weight:800;max-width:15ch}
 @media(max-width:880px){.navlinks{display:none}.burger{display:flex}}
 
 /* MOBILE MENU: solid full-screen panel */
-.sheet-menu{position:fixed;inset:0;z-index:60;background:#0B1A33;color:#FFFFFF;display:flex;flex-direction:column;padding:20px 6% 32px;transform:translateY(-100%);transition:transform .45s cubic-bezier(.2,.8,.2,1);visibility:hidden}
-.sheet-menu.open{transform:none;visibility:visible}
+.sheet-menu{position:fixed;top:0;right:0;bottom:0;left:0;z-index:60;background:#0B1A33;color:#FFFFFF;display:flex;flex-direction:column;padding:20px 6% 32px;display:none;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sheet-menu:target,.sheet-menu.open{display:flex;animation:menuIn .35s ease both}
+@keyframes menuIn{from{opacity:0;-webkit-transform:translateY(-12px);transform:translateY(-12px)}to{opacity:1;-webkit-transform:none;transform:none}}
 .sheet-menu .top{display:flex;justify-content:space-between;align-items:center;height:48px}
 .sheet-menu .close{width:44px;height:44px;border-radius:12px;border:1.5px solid rgba(255,255,255,.25);background:#13264A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .sheet-menu nav{display:flex;flex-direction:column;margin-top:36px}
-.sheet-menu nav a{font:800 40px/1.1 “Bricolage Grotesque”,sans-serif;letter-spacing:-.03em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center}
-.sheet-menu nav a span{font:600 14px “Plus Jakarta Sans”,sans-serif;color:#F2A900}
+.sheet-menu nav a{font:800 40px/1.1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;align-items:center}
+.sheet-menu nav a span{font:600 14px "Plus Jakarta Sans",sans-serif;color:#F2A900}
 .sheet-menu .foot{margin-top:auto;display:grid;gap:10px}
 .sheet-menu .foot p{color:rgba(255,255,255,.65);font-size:14px;margin-bottom:6px}
 
@@ -71,20 +71,20 @@ h2{font-size:clamp(34px,5.2vw,60px);font-weight:800;max-width:15ch}
 .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .proof{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:12px 28px;margin:36px 0 clamp(36px,6vw,72px)}
 .proof div{font-size:13.5px;color:#9AA7BF;line-height:1.3}
-.proof b{display:block;font:800 clamp(20px,5vw,26px) “Bricolage Grotesque”,sans-serif;color:#FFFFFF;margin-bottom:4px}
+.proof b{display:block;font:800 clamp(20px,5vw,26px) "Bricolage Grotesque",sans-serif;color:#FFFFFF;margin-bottom:4px}
 .proof .stars{color:#F2A900;letter-spacing:2px}
 .hero-visual{position:relative;align-self:stretch;min-height:540px}
-.hero-visual .ph{position:absolute;inset:0;border-radius:28px 28px 0 0}
+.hero-visual .ph{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:28px 28px 0 0}
 .hero-visual .ph img{animation:zoom 2.4s cubic-bezier(.2,.7,.2,1) both}
 @keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
-.shade{position:absolute;inset:0;border-radius:28px 28px 0 0;background:linear-gradient(180deg,rgba(11,26,51,0) 35%,rgba(11,26,51,.7) 100%)}
+.shade{position:absolute;top:0;right:0;bottom:0;left:0;border-radius:28px 28px 0 0;background:linear-gradient(180deg,rgba(11,26,51,0) 35%,rgba(11,26,51,.7) 100%)}
 @media(max-width:880px){.hero-grid{grid-template-columns:1fr}.hero-visual{min-height:520px;margin:0 -4.35%}.hero-visual .ph,.shade{border-radius:0}.proof{margin-bottom:8px}}
 
 /* BUDGET DIAL: the signature */
 .dial{position:absolute;left:20px;right:20px;bottom:20px;z-index:3;background:#FFFFFF;color:#0B1A33;border-radius:22px;padding:22px;box-shadow:0 30px 60px -20px rgba(0,0,0,.55)}
 .dial-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .dial label{font-weight:700;font-size:14px;color:#5A6782}
-.amt{font:800 clamp(38px,6vw,52px)/1 “Bricolage Grotesque”,sans-serif;letter-spacing:-.035em;margin:6px 0 16px}
+.amt{font:800 clamp(38px,6vw,52px)/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.035em;margin:6px 0 16px}
 .fit{background:#FFF4D6;color:#7A5500;font-weight:700;font-size:13px;padding:7px 12px;border-radius:999px;white-space:nowrap}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:10px;border-radius:99px;background:#DFE3EA;outline-offset:8px;cursor:pointer}
 input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:30px;height:30px;border-radius:50%;background:#0B1A33;border:5px solid #F2A900;box-shadow:0 6px 14px rgba(11,26,51,.35)}
@@ -113,8 +113,8 @@ section{padding:clamp(64px,9vw,120px) 0}
 .car .ph img{transition:transform .8s cubic-bezier(.2,.7,.2,1)}
 .car:hover .ph img{transform:scale(1.05)}
 .badge{position:absolute;top:14px;left:14px;z-index:2;background:#FFFFFF;color:#0B1A33;font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px}
-.pricetag{position:absolute;top:16px;right:-8px;z-index:2;background:#F2A900;color:#0B1A33;font:800 19px “Bricolage Grotesque”,sans-serif;padding:10px 18px 10px 30px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);-webkit-clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);transform:rotate(3deg)}
-.pricetag:before{content:””;position:absolute;left:12px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#FFFFFF}
+.pricetag{position:absolute;top:16px;right:-8px;z-index:2;background:#F2A900;color:#0B1A33;font:800 19px "Bricolage Grotesque",sans-serif;padding:10px 18px 10px 30px;clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);-webkit-clip-path:polygon(14px 0,100% 0,100% 100%,14px 100%,0 50%);transform:rotate(3deg)}
+.pricetag:before{content:"";position:absolute;left:12px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:#FFFFFF}
 .car-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1}
 .car .yr{font-weight:700;color:#5A6782;font-size:13.5px}
 .car h3{font-size:24px;font-weight:800}
@@ -128,7 +128,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .note{font-size:13px;color:#8A95AB;margin-top:22px}
 
 /* DETAIL SHEET */
-.backdrop{position:fixed;inset:0;z-index:70;background:rgba(6,14,28,.6);opacity:0;visibility:hidden;transition:opacity .3s ease}
+.backdrop{position:fixed;top:0;right:0;bottom:0;left:0;z-index:70;background:rgba(6,14,28,.6);opacity:0;visibility:hidden;transition:opacity .3s ease}
 .backdrop.open{opacity:1;visibility:visible}
 .detail{position:fixed;left:0;right:0;bottom:0;z-index:71;background:#FFFFFF;border-radius:26px 26px 0 0;max-height:92vh;overflow:auto;transform:translateY(105%);transition:transform .45s cubic-bezier(.2,.8,.2,1);padding-bottom:env(safe-area-inset-bottom)}
 .detail.open{transform:none}
@@ -139,7 +139,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .detail-in{padding:24px;display:grid;gap:16px}
 .detail-in .row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
 .detail-in h3{font-size:30px;font-weight:800}
-.detail-in .price{font:800 30px “Bricolage Grotesque”,sans-serif;color:#0B1A33;background:#FFF4D6;padding:4px 12px;border-radius:10px}
+.detail-in .price{font:800 30px "Bricolage Grotesque",sans-serif;color:#0B1A33;background:#FFF4D6;padding:4px 12px;border-radius:10px}
 .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .kv div{background:#F4F5F7;border-radius:12px;padding:12px 14px;font-size:13px;color:#5A6782}
 .kv b{display:block;color:#0B1A33;font-size:15.5px}
@@ -150,7 +150,7 @@ section{padding:clamp(64px,9vw,120px) 0}
 .process .lede{color:#B9C3D6;margin-top:16px}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px}
 .step{border-top:2px solid #F2A900;padding-top:22px}
-.step .n{font:800 54px/1 “Bricolage Grotesque”,sans-serif;color:#F2A900;display:block;margin-bottom:14px}
+.step .n{font:800 54px/1 "Bricolage Grotesque",sans-serif;color:#F2A900;display:block;margin-bottom:14px}
 .step h3{font-size:24px;font-weight:800;margin-bottom:8px}
 .step p{color:#B9C3D6}
 @media(max-width:880px){.steps{grid-template-columns:1fr}}
@@ -158,13 +158,13 @@ section{padding:clamp(64px,9vw,120px) 0}
 /* REVIEWS + FAQ */
 .two{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,72px);align-items:start}
 .score{background:#FFFFFF;border-radius:26px;padding:32px;box-shadow:0 24px 50px -30px rgba(11,26,51,.45)}
-.score .big{font:800 clamp(96px,13vw,150px)/.85 “Bricolage Grotesque”,sans-serif;letter-spacing:-.05em}
+.score .big{font:800 clamp(96px,13vw,150px)/.85 "Bricolage Grotesque",sans-serif;letter-spacing:-.05em}
 .score .stars{color:#F2A900;font-size:22px;letter-spacing:3px;margin:14px 0 6px}
 .score p{color:#5A6782;margin-bottom:22px}
 .faq details{border-bottom:1px solid #DFE3EA}
-.faq summary{list-style:none;cursor:pointer;padding:20px 0;font:700 19px/1.3 “Bricolage Grotesque”,sans-serif;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font:700 19px/1.3 "Bricolage Grotesque",sans-serif;display:flex;justify-content:space-between;gap:16px;align-items:center}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:after{content:”+”;font:500 28px/1 “Plus Jakarta Sans”,sans-serif;color:#F2A900;transition:transform .25s ease}
+.faq summary:after{content:"+";font:500 28px/1 "Plus Jakarta Sans",sans-serif;color:#F2A900;transition:transform .25s ease}
 .faq details[open] summary:after{transform:rotate(45deg)}
 .faq details p{color:#5A6782;padding:0 0 20px;max-width:60ch}
 @media(max-width:880px){.two{grid-template-columns:1fr}}
@@ -198,10 +198,14 @@ footer b{color:#FFFFFF}
 .bar.show{transform:none}
 .bar .btn{flex:1;padding:13px}
 @media(min-width:881px){.bar{display:none}}
-</style>
 
+/* Self-contained page shell: keeps the design intact even if a viewer injects its own body colours */
+html,html body{background:#F4F5F7!important;color:#0B1A33!important}
+#app{background:#F4F5F7;color:#0B1A33;min-height:100vh;overflow-x:clip}
+</style>
 </head>
 <body>
+<div id="app">
 
 <header class="nav">
   <div class="wrap">
@@ -210,27 +214,11 @@ footer b{color:#FFFFFF}
       <a href="#cars">Cars</a><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="#visit">Visit</a>
       <a class="btn gold wa" data-msg="Hello MayFair Autos, I'd like to ask about a car.">WhatsApp us</a>
     </div>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1A33" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M4 16h10"/></svg></button>
+    <a href="#menu" class="burger" id="burger" role="button" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0B1A33" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M4 16h10"/></svg></a>
   </div>
 </header>
 
-<div class="sheet-menu" id="menu" aria-hidden="true">
-  <div class="top">
-    <a class="logo" href="#top"><span class="mark">M</span><b style="color:#fff">MayFair Autos</b></a>
-    <button class="close" id="closeMenu" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  </div>
-  <nav>
-    <a href="#cars">Cars <span>5 on the lot</span></a>
-    <a href="#how">How it works</a>
-    <a href="#faq">FAQ</a>
-    <a href="#visit">Visit us <span>Mon–Sat</span></a>
-  </nav>
-  <div class="foot">
-    <p>Lekki–Epe Expressway, Lekki Peninsula II</p>
-    <a class="btn gold wa" data-msg="Hello MayFair Autos, I'd like to ask about a car.">Chat on WhatsApp</a>
-    <a class="btn ghost-light" href="tel:+2348147200260">Call +234 814 720 0260</a>
-  </div>
-</div>
+
 
 <section class="hero" id="top" style="padding-bottom:0">
   <div class="wrap hero-grid">
@@ -364,6 +352,33 @@ footer b{color:#FFFFFF}
 
 <div class="bar" id="bar"><a class="btn" href="tel:+2348147200260">Call</a><a class="btn gold wa" data-msg="Hello MayFair Autos, I'm interested in a car.">WhatsApp</a></div>
 
+</div>
+<div class="sheet-menu" id="menu" aria-hidden="true">
+  <div class="top">
+    <a class="logo" href="#top"><span class="mark">M</span><b style="color:#fff">MayFair Autos</b></a>
+    <a href="#_" class="close" id="closeMenu" role="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+  </div>
+  <nav>
+    <a href="#cars">Cars <span>5 on the lot</span></a>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+    <a href="#visit">Visit us <span>Mon–Sat</span></a>
+  </nav>
+  <div class="foot">
+    <p>Lekki–Epe Expressway, Lekki Peninsula II</p>
+    <a class="btn gold wa" data-msg="Hello MayFair Autos, I'd like to ask about a car.">Chat on WhatsApp</a>
+    <a class="btn ghost-light" href="tel:+2348147200260">Call +234 814 720 0260</a>
+  </div>
+</div>
+<script>
+(function(){var m=document.getElementById("menu"),b=document.getElementById("burger"),x=document.getElementById("closeMenu");if(!m||!b)return;
+function open(e){if(e)e.preventDefault();m.classList.add("open");m.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true");document.body.classList.add("lock");}
+function close(e){if(e)e.preventDefault();m.classList.remove("open");m.setAttribute("aria-hidden","true");b.setAttribute("aria-expanded","false");document.body.classList.remove("lock");if(location.hash==="#menu"&&history.replaceState)history.replaceState(null,"",location.pathname+location.search);}
+b.addEventListener("click",open);if(x)x.addEventListener("click",close);
+var links=m.querySelectorAll("nav a, .foot a");for(var i=0;i<links.length;i++)links[i].addEventListener("click",function(){close();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});window.closeMenuFn=close;})();
+</script>
+
 <script>
 var WA="2348147200260";
 function wa(m){return "https://wa.me/"+WA+"?text="+encodeURIComponent(m);}
@@ -419,14 +434,9 @@ grid.addEventListener("click",function(e){
   var o=e.target.closest("[data-open]")||e.target.closest(".car");
   if(o)openCar(+(o.getAttribute("data-open")||o.getAttribute("data-i")));
 });
-document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeCar();closeMenu();}});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeCar();if(window.closeMenuFn)window.closeMenuFn();}});
 
-/* menu */
-var menu=document.getElementById("menu"),burger=document.getElementById("burger");
-function openMenu(){menu.classList.add("open");menu.setAttribute("aria-hidden","false");burger.setAttribute("aria-expanded","true");document.body.classList.add("lock");}
-function closeMenu(){menu.classList.remove("open");menu.setAttribute("aria-hidden","true");burger.setAttribute("aria-expanded","false");document.body.classList.remove("lock");}
-burger.onclick=openMenu;document.getElementById("closeMenu").onclick=closeMenu;
-menu.querySelectorAll("a").forEach(function(a){a.addEventListener("click",closeMenu);});
+
 
 /* whatsapp links */
 document.querySelectorAll(".wa").forEach(function(a){a.href=wa(a.getAttribute("data-msg"));a.target="_blank";a.rel="noopener";});
@@ -450,6 +460,5 @@ var bar=document.getElementById("bar");
 window.addEventListener("scroll",function(){bar.classList.toggle("show",window.scrollY>window.innerHeight*.7);},{passive:true});
 render();
 </script>
-
 </body>
 </html>
