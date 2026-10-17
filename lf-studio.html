@@ -120,8 +120,208 @@ document.addEventListener("click",function(e){var p=e.target.closest("[data-pres
 $("maxPlaces").addEventListener("input",function(){$("placesValue").textContent=this.value;});
 $("includeSocial").addEventListener("click",function(){var on=!this.classList.contains("on");this.classList.toggle("on",on);this.setAttribute("aria-pressed",String(on));});
 function refreshUsage(a){return testApify(a.token).then(function(info){a.usage=info;saveAccounts();renderAccounts();});}
-function processItems(items,o){var ids=[],fresh=0,stats={websites:0,social:0,low:0,closed:0,nophone:0};items.forEach(function(p){if(p.permanentlyClosed||p.temporarilyClosed){stats.closed++;return;}var url=String(p.website||p.websiteUrl||p.webSite||"").trim(),onlySocial=isSocial(url);if(url&&!onlySocial){stats.websites++;return;}if(onlySocial&&!o.includeSocial){stats.social++;return;}var rating=+(p.totalScore||p.rating||0),reviews=+(p.reviewsCount||p.reviews||0);if(rating<o.minRating||reviews<o.minReviews){stats.low++;return;}var phone=p.phone||p.phoneUnformatted||"";if(!phone){stats.nophone++;return;}var name=p.title||p.name||"Unnamed business",id=String(p.placeId||p.place_id||p.cid||(name+"|"+(p.address||"")).toLowerCase()),prior=S.leads[id];var l={id:id,name:name,type:p.categoryName||p.category||o.query,address:p.address||"",neighborhood:p.neighborhood||"",phone:phone,wa:wa(p.phoneUnformatted||phone),rating:rating,reviews:reviews,url:url,maps:p.url||p.googleMapsUrl||"",query:o.query,area:o.area,websiteStatus:onlySocial?"social-only":"none",verification:"Apify Google Places website field only; not independently verified",found:prior?prior.found:Date.now(),status:prior?prior.status:"new",contactedAt:prior?prior.contactedAt:null,notes:prior?prior.notes:"",value:prior?prior.value:0};l.score=score(l);S.leads[id]=l;ids.push(id);if(!prior)fresh++;});saveLeads();S.searches.unshift({query:o.query,area:o.area,at:Date.now(),scanned:items.length,found:ids.length,fresh:fresh,accountId:o.accountId});S.searches=S.searches.slice(0,30);put("searches",S.searches);renderStats();return {ids:ids,fresh:fresh,scanned:items.length,stats:stats};}
-var steps=["Starting the Google Maps scan","Collecting business details","Filtering websites and ratings","Saving eligible prospects"];
+/*
+LF Studio location-filter fix
+Replace the existing processItems(items,o) function in lf-studio.html with
+this block. This patch is deliberately limited to eligibility filtering and
+does not change the Apify actor, account, or search-credit behaviour.
+*/
+
+function normalizedText(value) {
+  return String(value || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function matchesRequestedLocation(place, requestedArea) {
+  var target = normalizedText(requestedArea);
+  var address = normalizedText([
+    place.address,
+    place.neighborhood,
+    place.city,
+    place.state,
+    place.country,
+    place.countryCode,
+    place.location
+  ].filter(Boolean).join(" "));
+
+  // If we cannot verify the result's location from its returned details,
+  // fail closed rather than save a potentially out-of-area lead.
+  if (!address) return false;
+
+  // Explicitly block common non-Lagos locations when targeting Lagos.
+  var targetIsLagos = /\blagos\b/.test(target);
+  if (targetIsLagos) {
+    var outsideLagos = [
+      "abuja", "federal capital territory", " fct ",
+      "port harcourt", "rivers state", "ibadan", "oyo state",
+      "offa", "kwara state", "ilorin", "kano state", "enugu state",
+      "benin city", "edo state", "abeokuta", "ogun state",
+      "akure", "ondo state", "uyo", "akwa ibom", "calabar",
+      "cross river", "jos", "plateau state", "kaduna state",
+      "maiduguri", "borno state", "sokoto state", "yola",
+      "adamawa state", "makurdi", "benue state", "minna",
+      "niger state", "asaba", "delta state", "awka", "anambra state",
+      "abakaliki", "ebonyi state", "umuahia", "abia state",
+      "owerri", "imo state", "bayelsa state", "yenagoa"
+    ];
+    var paddedAddress = " " + address + " ";
+    if (outsideLagos.some(function (placeName) {
+      return paddedAddress.indexOf(" " + normalizedText(placeName) + " ") !== -1;
+    })) return false;
+
+    // A positive Lagos signal is required. Accept Lagos itself or well-known
+    // Lagos districts where Maps sometimes omits the state name.
+    var lagosSignals = [
+      "lagos", "lekki", "ajah", "ikoyi", "ikeja", "yaba", "surulere",
+      "gbagada", "magodo", "maryland", "ogba", "agege", "festac",
+      "apapa", "epe", "badagry", "ikorodu", "sangotedo", "ikate",
+      "chevron", "victoria island", "lagos island", "oshodi", "mushin",
+      "ilupeju", "isolo", "ketu", "ojodu", "oniru", "ikota", "idimu",
+      "egbeda", "iyana ipaja", "amukoko", "bariga", "shomolu"
+    ];
+    var hasLagosSignal = lagosSignals.some(function (signal) {
+      return address.indexOf(normalizedText(signal)) !== -1;
+    });
+    if (!hasLagosSignal) return false;
+
+    // If a specific Lagos neighbourhood was requested, require that area too;
+    // a Victoria Island result must not pass a Lekki Phase 1 search merely
+    // because both are in Lagos.
+    var requestedNeighbourhood = target
+      .replace(/\blagos\b/g, " ")
+      .replace(/\bnigeria\b/g, " ")
+      .replace(/\bng\b/g, " ")
+      .replace(/\bstate\b/g, " ")
+      .replace(/\bcity\b/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (requestedNeighbourhood && address.indexOf(requestedNeighbourhood) === -1) return false;
+    return true;
+  }
+
+  // For other explicit city/neighbourhood searches, require at least one
+  // meaningful location token from the requested area to appear in the
+  // returned address. Ignore generic words that do not identify a place.
+  var ignored = {
+    "in": 1, "the": 1, "city": 1, "state": 1, "country": 1,
+    "nigeria": 1, "ng": 1, "of": 1, "and": 1
+  };
+  var tokens = target.split(" ").filter(function (token) {
+    return token.length > 2 && !ignored[token];
+  });
+  if (!tokens.length) return address.indexOf(target) !== -1;
+  return tokens.some(function (token) {
+    return address.indexOf(token) !== -1;
+  });
+}
+
+function processItems(items, o) {
+  var ids = [], fresh = 0;
+  var stats = {
+    websites: 0, social: 0, low: 0, closed: 0, nophone: 0, location: 0
+  };
+
+  items.forEach(function (p) {
+    if (p.permanentlyClosed || p.temporarilyClosed) {
+      stats.closed++;
+      return;
+    }
+
+    // CRITICAL FIX: the previous code never checked the returned address.
+    // It relied only on the search query, which allowed Abuja results into
+    // a Lagos search. Reject any result that fails the location check.
+    if (!matchesRequestedLocation(p, o.area)) {
+      stats.location++;
+      return;
+    }
+
+    var url = String(p.website || p.websiteUrl || p.webSite || "").trim();
+    var onlySocial = isSocial(url);
+
+    // Never save a result with a returned non-social website URL.
+    if (url && !onlySocial) {
+      stats.websites++;
+      return;
+    }
+    if (onlySocial && !o.includeSocial) {
+      stats.social++;
+      return;
+    }
+
+    var rating = +(p.totalScore || p.rating || 0);
+    var reviews = +(p.reviewsCount || p.reviews || 0);
+    if (rating < o.minRating || reviews < o.minReviews) {
+      stats.low++;
+      return;
+    }
+
+    var phone = p.phone || p.phoneUnformatted || "";
+    if (!phone) {
+      stats.nophone++;
+      return;
+    }
+
+    var name = p.title || p.name || "Unnamed business";
+    var id = String(p.placeId || p.place_id || p.cid ||
+      (name + "|" + (p.address || "")).toLowerCase());
+    var prior = S.leads[id];
+
+    var l = {
+      id: id,
+      name: name,
+      type: p.categoryName || p.category || o.query,
+      address: p.address || "",
+      neighborhood: p.neighborhood || "",
+      phone: phone,
+      wa: wa(p.phoneUnformatted || phone),
+      rating: rating,
+      reviews: reviews,
+      url: url,
+      maps: p.url || p.googleMapsUrl || "",
+      query: o.query,
+      area: o.area,
+      websiteStatus: onlySocial ? "social-only" : "none",
+      verification: "No official website URL returned by Apify; independently verify before outreach/demo",
+      found: prior ? prior.found : Date.now(),
+      status: prior ? prior.status : "new",
+      contactedAt: prior ? prior.contactedAt : null,
+      notes: prior ? prior.notes : "",
+      value: prior ? prior.value : 0
+    };
+
+    l.score = score(l);
+    S.leads[id] = l;
+    ids.push(id);
+    if (!prior) fresh++;
+  });
+
+  saveLeads();
+  S.searches.unshift({
+    query: o.query,
+    area: o.area,
+    at: Date.now(),
+    scanned: items.length,
+    found: ids.length,
+    fresh: fresh,
+    accountId: o.accountId,
+    excludedWrongLocation: stats.location
+  });
+  S.searches = S.searches.slice(0, 30);
+  put("searches", S.searches);
+  renderStats();
+
+  return {
+    ids: ids,
+    fresh: fresh,
+    scanned: items.length,
+    stats: stats
+  };
+}
+var steps=["Starting the Google Maps scan","Collecting business details","Checking each returned address and website field","Saving eligible prospects"];
 function setProgress(n){$("progressTitle").textContent=steps[n]||"Working";$("progressText").textContent=steps[n]||"Working";}
 function poll(run,count){if(run.cancelled)return Promise.reject(new Error("Search cancelled"));return new Promise(function(resolve){setTimeout(resolve,2500);}).then(function(){if(run.cancelled)throw new Error("Search cancelled");return api("/actor-runs/"+run.id,{},run.token);}).then(function(r){var st=r.data.status;if(st==="SUCCEEDED")return;if(["FAILED","ABORTED","TIMED-OUT","TIMED_OUT"].indexOf(st)>-1)throw new Error("Apify run "+st.toLowerCase()+". Open the run in Apify Console for details.");if(count>100)throw new Error("Search took too long. Try fewer businesses.");return poll(run,count+1);});}
 function search(){if(S.run)return;var a=active();if(!a){view("settings");$("accountMessage").innerHTML='<p class="note">Add an Apify token first.</p>';return;}var query=$("query").value.trim(),area=$("area").value.trim();if(!query){notify("Enter a business type");return;}var run={cancelled:false,token:a.token,accountId:a.id};S.run=run;$("searchBtn").disabled=true;$("progressBox").classList.remove("hide");$("results").innerHTML="";$("searchMessage").innerHTML="";setProgress(0);var started=Date.now(),timer=setInterval(function(){$("progressTime").textContent=Math.round((Date.now()-started)/1000)+"s";},1000);
@@ -130,7 +330,16 @@ api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/j
 function finish(){clearInterval(timer);S.run=null;$("searchBtn").disabled=false;$("progressBox").classList.add("hide");}}
 $("searchBtn").addEventListener("click",search);$("cancelSearch").addEventListener("click",function(){if(!S.run)return;S.run.cancelled=true;if(S.run.id)api("/actor-runs/"+S.run.id+"/abort",{method:"POST"},S.run.token).catch(function(){});});
 function card(l){return '<article class="lead"><div class="leadtop"><div class="avatar">'+esc(initials(l.name))+'</div><div style="min-width:0;flex:1"><div class="leadname">'+esc(l.name)+'</div><div class="meta">'+esc(l.type)+(l.neighborhood?" · "+esc(l.neighborhood):"")+'</div></div><div class="score">'+l.score+'<small>SCORE</small></div></div><div class="row"><span class="tag">'+(l.rating?l.rating.toFixed(1):"—")+' ★ · '+l.reviews+' reviews</span><span class="tag '+(l.websiteStatus==="social-only"?"blue":"green")+'">'+(l.websiteStatus==="social-only"?"Social only":"No URL returned")+'</span><span class="tag">'+esc(statusName(l.status))+'</span></div><div class="meta">'+esc(l.address)+'</div><div class="leadactions"><a class="btn green" href="https://wa.me/'+esc(l.wa)+'" target="_blank" rel="noopener" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><button class="btn" data-open="'+esc(l.id)+'">Details / status</button><button class="btn" data-copy="'+esc(l.id)+'">Copy lead brief</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps ↗</a>':'')+'</div></article>';}
-function showResults(r){var h='<div class="row" style="margin:20px 0 10px"><div><h2>'+r.ids.length+' eligible records</h2><p class="sub">Scanned '+r.scanned+' listings · '+r.fresh+' new</p></div><span class="tag green">Complete</span></div><div class="grid2" style="margin-bottom:10px"><div class="card"><div class="note">Excluded: official website URL</div><h2>'+r.stats.websites+'</h2></div><div class="card"><div class="note">Skipped: closed / filters / no phone</div><h2>'+(r.stats.closed+r.stats.low+r.stats.nophone)+'</h2></div></div>';h+=r.ids.length?'<div class="leadgrid">'+r.ids.slice(0,8).map(function(id){return card(S.leads[id]);}).join("")+'</div><button class="btn dark full" data-view="leads" style="margin-top:12px">Open saved leads</button>':'<div class="empty"><strong>No eligible prospects found</strong>Try a nearby area or a different business type. Check potential leads independently before spending time building a demo.</div>';$("results").innerHTML=h;}
+function showResults(r){
+  var h='<div class="row" style="margin:20px 0 10px"><div><h2>'+r.ids.length+' eligible records</h2><p class="sub">Scanned '+r.scanned+' listings · '+r.fresh+' new</p></div><span class="tag green">Complete</span></div>'+
+    '<div class="grid2" style="margin-bottom:10px">'+
+    '<div class="card"><div class="note">Excluded: official website URL</div><h2>'+r.stats.websites+'</h2></div>'+
+    '<div class="card"><div class="note">Rejected: outside selected location</div><h2>'+(r.stats.location||0)+'</h2></div>'+
+    '<div class="card"><div class="note">Skipped: closed / rating / reviews / no phone</div><h2>'+(r.stats.closed+r.stats.low+r.stats.nophone)+'</h2></div>'+
+    '<div class="card"><div class="note">Skipped: social-only URL</div><h2>'+r.stats.social+'</h2></div></div>';
+  h+=r.ids.length?'<div class="leadgrid">'+r.ids.slice(0,8).map(function(id){return card(S.leads[id]);}).join("")+'</div><button class="btn dark full" data-view="leads" style="margin-top:12px">Open saved leads</button>':'<div class="empty"><strong>No eligible prospects found</strong>No leads passed all location, website, rating, review and phone checks. Do not widen the location unless you intend to search another area. Verify potential leads independently before building a demo.</div>';
+  $("results").innerHTML=h;
+}
 function brief(l){return "Prospect: "+l.name+"\nCategory: "+l.type+"\nRating: "+(l.rating||"—")+" ("+l.reviews+" reviews)\nPhone: "+l.phone+"\nAddress: "+l.address+"\nWebsite field: "+(l.url||"empty; independently verify before assuming there is no website")+"\nGoogle Maps: "+l.maps;}
 function copyText(s){if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(s).then(function(){notify("Copied");},function(){fallback(s);});else fallback(s);}
 function fallback(s){var t=document.createElement("textarea");t.value=s;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}t.remove();notify(ok?"Copied":"Copy failed; select text manually");}
