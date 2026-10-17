@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f5ef">
+<meta name="description" content="Discover Studio M, a hair and beauty salon in Dolphin Estate, Lagos. Explore hair treatments, protective styling and book your appointment.">
+<title>Studio M — A Better Kind of Hair Day</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --paper: #f7f5ef;
+  --ink: #20231e;
+  --muted: #77796e;
+  --green: #344d3e;
+  --lime: #d8e47b;
+  --line: #deddd3;
+  --white: #fffefa;
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+  --radius: 4px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; }
+img { display: block; width: 100%; object-fit: cover; }
+
+.container {
+  width: min(1240px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.announcement {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 11px 16px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.announcement span { color: var(--lime); }
+
+header {
+  height: 82px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--green);
+  display: grid;
+  place-items: center;
+  color: var(--green);
+  font-family: var(--serif);
+  font-size: 23px;
+  font-style: italic;
+}
+
+.logo-text strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -.5px;
+}
+
+.logo-text small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 2.3px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 12px;
+  color: #55574e;
+  transition: color .2s;
+}
+
+.nav-links a:hover { color: var(--green); }
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 48px;
+  padding: 0 22px;
+  background: var(--green);
+  color: white;
+  border: 1px solid var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  transition: background .2s, color .2s, transform .2s;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #253b2d;
+  transform: translateY(-2px);
+}
+
+.button-light {
+  background: transparent;
+  color: var(--ink);
+  border-color: #c7c7bb;
+}
+
+.button-light:hover {
+  background: var(--ink);
+  color: white;
+}
+
+.arrow { font-size: 17px; line-height: 1; }
+
+.hero {
+  padding: 44px 0 74px;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: .94fr 1.06fr;
+  gap: 54px;
+  align-items: center;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.eyebrow::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 1px;
+  background: var(--green);
+}
+
+.hero h1 {
+  max-width: 560px;
+  margin: 28px 0 22px;
+  font-family: var(--serif);
+  font-size: clamp(49px, 5.6vw, 78px);
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -2.8px;
+}
+
+.hero h1 em {
+  color: var(--green);
+  font-weight: 400;
+}
+
+.hero-copy {
+  max-width: 415px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.hero-proof {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 35px;
+}
+
+.stars {
+  color: #71803b;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.proof-text {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.proof-text strong { color: var(--ink); }
+
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  padding: 0 0 32px 24px;
+}
+
+.hero-image {
+  height: 510px;
+  background: #e5e2d8;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-image img {
+  height: 100%;
+  object-position: center;
+  transition: transform .7s;
+}
+
+.hero-image:hover img { transform: scale(1.025); }
+
+.image-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 215px;
+  padding: 20px 23px;
+  background: var(--lime);
+  z-index: 2;
+}
+
+.image-label small {
+  display: block;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1.7px;
+}
+
+.image-label strong {
+  display: block;
+  margin-top: 7px;
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+}
+
+.hero-note {
+  position: absolute;
+  right: -4px;
+  top: 25px;
+  padding: 15px 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  z-index: 3;
+  font-size: 10px;
+  letter-spacing: .5px;
+}
+
+.hero-note strong {
+  display: block;
+  margin-bottom: 4px;
+  font-family: var(--serif);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 19px 0;
+}
+
+.marquee-inner {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 26px;
+  white-space: nowrap;
+}
+
+.marquee span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.marquee b {
+  color: #87904f;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+.section { padding: 100px 0; }
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 42px;
+}
+
+.section-heading h2 {
+  max-width: 600px;
+  margin: 17px 0 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.4vw, 57px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  font-weight: 400;
+}
+
+.section-heading h2 em { color: var(--green); }
+
+.section-heading p {
+  max-width: 300px;
+  margin: 0 0 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.services {
+  background: var(--white);
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.service-card {
+  min-height: 245px;
+  padding: 27px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background .25s;
+}
+
+.service-card:hover { background: #f4f3eb; }
+
+.service-number {
+  color: #96988c;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+}
+
+.service-card h3 {
+  margin: 34px 0 12px;
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.service-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.service-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 25px;
+}
+
+.price {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.service-link:hover { text-decoration: underline; }
+
+.experience { background: var(--green); color: white; }
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.experience-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.experience-photos img {
+  height: 280px;
+  background: #e2e1d7;
+}
+
+.experience-photos img:nth-child(2) { margin-top: 48px; }
+
+.experience .eyebrow { color: var(--lime); }
+.experience .eyebrow::before { background: var(--lime); }
+
+.experience h2 {
+  margin: 25px 0;
+  font-family: var(--serif);
+  font-size: clamp(38px, 4.4vw, 57px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.experience h2 em { color: var(--lime); }
+
+.experience-copy {
+  color: #d0d8ce;
+  font-size: 13px;
+  line-height: 2;
+  max-width: 450px;
+}
+
+.experience-list {
+  display: grid;
+  gap: 0;
+  margin: 29px 0;
+  border-top: 1px solid #64786a;
+}
+
+.experience-list div {
+  display: flex;
+  gap: 15px;
+  padding: 15px 0;
+  border-bottom: 1px solid #64786a;
+  font-size: 12px;
+}
+
+.experience-list span { color: var(--lime); }
+
+.experience .button {
+  background: var(--lime);
+  color: var(--ink);
+  border-color: var(--lime);
+}
+
+.experience .button:hover { background: white; }
+
+.review-section { background: #eeece3; }
+
+.review-grid {
+  display: grid;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 65px;
+  align-items: center;
+}
+
+.review-score {
+  padding: 35px;
+  border: 1px solid #d7d5c9;
+}
+
+.review-score .stars { font-size: 19px; }
+
+.review-score strong {
+  display: block;
+  margin: 15px 0 5px;
+  font-family: var(--serif);
+  font-size: 63px;
+  font-weight: 400;
+}
+
+.review-score p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(25px, 3.2vw, 38px);
+  line-height: 1.45;
+  letter-spacing: -.5px;
+}
+
+.review-attribution {
+  margin-top: 24px;
+  font-family: var(--sans);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+}
+
+.booking {
+  padding: 95px 0;
+  background: var(--lime);
+}
+
+.booking-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.booking h2 {
+  margin: 20px 0;
+  font-family: var(--serif);
+  font-size: clamp(42px, 5vw, 64px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+  font-weight: 400;
+}
+
+.booking-copy {
+  max-width: 420px;
+  color: #51563d;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.booking-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.booking .button { background: var(--ink); border-color: var(--ink); }
+.booking .button:hover { background: var(--green); }
+.booking .button-light { background: transparent; color: var(--ink); border-color: #a6ad68; }
+.booking .button-light:hover { background: var(--ink); color: white; }
+
+.location-card {
+  padding: 32px;
+  background: var(--paper);
+}
+
+.location-card h3 {
+  margin: 0 0 23px;
+  font-family: var(--serif);
+  font-size: 29px;
+  font-weight: 400;
+}
+
+.location-row {
+  display: flex;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.location-icon {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border: 1px solid var(--line);
+  color: var(--green);
+}
+
+.location-row small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.location-row p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.location-row a { color: var(--green); }
+.location-row a:hover { text-decoration: underline; }
+
+footer {
+  padding: 32px 0 90px;
+  background: var(--paper);
+}
+
+.footer-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 27px;
+  border-bottom: 1px solid var(--line);
+}
+
+.footer-note {
+  max-width: 300px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+  text-align: right;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 20px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.footer-bottom a { color: var(--green); }
+
+.mobile-book {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .container { width: min(100% - 40px, 700px); }
+
+  .nav-links { gap: 16px; }
+  .nav-links a { font-size: 11px; }
+  .nav-cta { display: none; }
+
+  .hero-grid { gap: 30px; }
+  .hero h1 { font-size: clamp(45px, 6vw, 62px); }
+  .hero-image { height: 430px; }
+
+  .experience-grid { gap: 35px; }
+  .experience-photos img { height: 230px; }
+  .review-grid { gap: 35px; }
+}
+
+@media (max-width: 640px) {
+  html { scroll-padding-top: 72px; }
+
+  .container { width: calc(100% - 36px); }
+
+  .announcement {
+    font-size: 8px;
+    letter-spacing: 1.3px;
+    padding: 10px 12px;
+  }
+
+  header { height: 70px; }
+
+  .logo-mark { width: 34px; height: 34px; font-size: 20px; }
+  .logo-text strong { font-size: 19px; }
+  .logo-text small { font-size: 7px; letter-spacing: 1.7px; }
+
+  .nav-links { gap: 15px; }
+  .nav-links a { font-size: 10px; }
+  .nav-links a:nth-child(2) { display: none; }
+
+  .hero { padding: 34px 0 48px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 35px; }
+  .hero h1 {
+    max-width: 480px;
+    margin: 23px 0 18px;
+    font-size: clamp(49px, 12vw, 66px);
+    letter-spacing: -2px;
+  }
+  .hero-copy { font-size: 13px; }
+  .hero-actions .button { flex: 1; padding: 0 13px; }
+  .hero-proof { margin-top: 25px; }
+
+  .hero-visual { padding-left: 0; padding-right: 8px; }
+  .hero-image { height: 390px; }
+  .hero-note { right: 0; top: 15px; }
+  .image-label { width: 190px; padding: 17px 19px; }
+
+  .marquee { padding: 16px 0; }
+  .marquee-inner { justify-content: flex-start; gap: 22px; padding: 0 18px; }
+  .marquee span { font-size: 9px; letter-spacing: 1.5px; }
+
+  .section { padding: 70px 0; }
+  .section-heading { display: block; margin-bottom: 30px; }
+  .section-heading h2 { font-size: 43px; }
+  .section-heading p { margin-top: 16px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: 205px; padding: 23px; }
+  .service-card h3 { margin-top: 25px; font-size: 25px; }
+  .service-bottom { padding-top: 20px; }
+
+  .experience-grid { grid-template-columns: 1fr; gap: 42px; }
+  .experience-photos { gap: 9px; }
+  .experience-photos img { height: 220px; }
+  .experience-photos img:nth-child(2) { margin-top: 27px; }
+  .experience h2 { font-size: 45px; }
+  .experience-copy { font-size: 12px; }
+
+  .review-grid { grid-template-columns: 1fr; gap: 28px; }
+  .review-score { padding: 26px; }
+  .review-score strong { font-size: 55px; }
+  blockquote { font-size: 29px; }
+
+  .booking { padding: 70px 0; }
+  .booking-grid { grid-template-columns: 1fr; gap: 35px; }
+  .booking h2 { font-size: 48px; }
+  .location-card { padding: 24px; }
+  .booking-actions .button { flex: 1; padding: 0 12px; }
+
+  footer { padding-bottom: 100px; }
+  .footer-main { align-items: flex-start; }
+  .footer-note { max-width: 165px; font-size: 10px; }
+  .footer-bottom { font-size: 9px; }
+
+  .mobile-book {
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    min-height: 52px;
+    background: var(--green);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 5px 25px #0002;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  Your moment of care, right here in Lagos <span>·</span> Appointments available online
+</div>
+
+<header>
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="logo" href="#home" aria-label="Studio M home">
+      <span class="logo-mark">M.</span>
+      <span class="logo-text">
+        <strong>Studio M</strong>
+        <small>Hair · Beauty · Care</small>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#experience">Our space</a>
+      <a href="#location">Find us</a>
+    </div>
+
+    <a class="button nav-cta" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+      Book an appointment <span class="arrow">↗</span>
+    </a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Dolphin Estate, Lagos</div>
+
+      <h1>A better kind of <em>hair day.</em></h1>
+
+      <p class="hero-copy">
+        Good hair care should feel as good as it looks. Step into Studio M
+        for thoughtful treatments, beautiful styling and a little time
+        that's entirely yours.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+          Find your appointment <span class="arrow">↗</span>
+        </a>
+        <a class="button button-light" href="#services">
+          Explore services <span class="arrow">↓</span>
+        </a>
+      </div>
+
+      <div class="hero-proof">
+        <span class="stars" aria-label="Rated highly by customers">★★★★★</span>
+        <div class="proof-text">
+          <strong>4.9 on Google</strong><br>
+          A salon people return to.
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-note">
+        <strong>01 / M</strong>
+        A little more care.
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.fresha.com/locations/location-profile-images/516487/4282180/ce5877f0-5595-4b71-b18c-b0d2fe1332a8-StudioM-NG-Lagos-Ikoyi-DolphinEstate-Fresha.jpg?class=venue-gallery-large&f_quality=85&f_width=1400"
+          alt="The salon interior at Studio M in Dolphin Estate, Lagos"
+          fetchpriority="high"
+          onerror="this.onerror=null;this.src='https://images.fresha.com/locations/location-profile-images/516487/4282181/7cf8b9e4-6c48-4772-934c-67a006adbf64-StudioM-NG-Lagos-Ikoyi-DolphinEstate-Fresha.jpg?class=venue-gallery-small&f_quality=85&f_width=1400';"
+        >
+      </div>
+
+      <div class="image-label">
+        <small>Your time. Your texture.</small>
+        <strong>Come as you are.</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-label="Studio M services">
+  <div class="marquee-inner">
+    <span>Hair health</span><b>✳</b>
+    <span>Thoughtful styling</span><b>✳</b>
+    <span>Natural hair care</span><b>✳</b>
+    <span>Your moment of calm</span><b>✳</b>
+  </div>
+</div>
+
+<section class="section services" id="services">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">The service menu</div>
+        <h2>Care that starts<br>with <em>your hair.</em></h2>
+      </div>
+      <p>
+        From wash-day essentials to deeper treatments and protective
+        styles, find the service that feels right for you.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      <article class="service-card">
+        <span class="service-number">01 / CLEANSE</span>
+        <h3>Shampoo &amp;<br>Instant Condition</h3>
+        <p>A refreshing wash and conditioning session to help your hair feel clean and cared for.</p>
+        <div class="service-bottom">
+          <span class="price">₦12,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-number">02 / MOISTURE</span>
+        <h3>Moisture<br>Treatment</h3>
+        <p>A focused hair treatment for clients looking to give their hair extra moisture and care.</p>
+        <div class="service-bottom">
+          <span class="price">₦25,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-number">03 / STRENGTH</span>
+        <h3>Protein<br>Treatment</h3>
+        <p>A treatment option for clients looking to support their hair's strength and condition.</p>
+        <div class="service-bottom">
+          <span class="price">₦25,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-number">04 / PROTECTIVE STYLE</span>
+        <h3>Two Strand<br>Twist</h3>
+        <p>A versatile protective styling option. Final timing depends on your chosen look.</p>
+        <div class="service-bottom">
+          <span class="price">From ₦10,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-number">05 / BRAIDING</span>
+        <h3>Cornrows<br>(1–12)</h3>
+        <p>A neat, classic cornrow style with pricing published on the salon's booking menu.</p>
+        <div class="service-bottom">
+          <span class="price">₦8,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <span class="service-number">06 / LITTLE CLIENTS</span>
+        <h3>Kiddies<br>Cornrow</h3>
+        <p>A children's cornrow appointment. Check the booking menu for timing and style details.</p>
+        <div class="service-bottom">
+          <span class="price">From ₦12,000</span>
+          <a class="service-link" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">Book <span>↗</span></a>
+        </div>
+      </article>
+    </div>
+
+    <p style="margin:20px 0 0;color:#77796e;font-size:10px;line-height:1.8">
+      Prices shown are from Studio M's published booking menu and may change.
+      Confirm your selected service, duration and final price when booking.
+    </p>
+  </div>
+</section>
+
+<section class="section experience" id="experience">
+  <div class="container experience-grid">
+    <div class="experience-photos">
+      <img
+        src="https://images.fresha.com/locations/location-profile-images/516487/4282181/7cf8b9e4-6c48-4772-934c-67a006adbf64-StudioM-NG-Lagos-Ikoyi-DolphinEstate-Fresha.jpg?class=venue-gallery-small&f_quality=85&f_width=900"
+        alt="Hair-washing area at Studio M"
+        loading="lazy"
+      >
+      <img
+        src="https://images.fresha.com/locations/location-profile-images/516487/4282182/8ce7a59d-8b6f-49af-9578-70fe38b48f35-StudioM-NG-Lagos-Lagos-DolphinEstate-Fresha.jpg?class=venue-gallery-small&f_quality=85&f_width=900"
+        alt="Exterior of Studio M in Lagos"
+        loading="lazy"
+      >
+    </div>
+
+    <div>
+      <div class="eyebrow">More than the appointment</div>
+      <h2>Good care is in the <em>little things.</em></h2>
+      <p class="experience-copy">
+        Studio M is built around the feeling of being looked after.
+        Customers describe a welcoming environment, attentive stylists
+        and a relaxing experience that makes time in the salon feel
+        like time well spent.
+      </p>
+
+      <div class="experience-list">
+        <div><span>01</span> Thoughtful hair care and treatments</div>
+        <div><span>02</span> A calm, comfortable salon environment</div>
+        <div><span>03</span> Online booking for easier planning</div>
+      </div>
+
+      <a class="button" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+        Explore the booking menu <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section review-section">
+  <div class="container review-grid">
+    <div class="review-score">
+      <div class="stars">★★★★★</div>
+      <strong>4.9 / 5</strong>
+      <p>
+        Studio M's Google listing shows a 4.9 rating from 68 reviews.
+        Ratings and review counts can change over time.
+      </p>
+      <a
+        class="service-link"
+        style="margin-top:20px"
+        href="https://www.google.com/maps/search/?api=1&query=Studio%20M&query_place_id=ChIJY9QV-lOLOxARF3im0IhhhPQ"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Read Google reviews <span>↗</span></a>
+    </div>
+
+    <div>
+      <div class="eyebrow">The feeling speaks for itself</div>
+      <blockquote>
+        “The service at this salon is always above and beyond expectations.
+        Always warm and welcoming.”
+      </blockquote>
+      <div class="review-attribution">
+        Customer feedback · Studio M on Fresha
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="location">
+  <div class="container booking-grid">
+    <div>
+      <div class="eyebrow">Your next hair day</div>
+      <h2>Let's make time<br>for <em>you.</em></h2>
+      <p class="booking-copy">
+        Ready to plan your next visit? Explore the available appointments,
+        choose your service and confirm the details directly with Studio M.
+      </p>
+      <div class="booking-actions">
+        <a class="button" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+          Book on Fresha <span class="arrow">↗</span>
+        </a>
+        <a class="button button-light" href="tel:+2348186543437">
+          Call the salon
+        </a>
+      </div>
+    </div>
+
+    <div class="location-card">
+      <h3>Come find us.</h3>
+
+      <div class="location-row">
+        <span class="location-icon">↗</span>
+        <div>
+          <small>Visit the salon</small>
+          <p>54B Itafaji Road,<br>Dolphin Estate, Lagos, Nigeria</p>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Studio%20M&query_place_id=ChIJY9QV-lOLOxARF3im0IhhhPQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Get directions ↗</a>
+        </div>
+      </div>
+
+      <div class="location-row">
+        <span class="location-icon">☎</span>
+        <div>
+          <small>Call us</small>
+          <p><a href="tel:+2348186543437">+234 818 654 3437</a></p>
+        </div>
+      </div>
+
+      <div class="location-row">
+        <span class="location-icon">◷</span>
+        <div>
+          <small>Published opening hours</small>
+          <p>
+            Tuesday–Saturday: 10am–6pm<br>
+            Sunday: 12pm–6pm<br>
+            Monday: Closed
+          </p>
+          <p style="margin-top:7px;color:#77796e;font-size:10px">
+            Check the booking page for current availability.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-main">
+      <a class="logo" href="#home">
+        <span class="logo-mark">M.</span>
+        <span class="logo-text">
+          <strong>Studio M</strong>
+          <small>Hair · Beauty · Care</small>
+        </span>
+      </a>
+
+      <p class="footer-note">
+        A little time for yourself.<br>
+        Dolphin Estate, Lagos.
+      </p>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Studio M</span>
+      <a href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+        Appointments &amp; services ↗
+      </a>
+    </div>
+  </div>
+</footer>
+
+<a class="mobile-book" href="https://www.fresha.com/a/studio-m-lagos-54b-itafaji-road-yz9zuyyv">
+  Book your appointment <span class="arrow">↗</span>
+</a>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
