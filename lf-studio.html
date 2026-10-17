@@ -38,8 +38,8 @@ h1,h2,h3,.brand strong,.logo,.hero h1,.stat strong,.leadname,.avatar,.score,.emp
 <div class="main"><header class="top"><div class="brand"><div class="logo">LF</div><div><strong>LF Studio</strong><small>Lead intelligence</small></div></div><button class="top-account" data-view="settings" id="topAccount"><span class="top-account-name">No account</span><span class="top-account-usage" id="topAccountUsage">Connect Apify</span></button></header>
 <main class="page">
 <section id="view-find"><div class="hero"><div class="eyebrow">Lagos Web Studio · Prospecting</div><h1>Find businesses that need a website.</h1><p>Search Google Maps, exclude known official websites, and organise promising prospects and outreach.</p></div><div class="stats" id="findStats"></div>
-<div class="search-layout"><div class="card stack"><div><div class="eyebrow">01 / Search criteria</div><h2>Build a search</h2><p class="sub">Choose a business niche and neighbourhood from the lists, then tune the quality filters.</p></div><div class="field"><label for="query">Business type</label><div class="combo-wrap"><input class="input combo-input" id="query" value="barbershop" placeholder="Choose or type a business type…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="queryMenu"><button class="combo-arrow" type="button" aria-label="Show business types" data-open-combo="query"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="queryMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="nichePresets"></div><div class="field"><label for="area">Location / neighbourhood</label><div class="combo-wrap"><input class="input combo-input" id="area" value="Lekki Phase 1, Lagos" placeholder="Choose or type a city or neighbourhood…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="areaMenu"><button class="combo-arrow" type="button" aria-label="Show locations" data-open-combo="area"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="areaMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="areaPresets"></div><div class="grid2"><div class="field"><label for="minRating">Minimum rating</label><select class="select" id="minRating"><option value="0">Any rating</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div><div class="field"><label for="minReviews">Minimum reviews</label><select class="select" id="minReviews"><option value="0">Any reviews</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div></div><div><div class="row"><label class="label" for="maxPlaces">Businesses to scan</label><b id="placesValue">40</b></div><input class="input" style="padding:0;min-height:auto" type="range" id="maxPlaces" min="10" max="80" step="10" value="40"><p class="note">Actor charges vary by account and pricing. Check Apify usage after each run; no fixed cost is guaranteed.</p></div><div class="switchrow"><span>Include social-only listings</span><button class="toggle on" id="includeSocial" type="button" aria-pressed="true"></button></div><button class="btn primary full" id="searchBtn">Find eligible prospects ↗</button><p class="note">Known official websites are excluded. An empty website field is not proof a business has no website; verify before building a demo.</p></div>
-<div class="stack"><div class="card stack"><div><div class="eyebrow">02 / Active account</div><h2>Apify connection</h2><p class="sub">Switch manually between saved API keys.</p></div><div id="activeAccount"></div><button class="btn full" data-view="settings">Manage API keys</button><div id="accountNotice"></div></div><div class="card stack"><div class="eyebrow">03 / Eligibility</div><h2>Website filtering</h2><div class="row"><span class="sub">Official website returned</span><span class="tag red">Exclude</span></div><div class="row"><span class="sub">Social / booking profile only</span><span class="tag blue">Optional</span></div><div class="row"><span class="sub">No URL returned</span><span class="tag green">Reviewable</span></div><p class="note">Google Maps data can be incomplete. Results are candidates, not proof that no website exists.</p></div></div></div>
+<div class="search-layout"><div class="card stack"><div><div class="eyebrow">01 / Search criteria</div><h2>Build a search</h2><p class="sub">Choose a business niche and neighbourhood from the lists, then tune the quality filters.</p></div><div class="field"><label for="query">Business type</label><div class="combo-wrap"><input class="input combo-input" id="query" value="barbershop" placeholder="Choose or type a business type…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="queryMenu"><button class="combo-arrow" type="button" aria-label="Show business types" data-open-combo="query"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="queryMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="nichePresets"></div><div class="field"><label for="area">Location / neighbourhood</label><div class="combo-wrap"><input class="input combo-input" id="area" value="Lekki Phase 1, Lagos" placeholder="Choose or type a city or neighbourhood…" autocomplete="off" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="areaMenu"><button class="combo-arrow" type="button" aria-label="Show locations" data-open-combo="area"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5.5 7.5 4.5 4.5 4.5-4.5"/></svg></button><div class="combo-menu" id="areaMenu" role="listbox"></div></div><p class="field-hint">Choose a suggestion or type your own.</p></div><div class="presets" id="areaPresets"></div><div class="grid2"><div class="field"><label for="minRating">Minimum rating</label><select class="select" id="minRating"><option value="0">Any rating</option><option value="4" selected>4.0+</option><option value="4.5">4.5+</option></select></div><div class="field"><label for="minReviews">Minimum reviews</label><select class="select" id="minReviews"><option value="0">Any reviews</option><option value="10">10+</option><option value="30" selected>30+</option><option value="100">100+</option></select></div></div><div><div class="row"><label class="label" for="maxPlaces">Businesses to scan</label><b id="placesValue">40</b></div><input class="input" style="padding:0;min-height:auto" type="range" id="maxPlaces" min="10" max="80" step="10" value="40"><p class="note">Actor charges vary by account and pricing. Check Apify usage after each run; no fixed cost is guaranteed.</p></div><button class="btn primary full" id="searchBtn">Find eligible prospects ↗</button><p class="note">Only businesses with a phone number are saved. WhatsApp links are generated from that number but are not independently verified. An empty website field needs manual verification.</p></div>
+<div class="stack"><div class="card stack"><div><div class="eyebrow">02 / Active account</div><h2>Apify connection</h2><p class="sub">Switch manually between saved API keys.</p></div><div id="activeAccount"></div><button class="btn full" data-view="settings">Manage API keys</button><div id="accountNotice"></div></div><div class="card stack"><div class="eyebrow">03 / Eligibility</div><h2>Website filtering</h2><div class="row"><span class="sub">Official website returned</span><span class="tag red">Exclude</span></div><div class="row"><span class="sub">Social profile URL only</span><span class="tag blue">Does not count as official website</span></div><div class="row"><span class="sub">No URL returned</span><span class="tag green">Reviewable</span></div><p class="note">Google Maps data can be incomplete. Results are candidates, not proof that no website exists.</p></div></div></div>
 <div id="progressBox" class="progress hide"><div class="row"><b id="progressTitle">Searching…</b><span class="note" id="progressTime">0s</span></div><div class="bar"><span></span></div><p class="note" id="progressText">Starting Apify actor…</p><button class="btn full" id="cancelSearch">Cancel search</button></div><div id="searchMessage" style="margin-top:12px"></div><div id="results"></div></section>
 <section id="view-leads" class="hide"><div class="row" style="margin-bottom:16px"><div><div class="eyebrow">Prospect database</div><h1>Saved leads</h1><p class="sub" id="leadSummary"></p></div><button class="btn" id="exportCsv">Export CSV ↓</button></div><div class="chips" id="statusFilters"></div><div class="grid2" style="margin:10px 0"><input class="input" id="leadSearch" placeholder="Search leads"><select class="select" id="sortLeads"><option value="score">Best score</option><option value="reviews">Most reviews</option><option value="rating">Highest rating</option><option value="recent">Newest</option><option value="name">A–Z</option></select></div><div class="leadgrid" id="leadGrid"></div></section>
 <section id="view-progress" class="hide"><div class="row" style="margin-bottom:16px"><div><div class="eyebrow">Performance</div><h1>Outreach progress</h1><p class="sub">Track prospects from discovery to clients.</p></div><button class="btn" id="backupData">Back up data ↓</button></div><div class="stats" id="progressStats"></div><div class="card stack"><h2>Pipeline</h2><div id="pipeline"></div></div><div class="card stack" style="margin-top:12px"><h2>Recent searches</h2><div id="searchHistory"></div></div></section>
@@ -118,233 +118,101 @@ window.addEventListener("scroll",function(){["query","area"].forEach(positionCom
 if(window.visualViewport){window.visualViewport.addEventListener("resize",function(){["query","area"].forEach(positionCombo);});window.visualViewport.addEventListener("scroll",function(){["query","area"].forEach(positionCombo);});}
 document.addEventListener("click",function(e){var p=e.target.closest("[data-preset]");if(p)$(p.dataset.preset).value=p.dataset.value;});
 $("maxPlaces").addEventListener("input",function(){$("placesValue").textContent=this.value;});
-$("includeSocial").addEventListener("click",function(){var on=!this.classList.contains("on");this.classList.toggle("on",on);this.setAttribute("aria-pressed",String(on));});
+
 function refreshUsage(a){return testApify(a.token).then(function(info){a.usage=info;saveAccounts();renderAccounts();});}
-/*
-LF Studio location-filter fix
-Replace the existing processItems(items,o) function in lf-studio.html with
-this block. This patch is deliberately limited to eligibility filtering and
-does not change the Apify actor, account, or search-credit behaviour.
-*/
-
+/* Location is classified for review instead of being used as a destructive filter.
+   The Maps actor can return incomplete or differently formatted addresses. */
 function normalizedText(value) {
-  return String(value || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
+  return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
-
 function matchesRequestedLocation(place, requestedArea) {
   var target = normalizedText(requestedArea);
-  var address = normalizedText([
-    place.address,
-    place.neighborhood,
-    place.city,
-    place.state,
-    place.country,
-    place.countryCode,
-    place.location
-  ].filter(Boolean).join(" "));
-
-  // If we cannot verify the result's location from its returned details,
-  // fail closed rather than save a potentially out-of-area lead.
-  if (!address) return false;
-
-  // Explicitly block common non-Lagos locations when targeting Lagos.
-  var targetIsLagos = /\blagos\b/.test(target);
-  if (targetIsLagos) {
-    var outsideLagos = [
-      "abuja", "federal capital territory", " fct ",
-      "port harcourt", "rivers state", "ibadan", "oyo state",
-      "offa", "kwara state", "ilorin", "kano state", "enugu state",
-      "benin city", "edo state", "abeokuta", "ogun state",
-      "akure", "ondo state", "uyo", "akwa ibom", "calabar",
-      "cross river", "jos", "plateau state", "kaduna state",
-      "maiduguri", "borno state", "sokoto state", "yola",
-      "adamawa state", "makurdi", "benue state", "minna",
-      "niger state", "asaba", "delta state", "awka", "anambra state",
-      "abakaliki", "ebonyi state", "umuahia", "abia state",
-      "owerri", "imo state", "bayelsa state", "yenagoa"
-    ];
-    var paddedAddress = " " + address + " ";
-    if (outsideLagos.some(function (placeName) {
-      return paddedAddress.indexOf(" " + normalizedText(placeName) + " ") !== -1;
-    })) return false;
-
-    // A positive Lagos signal is required. Accept Lagos itself or well-known
-    // Lagos districts where Maps sometimes omits the state name.
-    var lagosSignals = [
-      "lagos", "lekki", "ajah", "ikoyi", "ikeja", "yaba", "surulere",
-      "gbagada", "magodo", "maryland", "ogba", "agege", "festac",
-      "apapa", "epe", "badagry", "ikorodu", "sangotedo", "ikate",
-      "chevron", "victoria island", "lagos island", "oshodi", "mushin",
-      "ilupeju", "isolo", "ketu", "ojodu", "oniru", "ikota", "idimu",
-      "egbeda", "iyana ipaja", "amukoko", "bariga", "shomolu"
-    ];
-    var hasLagosSignal = lagosSignals.some(function (signal) {
-      return address.indexOf(normalizedText(signal)) !== -1;
-    });
-    if (!hasLagosSignal) return false;
-
-    // If a specific Lagos neighbourhood was requested, require that area too;
-    // a Victoria Island result must not pass a Lekki Phase 1 search merely
-    // because both are in Lagos.
-    var requestedNeighbourhood = target
-      .replace(/\blagos\b/g, " ")
-      .replace(/\bnigeria\b/g, " ")
-      .replace(/\bng\b/g, " ")
-      .replace(/\bstate\b/g, " ")
-      .replace(/\bcity\b/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
-    if (requestedNeighbourhood && address.indexOf(requestedNeighbourhood) === -1) return false;
-    return true;
+  var address = normalizedText([place.address, place.neighborhood, place.city,
+    place.state, place.country, place.countryCode, place.location].filter(Boolean).join(" "));
+  if (!target || !address) return false;
+  var targetTokens = target.split(" ").filter(function(t){return t.length > 2 && ["lagos","nigeria","state","city","in"].indexOf(t)===-1;});
+  if (/\blagos\b/.test(target)) {
+    var outside = ["abuja","federal capital territory","port harcourt","rivers state","ibadan","oyo state","offa","kwara state","ilorin","kano","enugu","benin city","edo state","abeokuta","ogun state","akure","ondo state","uyo","akwa ibom","calabar","cross river","jos","plateau state","kaduna","maiduguri","borno state","sokoto","yola","adamawa","makurdi","benue","minna","niger state","asaba","delta state","awka","anambra","abakaliki","ebonyi","umuahia","abia state","owerri","imo state","yenagoa","bayelsa"];
+    if (outside.some(function(x){return (" "+address+" ").indexOf(" "+normalizedText(x)+" ")!==-1;})) return false;
+    var lagosSignals = ["lagos","lekki","ajah","ikoyi","ikeja","yaba","surulere","gbagada","magodo","maryland","ogba","agege","festac","apapa","epe","badagry","ikorodu","sangotedo","ikate","chevron","victoria island","oshodi","mushin","ilupeju","isolo","ketu","ojodu","oniru","ikota","idimu","egbeda","iyana ipaja","bariga","shomolu","ogombo"];
+    if (!lagosSignals.some(function(x){return address.indexOf(normalizedText(x))!==-1;})) return false;
+    // Require a signal for the requested neighbourhood as well as Lagos.
+    // This is classification only: unmatched records are retained for review.
+    return targetTokens.length ? targetTokens.some(function(t){return address.indexOf(t)!==-1;}) : true;
   }
-
-  // For other explicit city/neighbourhood searches, require at least one
-  // meaningful location token from the requested area to appear in the
-  // returned address. Ignore generic words that do not identify a place.
-  var ignored = {
-    "in": 1, "the": 1, "city": 1, "state": 1, "country": 1,
-    "nigeria": 1, "ng": 1, "of": 1, "and": 1
-  };
-  var tokens = target.split(" ").filter(function (token) {
-    return token.length > 2 && !ignored[token];
-  });
-  if (!tokens.length) return address.indexOf(target) !== -1;
-  return tokens.some(function (token) {
-    return address.indexOf(token) !== -1;
-  });
+  return targetTokens.length ? targetTokens.some(function(t){return address.indexOf(t)!==-1;}) : address.indexOf(target)!==-1;
 }
-
 function processItems(items, o) {
   var ids = [], fresh = 0;
-  var stats = {
-    websites: 0, social: 0, low: 0, closed: 0, nophone: 0, location: 0
-  };
-
-  items.forEach(function (p) {
-    if (p.permanentlyClosed || p.temporarilyClosed) {
-      stats.closed++;
-      return;
-    }
-
-    // CRITICAL FIX: the previous code never checked the returned address.
-    // It relied only on the search query, which allowed Abuja results into
-    // a Lagos search. Reject any result that fails the location check.
-    if (!matchesRequestedLocation(p, o.area)) {
-      stats.location++;
-      return;
-    }
-
+  var stats = { websites:0, social:0, low:0, closed:0, nophone:0, location:0, locationUnknown:0, candidates:0 };
+  items.forEach(function(p) {
+    if (p.permanentlyClosed || p.temporarilyClosed) { stats.closed++; return; }
     var url = String(p.website || p.websiteUrl || p.webSite || "").trim();
-    var onlySocial = isSocial(url);
-
-    // Never save a result with a returned non-social website URL.
-    if (url && !onlySocial) {
-      stats.websites++;
-      return;
-    }
-    if (onlySocial && !o.includeSocial) {
-      stats.social++;
-      return;
-    }
-
+    var socialUrl = isSocial(url);
+    // Exclude known official websites only. A social/booking URL is not an official site.
+    if (url && !socialUrl) { stats.websites++; return; }
     var rating = +(p.totalScore || p.rating || 0);
     var reviews = +(p.reviewsCount || p.reviews || 0);
-    if (rating < o.minRating || reviews < o.minReviews) {
-      stats.low++;
-      return;
-    }
-
+    if (rating < o.minRating || reviews < o.minReviews) { stats.low++; return; }
     var phone = p.phone || p.phoneUnformatted || "";
-    if (!phone) {
-      stats.nophone++;
-      return;
-    }
-
+    if (!phone) { stats.nophone++; return; }
     var name = p.title || p.name || "Unnamed business";
-    var id = String(p.placeId || p.place_id || p.cid ||
-      (name + "|" + (p.address || "")).toLowerCase());
+    var address = p.address || "";
+    var id = String(p.placeId || p.place_id || p.cid || (name+"|"+address).toLowerCase());
     var prior = S.leads[id];
-
+    var locationMatch = matchesRequestedLocation(p, o.area);
+    if (!locationMatch) {
+      if (address) stats.location++; else stats.locationUnknown++;
+    }
     var l = {
-      id: id,
-      name: name,
-      type: p.categoryName || p.category || o.query,
-      address: p.address || "",
-      neighborhood: p.neighborhood || "",
-      phone: phone,
-      wa: wa(p.phoneUnformatted || phone),
-      rating: rating,
-      reviews: reviews,
-      url: url,
-      maps: p.url || p.googleMapsUrl || "",
-      query: o.query,
-      area: o.area,
-      websiteStatus: onlySocial ? "social-only" : "none",
-      verification: "No official website URL returned by Apify; independently verify before outreach/demo",
-      found: prior ? prior.found : Date.now(),
-      status: prior ? prior.status : "new",
-      contactedAt: prior ? prior.contactedAt : null,
-      notes: prior ? prior.notes : "",
-      value: prior ? prior.value : 0
+      id:id, name:name, type:p.categoryName || p.category || o.query,
+      address:address, neighborhood:p.neighborhood || "", phone:phone,
+      wa:wa(p.phoneUnformatted || phone), rating:rating, reviews:reviews,
+      url:url, maps:p.url || p.googleMapsUrl || "", query:o.query, area:o.area,
+      websiteStatus:socialUrl ? "social-only" : "none",
+      locationStatus:locationMatch ? "target-area-candidate" : (address ? "location-review" : "address-missing"),
+      verification:"No official website URL returned by Apify. Confirm the business website manually. WhatsApp registration is not verified.",
+      found:prior ? prior.found : Date.now(), status:prior ? prior.status : "new",
+      contactedAt:prior ? prior.contactedAt : null, notes:prior ? prior.notes : "", value:prior ? prior.value : 0
     };
-
     l.score = score(l);
-    S.leads[id] = l;
-    ids.push(id);
+    S.leads[id] = l; ids.push(id); stats.candidates++;
     if (!prior) fresh++;
   });
-
+  // Put address-matched candidates first without throwing other returned records away.
+  ids.sort(function(a,b){return (S.leads[b].locationStatus==="target-area-candidate")-(S.leads[a].locationStatus==="target-area-candidate") || S.leads[b].score-S.leads[a].score;});
   saveLeads();
-  S.searches.unshift({
-    query: o.query,
-    area: o.area,
-    at: Date.now(),
-    scanned: items.length,
-    found: ids.length,
-    fresh: fresh,
-    accountId: o.accountId,
-    excludedWrongLocation: stats.location
-  });
-  S.searches = S.searches.slice(0, 30);
-  put("searches", S.searches);
-  renderStats();
-
-  return {
-    ids: ids,
-    fresh: fresh,
-    scanned: items.length,
-    stats: stats
-  };
+  S.searches.unshift({query:o.query,area:o.area,at:Date.now(),scanned:items.length,found:ids.length,fresh:fresh,accountId:o.accountId,excludedWrongLocation:stats.location});
+  S.searches=S.searches.slice(0,30); put("searches",S.searches); renderStats();
+  return {ids:ids,fresh:fresh,scanned:items.length,stats:stats};
 }
 var steps=["Starting the Google Maps scan","Collecting business details","Checking each returned address and website field","Saving eligible prospects"];
 function setProgress(n){$("progressTitle").textContent=steps[n]||"Working";$("progressText").textContent=steps[n]||"Working";}
 function poll(run,count){if(run.cancelled)return Promise.reject(new Error("Search cancelled"));return new Promise(function(resolve){setTimeout(resolve,2500);}).then(function(){if(run.cancelled)throw new Error("Search cancelled");return api("/actor-runs/"+run.id,{},run.token);}).then(function(r){var st=r.data.status;if(st==="SUCCEEDED")return;if(["FAILED","ABORTED","TIMED-OUT","TIMED_OUT"].indexOf(st)>-1)throw new Error("Apify run "+st.toLowerCase()+". Open the run in Apify Console for details.");if(count>100)throw new Error("Search took too long. Try fewer businesses.");return poll(run,count+1);});}
 function search(){if(S.run)return;var a=active();if(!a){view("settings");$("accountMessage").innerHTML='<p class="note">Add an Apify token first.</p>';return;}var query=$("query").value.trim(),area=$("area").value.trim();if(!query){notify("Enter a business type");return;}var run={cancelled:false,token:a.token,accountId:a.id};S.run=run;$("searchBtn").disabled=true;$("progressBox").classList.remove("hide");$("results").innerHTML="";$("searchMessage").innerHTML="";setProgress(0);var started=Date.now(),timer=setInterval(function(){$("progressTime").textContent=Math.round((Date.now()-started)/1000)+"s";},1000);
 var input={searchStringsArray:[query+(area?" in "+area:" in Lagos, Nigeria")],maxCrawledPlacesPerSearch:+$("maxPlaces").value,language:"en",countryCode:"ng",skipClosedPlaces:true,scrapePlaceDetailPage:true,scrapeContacts:false,maxImages:0,maxReviews:0};
-api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)},run.token).then(function(r){run.id=r.data.id;run.dataset=r.data.defaultDatasetId;setProgress(1);return poll(run,0);}).then(function(){setProgress(2);return api("/datasets/"+run.dataset+"/items?clean=true&format=json",{},run.token);}).then(function(items){if(run.cancelled)throw new Error("Search cancelled");setProgress(3);return processItems(items||[],{query:query,area:area,minRating:+$("minRating").value,minReviews:+$("minReviews").value,includeSocial:$("includeSocial").classList.contains("on"),accountId:a.id});}).then(function(r){finish();showResults(r);refreshUsage(S.accounts.find(function(x){return x.id===a.id;})).catch(function(){});}).catch(function(err){finish();if(run.cancelled){$("searchMessage").innerHTML='<div class="note">Search cancelled.</div>';return;}var msg=err.message||"Search failed.";if(err.status===401)msg="Apify rejected this token. Edit the account and check the token.";if(err.status===402||/usage|credit|limit|exceed/i.test(msg))msg="This account may have reached a usage limit. Switch to another saved account if it has allowance.";if(/Failed to fetch|NetworkError|Load failed/i.test(msg))msg="Network request failed. Check your connection and try again.";var out='<div class="card"><p style="color:var(--red);margin:0">'+esc(msg)+'</p>'+(run.id?'<p class="note"><a target="_blank" rel="noopener" href="https://console.apify.com/actors/runs/'+encodeURIComponent(run.id)+'"><u>Open run in Apify Console</u></a></p>':'')+'</div>';$("searchMessage").innerHTML=out;});
+api("/acts/"+ACTOR+"/runs",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(input)},run.token).then(function(r){run.id=r.data.id;run.dataset=r.data.defaultDatasetId;setProgress(1);return poll(run,0);}).then(function(){setProgress(2);return api("/datasets/"+run.dataset+"/items?clean=true&format=json",{},run.token);}).then(function(items){if(run.cancelled)throw new Error("Search cancelled");setProgress(3);return processItems(items||[],{query:query,area:area,minRating:+$("minRating").value,minReviews:+$("minReviews").value,accountId:a.id});}).then(function(r){finish();showResults(r);refreshUsage(S.accounts.find(function(x){return x.id===a.id;})).catch(function(){});}).catch(function(err){finish();if(run.cancelled){$("searchMessage").innerHTML='<div class="note">Search cancelled.</div>';return;}var msg=err.message||"Search failed.";if(err.status===401)msg="Apify rejected this token. Edit the account and check the token.";if(err.status===402||/usage|credit|limit|exceed/i.test(msg))msg="This account may have reached a usage limit. Switch to another saved account if it has allowance.";if(/Failed to fetch|NetworkError|Load failed/i.test(msg))msg="Network request failed. Check your connection and try again.";var out='<div class="card"><p style="color:var(--red);margin:0">'+esc(msg)+'</p>'+(run.id?'<p class="note"><a target="_blank" rel="noopener" href="https://console.apify.com/actors/runs/'+encodeURIComponent(run.id)+'"><u>Open run in Apify Console</u></a></p>':'')+'</div>';$("searchMessage").innerHTML=out;});
 function finish(){clearInterval(timer);S.run=null;$("searchBtn").disabled=false;$("progressBox").classList.add("hide");}}
 $("searchBtn").addEventListener("click",search);$("cancelSearch").addEventListener("click",function(){if(!S.run)return;S.run.cancelled=true;if(S.run.id)api("/actor-runs/"+S.run.id+"/abort",{method:"POST"},S.run.token).catch(function(){});});
-function card(l){return '<article class="lead"><div class="leadtop"><div class="avatar">'+esc(initials(l.name))+'</div><div style="min-width:0;flex:1"><div class="leadname">'+esc(l.name)+'</div><div class="meta">'+esc(l.type)+(l.neighborhood?" · "+esc(l.neighborhood):"")+'</div></div><div class="score">'+l.score+'<small>SCORE</small></div></div><div class="row"><span class="tag">'+(l.rating?l.rating.toFixed(1):"—")+' ★ · '+l.reviews+' reviews</span><span class="tag '+(l.websiteStatus==="social-only"?"blue":"green")+'">'+(l.websiteStatus==="social-only"?"Social only":"No URL returned")+'</span><span class="tag">'+esc(statusName(l.status))+'</span></div><div class="meta">'+esc(l.address)+'</div><div class="leadactions"><a class="btn green" href="https://wa.me/'+esc(l.wa)+'" target="_blank" rel="noopener" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><button class="btn" data-open="'+esc(l.id)+'">Details / status</button><button class="btn" data-copy="'+esc(l.id)+'">Copy lead brief</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps ↗</a>':'')+'</div></article>';}
+function card(l){var loc=l.locationStatus==="target-area-candidate"?"Address appears in target area":(l.locationStatus==="address-missing"?"Address needs verification":"Location needs review");return '<article class="lead"><div class="leadtop"><div class="avatar">'+esc(initials(l.name))+'</div><div style="min-width:0;flex:1"><div class="leadname">'+esc(l.name)+'</div><div class="meta">'+esc(l.type)+(l.neighborhood?" · "+esc(l.neighborhood):"")+'</div></div><div class="score">'+l.score+'<small>SCORE</small></div></div><div class="row"><span class="tag">'+(l.rating?l.rating.toFixed(1):"—")+' ★ · '+l.reviews+' reviews</span><span class="tag '+(l.websiteStatus==="social-only"?"blue":"green")+'">'+(l.websiteStatus==="social-only"?"Social URL only":"No official URL returned")+'</span><span class="tag '+(l.locationStatus==="target-area-candidate"?"green":"blue")+'">'+loc+'</span></div><div class="meta">'+esc(l.address)+'</div><div class="note">WhatsApp link is generated from the phone number; registration is not verified.</div><div class="leadactions"><a class="btn green" href="https://wa.me/'+esc(l.wa)+'" target="_blank" rel="noopener" data-contact="'+esc(l.id)+'">Open WhatsApp ↗</a><button class="btn" data-open="'+esc(l.id)+'">Details / status</button><button class="btn" data-copy="'+esc(l.id)+'">Copy lead brief</button>'+(l.maps?'<a class="btn" href="'+esc(l.maps)+'" target="_blank" rel="noopener">Google Maps ↗</a>':'')+'</div></article>';}
 function showResults(r){
-  var h='<div class="row" style="margin:20px 0 10px"><div><h2>'+r.ids.length+' eligible records</h2><p class="sub">Scanned '+r.scanned+' listings · '+r.fresh+' new</p></div><span class="tag green">Complete</span></div>'+
+  var local=r.ids.filter(function(id){return S.leads[id].locationStatus==="target-area-candidate";}).length;
+  var review=r.ids.length-local;
+  var h='<div class="row" style="margin:20px 0 10px"><div><h2>'+r.ids.length+' website-free candidates to review</h2><p class="sub">Scanned '+r.scanned+' listings · '+r.fresh+' new · '+local+' address matches · '+review+' need location review</p></div><span class="tag green">Complete</span></div>'+
     '<div class="grid2" style="margin-bottom:10px">'+
-    '<div class="card"><div class="note">Excluded: official website URL</div><h2>'+r.stats.websites+'</h2></div>'+
-    '<div class="card"><div class="note">Rejected: outside selected location</div><h2>'+(r.stats.location||0)+'</h2></div>'+
+    '<div class="card"><div class="note">Excluded: known official website</div><h2>'+r.stats.websites+'</h2></div>'+
+    '<div class="card"><div class="note">Address not confidently matched (saved for review)</div><h2>'+(r.stats.location+r.stats.locationUnknown)+'</h2></div>'+
     '<div class="card"><div class="note">Skipped: closed / rating / reviews / no phone</div><h2>'+(r.stats.closed+r.stats.low+r.stats.nophone)+'</h2></div>'+
-    '<div class="card"><div class="note">Skipped: social-only URL</div><h2>'+r.stats.social+'</h2></div></div>';
-  h+=r.ids.length?'<div class="leadgrid">'+r.ids.slice(0,8).map(function(id){return card(S.leads[id]);}).join("")+'</div><button class="btn dark full" data-view="leads" style="margin-top:12px">Open saved leads</button>':'<div class="empty"><strong>No eligible prospects found</strong>No leads passed all location, website, rating, review and phone checks. Do not widen the location unless you intend to search another area. Verify potential leads independently before building a demo.</div>';
+    '<div class="card"><div class="note">Phone-based WhatsApp links generated; not verified</div><h2>'+r.ids.length+'</h2></div></div>';
+  h+=r.ids.length?'<p class="note">Candidates matching the selected area appear first. Records with uncertain locations are retained below instead of being discarded. Check the address and open WhatsApp before spending time on a demo.</p><div class="leadgrid">'+r.ids.slice(0,12).map(function(id){return card(S.leads[id]);}).join('')+'</div><button class="btn dark full" data-view="leads" style="margin-top:12px">Open saved leads</button>':'<div class="empty"><strong>No candidates passed the current quality filters</strong>Nothing was charged beyond the search already completed. Try another category only after reviewing the saved leads and current Apify usage.</div>';
   $("results").innerHTML=h;
 }
 function brief(l){return "Prospect: "+l.name+"\nCategory: "+l.type+"\nRating: "+(l.rating||"—")+" ("+l.reviews+" reviews)\nPhone: "+l.phone+"\nAddress: "+l.address+"\nWebsite field: "+(l.url||"empty; independently verify before assuming there is no website")+"\nGoogle Maps: "+l.maps;}
 function copyText(s){if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(s).then(function(){notify("Copied");},function(){fallback(s);});else fallback(s);}
 function fallback(s){var t=document.createElement("textarea");t.value=s;t.style.position="fixed";t.style.opacity="0";document.body.appendChild(t);t.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}t.remove();notify(ok?"Copied":"Copy failed; select text manually");}
 function setStatus(l,s){l.status=s;if(s==="contacted"&&!l.contactedAt)l.contactedAt=Date.now();put("leads",S.leads);renderStats();}
-function openLead(id){var l=S.leads[id];if(!l)return;var statuses=STATUSES.map(function(s){return '<button data-status="'+s[0]+'" class="'+(l.status===s[0]?"active":"")+'">'+s[1]+'</button>';}).join("");$("panel").innerHTML='<div class="panelhead"><div class="avatar">'+esc(initials(l.name))+'</div><div><h2 style="margin:0">'+esc(l.name)+'</h2><p class="sub">'+esc(l.type)+'</p></div><button class="close" data-close>×</button></div><div class="detailgrid"><div class="detail">Rating<b>'+(l.rating?l.rating.toFixed(1)+" ★":"—")+'</b></div><div class="detail">Reviews<b>'+l.reviews+'</b></div><div class="detail">Phone<b>'+esc(l.phone)+'</b></div><div class="detail">Found<b>'+esc(ago(l.found))+'</b></div><div class="detail" style="grid-column:span 2">Address<b>'+esc(l.address||"—")+'</b></div><div class="detail" style="grid-column:span 2">Website check<b>Apify Google Places data only; not independently verified</b></div></div><div class="label">Outreach status</div><div class="statuses">'+statuses+'</div><div class="field"><label for="notes">Notes</label><textarea class="textarea" id="notes" placeholder="Owner response, budget, follow-up...">'+esc(l.notes||"")+'</textarea></div><div class="field"><label for="value">Deal value (₦)</label><input class="input" id="value" inputmode="numeric" value="'+(l.value||"")+'" placeholder="e.g. 250000"></div><div class="grid2"><a class="btn green" target="_blank" rel="noopener" href="https://wa.me/'+esc(l.wa)+'" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a></div><button class="btn full" style="margin-top:8px" data-copy="'+esc(l.id)+'">Copy lead brief</button><button class="btn danger full" style="margin-top:8px" id="removeLead">Remove lead</button>';$("sheet").classList.add("open");$("notes").addEventListener("input",function(){l.notes=this.value;saveLeads();});$("value").addEventListener("input",function(){l.value=+digits(this.value)||0;saveLeads();});$("removeLead").addEventListener("click",function(){if(confirm("Remove this lead?")){delete S.leads[id];saveLeads();closeSheet();renderLeads();renderStats();notify("Lead removed");}});}
+function openLead(id){var l=S.leads[id];if(!l)return;var statuses=STATUSES.map(function(s){return '<button data-status="'+s[0]+'" class="'+(l.status===s[0]?"active":"")+'">'+s[1]+'</button>';}).join("");$("panel").innerHTML='<div class="panelhead"><div class="avatar">'+esc(initials(l.name))+'</div><div><h2 style="margin:0">'+esc(l.name)+'</h2><p class="sub">'+esc(l.type)+'</p></div><button class="close" data-close>×</button></div><div class="detailgrid"><div class="detail">Rating<b>'+(l.rating?l.rating.toFixed(1)+" ★":"—")+'</b></div><div class="detail">Reviews<b>'+l.reviews+'</b></div><div class="detail">Phone<b>'+esc(l.phone)+'</b></div><div class="detail">Found<b>'+esc(ago(l.found))+'</b></div><div class="detail" style="grid-column:span 2">Address<b>'+esc(l.address||"—")+'</b></div><div class="detail" style="grid-column:span 2">Website check<b>Apify returned no official website URL; verify manually</b><br>Location check<b>'+esc(l.locationStatus||"needs-review")+'</b><br>WhatsApp check<b>Phone-based link only; not verified</b></div></div><div class="label">Outreach status</div><div class="statuses">'+statuses+'</div><div class="field"><label for="notes">Notes</label><textarea class="textarea" id="notes" placeholder="Owner response, budget, follow-up...">'+esc(l.notes||"")+'</textarea></div><div class="field"><label for="value">Deal value (₦)</label><input class="input" id="value" inputmode="numeric" value="'+(l.value||"")+'" placeholder="e.g. 250000"></div><div class="grid2"><a class="btn green" target="_blank" rel="noopener" href="https://wa.me/'+esc(l.wa)+'" data-contact="'+esc(l.id)+'">WhatsApp ↗</a><a class="btn" href="tel:'+digits(l.phone)+'">Call</a></div><button class="btn full" style="margin-top:8px" data-copy="'+esc(l.id)+'">Copy lead brief</button><button class="btn danger full" style="margin-top:8px" id="removeLead">Remove lead</button>';$("sheet").classList.add("open");$("notes").addEventListener("input",function(){l.notes=this.value;saveLeads();});$("value").addEventListener("input",function(){l.value=+digits(this.value)||0;saveLeads();});$("removeLead").addEventListener("click",function(){if(confirm("Remove this lead?")){delete S.leads[id];saveLeads();closeSheet();renderLeads();renderStats();notify("Lead removed");}});}
 function closeSheet(){$("sheet").classList.remove("open");}
 $("sheet").addEventListener("click",function(e){if(e.target===$("sheet")||e.target.closest("[data-close]"))closeSheet();});document.addEventListener("keydown",function(e){if(e.key==="Escape")closeSheet();});
 document.addEventListener("click",function(e){var b=e.target.closest("[data-open]");if(b){openLead(b.dataset.open);return;}var c=e.target.closest("[data-copy]");if(c){copyText(brief(S.leads[c.dataset.copy]));return;}var ct=e.target.closest("[data-contact]");if(ct){var l=S.leads[ct.dataset.contact];if(l&&l.status==="new"){setStatus(l,"contacted");notify("Marked as contacted");}return;}var st=e.target.closest("[data-status]");if(st){var cp=$("panel").querySelector("[data-copy]");if(cp){var lead=S.leads[cp.dataset.copy];setStatus(lead,st.dataset.status);$("panel").querySelectorAll("[data-status]").forEach(function(x){x.classList.toggle("active",x===st);});}return;}var use=e.target.closest("[data-use]");if(use){S.activeId=use.dataset.use;saveAccounts();renderAccounts();notify("Active account switched");return;}var rem=e.target.closest("[data-remove]");if(rem){var id=rem.dataset.remove,a=S.accounts.find(function(x){return x.id===id;});if(a&&confirm("Remove account '"+a.label+"'?")){S.accounts=S.accounts.filter(function(x){return x.id!==id;});if(S.activeId===id)S.activeId=S.accounts.length?S.accounts[0].id:"";saveAccounts();renderAccounts();notify("Account removed");}return;}var ed=e.target.closest("[data-edit]");if(ed){var ac=S.accounts.find(function(x){return x.id===ed.dataset.edit;});$("editId").value=ac.id;$("accountLabel").value=ac.label;$("accountToken").value=ac.token;$("accountToken").type="text";$("formTitle").textContent="Edit account";$("saveAccount").textContent="Update account";return;}var rf=e.target.closest("[data-refresh]");if(rf){var ar=S.accounts.find(function(x){return x.id===rf.dataset.refresh;});rf.disabled=true;refreshUsage(ar).then(function(){notify("Usage refreshed");}).catch(function(er){notify(er.message);}).then(renderAccounts);return;}});
