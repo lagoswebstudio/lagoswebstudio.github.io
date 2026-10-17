@@ -48,8 +48,9 @@ h2 em,h1 em{font-style:italic;color:#B8894A}
 .navlinks .btn{padding:11px 20px;font-size:14px}
 .burger{display:none;width:46px;height:46px;border-radius:50%;border:1.5px solid #EAD7D2;background:#FFFFFF;align-items:center;justify-content:center;cursor:pointer}
 @media(max-width:880px){.navlinks{display:none}.burger{display:flex}}
-.menu{position:fixed;inset:0;z-index:60;background:#2B0F1E;color:#FBF4F1;display:flex;flex-direction:column;padding:18px 6% 30px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.2,.8,.2,1);visibility:hidden}
-.menu.open{transform:none;visibility:visible}
+.menu{position:fixed;top:0;right:0;bottom:0;left:0;z-index:60;background:#2B0F1E;color:#FBF4F1;display:flex;flex-direction:column;padding:18px 6% 30px;display:none;height:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.menu.open{display:flex;animation:menuIn .35s ease both}
+@keyframes menuIn{from{opacity:0;-webkit-transform:translateY(-12px);transform:translateY(-12px)}to{opacity:1;-webkit-transform:none;transform:none}}
 .menu .top{display:flex;justify-content:space-between;align-items:center;height:50px}
 .menu .x{width:46px;height:46px;border-radius:50%;border:1.5px solid rgba(251,244,241,.3);background:#3D1A2D;color:#FBF4F1;display:flex;align-items:center;justify-content:center;cursor:pointer}
 .menu nav{display:flex;flex-direction:column;margin-top:34px}
@@ -73,7 +74,7 @@ h2 em,h1 em{font-style:italic;color:#B8894A}
 .rating b{color:#1E0B15;font-size:16px}
 .rating .st{color:#B8894A;letter-spacing:2px}
 .hero-art{position:relative;height:clamp(460px,62vw,640px)}
-.arch{position:absolute;inset:0 12% 0 0;border-radius:999px 999px 28px 28px}
+.arch{position:absolute;top:0;right:12%;bottom:0;left:0;border-radius:999px 999px 28px 28px}
 .arch img{animation:rise 1.6s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{transform:scale(1.1)}to{transform:scale(1)}}
 .mini{position:absolute;right:0;bottom:8%;width:42%;aspect-ratio:3/4;border-radius:22px;border:6px solid #FBF4F1;box-shadow:0 30px 50px -24px rgba(43,15,30,.5)}
@@ -152,8 +153,8 @@ section{padding:clamp(64px,9vw,120px) 0}
 
 /* TRAVEL */
 .travel{position:relative;border-radius:34px;overflow:hidden;color:#FBF4F1;min-height:480px;display:flex;align-items:flex-end}
-.travel .ph{position:absolute;inset:0}
-.travel:after{content:””;position:absolute;inset:0;background:linear-gradient(90deg,rgba(43,15,30,.92) 0%,rgba(43,15,30,.55) 60%,rgba(43,15,30,.2) 100%)}
+.travel .ph{position:absolute;top:0;right:0;bottom:0;left:0}
+.travel:after{content:””;position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(90deg,rgba(43,15,30,.92) 0%,rgba(43,15,30,.55) 60%,rgba(43,15,30,.2) 100%)}
 .travel-in{position:relative;z-index:1;padding:clamp(28px,6vw,72px);max-width:620px}
 .travel p{color:#EBD3D3;margin:16px 0 26px}
 
@@ -195,17 +196,8 @@ html,html body{background:#FBF4F1!important;color:#1E0B15!important}
     <a href="#services">Services</a><a href="#headspa">Head spa</a><a href="#reviews">Reviews</a><a href="#visit">Visit</a>
     <a class="btn plum" href="#book">Book a visit</a>
   </div>
-  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E0B15" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M8 16h12"/></svg></button>
+  <button type="button" class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1E0B15" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M8 16h12"/></svg></button>
 </div></header>
-
-<div class="menu" id="menu" aria-hidden="true">
-  <div class="top"><span class="logo"><b style="color:#FBF4F1">Boss Girl<i>.</i></b></span>
-    <button class="x" id="closeMenu" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
-  <nav><a href="#services">Services</a><a href="#headspa">The head spa</a><a href="#book">Book a visit</a><a href="#reviews">Reviews</a><a href="#visit">Find us</a></nav>
-  <div class="foot"><p>21 Ayinde Akinmade St, off Admiralty Way, Lekki Phase 1</p>
-    <a class="btn gold wa" data-msg="Hello Boss Girl, I'd like to book an appointment.">Book on WhatsApp</a>
-    <a class="btn light" href="tel:+2347039889845">Call 0703 988 9845</a></div>
-</div>
 
 <main>
 <section class="hero" id="top">
@@ -345,6 +337,14 @@ html,html body{background:#FBF4F1!important;color:#1E0B15!important}
 
 <div class="bar" id="bar"><a class="btn" href="tel:+2347039889845">Call</a><a class="btn plum" href="#book">Book now</a></div>
 
+</div>
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="top"><span class="logo"><b style="color:#FBF4F1">Boss Girl<i>.</i></b></span>
+    <button class="x" id="closeMenu" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <nav><a href="#services">Services</a><a href="#headspa">The head spa</a><a href="#book">Book a visit</a><a href="#reviews">Reviews</a><a href="#visit">Find us</a></nav>
+  <div class="foot"><p>21 Ayinde Akinmade St, off Admiralty Way, Lekki Phase 1</p>
+    <a class="btn gold wa" data-msg="Hello Boss Girl, I'd like to book an appointment.">Book on WhatsApp</a>
+    <a class="btn light" href="tel:+2347039889845">Call 0703 988 9845</a></div>
 </div>
 <script>
 var WA="2347039889845";
