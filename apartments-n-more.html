@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="only light">
+<meta name="theme-color" content="#0B3F40">
+<title>Apartments'N'More | Shortlet apartments in Lekki, VI, Ikoyi &amp; Ajah</title>
+<meta name="description" content="Serviced shortlet apartments across Lekki, Victoria Island, Ikoyi and Ajah. 24/7 power, fast free Wi-Fi, clean water. Rated 4.9 on Google. Book on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Fixed palette: lagoon #0B3F40 | teal #0E7C7B | mist #EEF3F2 | white #FFFFFF | ink #0F1C1D | slate #4D5E60 | line #D6E1DF | sand #EFE4D3 | spice #C2410C (kitchen accent) */
+*{box-sizing:border-box;margin:0;padding:0}
+html,html body{background:#EEF3F2!important;color:#0F1C1D!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;color-scheme:only light}
+body{font:400 16.5px/1.6 Outfit,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+#app{background:#EEF3F2;color:#0F1C1D;min-height:100vh;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid #0E7C7B;outline-offset:3px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+.wrap{width:92%;max-width:1180px;margin:0 auto}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.02em;line-height:1.04}
+h2{font-size:clamp(34px,5vw,58px);max-width:16ch}
+h2 em{font-style:italic;color:#0E7C7B}
+.lede{color:#4D5E60;font-size:17.5px;max-width:54ch}
+.ph{background:#C9D6D4;overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;color:transparent;font-size:0}
+section{padding:clamp(64px,9vw,120px) 0}
+#plan,section[id]{scroll-margin-top:84px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:15.5px;padding:15px 24px;border-radius:14px;border:1.5px solid #0F1C1D;background:transparent;color:#0F1C1D;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .2s ease}
+.btn:active{transform:scale(.97)}
+.btn.teal{background:#0E7C7B;border-color:#0E7C7B;color:#FFFFFF}
+.btn.dark{background:#0B3F40;border-color:#0B3F40;color:#FFFFFF}
+.btn.white{background:#FFFFFF;border-color:#FFFFFF;color:#0B3F40}
+.btn.ghost{border-color:rgba(255,255,255,.6);color:#FFFFFF}
+.btn.spice{background:#C2410C;border-color:#C2410C;color:#FFFFFF}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:40;transition:background .3s ease,box-shadow .3s ease}
+.nav.solid{background:#FFFFFF;box-shadow:0 1px 0 #D6E1DF}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{display:flex;align-items:center;gap:10px;color:#FFFFFF}
+.nav.solid .logo{color:#0F1C1D}
+.logo .mk{width:38px;height:38px;border-radius:11px;background:#FFFFFF;color:#0B3F40;display:flex;align-items:center;justify-content:center;font:700 15px Fraunces,serif}
+.nav.solid .logo .mk{background:#0B3F40;color:#FFFFFF}
+.logo b{font:600 19px Fraunces,serif;display:block;line-height:1}
+.logo small{font-size:12px;opacity:.8}
+.navlinks{display:flex;align-items:center;gap:28px;font-weight:500;color:#FFFFFF}
+.nav.solid .navlinks{color:#0F1C1D}
+.navlinks .btn{padding:10px 18px;font-size:14.5px}
+.burger{display:none;width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);align-items:center;justify-content:center;cursor:pointer;color:#FFFFFF}
+.nav.solid .burger{background:#FFFFFF;border-color:#D6E1DF;color:#0F1C1D}
+@media(max-width:900px){.navlinks{display:none}.burger{display:flex}}
+
+/* MENU (opens with CSS :target even without JavaScript) */
+.menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;height:100%;z-index:60;background:#0B3F40;color:#FFFFFF;flex-direction:column;padding:18px 6% 30px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.menu:target,.menu.open{display:flex;animation:mIn .3s ease both}
+@keyframes mIn{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+.menu .top{display:flex;justify-content:space-between;align-items:center;height:52px}
+.menu .x{width:46px;height:46px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:#0E5253;color:#FFFFFF;display:flex;align-items:center;justify-content:center}
+.menu nav{display:flex;flex-direction:column;margin-top:30px}
+.menu nav a{font:600 40px/1.15 Fraunces,serif;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+.menu .foot{margin-top:auto;display:grid;gap:10px;padding-top:24px}
+.menu .foot p{color:#B5CFCD;font-size:14px}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#FFFFFF}
+.hero>.ph{position:absolute;top:0;left:0;width:100%;height:100%}
+.hero>.ph img{animation:zoom 2.6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes zoom{from{transform:scale(1.1)}to{transform:scale(1)}}
+.hero .shade{position:absolute;top:0;left:0;width:100%;height:100%;background:linear-gradient(180deg,rgba(6,30,31,.55) 0%,rgba(6,30,31,.15) 38%,rgba(6,30,31,.88) 100%)}
+.hero-in{position:relative;z-index:1;padding:130px 0 54px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:500}
+.pill b{color:#FFD58A}
+.hero h1{font-size:clamp(50px,8.4vw,108px);margin:20px 0 18px;max-width:12ch}
+.hero h1 em{font-style:italic;color:#9FE0DC}
+.hero p{max-width:46ch;color:#DCEAE8;font-size:18px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.promise{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.promise span{display:inline-flex;align-items:center;gap:8px;background:rgba(6,30,31,.55);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 14px;font-size:14.5px;font-weight:500}
+.promise svg{width:18px;height:18px;color:#9FE0DC;flex:none}
+
+/* PLANNER */
+.planner-wrap{position:relative;z-index:5;margin-top:-34px}
+.planner{background:#FFFFFF;border-radius:24px;box-shadow:0 30px 60px -30px rgba(11,63,64,.5);padding:clamp(20px,3vw,30px);display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(18px,3vw,34px)}
+.planner h3{font-size:28px;margin-bottom:6px}
+.lbl{display:block;font-size:13px;font-weight:600;color:#4D5E60;margin-bottom:7px}
+.areas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.ar{border:1.5px solid #D6E1DF;background:#FFFFFF;border-radius:999px;padding:9px 15px;font-weight:600;font-size:14.5px;cursor:pointer}
+.ar[aria-pressed=true]{background:#0B3F40;border-color:#0B3F40;color:#FFFFFF}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.inp{width:100%;padding:13px 14px;border-radius:12px;border:1.5px solid #D6E1DF;background:#F6F9F8;font-size:16px;-webkit-appearance:none;appearance:none;min-height:50px}
+.inp:focus{border-color:#0E7C7B;outline:none;background:#FFFFFF}
+.step{display:flex;align-items:center;justify-content:space-between;border:1.5px solid #D6E1DF;background:#F6F9F8;border-radius:12px;padding:5px;min-height:50px}
+.step button{width:38px;height:38px;border-radius:10px;border:0;background:#FFFFFF;font-size:20px;font-weight:600;cursor:pointer;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.step b{font-size:16px}
+.tgl{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#FBF6EF;border:1.5px solid #EFE4D3;border-radius:14px;padding:12px 14px;font-weight:500;font-size:14.5px;cursor:pointer;margin-bottom:14px}
+.tgl input{width:22px;height:22px;accent-color:#C2410C;flex:none}
+.sum{background:#0B3F40;color:#FFFFFF;border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.sum .big{font:600 clamp(30px,4vw,40px)/1 Fraunces,serif}
+.sum ul{list-style:none;display:grid;gap:8px;font-size:15px;color:#CFE3E1}
+.sum li{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:8px}
+.sum li b{color:#FFFFFF;text-align:right}
+.sum .err{color:#FFD58A;font-size:14px;min-height:20px}
+.sum .btn{width:100%}
+@media(max-width:860px){.planner{grid-template-columns:1fr}}
+.planner>*,.row2>*,.row2 label{min-width:0}
+.inp{min-width:0;max-width:100%}
+input[type=date].inp{display:block;-webkit-min-logical-width:0;text-align:left}
+
+/* APARTMENTS */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:30px}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(280px,1fr);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4% 18px;margin:0 -4%;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rail::-webkit-scrollbar{display:none}
+@media(min-width:1000px){.rail{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:4px 0 0}}
+.apt{scroll-snap-align:start;background:#FFFFFF;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 50px -34px rgba(11,63,64,.55)}
+.apt .ph{aspect-ratio:4/4.4}
+.apt .tag{position:absolute;top:12px;left:12px;z-index:2;background:#FFFFFF;color:#0B3F40;font-size:12.5px;font-weight:700;padding:6px 11px;border-radius:999px}
+.apt-in{padding:18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.apt h3{font-size:24px}
+.apt p{color:#4D5E60;font-size:15px}
+.feat{display:flex;flex-wrap:wrap;gap:6px}
+.feat span{font-size:12.5px;font-weight:600;background:#EEF3F2;color:#0B3F40;padding:5px 10px;border-radius:8px}
+.apt .btn{margin-top:auto;padding:13px}
+.note{font-size:13px;color:#7A8A8C;margin-top:14px}
+
+/* PROMISES */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px}
+.card{background:#FFFFFF;border-radius:22px;padding:24px;border:1px solid #D6E1DF}
+.card .ic{width:46px;height:46px;border-radius:13px;background:#E2F0EF;color:#0E7C7B;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card .ic svg{width:24px;height:24px}
+.card h3{font-size:23px;margin-bottom:6px}
+.card p{color:#4D5E60;font-size:15.5px}
+.card q{display:block;margin-top:12px;font-size:14px;color:#0E7C7B;font-style:italic}
+@media(max-width:900px){.grid3{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid3{grid-template-columns:1fr}}
+
+/* KITCHEN */
+.kitchen{background:#EFE4D3}
+.kit{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(24px,5vw,64px);align-items:center}
+.kit h2 em{color:#C2410C}
+.kit .lede{color:#5E4A33}
+.plates{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.plates .ph{border-radius:20px;aspect-ratio:1/1}
+.plates .ph:first-child{grid-row:span 2;aspect-ratio:auto}
+.menu-tags{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px}
+.menu-tags span{background:#FFFFFF;border-radius:999px;padding:8px 14px;font-weight:600;font-size:14.5px;color:#7A2E0A}
+@media(max-width:860px){.kit{grid-template-columns:1fr}.plates .ph:first-child{aspect-ratio:1/1.2}}
+
+/* REVIEWS */
+.rev-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:30px}
+.score{display:flex;align-items:center;gap:16px}
+.score b{font:600 clamp(72px,10vw,110px)/.9 Fraunces,serif;color:#0B3F40}
+.score span{color:#4D5E60;font-size:15px;line-height:1.4}
+.score i{color:#E2A23B;font-style:normal;letter-spacing:2px;font-size:18px}
+.quotes{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:16px}
+.q{background:#FFFFFF;border-radius:22px;padding:26px;display:flex;flex-direction:column;gap:16px;border:1px solid #D6E1DF}
+.q:first-child{background:#0B3F40;color:#FFFFFF;border-color:#0B3F40}
+.q blockquote{font:500 21px/1.35 Fraunces,serif}
+.q cite{font-style:normal;font-size:13.5px;color:#7A8A8C;margin-top:auto}
+.q:first-child cite{color:#9FC6C3}
+@media(max-width:900px){.quotes{grid-template-columns:1fr}}
+
+/* FAQ + CONTACT */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,64px);align-items:start}
+.faq details{border-bottom:1px solid #D6E1DF}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font:600 20px/1.3 Fraunces,serif;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font:500 26px/1 Outfit,sans-serif;color:#0E7C7B;transition:transform .25s ease}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{color:#4D5E60;padding:0 0 20px}
+.contact{background:#0B3F40;color:#FFFFFF;border-radius:26px;padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:18px}
+.contact h3{font-size:clamp(30px,4vw,40px)}
+.contact p{color:#CFE3E1}
+.live{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;background:#0E5253;border-radius:999px;padding:7px 13px;align-self:flex-start}
+.live i{width:9px;height:9px;border-radius:50%;background:#34D399;box-shadow:0 0 0 4px rgba(52,211,153,.25)}
+.contact dl{display:grid;gap:12px}
+.contact dt{font-size:13px;color:#9FC6C3}
+.contact dd{font-weight:600;font-size:17px}
+.contact .btns{display:grid;gap:10px}
+@media(max-width:860px){.two{grid-template-columns:1fr}}
+
+footer{background:#082D2E;color:#9FC6C3;padding:40px 0 120px;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer b{color:#FFFFFF;font:600 20px Fraunces,serif}
+@media(min-width:901px){footer{padding-bottom:40px}}
+
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;display:flex;gap:10px;padding:10px;border-radius:18px;background:#FFFFFF;border:1px solid #D6E1DF;box-shadow:0 20px 40px -16px rgba(11,63,64,.5);transform:translateY(160%);transition:transform .35s ease;margin-bottom:env(safe-area-inset-bottom)}
+.bar.show{transform:none}
+.bar .btn{flex:1;padding:13px}
+@media(min-width:901px){.bar{display:none}}
+</style>
+</head>
+<body>
+<div id="app">
+
+<header class="nav" id="nav"><div class="wrap">
+  <a class="logo" href="#top" aria-label="Apartments'N'More home"><span class="mk">A&amp;M</span><span><b>Apartments'N'More</b><small>Shortlets · Lagos</small></span></a>
+  <div class="navlinks"><a href="#apartments">Apartments</a><a href="#why">Why us</a><a href="#kitchen">Kitchen</a><a href="#contact">Contact</a><a class="btn teal" href="#plan">Check availability</a></div>
+  <a href="#menu" class="burger" id="burger" role="button" aria-label="Open menu" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 8h16M8 16h12"/></svg></a>
+</div></header>
+
+<section class="hero" id="top" style="padding:0">
+  <div class="ph"><img src="https://images.unsplash.com/photo-1759691554705-8a791e8f0875?auto=format&fit=crop&w=2000&q=72" alt="Bright modern living room with a city view" fetchpriority="high" onerror="this.remove()"></div>
+  <div class="shade"></div>
+  <div class="wrap hero-in">
+    <span class="pill"><b>★ 4.9</b> from 58 Google reviews</span>
+    <h1>Your Lagos home, <em>by the night.</em></h1>
+    <p>Serviced shortlet apartments across Lekki, Victoria Island, Ikoyi and Ajah. Power that stays on, Wi-Fi that keeps up, and a host who answers.</p>
+    <div class="ctas"><a class="btn white" href="#plan">Plan your stay</a><a class="btn ghost" href="#apartments">See apartments</a></div>
+    <div class="promise">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>24/7 power</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19.5" r="1"/></svg>Fast free Wi-Fi</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></svg>Clean water</span>
+    </div>
+  </div>
+</section>
+
+<div class="wrap planner-wrap" id="plan">
+  <div class="planner">
+    <div>
+      <h3>Plan your stay</h3>
+      <p class="lede" style="font-size:15.5px;margin-bottom:18px">Pick your dates and area. Your request goes straight to our host on WhatsApp, day or night.</p>
+      <span class="lbl">Area</span>
+      <div class="areas" id="areas"><button type="button" class="ar" aria-pressed="true">Lekki</button><button type="button" class="ar" aria-pressed="false">Victoria Island</button><button type="button" class="ar" aria-pressed="false">Ikoyi</button><button type="button" class="ar" aria-pressed="false">Ajah</button></div>
+      <div class="row2">
+        <label><span class="lbl">Check-in</span><input class="inp" type="date" id="cin"></label>
+        <label><span class="lbl">Check-out</span><input class="inp" type="date" id="cout"></label>
+      </div>
+      <div class="row2">
+        <div><span class="lbl">Guests</span><div class="step"><button type="button" id="gMinus" aria-label="Fewer guests">−</button><b id="gVal">2</b><button type="button" id="gPlus" aria-label="More guests">+</button></div></div>
+        <label><span class="lbl">Bedrooms</span><select class="inp" id="beds"><option>Studio</option><option selected>1 bedroom</option><option>2 bedrooms</option><option>3 bedrooms</option></select></label>
+      </div>
+      <label class="tgl"><span>Add meals from <b>Basili's Kitchen</b> to my stay</span><input type="checkbox" id="meals"></label>
+    </div>
+    <div class="sum">
+      <span style="font-size:13px;font-weight:600;color:#9FC6C3">YOUR STAY</span>
+      <div class="big" id="sNights">2 nights</div>
+      <ul>
+        <li>Area<b id="sArea">Lekki</b></li>
+        <li>Dates<b id="sDates">–</b></li>
+        <li>Guests<b id="sGuests">2 guests, 1 bedroom</b></li>
+        <li>Meals<b id="sMeals">Not added</b></li>
+      </ul>
+      <p class="err" id="sErr"></p>
+      <a class="btn white" id="send" href="#plan">Check availability on WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<main>
+<section id="apartments">
+  <div class="wrap">
+    <div class="head"><h2>Pick your <em>space</em></h2><p class="lede">Studios for solo trips, family apartments for the whole crew. Tap any one to check your dates.</p></div>
+    <div class="rail" id="rail"></div>
+    <p class="note">Preview photos. Your real apartments, photos and nightly rates go here.</p>
+  </div>
+</section>
+
+<section id="why" style="padding-top:0">
+  <div class="wrap">
+    <h2>Everything works. <em>All the time.</em></h2>
+    <div class="grid3">
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div><h3>Light, round the clock</h3><p>No generator schedules, no blackouts mid-movie. Power stays on day and night.</p><q>Light 24/7.</q></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19.5" r="1"/></svg></div><h3>Fast, free Wi-Fi</h3><p>Work calls, streaming and uploads, included in every stay at no extra cost.</p><q>Network very fast.</q></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></svg></div><h3>Clean running water</h3><p>Hot showers and clean water on tap, every day of your stay.</p><q>Clean water and all.</q></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div><h3>A host who answers</h3><p>Questions, requests or a late arrival? Message us any time. We're open 24 hours.</p><q>Customer service is top notch.</q></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Works with your budget</h3><p>Tell us what you want to spend and we'll match you to the right apartment.</p><q>She works with your budget.</q></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.5-7-12a7 7 0 0114 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></div><h3>Four great areas</h3><p>Apartments across Lekki, Victoria Island, Ikoyi and Ajah, close to where you need to be.</p><q>Simply the best!</q></div>
+    </div>
+  </div>
+</section>
+
+<section class="kitchen" id="kitchen">
+  <div class="wrap kit">
+    <div>
+      <h2>Hungry? <em>Basili's Kitchen</em> delivers to your door.</h2>
+      <p class="lede" style="margin-top:16px">Our sister kitchen cooks premium, generous Nigerian meals. Add them to your stay, or order for a family get-together or event.</p>
+      <div class="menu-tags"><span>Party jollof</span><span>Small chops</span><span>Grills</span><span>Soups &amp; swallow</span><span>Catering</span></div>
+      <a class="btn spice wa" data-msg="Hello Basili's Kitchen, I'd like to order food. What's on the menu today?">Order on WhatsApp</a>
+    </div>
+    <div class="plates">
+      <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1665332195309-9d75071138f0?auto=format&fit=crop&w=900&q=72" alt="Jollof rice with grilled fish and skewers" onerror="this.remove()"></div>
+      <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1664992960082-0ea299a9c53e?auto=format&fit=crop&w=600&q=72" alt="A bowl of Nigerian food" onerror="this.remove()"></div>
+      <div class="ph"><img loading="lazy" src="https://images.unsplash.com/photo-1665334217407-6688e6941a47?auto=format&fit=crop&w=600&q=72" alt="A plate and a bowl of food on a table" onerror="this.remove()"></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="rev-top"><h2>Guests <em>keep</em> coming back</h2><div class="score"><b>4.9</b><span><i>★★★★★</i><br>58 reviews on Google</span></div></div>
+    <div class="quotes">
+      <figure class="q"><blockquote>"Being a first time customer, I was not sure what to expect, but these guys gave me and my family the best shortlet service ever."</blockquote><cite>Google review</cite></figure>
+      <figure class="q"><blockquote>"I really enjoyed my stay. Light 24/7, network very fast, clean water and all."</blockquote><cite>Google review</cite></figure>
+      <figure class="q"><blockquote>"You can never miss out on good apartments around Lekki, VI, Ikoyi and Ajah. Customer service is top notch."</blockquote><cite>Google review</cite></figure>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap two">
+    <div class="faq">
+      <h2 style="margin-bottom:10px">Good to <em>know</em></h2>
+      <details open><summary>How do I book?</summary><p>Use "Plan your stay" above or tap any apartment. Your dates and guest count arrive in our WhatsApp, and we confirm availability and the rate with you directly.</p></details>
+      <details><summary>Can I stay for weeks or months?</summary><p>Yes. Send us your dates and we'll suggest the best apartment for a longer stay.</p></details>
+      <details><summary>Which areas do you cover?</summary><p>Lekki, Victoria Island, Ikoyi and Ajah. Tell us where you need to be and we'll find the closest option.</p></details>
+      <details><summary>Can you arrange meals?</summary><p>Yes. Our sister brand, Basili's Kitchen, can deliver meals to your apartment. Tick "Add meals" when you plan your stay.</p></details>
+    </div>
+    <div class="contact">
+      <span class="live"><i></i>Open 24 hours</span>
+      <h3>Talk to your host</h3>
+      <p>Bookings, questions or a late check-in. We reply on WhatsApp, day or night.</p>
+      <dl><div><dt>Based in</dt><dd>Lekki Phase 1, Lagos</dd></div><div><dt>WhatsApp &amp; calls</dt><dd><a href="tel:+2348134140961">+234 813 414 0961</a></dd></div></dl>
+      <div class="btns"><a class="btn white wa" data-msg="Hello Apartments'N'More, I'd like to book an apartment.">Chat on WhatsApp</a><a class="btn ghost" href="tel:+2348134140961">Call now</a></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span><b>Apartments'N'More</b><br>Shortlet apartments in Lekki, VI, Ikoyi &amp; Ajah · Sister brand of Basili's Kitchen</span><span>Website concept preview</span></div></footer>
+
+<div class="bar" id="bar"><a class="btn" href="tel:+2348134140961">Call</a><a class="btn teal" href="#plan">Book a stay</a></div>
+</div>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="top"><span class="logo"><span class="mk">A&amp;M</span><b>Apartments'N'More</b></span><a href="#_" class="x" id="closeMenu" role="button" aria-label="Close menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></a></div>
+  <nav><a href="#plan">Plan your stay</a><a href="#apartments">Apartments</a><a href="#why">Why guests stay</a><a href="#kitchen">Basili's Kitchen</a><a href="#contact">Contact</a></nav>
+  <div class="foot"><p>Open 24 hours · Lekki Phase 1, Lagos</p><a class="btn white wa" data-msg="Hello Apartments'N'More, I'd like to book an apartment.">Chat on WhatsApp</a><a class="btn ghost" href="tel:+2348134140961">Call +234 813 414 0961</a></div>
+</div>
+<script>
+(function(){var m=document.getElementById("menu"),b=document.getElementById("burger"),x=document.getElementById("closeMenu");if(!m||!b)return;
+function open(e){if(e)e.preventDefault();m.classList.add("open");m.setAttribute("aria-hidden","false");b.setAttribute("aria-expanded","true");document.body.classList.add("lock");}
+function close(e){if(e)e.preventDefault();m.classList.remove("open");m.setAttribute("aria-hidden","true");b.setAttribute("aria-expanded","false");document.body.classList.remove("lock");if(location.hash==="#menu"&&history.replaceState)history.replaceState(null,"",location.pathname+location.search);}
+b.addEventListener("click",open);if(x)x.addEventListener("click",close);
+var l=m.querySelectorAll("nav a, .foot a");for(var i=0;i<l.length;i++)l[i].addEventListener("click",function(){close();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")close();});})();
+</script>
+
+<script>
+(function(){
+var WA="2348134140961";
+function wa(t){return "https://wa.me/"+WA+"?text="+encodeURIComponent(t);}
+function $(id){return document.getElementById(id);}
+var links=document.querySelectorAll(".wa");for(var i=0;i<links.length;i++){links[i].href=wa(links[i].getAttribute("data-msg"));links[i].target="_blank";links[i].rel="noopener";}
+
+/* apartments */
+var U=function(id){return "https://images.unsplash.com/photo-"+id+"?auto=format&fit=crop&w=900&q=72";};
+var apts=[
+ {n:"The Studio",t:"Solo & couples",b:"Studio",img:"1759691554884-914bd85837c8",d:"A calm, compact space for business trips and weekend escapes.",f:["Queen bed","Work desk","Smart TV"]},
+ {n:"One Bedroom",t:"Most booked",b:"1 bedroom",img:"1759691555105-17e609a3e46f",d:"Separate living room and bedroom, for when you need room to breathe.",f:["Living room","Kitchen","Fast Wi-Fi"]},
+ {n:"Two Bedroom",t:"Friends & family",b:"2 bedrooms",img:"1759691555285-74005fcf3ddf",d:"Two bedrooms, a full kitchen and space for everyone to unwind.",f:["2 bedrooms","Full kitchen","24/7 power"]},
+ {n:"Family Three Bedroom",t:"Groups",b:"3 bedrooms",img:"1759691337957-ebc9ed54dc44",d:"Room for the whole family, with a kitchen built for big meals.",f:["3 bedrooms","Dining area","Clean water"]}
+];
+$("rail").innerHTML=apts.map(function(a,i){return '<article class="apt"><div class="ph"><span class="tag">'+a.t+'</span><img loading="lazy" src="'+U(a.img)+'" alt="'+a.n+' apartment interior" onerror="this.remove()"></div><div class="apt-in"><h3>'+a.n+'</h3><p>'+a.d+'</p><div class="feat">'+a.f.map(function(x){return "<span>"+x+"</span>";}).join("")+'</div><a class="btn dark" href="#plan" data-beds="'+a.b+'">Check my dates</a></div></article>';}).join("");
+$("rail").addEventListener("click",function(e){var a=e.target.closest("[data-beds]");if(a){$("beds").value=a.getAttribute("data-beds");update();}});
+
+/* planner */
+var area="Lekki",guests=2;
+function iso(d){var m=d.getMonth()+1,dd=d.getDate();return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(dd<10?"0":"")+dd;}
+function parse(v){var p=String(v||"").split("-");return p.length===3?new Date(+p[0],+p[1]-1,+p[2]):null;}
+function nice(d){return d.toLocaleDateString("en-GB",{weekday:"short",day:"numeric",month:"short"});}
+var t=new Date();t=new Date(t.getFullYear(),t.getMonth(),t.getDate());
+var a1=new Date(t.getTime()+864e5),a2=new Date(t.getTime()+3*864e5);
+$("cin").min=iso(t);$("cout").min=iso(a1);$("cin").value=iso(a1);$("cout").value=iso(a2);
+$("areas").addEventListener("click",function(e){var b=e.target.closest(".ar");if(!b)return;area=b.textContent;var all=this.querySelectorAll(".ar");for(var i=0;i<all.length;i++)all[i].setAttribute("aria-pressed",all[i]===b?"true":"false");update();});
+$("gMinus").addEventListener("click",function(){guests=Math.max(1,guests-1);update();});
+$("gPlus").addEventListener("click",function(){guests=Math.min(12,guests+1);update();});
+["cin","cout","beds","meals"].forEach(function(id){$(id).addEventListener("change",update);$(id).addEventListener("input",update);});
+var ok=false;
+function update(){
+  var ci=parse($("cin").value),co=parse($("cout").value),beds=$("beds").value,meals=$("meals").checked;
+  if(ci){var mn=new Date(ci.getTime()+864e5);$("cout").min=iso(mn);}
+  $("gVal").textContent=guests;$("sArea").textContent=area;$("sGuests").textContent=guests+(guests===1?" guest, ":" guests, ")+beds.toLowerCase();$("sMeals").textContent=meals?"Basili's Kitchen":"Not added";
+  ok=false;
+  if(!ci||!co){$("sNights").textContent="Pick dates";$("sDates").textContent="–";$("sErr").textContent="Choose your check-in and check-out dates.";}
+  else if(ci<t){$("sNights").textContent="Pick dates";$("sDates").textContent="–";$("sErr").textContent="Check-in can't be in the past.";}
+  else if(co<=ci){$("sNights").textContent="Pick dates";$("sDates").textContent=nice(ci)+" → ?";$("sErr").textContent="Check-out must be after check-in.";}
+  else{var n=Math.round((co-ci)/864e5);ok=true;$("sNights").textContent=n+(n===1?" night":" nights");$("sDates").textContent=nice(ci)+" → "+nice(co);$("sErr").textContent="";
+    $("send").href=wa("Hello Apartments'N'More, I'd like to check availability:\n• Area: "+area+"\n• Check-in: "+nice(ci)+"\n• Check-out: "+nice(co)+" ("+n+(n===1?" night":" nights")+")\n• Guests: "+guests+"\n• Apartment: "+beds+(meals?"\n• I'd also like meals from Basili's Kitchen":"")+"\nWhat's available and what's the rate?");
+    $("send").target="_blank";$("send").rel="noopener";}
+  if(!ok){$("send").href="#plan";$("send").removeAttribute("target");}
+}
+$("send").addEventListener("click",function(e){if(!ok){e.preventDefault();$("sErr").textContent=$("sErr").textContent||"Choose your dates first.";}});
+update();
+
+/* nav + bar */
+var nav=$("nav"),bar=$("bar");
+function sc(){var y=window.pageYOffset||document.documentElement.scrollTop;nav.classList.toggle("solid",y>40);bar.classList.toggle("show",y>window.innerHeight*.75);}
+window.addEventListener("scroll",sc,{passive:true});sc();
+})();
+</script>
+</body>
+</html>
