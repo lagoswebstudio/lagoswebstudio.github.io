@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="only light">
+  <meta name="theme-color" content="#f7f8f5">
+  <meta name="description" content="Explore POD Clinic in Lekki, Lagos. Rated 5.0 from 59 Google reviews. Discover dental care information and contact the clinic to enquire about an appointment.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>POD Clinic | Thoughtful Dental Care in Lekki</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Palette: warm ivory #F7F8F5, deep forest #123F3A, mint #DCEDE4, ink #1D2926, lime accent #D7F06A */
+    :root{--paper:#f7f8f5;--ink:#1d2926;--muted:#68746e;--forest:#123f3a;--forest-deep:#0b2e2b;--mint:#dceDE4;--lime:#d7f06a;--line:#dfe5df;--white:#fff;--radius:26px;--shadow:0 22px 60px rgba(18,63,58,.10)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:clip}
+    body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;color:transparent;background:linear-gradient(145deg,#dce9e0,#aebfb4)}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{font:inherit}
+    .container{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--forest)}
+    .eyebrow:before{content:"";width:24px;height:1px;background:currentColor}
+    .announcement{background:var(--forest-deep);color:#f4f7f2;text-align:center;padding:10px 16px;font-size:.76rem;letter-spacing:.035em}
+    .announcement strong{color:var(--lime);font-weight:700}
+    .site-header{position:sticky;top:0;z-index:30;background:rgba(247,248,245,.94);backdrop-filter:blur(16px);border-bottom:1px solid rgba(18,63,58,.08)}
+    .nav-wrap{height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .brand{display:inline-flex;align-items:center;gap:11px;min-width:max-content}
+    .brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--forest);color:var(--lime);font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.08em}
+    .brand-copy{display:grid;gap:2px}.brand-name{font-family:'Manrope',sans-serif;font-size:1.04rem;font-weight:800;letter-spacing:-.055em}.brand-sub{font-size:.63rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .nav-links{display:flex;align-items:center;gap:30px;font-size:.86rem;color:#44534d}.nav-links .mobile-cta{display:none}.nav-links a{transition:color .2s}.nav-links a:hover{color:var(--forest)}
+    .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;background:var(--forest);color:white;font-size:.86rem;font-weight:700;border:1px solid var(--forest);transition:transform .2s,background .2s;cursor:pointer}.nav-cta:hover,.button:hover{background:var(--forest-deep);transform:translateY(-2px)}
+    .button-light{background:var(--white);color:var(--forest);border-color:rgba(18,63,58,.16)}.button-light:hover{background:#edf4ee;color:var(--forest)}
+    .menu-toggle{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--forest);align-items:center;justify-content:center;cursor:pointer}
+    .menu-toggle svg{width:22px;height:22px}
+    .hero{padding:50px 0 82px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:52px}
+    .hero-copy{padding:24px 0 28px;position:relative;z-index:1}
+    .hero h1{font-family:'Manrope',sans-serif;font-size:clamp(3rem,5.3vw,5.25rem);line-height:.99;letter-spacing:-.078em;font-weight:700;margin:23px 0 22px;max-width:650px}
+    .hero h1 em{font-style:normal;color:var(--forest);position:relative;white-space:nowrap}
+    .hero h1 em:after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:8px;background:var(--lime);border-radius:8px;z-index:-1;transform:rotate(-1.5deg)}
+    .hero-lede{max-width:490px;color:#5e6c65;font-size:1.05rem;line-height:1.8;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .trust-row{display:flex;align-items:center;gap:15px;margin-top:34px;color:#617069;font-size:.79rem;line-height:1.5}
+    .rating-stars{color:#c49b26;letter-spacing:2px;font-size:1rem;white-space:nowrap}.trust-row strong{color:var(--ink)}
+    .hero-visual{min-height:565px;position:relative;border-radius:34px;background:#dbe9e0;overflow:hidden;isolation:isolate}
+    .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:-2}
+    .hero-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,39,34,.03) 35%,rgba(10,39,34,.64) 100%);z-index:-1}
+    .visual-label{position:absolute;left:28px;top:28px;padding:10px 14px;border:1px solid rgba(255,255,255,.62);border-radius:99px;background:rgba(255,255,255,.78);backdrop-filter:blur(12px);font-size:.72rem;font-weight:700;color:var(--forest);letter-spacing:.02em}
+    .visual-caption{position:absolute;left:30px;right:30px;bottom:30px;color:white;display:flex;justify-content:space-between;align-items:end;gap:18px}.visual-caption p{font-family:'Manrope',sans-serif;font-size:1.45rem;line-height:1.18;letter-spacing:-.04em;margin:0;max-width:260px;font-weight:700}.visual-caption span{font-size:.72rem;opacity:.88;white-space:nowrap}
+    .floating-card{position:absolute;right:-17px;bottom:100px;background:var(--white);border-radius:20px;padding:17px 19px;box-shadow:var(--shadow);width:190px;z-index:2}.floating-card .stars{font-size:.8rem;color:#b88c19;letter-spacing:1px}.floating-card strong{display:block;font-family:'Manrope',sans-serif;font-size:1.55rem;letter-spacing:-.06em;margin:4px 0}.floating-card small{color:var(--muted);font-size:.72rem}
+    .intro-strip{margin-top:-1px;background:var(--forest);color:white;padding:24px 0}.intro-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.intro-item{display:flex;align-items:center;gap:14px;padding:7px 18px;border-right:1px solid rgba(255,255,255,.17)}.intro-item:last-child{border-right:0}.intro-icon{width:42px;height:42px;flex:0 0 42px;border-radius:50%;display:grid;place-items:center;background:rgba(215,240,106,.13);color:var(--lime)}.intro-icon svg{width:20px;height:20px}.intro-item strong{display:block;font-size:.9rem;margin-bottom:4px}.intro-item span{font-size:.75rem;color:rgba(255,255,255,.67)}
+    section.content-section{padding:105px 0}
+    .section-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px}.section-heading h2{font-family:'Manrope',sans-serif;font-size:clamp(2.2rem,4vw,3.7rem);letter-spacing:-.075em;line-height:1.04;margin:16px 0 0;max-width:590px}.section-heading p{max-width:360px;color:var(--muted);line-height:1.75;margin:0;font-size:.94rem}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .service-card{background:var(--white);border:1px solid #e9ede8;border-radius:var(--radius);padding:27px;min-height:228px;display:flex;flex-direction:column;transition:transform .22s,box-shadow .22s}.service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .service-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}.service-icon{width:46px;height:46px;border-radius:15px;background:#e9f2eb;color:var(--forest);display:grid;place-items:center}.service-icon svg{width:23px;height:23px}.service-index{font-size:.7rem;color:#9ba59e;letter-spacing:.12em}.service-card h3{font-family:'Manrope',sans-serif;font-size:1.16rem;letter-spacing:-.04em;margin:0 0 10px}.service-card p{font-size:.85rem;line-height:1.7;color:var(--muted);margin:0}
+    .note{font-size:.72rem;line-height:1.55;color:#7b857f;margin:15px 2px 0}
+    .feature-section{background:#edf2eb}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:68px;align-items:center}
+    .feature-visual{position:relative;min-height:530px;border-radius:30px;overflow:hidden;background:#d7e4da}.feature-visual img{width:100%;height:530px;object-fit:cover}.feature-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(9,41,35,.32),transparent 60%)}
+    .feature-note{position:absolute;bottom:24px;left:24px;right:24px;color:white;font-family:'Manrope',sans-serif;font-size:1.35rem;line-height:1.25;letter-spacing:-.04em;font-weight:700;z-index:1}
+    .feature-copy h2{font-family:'Manrope',sans-serif;font-size:clamp(2.35rem,4vw,3.8rem);line-height:1.04;letter-spacing:-.075em;margin:18px 0 22px}.feature-copy>p{color:var(--muted);line-height:1.85;font-size:.96rem;margin:0 0 26px}
+    .benefit-list{display:grid;gap:16px;margin:30px 0}.benefit{display:flex;gap:13px;align-items:flex-start}.check{width:24px;height:24px;flex:0 0 24px;border-radius:50%;display:grid;place-items:center;background:var(--forest);color:white;font-size:.8rem}.benefit strong{display:block;font-size:.91rem;margin-bottom:4px}.benefit span{display:block;font-size:.82rem;line-height:1.65;color:var(--muted)}
+    .gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:210px 210px;gap:15px}.gallery-card{border-radius:22px;overflow:hidden;background:#dbe5de;position:relative}.gallery-card:first-child{grid-row:span 2}.gallery-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.gallery-card:hover img{transform:scale(1.04)}.gallery-card:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(12,38,33,.42))}.gallery-tag{position:absolute;z-index:1;left:17px;bottom:16px;color:white;font-size:.77rem;font-weight:600}
+    .review-panel{background:var(--forest-deep);border-radius:32px;padding:46px;color:white;display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}.review-score{border-right:1px solid rgba(255,255,255,.18);padding-right:35px}.review-score .eyebrow{color:var(--lime)}.score-line{display:flex;align-items:baseline;gap:10px;margin:18px 0 8px}.score-line strong{font-family:'Manrope',sans-serif;font-size:5rem;line-height:1;letter-spacing:-.09em}.score-line span{font-size:.88rem;color:rgba(255,255,255,.65)}.review-score .rating-stars{font-size:1.1rem}.review-score p{color:rgba(255,255,255,.64);font-size:.82rem;line-height:1.7;margin:18px 0 0}.review-quote{font-family:'Manrope',sans-serif;font-size:clamp(1.4rem,2.5vw,2.25rem);line-height:1.35;letter-spacing:-.05em;margin:0 0 19px}.review-disclaimer{font-size:.74rem;line-height:1.6;color:rgba(255,255,255,.57);margin:0}
+    .contact-section{padding:105px 0 70px!important}.contact-card{background:var(--mint);border-radius:34px;padding:54px;display:grid;grid-template-columns:1fr .85fr;gap:45px;align-items:center}.contact-card h2{font-family:'Manrope',sans-serif;font-size:clamp(2.5rem,4vw,4rem);line-height:1;letter-spacing:-.08em;margin:17px 0 18px}.contact-card p{color:#56685f;line-height:1.8;max-width:480px;margin:0}.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:27px}.contact-details{background:rgba(255,255,255,.66);border:1px solid rgba(18,63,58,.09);border-radius:24px;padding:25px}.detail-row{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid rgba(18,63,58,.12)}.detail-row:first-child{padding-top:0}.detail-row:last-child{border-bottom:0;padding-bottom:0}.detail-icon{color:var(--forest);width:22px;flex:0 0 22px}.detail-icon svg{width:20px;height:20px}.detail-row small{display:block;text-transform:uppercase;font-size:.65rem;letter-spacing:.12em;color:#738178;margin-bottom:5px}.detail-row strong,.detail-row a{font-size:.86rem;line-height:1.5;overflow-wrap:anywhere}.detail-row a:hover{text-decoration:underline}
+    .footer{padding:26px 0 32px}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:25px;color:#7a857e;font-size:.73rem}.footer-brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:700}.footer-brand .brand-mark{width:31px;height:31px;border-radius:10px;font-size:.76rem}.footer-note{max-width:510px;text-align:right;line-height:1.6}
+    .floating-whatsapp{position:fixed;right:20px;bottom:max(18px,env(safe-area-inset-bottom));z-index:25;display:flex;align-items:center;gap:10px;min-height:54px;padding:0 19px;border-radius:99px;background:#1c6c4f;color:white;font-size:.84rem;font-weight:700;box-shadow:0 10px 28px rgba(13,62,43,.25);transition:transform .2s}.floating-whatsapp:hover{transform:translateY(-3px)}.floating-whatsapp svg{width:21px;height:21px}
+    .sample-banner{background:#fff8df;color:#68551c;border-bottom:1px solid #efe3b8;text-align:center;padding:9px 14px;font-size:.7rem;line-height:1.5}
+    @media(max-width:1000px){.hero-grid{gap:32px}.hero-visual{min-height:510px}.floating-card{right:12px}.nav-links{gap:18px}.feature-grid{gap:35px}.contact-card{padding:40px}.gallery-grid{grid-template-rows:180px 180px}}
+    @media(max-width:760px){.container{width:min(100% - 36px,560px)}.announcement{font-size:.68rem}.nav-wrap{height:72px}.menu-toggle{display:flex}.nav-cta.desktop{display:none}.nav-links{position:fixed;inset:72px 0 0;background:var(--paper);display:flex;flex-direction:column;align-items:stretch;gap:0;padding:18px 24px 35px;transform:translateX(100%);visibility:hidden;transition:transform .25s,visibility .25s;z-index:40}.nav-links.is-open{transform:translateX(0);visibility:visible}.nav-links a{padding:18px 3px;border-bottom:1px solid var(--line);font-size:1.06rem}.nav-links .mobile-cta{display:flex;margin-top:20px;border:0;padding:0}.hero{padding:30px 0 48px}.hero-grid{grid-template-columns:1fr;gap:27px}.hero-copy{padding:12px 0 0}.hero h1{font-size:clamp(3.05rem,13vw,4.45rem);margin:18px 0}.hero-lede{font-size:.95rem;line-height:1.75}.hero-visual{min-height:470px;border-radius:26px}.visual-caption{left:21px;right:21px;bottom:22px}.visual-caption p{font-size:1.28rem}.visual-label{left:18px;top:18px}.floating-card{right:12px;bottom:90px;width:164px;padding:14px}.floating-card strong{font-size:1.35rem}.intro-strip{padding:13px 0}.intro-grid{grid-template-columns:1fr;gap:0}.intro-item{padding:15px 4px;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}.intro-item:last-child{border-bottom:0}.intro-icon{width:38px;height:38px;flex-basis:38px}section.content-section{padding:70px 0}.section-heading{display:block;margin-bottom:28px}.section-heading h2{font-size:2.65rem;margin-top:14px}.section-heading p{margin-top:16px;font-size:.9rem}.service-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:auto;padding:23px}.service-top{margin-bottom:20px}.feature-grid{grid-template-columns:1fr;gap:30px}.feature-visual{min-height:380px}.feature-visual img{height:380px}.feature-copy h2{font-size:2.8rem}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 160px 160px;gap:10px}.gallery-card:first-child{grid-row:auto;grid-column:span 2}.review-panel{grid-template-columns:1fr;gap:26px;padding:28px 23px;border-radius:25px}.review-score{border-right:0;border-bottom:1px solid rgba(255,255,255,.18);padding:0 0 24px}.score-line strong{font-size:4.2rem}.review-quote{font-size:1.55rem}.contact-section{padding:70px 0 40px!important}.contact-card{grid-template-columns:1fr;gap:28px;padding:27px 21px;border-radius:26px}.contact-card h2{font-size:2.8rem}.contact-details{padding:20px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-note{text-align:left}.floating-whatsapp{right:14px;min-height:50px;padding:0 16px;font-size:.78rem}.floating-whatsapp span{display:inline}}
+    @media(max-width:390px){.container{width:calc(100% - 30px)}.hero h1{font-size:2.85rem}.hero-actions .button{width:100%}.hero-visual{min-height:420px}.visual-caption{display:block}.visual-caption span{display:block;margin-top:8px}.gallery-grid{grid-template-rows:190px 145px 145px}.contact-actions .button{width:100%}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <div class="announcement">A healthier smile starts with the right conversation. <strong>Enquire about an appointment.</strong></div>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="POD Clinic home"><span class="brand-mark">POD</span><span class="brand-copy"><span class="brand-name">POD Clinic</span><span class="brand-sub">Dental care · Lekki</span></span></a>
+      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+        <a href="#care">Dental care</a><a href="#approach">Our approach</a><a href="#gallery">Smile gallery</a><a href="#reviews">Reviews</a>
+        <a class="button mobile-cta" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
+      </nav>
+      <a class="nav-cta desktop" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+  </header>
+  <div class="sample-banner">Website concept for review. Service descriptions and imagery are illustrative and should be confirmed by the clinic before publication.</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Dental care, made personal</span>
+          <h1>Feel good about your <em>smile.</em></h1>
+          <p class="hero-lede">A more considered approach to your dental care, with a welcoming space to ask questions, explore your options and take the next step toward a healthier smile.</p>
+          <div class="hero-actions"><a class="button" href="#contact">Enquire about a visit <span aria-hidden="true">↗</span></a><a class="button button-light" href="#care">Explore dental care <span aria-hidden="true">↓</span></a></div>
+          <div class="trust-row"><div><span class="rating-stars" aria-label="5 out of 5 stars">★★★★★</span><br><strong>5.0 Google rating</strong></div><span>Based on 59 reviews<br>as shown on Google Maps</span></div>
+        </div>
+        <div class="hero-visual">
+          <img class="hero-photo" src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1400&q=85" alt="Dentist speaking with a patient in a modern dental clinic" fetchpriority="high">
+          <span class="visual-label">POD Clinic · Lekki, Lagos</span>
+          <div class="visual-caption"><p>Care that puts your comfort first.</p><span>YOUR SMILE, YOUR JOURNEY</span></div>
+          <div class="floating-card"><span class="stars">★★★★★</span><strong>5.0 / 5</strong><small>Google rating · 59 reviews</small></div>
+        </div>
+      </div>
+    </section>
+    <div class="intro-strip"><div class="container intro-grid">
+      <div class="intro-item"><span class="intro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 21s-7-4.4-7-11a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 6.6-7 11-7 11Z"/><path d="M9 12h6M12 9v6"/></svg></span><div><strong>Care centred on you</strong><span>Ask questions and explore your options.</span></div></div>
+      <div class="intro-item"><span class="intro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><strong>Appointment enquiries</strong><span>Get in touch to discuss a visit.</span></div></div>
+      <div class="intro-item"><span class="intro-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 20V8l8-4 8 4v12H4Z"/><path d="M9 20v-6h6v6M8 9h.01M12 9h.01M16 9h.01"/></svg></span><div><strong>Convenient Lekki location</strong><span>Find the clinic and plan your route.</span></div></div>
+    </div></div>
+    <section class="content-section" id="care">
+      <div class="container">
+        <div class="section-heading"><div><span class="eyebrow">Explore dental care</span><h2>Support for every step of your smile journey.</h2></div><p>Learn about the kinds of care you may want to discuss with the clinic. Confirmed services and treatment details should be supplied by POD Clinic.</p></div>
+        <div class="service-grid">
+          <article class="service-card"><div class="service-top"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M7 3c-2 0-3 2-3 5 0 4 2 6 3 10 .5 2 2 3 3 1l2-5 2 5c1 2 2.5 1 3-1 1-4 3-6 3-10 0-3-1-5-3-5-2 0-3 1-5 1S9 3 7 3Z"/></svg></span><span class="service-index">01 / CARE</span></div><h3>Everyday dental health</h3><p>Make space for questions about oral hygiene, routine care and keeping your teeth and gums healthy.</p></article>
+          <article class="service-card"><div class="service-top"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/></svg></span><span class="service-index">02 / CONFIDENCE</span></div><h3>Smile aesthetics</h3><p>Discuss cosmetic concerns and learn which options may be appropriate for your individual needs.</p></article>
+          <article class="service-card"><div class="service-top"><span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h4"/></svg></span><span class="service-index">03 / GUIDANCE</span></div><h3>Consultation & guidance</h3><p>Share your concerns with the clinic and ask about possible next steps before deciding on treatment.</p></article>
+        </div>
+        <p class="note">Sample service copy for this website concept. These descriptions are not a verified list of services offered by POD Clinic and must be approved or replaced by the clinic.</p>
+      </div>
+    </section>
+    <section class="content-section feature-section" id="approach">
+      <div class="container feature-grid">
+        <div class="feature-visual"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=1200&q=85" alt="Dental professional preparing equipment for patient care" loading="lazy"><div class="feature-note">Good care begins with a conversation.</div></div>
+        <div class="feature-copy"><span class="eyebrow">A thoughtful first step</span><h2>Know your options. Feel confident asking.</h2><p>Choosing dental care can come with questions. Start by telling the clinic what you need, then ask about the available options, expected steps and any costs before making a decision.</p>
+          <div class="benefit-list"><div class="benefit"><span class="check">✓</span><div><strong>Tell us what brings you in</strong><span>Share your concern or the kind of appointment you want to discuss.</span></div></div><div class="benefit"><span class="check">✓</span><div><strong>Ask about your options</strong><span>Request clear information about suitable care, timing and fees.</span></div></div><div class="benefit"><span class="check">✓</span><div><strong>Choose your next step</strong><span>Contact the clinic to confirm availability and appointment details.</span></div></div></div>
+          <a class="button" href="#contact">Contact POD Clinic <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <section class="content-section" id="gallery">
+      <div class="container"><div class="section-heading"><div><span class="eyebrow">A closer look</span><h2>Visualise your next visit.</h2></div><p>A considered gallery can help visitors understand the clinic experience. Replace these illustrative images with approved photographs from POD Clinic before publishing.</p></div>
+        <div class="gallery-grid">
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1100&q=85" alt="Bright modern dental treatment room" loading="lazy"><span class="gallery-tag">The clinic experience</span></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=850&q=85" alt="Dental professional working with a patient" loading="lazy"><span class="gallery-tag">Patient care</span></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?auto=format&fit=crop&w=850&q=85" alt="Dental instruments prepared for a visit" loading="lazy"><span class="gallery-tag">Care in detail</span></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=850&q=85" alt="Dental consultation" loading="lazy"><span class="gallery-tag">Your consultation</span></div>
+          <div class="gallery-card"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&w=850&q=85" alt="Dental professional preparing a treatment space" loading="lazy"><span class="gallery-tag">A welcoming space</span></div>
+        </div><p class="note">All gallery photographs are illustrative stock images, not verified photographs of POD Clinic, its staff or patients. Replace them with clinic-approved images before the website goes live.</p>
+      </div>
+    </section>
+    <section class="content-section" id="reviews" style="padding-top:10px">
+      <div class="container"><div class="review-panel"><div class="review-score"><span class="eyebrow">Google feedback</span><div class="score-line"><strong>5.0</strong><span>/ 5</span></div><div class="rating-stars" aria-label="5 out of 5 stars">★★★★★</div><p>Rating and review count shown here are based on the prospect information supplied for this concept. Confirm the current figures before publishing.</p></div><div><p class="review-quote">“A strong reputation starts with the experiences people choose to share.”</p><p class="review-disclaimer">This concept displays the clinic's supplied Google rating and review count. No individual review quotes or testimonials have been invented.</p><div style="margin-top:24px"><a class="button button-light" href="https://www.google.com/maps/search/?api=1&query=POD%20clinic" target="_blank" rel="noopener noreferrer">Find the clinic on Google Maps <span aria-hidden="true">↗</span></a></div></div></div></div>
+    </section>
+    <section class="content-section contact-section" id="contact">
+      <div class="container"><div class="contact-card"><div><span class="eyebrow">Get in touch</span><h2>Let’s talk about your smile.</h2><p>Have a question or want to discuss a visit? Contact POD Clinic to ask about appointment availability and the care you’re looking for.</p><div class="contact-actions"><a class="button" href="https://wa.me/2347073332265?text=Hello%20POD%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20an%20appointment." target="_blank" rel="noopener noreferrer">Enquire on WhatsApp <span aria-hidden="true">↗</span></a><a class="button button-light" href="mailto:podclinics@gmail.com">Send an email</a></div></div>
+          <div class="contact-details"><div class="detail-row"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><div><small>Visit</small><strong>1C Adebisi Ladejobi Close, off Lekki Central Mosque, Lekki, Lagos</strong></div></div><div class="detail-row"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 10 18.4a19.4 19.4 0 0 1-6-6A19.8 19.8 0 0 1 1.5 4.2 2 2 0 0 1 3.5 2h3a2 2 0 0 1 2 1.7l.5 2.8a2 2 0 0 1-.6 1.8L6.6 10a16 16 0 0 0 6 6l1.7-1.8a2 2 0 0 1 1.8-.6l2.8.5a2 2 0 0 1 2.1 2.4Z"/></svg></span><div><small>Call or WhatsApp</small><strong><a href="https://wa.me/2347073332265?text=Hello%20POD%20Clinic%2C%20I%27d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener noreferrer">+234 707 333 2265</a></strong></div></div><div class="detail-row"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span><div><small>Email</small><strong><a href="mailto:podclinics@gmail.com">podclinics@gmail.com</a></strong></div></div><div class="detail-row"><span class="detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><small>Opening hours</small><strong>Check availability with the clinic before visiting.</strong></div></div><a class="button" style="width:100%;margin-top:20px" href="https://www.google.com/maps/search/?api=1&query=POD%20clinic%2C%201C%20Adebisi%20Ladejobi%20Close%2C%20Lekki%2C%20Lagos" target="_blank" rel="noopener noreferrer">Get directions <span aria-hidden="true">↗</span></a></div>
+        </div></div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container footer-inner"><a class="footer-brand" href="#home"><span class="brand-mark">POD</span><span>POD Clinic · Lekki</span></a><div class="footer-note">Website concept prepared for review. Confirm all business details, services, opening hours, images and claims with the clinic before publication.</div></div></footer>
+  <a class="floating-whatsapp" href="https://wa.me/2347073332265?text=Hello%20POD%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20an%20appointment." target="_blank" rel="noopener noreferrer" aria-label="Enquire with POD Clinic on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.5 11.8a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.4-4.8A8.4 8.4 0 1 1 20.5 11.8Z"/><path d="M8.3 7.9c.2-.5.5-.5.8-.5h.4c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4 0 .6l-.5.7c-.2.2-.2.4-.1.6.5.9 1.3 1.7 2.2 2.2.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.4.5 0 .5-.2 1.2-.7 1.6-.5.4-1.1.6-1.8.4-1.1-.3-2.4-.9-3.7-2.1-1.1-1-2-2.4-2.3-3.4-.3-.9 0-1.7.5-2.3Z"/></svg><span>WhatsApp us</span></a>
+  <script>
+    (()=>{
+      const toggle=document.querySelector('.menu-toggle');
+      const nav=document.querySelector('#primary-navigation');
+      const closeMenu=()=>{nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');document.body.classList.remove('menu-open')};
+      toggle.addEventListener('click',()=>{const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');nav.classList.toggle('is-open',open);document.body.classList.toggle('menu-open',open)});
+      nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+      window.addEventListener('resize',()=>{if(window.innerWidth>760)closeMenu()});
+    })();
+  </script>
+</body>
+</html>
