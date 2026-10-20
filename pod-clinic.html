@@ -15,10 +15,11 @@
     /* Palette: warm ivory #F7F8F5, deep forest #123F3A, mint #DCEDE4, ink #1D2926, lime accent #D7F06A */
     :root{--paper:#f7f8f5;--ink:#1d2926;--muted:#68746e;--forest:#123f3a;--forest-deep:#0b2e2b;--mint:#dceDE4;--lime:#d7f06a;--line:#dfe5df;--white:#fff;--radius:26px;--shadow:0 22px 60px rgba(18,63,58,.10)}
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-x:clip}
+    html{scroll-behavior:smooth;scroll-padding-top:110px;overflow-x:clip}
     body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}
     body.menu-open{overflow:hidden}
-    a{color:inherit;text-decoration:none}
+    main[inert]{pointer-events:none;user-select:none}
+        a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%;color:transparent;background:linear-gradient(145deg,#dce9e0,#aebfb4)}
     button,a{-webkit-tap-highlight-color:transparent}
     button{font:inherit}
@@ -27,16 +28,26 @@
     .eyebrow:before{content:"";width:24px;height:1px;background:currentColor}
     .announcement{background:var(--forest-deep);color:#f4f7f2;text-align:center;padding:10px 16px;font-size:.76rem;letter-spacing:.035em}
     .announcement strong{color:var(--lime);font-weight:700}
-    .site-header{position:sticky;top:0;z-index:1000;background:rgba(247,248,245,.98);backdrop-filter:blur(16px);border-bottom:1px solid rgba(18,63,58,.08);isolation:isolate}
+    .site-header{position:sticky;top:0;z-index:1002;background:#f7f8f5;border-bottom:1px solid rgba(18,63,58,.08);isolation:isolate}
     .nav-wrap{height:82px;display:flex;align-items:center;justify-content:space-between;gap:28px}
     .brand{display:inline-flex;align-items:center;gap:11px;min-width:max-content}
     .brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:var(--forest);color:var(--lime);font-family:'Manrope',sans-serif;font-size:1rem;font-weight:800;letter-spacing:-.08em}
     .brand-copy{display:grid;gap:2px}.brand-name{font-family:'Manrope',sans-serif;font-size:1.04rem;font-weight:800;letter-spacing:-.055em}.brand-sub{font-size:.63rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
-    .nav-links{display:flex;align-items:center;gap:30px;font-size:.86rem;color:#44534d}.nav-links .mobile-cta{display:none}.nav-links a{transition:color .2s}.nav-links a:hover{color:var(--forest)}
+    .desktop-navigation{display:flex;align-items:center;gap:30px;font-size:.86rem;color:#44534d}.desktop-navigation a{transition:color .2s}.desktop-navigation a:hover{color:var(--forest)}
+    .mobile-menu-panel{position:fixed;inset:0;z-index:1001;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:var(--menu-content-top,180px) 28px max(32px,env(safe-area-inset-bottom));background:#f7f8f5;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-8px);transition:opacity .25s ease,transform .25s ease,visibility 0s linear .25s}
+    .mobile-menu-panel.is-open{opacity:1;visibility:visible;pointer-events:auto;transform:translateY(0);transition:opacity .25s ease,transform .25s ease,visibility 0s linear 0s}
+    .mobile-menu-inner{width:min(100%,560px);margin:0 auto}
+    .mobile-menu-kicker{margin:0 0 18px;color:#68746e;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+    .mobile-menu-panel a{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:64px;padding:14px 2px;border-bottom:1px solid #dfe5df;color:#1d2926;font-family:'Manrope',sans-serif;font-size:clamp(1.5rem,5vw,2.1rem);font-weight:700;letter-spacing:-.055em}
+    .mobile-menu-panel a span{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:400;letter-spacing:0;color:#68746e}
+    .mobile-menu-panel .mobile-menu-cta{display:flex;justify-content:center;min-height:58px;margin-top:26px;padding:0 20px;border:0;border-radius:999px;background:#123f3a;color:#fff;font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0}
+    .menu-toggle{display:none;width:48px;height:48px;flex:0 0 48px;border-radius:50%;border:1px solid var(--line);background:#f7f8f5;color:var(--forest);align-items:center;justify-content:center;cursor:pointer;position:relative;z-index:1004}
+    .menu-toggle svg{width:22px;height:22px}
+    .menu-toggle .icon-close{display:none}
+    .menu-toggle[aria-expanded="true"] .icon-open{display:none}
+    .menu-toggle[aria-expanded="true"] .icon-close{display:block}
     .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 20px;border-radius:999px;background:var(--forest);color:white;font-size:.86rem;font-weight:700;border:1px solid var(--forest);transition:transform .2s,background .2s;cursor:pointer}.nav-cta:hover,.button:hover{background:var(--forest-deep);transform:translateY(-2px)}
     .button-light{background:var(--white);color:var(--forest);border-color:rgba(18,63,58,.16)}.button-light:hover{background:#edf4ee;color:var(--forest)}
-    .menu-toggle{display:none;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--forest);align-items:center;justify-content:center;cursor:pointer}
-    .menu-toggle svg{width:22px;height:22px}
     .hero{padding:50px 0 82px;overflow:hidden}
     .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;align-items:center;gap:52px}
     .hero-copy{padding:24px 0 28px;position:relative;z-index:1}
@@ -72,8 +83,9 @@
     .footer{padding:26px 0 32px}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:25px;color:#7a857e;font-size:.73rem}.footer-brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-weight:700}.footer-brand .brand-mark{width:31px;height:31px;border-radius:10px;font-size:.76rem}.footer-note{max-width:510px;text-align:right;line-height:1.6}
     .floating-whatsapp{position:fixed;right:20px;bottom:max(18px,env(safe-area-inset-bottom));z-index:25;display:flex;align-items:center;gap:10px;min-height:54px;padding:0 19px;border-radius:99px;background:#1c6c4f;color:white;font-size:.84rem;font-weight:700;box-shadow:0 10px 28px rgba(13,62,43,.25);transition:transform .2s}.floating-whatsapp:hover{transform:translateY(-3px)}.floating-whatsapp svg{width:21px;height:21px}
     .sample-banner{background:#fff8df;color:#68551c;border-bottom:1px solid #efe3b8;text-align:center;padding:9px 14px;font-size:.7rem;line-height:1.5}
-    @media(max-width:1000px){.hero-grid{gap:32px}.hero-visual{min-height:510px}.floating-card{right:12px}.nav-links{gap:18px}.feature-grid{gap:35px}.contact-card{padding:40px}.gallery-grid{grid-template-rows:180px 180px}}
-    @media(max-width:760px){.container{width:min(100% - 36px,560px)}.announcement{font-size:.68rem}.nav-wrap{height:72px}.menu-toggle{display:flex;position:relative;z-index:1003;background:#f7f8f5}.nav-cta.desktop{display:none}.nav-links{position:fixed!important;top:var(--mobile-nav-top,150px)!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:auto!important;max-height:none!important;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:18px 24px max(30px,env(safe-area-inset-bottom))!important;background:#f7f8f5!important;background-color:#f7f8f5!important;opacity:0;visibility:hidden;pointer-events:none;transform:translateY(0)!important;transition:opacity .18s ease,visibility .18s;z-index:1002!important;overflow-y:auto;overscroll-behavior:contain;border-top:1px solid #dfe5df;box-shadow:0 24px 36px rgba(11,46,43,.16);backdrop-filter:none!important;-webkit-backdrop-filter:none!important;isolation:isolate}.nav-links.is-open{opacity:1;visibility:visible;pointer-events:auto;background:#f7f8f5!important;background-color:#f7f8f5!important}.nav-links a{position:relative;z-index:1;display:block;padding:18px 3px;border-bottom:1px solid #dfe5df;font-size:1.06rem;background:#f7f8f5;color:#1d2926}.nav-links .mobile-cta{display:flex;justify-content:center;min-height:54px;padding:0 20px;margin-top:20px;background:#123f3a;color:#fff;border-radius:999px}.nav-links a:last-child{border-bottom:0}.nav-links .mobile-cta{margin-top:20px;border:0;padding:0;background:#123f3a;color:#fff}.hero{padding:30px 0 48px}.hero-grid{grid-template-columns:1fr;gap:27px}.hero-copy{padding:12px 0 0}.hero h1{font-size:clamp(3.05rem,13vw,4.45rem);margin:18px 0}.hero-lede{font-size:.95rem;line-height:1.75}.hero-visual{min-height:470px;border-radius:26px}.visual-caption{left:21px;right:21px;bottom:22px}.visual-caption p{font-size:1.28rem}.visual-label{left:18px;top:18px}.floating-card{right:12px;bottom:90px;width:164px;padding:14px}.floating-card strong{font-size:1.35rem}.intro-strip{padding:13px 0}.intro-grid{grid-template-columns:1fr;gap:0}.intro-item{padding:15px 4px;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}.intro-item:last-child{border-bottom:0}.intro-icon{width:38px;height:38px;flex-basis:38px}section.content-section{padding:70px 0}.section-heading{display:block;margin-bottom:28px}.section-heading h2{font-size:2.65rem;margin-top:14px}.section-heading p{margin-top:16px;font-size:.9rem}.service-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:auto;padding:23px}.service-top{margin-bottom:20px}.feature-grid{grid-template-columns:1fr;gap:30px}.feature-visual{min-height:380px}.feature-visual img{height:380px}.feature-copy h2{font-size:2.8rem}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 160px 160px;gap:10px}.gallery-card:first-child{grid-row:auto;grid-column:span 2}.review-panel{grid-template-columns:1fr;gap:26px;padding:28px 23px;border-radius:25px}.review-score{border-right:0;border-bottom:1px solid rgba(255,255,255,.18);padding:0 0 24px}.score-line strong{font-size:4.2rem}.review-quote{font-size:1.55rem}.contact-section{padding:70px 0 40px!important}.contact-card{grid-template-columns:1fr;gap:28px;padding:27px 21px;border-radius:26px}.contact-card h2{font-size:2.8rem}.contact-details{padding:20px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-note{text-align:left}.floating-whatsapp{right:14px;min-height:50px;padding:0 16px;font-size:.78rem}.floating-whatsapp span{display:inline}}
+    @media(max-width:1000px){.hero-grid{gap:32px}.hero-visual{min-height:510px}.floating-card{right:12px}.desktop-navigation{gap:18px}.feature-grid{gap:35px}.contact-card{padding:40px}.gallery-grid{grid-template-rows:180px 180px}}
+    @media(max-width:899px){.container{width:min(100% - 36px,560px)}.announcement{font-size:.68rem}.nav-wrap{height:72px}.menu-toggle{display:flex}.desktop-navigation{display:none}.nav-cta.desktop{display:none}.mobile-menu-panel{display:block}.hero{padding:30px 0 48px}.hero-grid{grid-template-columns:1fr;gap:27px}.hero-copy{padding:12px 0 0}.hero h1{font-size:clamp(3.05rem,13vw,4.45rem);margin:18px 0}.hero-lede{font-size:.95rem;line-height:1.75}.hero-visual{min-height:470px;border-radius:26px}.visual-caption{left:21px;right:21px;bottom:22px}.visual-caption p{font-size:1.28rem}.visual-label{left:18px;top:18px}.floating-card{right:12px;bottom:90px;width:164px;padding:14px}.floating-card strong{font-size:1.35rem}.intro-strip{padding:13px 0}.intro-grid{grid-template-columns:1fr;gap:0}.intro-item{padding:15px 4px;border-right:0;border-bottom:1px solid rgba(255,255,255,.15)}.intro-item:last-child{border-bottom:0}.intro-icon{width:38px;height:38px;flex-basis:38px}section.content-section{padding:70px 0}.section-heading{display:block;margin-bottom:28px}.section-heading h2{font-size:2.65rem;margin-top:14px}.section-heading p{margin-top:16px;font-size:.9rem}.service-grid{grid-template-columns:1fr;gap:12px}.service-card{min-height:auto;padding:23px}.service-top{margin-bottom:20px}.feature-grid{grid-template-columns:1fr;gap:30px}.feature-visual{min-height:380px}.feature-visual img{height:380px}.feature-copy h2{font-size:2.8rem}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 160px 160px;gap:10px}.gallery-card:first-child{grid-row:auto;grid-column:span 2}.review-panel{grid-template-columns:1fr;gap:26px;padding:28px 23px;border-radius:25px}.review-score{border-right:0;border-bottom:1px solid rgba(255,255,255,.18);padding:0 0 24px}.score-line strong{font-size:4.2rem}.review-quote{font-size:1.55rem}.contact-section{padding:70px 0 40px!important}.contact-card{grid-template-columns:1fr;gap:28px;padding:27px 21px;border-radius:26px}.contact-card h2{font-size:2.8rem}.contact-details{padding:20px}.footer-inner{align-items:flex-start;flex-direction:column}.footer-note{text-align:left}.floating-whatsapp{right:14px;min-height:50px;padding:0 16px;font-size:.78rem}.floating-whatsapp span{display:inline}}
+    @media(min-width:900px){.menu-toggle{display:none}.mobile-menu-panel{opacity:0;visibility:hidden;pointer-events:none;transform:none}.desktop-navigation{display:flex}}
     @media(max-width:390px){.container{width:calc(100% - 30px)}.hero h1{font-size:2.85rem}.hero-actions .button{width:100%}.hero-visual{min-height:420px}.visual-caption{display:block}.visual-caption span{display:block;margin-top:8px}.gallery-grid{grid-template-rows:190px 145px 145px}.contact-actions .button{width:100%}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
   </style>
@@ -83,14 +95,26 @@
   <header class="site-header">
     <div class="container nav-wrap">
       <a class="brand" href="#home" aria-label="POD Clinic home"><span class="brand-mark">POD</span><span class="brand-copy"><span class="brand-name">POD Clinic</span><span class="brand-sub">Dental care · Lekki</span></span></a>
-      <nav class="nav-links" id="primary-navigation" aria-label="Main navigation">
+      <nav class="desktop-navigation" aria-label="Main navigation">
         <a href="#care">Dental care</a><a href="#approach">Our approach</a><a href="#gallery">Smile gallery</a><a href="#reviews">Reviews</a>
-        <a class="button mobile-cta" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
       </nav>
       <a class="nav-cta desktop" href="#contact">Enquire now <span aria-hidden="true">↗</span></a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu-panel">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
     </div>
   </header>
+  <nav class="mobile-menu-panel" id="mobile-menu-panel" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="mobile-menu-inner">
+      <p class="mobile-menu-kicker">Explore POD Clinic</p>
+      <a href="#care">Dental care <span>01</span></a>
+      <a href="#approach">Our approach <span>02</span></a>
+      <a href="#gallery">Smile gallery <span>03</span></a>
+      <a href="#reviews">Reviews <span>04</span></a>
+      <a class="mobile-menu-cta" href="#contact">Enquire about a visit <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
   <div class="sample-banner">Website concept for review. Service descriptions and imagery are illustrative and should be confirmed by the clinic before publication.</div>
   <main>
     <section class="hero" id="home">
@@ -158,18 +182,46 @@
   <footer class="footer"><div class="container footer-inner"><a class="footer-brand" href="#home"><span class="brand-mark">POD</span><span>POD Clinic · Lekki</span></a><div class="footer-note">Website concept prepared for review. Confirm all business details, services, opening hours, images and claims with the clinic before publication.</div></div></footer>
   <a class="floating-whatsapp" href="https://wa.me/2347073332265?text=Hello%20POD%20Clinic%2C%20I%27d%20like%20to%20enquire%20about%20an%20appointment." target="_blank" rel="noopener noreferrer" aria-label="Enquire with POD Clinic on WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.5 11.8a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.4-4.8A8.4 8.4 0 1 1 20.5 11.8Z"/><path d="M8.3 7.9c.2-.5.5-.5.8-.5h.4c.2 0 .4.1.5.4l.7 1.6c.1.2.1.4 0 .6l-.5.7c-.2.2-.2.4-.1.6.5.9 1.3 1.7 2.2 2.2.2.1.4.1.6-.1l.8-.9c.2-.2.4-.2.6-.1l1.6.8c.2.1.4.3.4.5 0 .5-.2 1.2-.7 1.6-.5.4-1.1.6-1.8.4-1.1-.3-2.4-.9-3.7-2.1-1.1-1-2-2.4-2.3-3.4-.3-.9 0-1.7.5-2.3Z"/></svg><span>WhatsApp us</span></a>
   <script>
-    (()=>{
-      const header=document.querySelector('.site-header');
-      const toggle=document.querySelector('.menu-toggle');
-      const nav=document.querySelector('#primary-navigation');
-      const updateNavTop=()=>document.documentElement.style.setProperty('--mobile-nav-top',`${Math.max(0,header.getBoundingClientRect().bottom)}px`);
-      const closeMenu=()=>{nav.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');document.body.classList.remove('menu-open')};
-      updateNavTop();
-      toggle.addEventListener('click',()=>{updateNavTop();const open=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');nav.classList.toggle('is-open',open);document.body.classList.toggle('menu-open',open)});
-      nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
-      document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
-      window.addEventListener('resize',()=>{updateNavTop();if(window.innerWidth>760)closeMenu()});
-      window.addEventListener('scroll',()=>{if(toggle.getAttribute('aria-expanded')==='true')updateNavTop()},{passive:true});
+    (() => {
+      const button = document.querySelector('.menu-toggle');
+      const panel = document.querySelector('#mobile-menu-panel');
+      const header = document.querySelector('.site-header');
+      const main = document.querySelector('main');
+      const desktopQuery = window.matchMedia('(min-width: 900px)');
+
+      function updatePanelOffset() {
+        if (desktopQuery.matches) return;
+        const headerBottom = header.getBoundingClientRect().bottom;
+        panel.style.setProperty('--menu-content-top', `${Math.max(24, Math.ceil(headerBottom + 24))}px`);
+      }
+
+      function setOpen(open) {
+        const shouldOpen = Boolean(open) && !desktopQuery.matches;
+        panel.classList.toggle('is-open', shouldOpen);
+        button.setAttribute('aria-expanded', String(shouldOpen));
+        button.setAttribute('aria-label', shouldOpen ? 'Close menu' : 'Open menu');
+        panel.setAttribute('aria-hidden', String(!shouldOpen));
+        document.body.classList.toggle('menu-open', shouldOpen);
+        if (shouldOpen) {
+          updatePanelOffset();
+          main.setAttribute('inert', '');
+        } else {
+          main.removeAttribute('inert');
+        }
+      }
+
+      button.addEventListener('click', () => setOpen(button.getAttribute('aria-expanded') !== 'true'));
+      panel.addEventListener('click', event => { if (event.target === panel) setOpen(false); });
+      panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', event => { if (event.key === 'Escape') setOpen(false); });
+      window.addEventListener('resize', () => {
+        if (desktopQuery.matches) setOpen(false);
+        else if (button.getAttribute('aria-expanded') === 'true') updatePanelOffset();
+      });
+      window.addEventListener('scroll', () => {
+        if (button.getAttribute('aria-expanded') === 'true') updatePanelOffset();
+      }, { passive: true });
+      desktopQuery.addEventListener('change', event => { if (event.matches) setOpen(false); });
     })();
   </script>
 </body>
